@@ -36,6 +36,7 @@
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             pnlSide = new Panel();
             pnlMain = new Panel();
+            progressBar = new ProgressBar();
             lblTItulo = new Label();
             btnDeletarProduto = new Button();
             btnEditarProduto = new Button();
@@ -66,6 +67,7 @@
             // 
             pnlMain.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlMain.BackColor = Color.Gainsboro;
+            pnlMain.Controls.Add(progressBar);
             pnlMain.Controls.Add(lblTItulo);
             pnlMain.Controls.Add(btnDeletarProduto);
             pnlMain.Controls.Add(btnEditarProduto);
@@ -77,6 +79,14 @@
             pnlMain.Name = "pnlMain";
             pnlMain.Size = new Size(1155, 649);
             pnlMain.TabIndex = 1;
+            // 
+            // progressBar
+            // 
+            progressBar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            progressBar.Location = new Point(11, 611);
+            progressBar.Name = "progressBar";
+            progressBar.Size = new Size(1135, 10);
+            progressBar.TabIndex = 7;
             // 
             // lblTItulo
             // 
@@ -122,6 +132,7 @@
             btnPesquisar.TabIndex = 2;
             btnPesquisar.Text = "Pesquisar";
             btnPesquisar.UseVisualStyleBackColor = true;
+            btnPesquisar.Click += btnPesquisar_Click;
             // 
             // lblContagem
             // 
@@ -144,7 +155,7 @@
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.ControlLightLight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dtgProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
@@ -160,9 +171,9 @@
             dtgProdutos.RowHeadersWidth = 100;
             dtgProdutos.RowTemplate.Height = 29;
             dtgProdutos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgProdutos.Size = new Size(1138, 551);
+            dtgProdutos.Size = new Size(1138, 539);
             dtgProdutos.TabIndex = 0;
-            dtgProdutos.CellValueChanged += dtgProdutos_CellValueChanged;
+            dtgProdutos.RowsAdded += dtgProdutos_RowsAdded;
             // 
             // colID
             // 
@@ -260,5 +271,6 @@
         private DataGridViewTextBoxColumn colFornecedor;
         private DataGridViewTextBoxColumn colPreco;
         private DataGridViewTextBoxColumn colIDImagem;
+        private ProgressBar progressBar;
     }
 }

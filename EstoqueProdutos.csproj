@@ -9,10 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Telas-Produtos\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="SqlData" Version="1.1.4" />
     <PackageReference Include="SqlData.Core" Version="2.0.37" />
   </ItemGroup>
