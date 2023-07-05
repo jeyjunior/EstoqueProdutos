@@ -1,3 +1,4 @@
+using EstoqueProdutos.Telas_Produtos;
 using System.Data;
 
 namespace EstoqueProdutos
@@ -48,6 +49,12 @@ namespace EstoqueProdutos
         private void dtgProdutos_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             AtualizarLabelContagem();
+        }
+
+        private void btnCadastrarProduto_Click(object sender, EventArgs e)
+        {
+            FrmCadastroProduto frmCadastroProduto = new();
+            frmCadastroProduto.ShowDialog();
         }
     }
 }

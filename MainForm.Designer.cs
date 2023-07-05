@@ -117,11 +117,12 @@
             // 
             // btnCadastrarProduto
             // 
-            btnCadastrarProduto.Location = new Point(8, 13);
+            btnCadastrarProduto.Location = new Point(11, 13);
             btnCadastrarProduto.Name = "btnCadastrarProduto";
             btnCadastrarProduto.Size = new Size(53, 45);
             btnCadastrarProduto.TabIndex = 3;
             btnCadastrarProduto.UseVisualStyleBackColor = true;
+            btnCadastrarProduto.Click += btnCadastrarProduto_Click;
             // 
             // btnPesquisar
             // 
