@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EstoqueProdutos.SQLServer.Procedures
+namespace EstoqueProdutos.Ajudantes.Bind
 {
-    public enum Procedure
+    public static class Bind_Categoria
     {
-        prPesquisarProdutos
+
     }
 }

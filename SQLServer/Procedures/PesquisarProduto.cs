@@ -29,7 +29,7 @@ namespace EstoqueProdutos.SQLServer.Procedures
             using (SqlConnection connection = new SqlConnection(StringConexao.Conexao))
             {
                 connection.Open();
-                string procedure = Procedure.prPesquisarProdutos.ToString();
+                string procedure = "Procedure.prPesquisarProdutos.ToString();";
 
                 using (SqlCommand command = new SqlCommand(procedure, connection))
                 {
@@ -61,7 +61,7 @@ namespace EstoqueProdutos.SQLServer.Procedures
                 using (SqlConnection connection = new SqlConnection(StringConexao.Conexao))
                 {
                     connection.Open();
-                    string procedure = Procedure.prPesquisarProdutos.ToString();
+                    string procedure = "Procedure.prPesquisarProdutos.ToString();";
 
                     using (SqlCommand command = new SqlCommand(procedure, connection))
                     {
@@ -97,7 +97,7 @@ namespace EstoqueProdutos.SQLServer.Procedures
                 using (SqlConnection connection = new SqlConnection(StringConexao.Conexao))
                 {
                     connection.Open();
-                    string procedure = Procedure.prPesquisarProdutos.ToString();
+                    string procedure = "Procedure.prPesquisarProdutos.ToString();";
 
                     using (SqlCommand command = new SqlCommand(procedure, connection))
                     {

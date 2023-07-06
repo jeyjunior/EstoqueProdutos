@@ -1,0 +1,13 @@
+-- ATRIBUIÇÃO BASE IMAGEM GENERICA
+SELECT * FROM tblImagens
+
+DELETE FROM tblImagens WHERE PK_ID = 100
+
+INSERT INTO tblImagens (IMAGEM) 
+SELECT BulkColumn
+FROM OPENROWSET(BULK 'C:\Users\jeyju\OneDrive\Imagens\standard.jpg', SINGLE_BLOB) AS Imagem;
+
+
+UPDATE tblImagens
+SET DESCRICAO = 'STANDARD'
+WHERE PK_ID = 100 

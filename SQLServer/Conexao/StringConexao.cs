@@ -9,7 +9,7 @@ namespace EstoqueProdutos.SQLServer.Conexao
 {
     public class StringConexao
     {
-        private static string autenticacaoWindows = "Data Source=JEYJR\\JEYJR;Initial Catalog=EstoqueJJ;Integrated Security=True;";
+        private static string autenticacaoWindows = "Data Source=JEYJR\\JEYJR;Initial Catalog=EstoqueProdutos;Integrated Security=True;";
 
         public static string Conexao
         {

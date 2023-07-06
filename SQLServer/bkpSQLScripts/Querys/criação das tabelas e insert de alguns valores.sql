@@ -39,12 +39,23 @@ CREATE TABLE tblUnidadeMedida (
    Extenso VARCHAR(20)
 );
 
+DROP TABLE tblEstoque
+DROP TABLE tblProduto
+DROP TABLE tblImagens
 CREATE TABLE tblImagens (
    PK_ID INT IDENTITY(100, 1) PRIMARY KEY,
-   IMAGEM VARBINARY
+   DESCRICAO VARCHAR(30),
+   IMAGEM VARBINARY(MAX)
 );
 
+CREATE TABLE tblEstoque (
+   PK_ID INT IDENTITY(100, 1) PRIMARY KEY,
+   FK_tblProduto_ID INT,
+   QUANTIDADE INT,
+   PRECO_TOTAL DECIMAL(10,2)
 
+   FOREIGN KEY (FK_tblProduto_ID) REFERENCES tblProduto (PK_ID),
+);
 
 
 -- Inserção de valores para tblFornecedor

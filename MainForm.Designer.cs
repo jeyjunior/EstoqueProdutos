@@ -45,7 +45,7 @@
             lblContagem = new Label();
             dtgProdutos = new DataGridView();
             colID = new DataGridViewTextBoxColumn();
-            colNome = new DataGridViewTextBoxColumn();
+            colProduto = new DataGridViewTextBoxColumn();
             colCategoria = new DataGridViewTextBoxColumn();
             colFornecedor = new DataGridViewTextBoxColumn();
             colPreco = new DataGridViewTextBoxColumn();
@@ -162,7 +162,7 @@
             dtgProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dtgProdutos.ColumnHeadersHeight = 35;
             dtgProdutos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dtgProdutos.Columns.AddRange(new DataGridViewColumn[] { colID, colNome, colCategoria, colFornecedor, colPreco, colIDImagem });
+            dtgProdutos.Columns.AddRange(new DataGridViewColumn[] { colID, colProduto, colCategoria, colFornecedor, colPreco, colIDImagem });
             dtgProdutos.EnableHeadersVisualStyles = false;
             dtgProdutos.GridColor = Color.WhiteSmoke;
             dtgProdutos.Location = new Point(8, 70);
@@ -187,16 +187,16 @@
             colID.Visible = false;
             colID.Width = 125;
             // 
-            // colNome
+            // colProduto
             // 
-            colNome.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            colProduto.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle3.Padding = new Padding(15, 0, 0, 0);
-            colNome.DefaultCellStyle = dataGridViewCellStyle3;
-            colNome.HeaderText = "NOME";
-            colNome.MinimumWidth = 6;
-            colNome.Name = "colNome";
-            colNome.ReadOnly = true;
+            colProduto.DefaultCellStyle = dataGridViewCellStyle3;
+            colProduto.HeaderText = "PRODUTO";
+            colProduto.MinimumWidth = 6;
+            colProduto.Name = "colProduto";
+            colProduto.ReadOnly = true;
             // 
             // colCategoria
             // 
@@ -266,12 +266,12 @@
         private Button btnCadastrarProduto;
         private Button btnPesquisar;
         private Label lblTItulo;
+        private ProgressBar progressBar;
         private DataGridViewTextBoxColumn colID;
-        private DataGridViewTextBoxColumn colNome;
+        private DataGridViewTextBoxColumn colProduto;
         private DataGridViewTextBoxColumn colCategoria;
         private DataGridViewTextBoxColumn colFornecedor;
         private DataGridViewTextBoxColumn colPreco;
         private DataGridViewTextBoxColumn colIDImagem;
-        private ProgressBar progressBar;
     }
 }
