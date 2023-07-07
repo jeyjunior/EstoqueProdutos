@@ -5,7 +5,7 @@ DELETE FROM tblImagens WHERE PK_ID = 100
 
 INSERT INTO tblImagens (IMAGEM) 
 SELECT BulkColumn
-FROM OPENROWSET(BULK 'C:\Users\jeyju\OneDrive\Imagens\standard.jpg', SINGLE_BLOB) AS Imagem;
+FROM OPENROWSET(BULK 'C:\Users\jeyjr\OneDrive\Imagens\standard.jpg', SINGLE_BLOB) AS Imagem;
 
 
 UPDATE tblImagens

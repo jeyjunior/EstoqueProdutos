@@ -15,24 +15,11 @@ namespace EstoqueProdutos
             AtualizarLabelContagem();
         }
 
-
-
         private void AtualizarLabelContagem()
         {
             lblContagem.Text = "Total de produtos: " + dtgProdutos.Rows.Count;
         }
-
-        private async void btnPesquisar_Click(object sender, EventArgs e)
-        {
-            DataTable result = await SQLServer.Procedures.PesquisarProduto.ObterTodosProdutos(BarraProgresso());
-
-            dtgProdutos.Rows.Clear();
-
-            if (result.Rows.Count > 0)
-                foreach (DataRow row in result.Rows)
-                    dtgProdutos.Rows.Add(row[0], row[1], row[3], row[4], "R$ " + row[2], row[5]);
-        }
-
+        
         private IProgress<int> BarraProgresso()
         {
             progressBar.Visible = true;
@@ -46,6 +33,17 @@ namespace EstoqueProdutos
             return progress;
         }
 
+        private async void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            DataTable result = await SQLServer.Procedures.PesquisarProduto.ObterTodosProdutos(BarraProgresso());
+
+            dtgProdutos.Rows.Clear();
+
+            if (result.Rows.Count > 0)
+                foreach (DataRow row in result.Rows)
+                    dtgProdutos.Rows.Add(row[0], row[1], row[3], row[4], "R$ " + row[2], row[5]);
+        }
+
         private void dtgProdutos_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             AtualizarLabelContagem();
@@ -53,7 +51,7 @@ namespace EstoqueProdutos
 
         private void btnCadastrarProduto_Click(object sender, EventArgs e)
         {
-            FrmCadastroProduto frmCadastroProduto = new();
+            FrmCadastroProduto frmCadastroProduto = new FrmCadastroProduto();
             frmCadastroProduto.ShowDialog();
         }
     }

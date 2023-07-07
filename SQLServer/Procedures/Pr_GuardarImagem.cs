@@ -13,29 +13,36 @@ namespace EstoqueProdutos.SQLServer.Procedures
     {
         public static bool Guardar(byte[] imgByte)
         {
-            return Guardar(String.Empty, imgByte);
+            return Guardar(String.Empty, String.Empty, imgByte);
         }
 
-        public static bool Guardar(string descricao, byte[] imgByte)
+        public static bool Guardar(string nome, byte[] imgByte)
+        {
+            return Guardar(nome, String.Empty, imgByte);
+        }
+
+        public static bool Guardar(string nome, string formato, byte[] imgByte)
         {
             try
             {
                 StringBuilder sb = new StringBuilder();
 
                 sb.AppendLine("EXEC         pr_GuardarImagem");
-                sb.AppendLine("             @Descricao = @Descricao,");
+                sb.AppendLine("             @Nome = @Nome,");
+                sb.AppendLine("             @Formato = @Formato,");
                 sb.AppendLine("             @Imagem = @Imagem");
 
                 string sql = sb.ToString();
 
-                if (descricao.Length > 30)
-                    descricao = descricao.Remove(30);
+                if (nome.Length > 30)
+                    nome = nome.Remove(30);
 
                 using (SqlConnection connection = new SqlConnection(StringConexao.Conexao))
                 {
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        command.Parameters.Add("@Descricao", SqlDbType.VarChar, 30).Value = descricao;
+                        command.Parameters.Add("@Nome", SqlDbType.VarChar, 30).Value = nome;
+                        command.Parameters.Add("@Formato", SqlDbType.VarChar, 30).Value = formato;
                         command.Parameters.Add("@Imagem", SqlDbType.VarBinary, -1).Value = imgByte;
 
                         connection.Open();

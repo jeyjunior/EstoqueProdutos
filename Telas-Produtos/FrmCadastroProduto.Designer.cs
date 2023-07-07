@@ -212,6 +212,7 @@
             pcbImagem.Location = new Point(19, 35);
             pcbImagem.Name = "pcbImagem";
             pcbImagem.Size = new Size(119, 109);
+            pcbImagem.SizeMode = PictureBoxSizeMode.StretchImage;
             pcbImagem.TabIndex = 4;
             pcbImagem.TabStop = false;
             pcbImagem.Click += pcbImagem_Click;

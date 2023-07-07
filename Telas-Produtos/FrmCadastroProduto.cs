@@ -18,6 +18,7 @@ namespace EstoqueProdutos.Telas_Produtos
     public partial class FrmCadastroProduto : Form
     {
         private string nomeImagem = String.Empty;
+        private string formatoImagem = String.Empty;
         private byte[]? imgByte;
 
         public FrmCadastroProduto()
@@ -40,11 +41,14 @@ namespace EstoqueProdutos.Telas_Produtos
                 imgByte = ms.ToArray();
             }
 
-            Pr_GuardarImagem.Guardar(nomeImagem, imgByte);
+            Pr_GuardarImagem.Guardar(nomeImagem, formatoImagem, imgByte);
         }
 
         private void BuscarImagemRepositorioLocal()
         {
+            nomeImagem = String.Empty;
+            formatoImagem = String.Empty;
+
             try
             {
                 OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -54,7 +58,8 @@ namespace EstoqueProdutos.Telas_Produtos
                 {
                     string caminhoArquivo = openFileDialog.FileName;
 
-                    nomeImagem = Path.GetFileName(caminhoArquivo).LimpezaPadrao();
+                    nomeImagem = Path.GetFileNameWithoutExtension(caminhoArquivo).FormatarNomeImagem();
+                    formatoImagem = Path.GetExtension(caminhoArquivo).FormatarNomeDoFormatoImagem();
                     pcbImagem.Image = Image.FromFile(caminhoArquivo);
                 }
             }
@@ -109,7 +114,10 @@ namespace EstoqueProdutos.Telas_Produtos
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            DialogResult result =  MessageBox.Show("Tem certeza que deseja cancelar a operação?", "Cancelar", MessageBoxButtons.YesNo);
+            
+            if (result == DialogResult.Yes)
+                this.Close();
         }
 
         #endregion Eventos

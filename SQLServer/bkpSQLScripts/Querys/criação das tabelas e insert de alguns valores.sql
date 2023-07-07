@@ -1,20 +1,3 @@
-CREATE TABLE tblProduto (
-   PK_ID INT IDENTITY(100, 1) PRIMARY KEY,
-   NOME VARCHAR(45),
-   PRECO_UNITARIO DECIMAL(10, 2),
-   FK_tblCategoria_ID INT,
-   FK_tblFornecedor_ID INT,
-   FK_tblTipoEmbalagem_ID INT,
-   VOLUME DECIMAL(10, 2),
-   FK_tblUnidadeMedida_ID INT,
-   FK_Imagem_ID INT,
-   DESCRICAO VARCHAR(100),
-   FOREIGN KEY (FK_tblCategoria_ID) REFERENCES tblCategoria (PK_ID),
-   FOREIGN KEY (FK_tblFornecedor_ID) REFERENCES tblFornecedor (PK_ID),
-   FOREIGN KEY (FK_tblTipoEmbalagem_ID) REFERENCES tblTipoEmbalagem (PK_ID),
-   FOREIGN KEY (FK_tblUnidadeMedida_ID) REFERENCES tblUnidadeMedida (PK_ID),
-   FOREIGN KEY (FK_Imagem_ID) REFERENCES tblImagens (PK_ID)
-);
 CREATE TABLE tblFornecedor (
    PK_ID INT IDENTITY(100, 1) PRIMARY KEY,
    Nome VARCHAR(50),
@@ -23,6 +6,7 @@ CREATE TABLE tblFornecedor (
    Bairro VARCHAR(50),
    UF VARCHAR(2)
 );
+
 CREATE TABLE tblCategoria (
    PK_ID INT IDENTITY(100, 1) PRIMARY KEY,
    Categoria VARCHAR(50)
@@ -39,13 +23,29 @@ CREATE TABLE tblUnidadeMedida (
    Extenso VARCHAR(20)
 );
 
-DROP TABLE tblEstoque
-DROP TABLE tblProduto
-DROP TABLE tblImagens
 CREATE TABLE tblImagens (
    PK_ID INT IDENTITY(100, 1) PRIMARY KEY,
-   DESCRICAO VARCHAR(30),
+   NOME VARCHAR(30) null,
+   FORMATO VARCHAR(5) null,
    IMAGEM VARBINARY(MAX)
+);
+
+CREATE TABLE tblProduto (
+   PK_ID INT IDENTITY(100, 1) PRIMARY KEY,
+   NOME VARCHAR(45),
+   PRECO_UNITARIO DECIMAL(10, 2),
+   FK_tblCategoria_ID INT,
+   FK_tblFornecedor_ID INT,
+   FK_tblTipoEmbalagem_ID INT,
+   VOLUME DECIMAL(10, 2),
+   FK_tblUnidadeMedida_ID INT,
+   FK_Imagem_ID INT,
+   DESCRICAO VARCHAR(100),
+   FOREIGN KEY (FK_tblCategoria_ID) REFERENCES tblCategoria (PK_ID),
+   FOREIGN KEY (FK_tblFornecedor_ID) REFERENCES tblFornecedor (PK_ID),
+   FOREIGN KEY (FK_tblTipoEmbalagem_ID) REFERENCES tblTipoEmbalagem (PK_ID),
+   FOREIGN KEY (FK_tblUnidadeMedida_ID) REFERENCES tblUnidadeMedida (PK_ID),
+   FOREIGN KEY (FK_Imagem_ID) REFERENCES tblImagens (PK_ID)
 );
 
 CREATE TABLE tblEstoque (
