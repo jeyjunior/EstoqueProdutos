@@ -33,9 +33,9 @@ namespace EstoqueProdutos
             return progress;
         }
 
-        private async void btnPesquisar_Click(object sender, EventArgs e)
+        private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            DataTable result = await SQLServer.Procedures.PesquisarProduto.ObterTodosProdutos(BarraProgresso());
+            DataTable result = SQLServer.Procedures.PesquisarProduto.ObterTodosProdutos();
 
             dtgProdutos.Rows.Clear();
 

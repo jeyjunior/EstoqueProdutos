@@ -86,47 +86,5 @@ namespace EstoqueProdutos.SQLServer.Procedures
 
             return new DataTable();
         }
-
-        public static async Task<DataTable> ObterTodosProdutos(IProgress<int> progress)
-        {
-            try
-            {
-                int tipo = 3;
-                DataTable table = new DataTable();
-
-                using (SqlConnection connection = new SqlConnection(StringConexao.Conexao))
-                {
-                    connection.Open();
-                    string procedure = "Procedure.prPesquisarProdutos.ToString();";
-
-                    using (SqlCommand command = new SqlCommand(procedure, connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.Add("@TipoPesquisa", SqlDbType.Int).Value = tipo;
-                        command.Parameters.Add("@ID", SqlDbType.Int).Value = DBNull.Value;
-                        command.Parameters.Add("@Nome", SqlDbType.VarChar, 120).Value = DBNull.Value;
-                        command.Parameters.Add("@ParametroComplementar", SqlDbType.VarChar, 120).Value = DBNull.Value;
-
-                        SqlDataAdapter adapter = new SqlDataAdapter(command);
-
-                        await Task.Run(() =>
-                        {
-                            adapter.Fill(table);
-                            int progressValue = (int)((table.Rows.Count / (double)table.Rows.Count) * 100);
-                            progress?.Report(progressValue);
-                        });
-                    }
-                }
-                return table;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Falha ao carregar tabela!\nErro: " + ex.Message);
-            }
-
-            return new DataTable();
-        }
-
     }
 }
