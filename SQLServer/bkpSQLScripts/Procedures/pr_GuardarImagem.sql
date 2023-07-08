@@ -1,15 +1,8 @@
 USE [EstoqueProdutos]
 GO
 
-/****** Object:  StoredProcedure [dbo].[pr_GuardarImagem]    Script Date: 08/07/2023 16:52:12 ******/
+/****** Object:  StoredProcedure [dbo].[pr_GuardarImagem]    Script Date: 08/07/2023 17:07:35 ******/
 DROP PROCEDURE [dbo].[pr_GuardarImagem]
-GO
-
-/****** Object:  StoredProcedure [dbo].[pr_GuardarImagem]    Script Date: 08/07/2023 16:52:12 ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
 GO
 
 
@@ -33,22 +26,20 @@ BEGIN
         RETURN
     END
 
-	--DECLARE 
-	--	@PK_ID_Existente int
-	--	@NomeExistente VARCHAR(30), 
-	--	@FormatoExistente VARCHAR(5)
+	DECLARE 
+		@Resultado VARCHAR(30)
 
-	--SELECT TOP 1 @NomeExistente = NOME, @FormatoExistente = FORMATO FROM tblImagens
+	SELECT TOP 1 @Resultado = NOME FROM tblImagens WHERE NOME = @Nome
 	--SELECT TOP 1 @PK_ID_Existente = PK_ID FROM tblImagens
-
-	--IF (@Nome != @NomeExistente OR @Formato != @FormatoExistente)
+	
 	IF (@PK_ID is null)
 		BEGIN
-			INSERT INTO tblImagens (NOME, FORMATO, IMAGEM)
-			VALUES (@Nome, @Formato, @Imagem)
+			IF (@Resultado is null)
+			BEGIN 
+				INSERT INTO tblImagens (NOME, FORMATO, IMAGEM)
+				VALUES (@Nome, @Formato, @Imagem)
+			END
 		END
-	
-		
 END
 GO
 

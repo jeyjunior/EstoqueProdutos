@@ -67,7 +67,7 @@
             // txtNome
             // 
             txtNome.Location = new Point(162, 58);
-            txtNome.MaxLength = 44;
+            txtNome.MaxLength = 30;
             txtNome.Name = "txtNome";
             txtNome.PlaceholderText = "Brahama puro malte";
             txtNome.Size = new Size(370, 27);
@@ -264,10 +264,10 @@
             // btnCadastrar
             // 
             btnCadastrar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnCadastrar.BackColor = Color.Green;
+            btnCadastrar.BackColor = Color.LightGray;
             btnCadastrar.FlatStyle = FlatStyle.Popup;
             btnCadastrar.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCadastrar.ForeColor = SystemColors.Control;
+            btnCadastrar.ForeColor = Color.White;
             btnCadastrar.Location = new Point(414, 318);
             btnCadastrar.Name = "btnCadastrar";
             btnCadastrar.Size = new Size(143, 44);

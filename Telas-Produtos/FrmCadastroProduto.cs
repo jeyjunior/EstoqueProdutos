@@ -28,6 +28,7 @@ namespace EstoqueProdutos.Telas_Produtos
         public FrmCadastroProduto()
         {
             InitializeComponent();
+
         }
 
         #region Metodos
@@ -36,6 +37,11 @@ namespace EstoqueProdutos.Telas_Produtos
         private void GuardarImagem()
         {
             if (pcbImagem.Image is null)
+                return;
+
+            int? PK_ID = (int?)pcbImagem.Tag;
+
+            if (PK_ID is not null)
                 return;
 
             try
@@ -47,13 +53,11 @@ namespace EstoqueProdutos.Telas_Produtos
                     imgByte = ms.ToArray();
                 }
 
-                int? PK_ID = (int?)pcbImagem.Tag;
-
                 Pr_GuardarImagem.Guardar(PK_ID, nomeImagem, formatoImagem, imgByte);
             }
             catch (Exception)
             {
-                return;
+                MessageBox.Show("Ocorreu um erro no savalmente da imagem!");
             }
         }
 
@@ -71,7 +75,7 @@ namespace EstoqueProdutos.Telas_Produtos
                 {
                     string caminhoArquivo = openFileDialog.FileName;
 
-                    nomeImagem = Path.GetFileNameWithoutExtension(caminhoArquivo).FormatarNomeImagem();
+                    nomeImagem = Path.GetFileNameWithoutExtension(caminhoArquivo).PrimeiraLetraMaiuscula();
                     formatoImagem = Path.GetExtension(caminhoArquivo).FormatarNomeDoFormatoImagem();
                     pcbImagem.Image = Image.FromFile(caminhoArquivo);
                     pcbImagem.Tag = null;
@@ -93,17 +97,25 @@ namespace EstoqueProdutos.Telas_Produtos
             Tabela.ObterDataSource(Pr_ObterFornecedor.Obter(), cboFornecedor, btnCadastrar);
             Tabela.ObterDataSource(pr_ObterCategoria.Obter(), cboCategoria, btnCadastrar);
             Tabela.ObterDataSource(Pr_ObterEmbalagem.Obter(), cboEmbalagem, btnCadastrar);
-            
+
             Imagem.ObterImagemStandard(pcbImagem);
 
-            btnCadastrar.Enabled = false;
+            Componente.DesabilitarBtnCadastrar(btnCadastrar);
         }
 
         #endregion Carregar dados dos Componentes
 
+        private bool Cadastrar()
+        {
+            txtNome.Text = txtNome.Text.SanitizarTexto(30).PrimeiraLetraMaiuscula();
+            txtDescri.Text = txtDescri.Text.SanitizarTexto(90);
+
+            return true;
+        }
+
         private void HabilitarBtnCadastrar()
         {
-            btnCadastrar.Enabled = false;
+            btnCadastrar.DesabilitarBtnCadastrar();
 
             if (String.IsNullOrEmpty(txtNome.Text))
                 return;
@@ -114,7 +126,7 @@ namespace EstoqueProdutos.Telas_Produtos
             if (String.IsNullOrEmpty(txtVolume.Text))
                 return;
 
-            btnCadastrar.Enabled = true;
+            btnCadastrar.HabilitarBtnCadastrar();
         }
 
         #endregion Metodos
@@ -123,7 +135,8 @@ namespace EstoqueProdutos.Telas_Produtos
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            GuardarImagem();
+            //GuardarImagem();
+            Cadastrar();
         }
 
         private void pcbImagem_Click(object sender, EventArgs e)
@@ -210,7 +223,7 @@ namespace EstoqueProdutos.Telas_Produtos
         {
             HabilitarBtnCadastrar();
         }
-        
+
         #endregion Eventos
 
 

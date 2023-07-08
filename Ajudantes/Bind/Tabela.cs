@@ -28,17 +28,19 @@ namespace EstoqueProdutos.Ajudantes.Bind
                 cbo.ValueMember = dt.Columns[0].ColumnName;
                 cbo.DisplayMember = dt.Columns[1].ColumnName;
                 cbo.DataSource = dt;
+
+                Componente.Habilitar(cbo, btn);
             }
             catch (SqlException ex)
             {
                 MessageBox.Show("Falha ao carregar dados!");
-                Componente.Desabilitar(new Control[] { cbo, btn });
+                Componente.Desabilitar(cbo, btn);
                 return false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Falha ao executar operação!\n\nErro: " + ex.Message);
-                Componente.Desabilitar(new Control[] { cbo, btn });
+                Componente.Desabilitar(cbo, btn);
                 return false;
             }
             
