@@ -33,5 +33,23 @@ namespace EstoqueProdutos.Ajudantes.Formatacao
     
             return value;
         }
+        
+        public static string AplicarMascaraDinheiro(this string text)
+        {
+            if (!text.Contains("R$ "))
+                text = "R$ " + text.Trim();
+
+            return text;
+        }
+
+        public static string RemoverMascarDinheiro(this string text)
+        {
+            if (text.Contains("R$ "))
+                text = text.Replace("R$ ", "");
+
+            return text;
+        }
+
+
     }
 }

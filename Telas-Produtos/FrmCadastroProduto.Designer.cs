@@ -67,13 +67,16 @@
             // txtNome
             // 
             txtNome.Location = new Point(162, 58);
+            txtNome.MaxLength = 44;
             txtNome.Name = "txtNome";
             txtNome.PlaceholderText = "Brahama puro malte";
             txtNome.Size = new Size(370, 27);
-            txtNome.TabIndex = 1;
+            txtNome.TabIndex = 0;
+            txtNome.TextChanged += txtNome_TextChanged;
             // 
             // gpbDadosProduto
             // 
+            gpbDadosProduto.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             gpbDadosProduto.Controls.Add(lblFornecedor);
             gpbDadosProduto.Controls.Add(cboFornecedor);
             gpbDadosProduto.Controls.Add(lblCategoria);
@@ -114,7 +117,7 @@
             cboFornecedor.Location = new Point(284, 239);
             cboFornecedor.Name = "cboFornecedor";
             cboFornecedor.Size = new Size(248, 28);
-            cboFornecedor.TabIndex = 14;
+            cboFornecedor.TabIndex = 7;
             // 
             // lblCategoria
             // 
@@ -129,10 +132,10 @@
             // 
             cboCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCategoria.FormattingEnabled = true;
-            cboCategoria.Location = new Point(19, 239);
+            cboCategoria.Location = new Point(16, 239);
             cboCategoria.Name = "cboCategoria";
-            cboCategoria.Size = new Size(248, 28);
-            cboCategoria.TabIndex = 12;
+            cboCategoria.Size = new Size(251, 28);
+            cboCategoria.TabIndex = 6;
             // 
             // lblEmbalagem
             // 
@@ -150,7 +153,7 @@
             cboEmbalagem.Location = new Point(226, 179);
             cboEmbalagem.Name = "cboEmbalagem";
             cboEmbalagem.Size = new Size(128, 28);
-            cboEmbalagem.TabIndex = 10;
+            cboEmbalagem.TabIndex = 4;
             // 
             // lblUnidade
             // 
@@ -164,10 +167,11 @@
             // txtDescri
             // 
             txtDescri.Location = new Point(162, 117);
+            txtDescri.MaxLength = 99;
             txtDescri.Name = "txtDescri";
             txtDescri.PlaceholderText = "Malte especial";
             txtDescri.Size = new Size(370, 27);
-            txtDescri.TabIndex = 8;
+            txtDescri.TabIndex = 1;
             // 
             // lblDescri
             // 
@@ -184,8 +188,12 @@
             txtPreco.Name = "txtPreco";
             txtPreco.PlaceholderText = "R$ 3,50";
             txtPreco.Size = new Size(169, 27);
-            txtPreco.TabIndex = 6;
+            txtPreco.TabIndex = 5;
             txtPreco.TextAlign = HorizontalAlignment.Right;
+            txtPreco.TextChanged += txtPreco_TextChanged;
+            txtPreco.Enter += txtPreco_Enter;
+            txtPreco.KeyPress += txtPreco_KeyPress;
+            txtPreco.Leave += txtPreco_Leave;
             // 
             // lblPreco
             // 
@@ -203,7 +211,7 @@
             cboUnidadeMedida.Location = new Point(150, 179);
             cboUnidadeMedida.Name = "cboUnidadeMedida";
             cboUnidadeMedida.Size = new Size(67, 28);
-            cboUnidadeMedida.TabIndex = 1;
+            cboUnidadeMedida.TabIndex = 3;
             // 
             // pcbImagem
             // 
@@ -220,11 +228,14 @@
             // txtVolume
             // 
             txtVolume.Location = new Point(16, 179);
+            txtVolume.MaxLength = 100;
             txtVolume.Name = "txtVolume";
             txtVolume.PlaceholderText = "350";
             txtVolume.Size = new Size(122, 27);
-            txtVolume.TabIndex = 3;
+            txtVolume.TabIndex = 2;
             txtVolume.TextAlign = HorizontalAlignment.Right;
+            txtVolume.TextChanged += txtVolume_TextChanged;
+            txtVolume.KeyPress += txtVolume_KeyPress;
             // 
             // lblVolume
             // 
@@ -245,7 +256,7 @@
             btnCancelar.Location = new Point(265, 318);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(143, 44);
-            btnCancelar.TabIndex = 6;
+            btnCancelar.TabIndex = 9;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = false;
             btnCancelar.Click += btnCancelar_Click;
@@ -260,7 +271,7 @@
             btnCadastrar.Location = new Point(414, 318);
             btnCadastrar.Name = "btnCadastrar";
             btnCadastrar.Size = new Size(143, 44);
-            btnCadastrar.TabIndex = 7;
+            btnCadastrar.TabIndex = 8;
             btnCadastrar.Text = "Cadastrar";
             btnCadastrar.UseVisualStyleBackColor = false;
             btnCadastrar.Click += btnCadastrar_Click;
@@ -271,8 +282,9 @@
             btnLimpar.Location = new Point(12, 319);
             btnLimpar.Name = "btnLimpar";
             btnLimpar.Size = new Size(49, 44);
-            btnLimpar.TabIndex = 8;
+            btnLimpar.TabIndex = 10;
             btnLimpar.UseVisualStyleBackColor = true;
+            btnLimpar.Click += btnLimpar_Click;
             // 
             // FrmCadastroProduto
             // 
@@ -283,7 +295,7 @@
             Controls.Add(btnCadastrar);
             Controls.Add(btnCancelar);
             Controls.Add(gpbDadosProduto);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             Name = "FrmCadastroProduto";
             StartPosition = FormStartPosition.CenterParent;

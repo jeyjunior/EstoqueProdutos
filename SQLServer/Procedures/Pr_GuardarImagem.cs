@@ -13,21 +13,22 @@ namespace EstoqueProdutos.SQLServer.Procedures
     {
         public static bool Guardar(byte[] imgByte)
         {
-            return Guardar(String.Empty, String.Empty, imgByte);
+            return Guardar(null, String.Empty, String.Empty, imgByte);
         }
 
         public static bool Guardar(string nome, byte[] imgByte)
         {
-            return Guardar(nome, String.Empty, imgByte);
+            return Guardar(null, nome, String.Empty, imgByte);
         }
 
-        public static bool Guardar(string nome, string formato, byte[] imgByte)
+        public static bool Guardar(int? PK_ID, string nome, string formato, byte[] imgByte)
         {
             try
             {
                 StringBuilder sb = new StringBuilder();
 
                 sb.AppendLine("EXEC         pr_GuardarImagem");
+                sb.AppendLine("             @PK_ID = @PK_ID,");
                 sb.AppendLine("             @Nome = @Nome,");
                 sb.AppendLine("             @Formato = @Formato,");
                 sb.AppendLine("             @Imagem = @Imagem");
@@ -41,6 +42,13 @@ namespace EstoqueProdutos.SQLServer.Procedures
                 {
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
+                        var pk_id_sqlParameter = DBNull.Value;
+
+                        if(PK_ID is null)
+                            command.Parameters.Add("@PK_ID", SqlDbType.Int).Value = pk_id_sqlParameter;
+                        else
+                            command.Parameters.Add("@PK_ID", SqlDbType.Int).Value = PK_ID;
+
                         command.Parameters.Add("@Nome", SqlDbType.VarChar, 30).Value = nome;
                         command.Parameters.Add("@Formato", SqlDbType.VarChar, 30).Value = formato;
                         command.Parameters.Add("@Imagem", SqlDbType.VarBinary, -1).Value = imgByte;
