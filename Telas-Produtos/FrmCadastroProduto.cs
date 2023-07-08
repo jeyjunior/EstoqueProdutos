@@ -1,4 +1,6 @@
-﻿using EstoqueProdutos.Ajudantes.Formatacao;
+﻿using EstoqueProdutos.Ajudantes.Bind;
+using EstoqueProdutos.Ajudantes.Componentes;
+using EstoqueProdutos.Ajudantes.Formatacao;
 using EstoqueProdutos.SQLServer.Conexao;
 using EstoqueProdutos.SQLServer.Procedures;
 using SqlData.Core.CommonSql;
@@ -12,6 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace EstoqueProdutos.Telas_Produtos
 {
@@ -27,6 +30,13 @@ namespace EstoqueProdutos.Telas_Produtos
         }
 
         #region Metodos
+        //private void DesabilitarBtnCadastrar(object sender)
+        //{
+        //    btnCadastrar.Enabled = false;
+
+        //    Control obj = (Control)sender;
+        //    obj.Enabled = false;
+        //}
 
         #region BuscarImagem, GuardarImagem
         private void GuardarImagem()
@@ -75,26 +85,11 @@ namespace EstoqueProdutos.Telas_Produtos
 
         private void CarregarDadosDosComponentes()
         {
-            BindingCboCategoria();
+            Tabela.ObterDataSource(Pr_ObterUnidadeMedida.Obter(), cboUnidadeMedida, btnCadastrar);
+            Tabela.ObterDataSource(Pr_ObterFornecedor.Obter(), cboFornecedor, btnCadastrar);
+            Tabela.ObterDataSource(pr_ObterCategoria.Obter(), cboCategoria, btnCadastrar);
+            Tabela.ObterDataSource(Pr_ObterEmbalagem.Obter(), cboEmbalagem, btnCadastrar);
         }
-
-        private void BindingCboCategoria()
-        {
-            try
-            {
-                DataTable dt = pr_ObterCategoria.Obter();
-
-                if (dt.Rows.Count <= 0)
-                    throw new Exception();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Falha ao carregar categoria!\nErro: " + ex.Message);
-                cboCategoria.Enabled = false;
-                return;
-            }
-        }
-
 
         #endregion Carregar dados dos Componentes
 
@@ -114,8 +109,8 @@ namespace EstoqueProdutos.Telas_Produtos
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            DialogResult result =  MessageBox.Show("Tem certeza que deseja cancelar a operação?", "Cancelar", MessageBoxButtons.YesNo);
-            
+            DialogResult result = MessageBox.Show("Tem certeza que deseja cancelar a operação?", "Cancelar", MessageBoxButtons.YesNo);
+
             if (result == DialogResult.Yes)
                 this.Close();
         }
@@ -126,5 +121,7 @@ namespace EstoqueProdutos.Telas_Produtos
         {
             CarregarDadosDosComponentes();
         }
+
+
     }
 }

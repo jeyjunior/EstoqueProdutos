@@ -43,7 +43,7 @@
             lblDescri = new Label();
             txtPreco = new TextBox();
             lblPreco = new Label();
-            cboVolume = new ComboBox();
+            cboUnidadeMedida = new ComboBox();
             pcbImagem = new PictureBox();
             txtVolume = new TextBox();
             lblVolume = new Label();
@@ -85,7 +85,7 @@
             gpbDadosProduto.Controls.Add(lblDescri);
             gpbDadosProduto.Controls.Add(txtPreco);
             gpbDadosProduto.Controls.Add(lblPreco);
-            gpbDadosProduto.Controls.Add(cboVolume);
+            gpbDadosProduto.Controls.Add(cboUnidadeMedida);
             gpbDadosProduto.Controls.Add(pcbImagem);
             gpbDadosProduto.Controls.Add(txtVolume);
             gpbDadosProduto.Controls.Add(lblVolume);
@@ -196,14 +196,14 @@
             lblPreco.TabIndex = 5;
             lblPreco.Text = "Preço";
             // 
-            // cboVolume
+            // cboUnidadeMedida
             // 
-            cboVolume.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboVolume.FormattingEnabled = true;
-            cboVolume.Location = new Point(150, 179);
-            cboVolume.Name = "cboVolume";
-            cboVolume.Size = new Size(67, 28);
-            cboVolume.TabIndex = 1;
+            cboUnidadeMedida.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboUnidadeMedida.FormattingEnabled = true;
+            cboUnidadeMedida.Location = new Point(150, 179);
+            cboUnidadeMedida.Name = "cboUnidadeMedida";
+            cboUnidadeMedida.Size = new Size(67, 28);
+            cboUnidadeMedida.TabIndex = 1;
             // 
             // pcbImagem
             // 
@@ -303,7 +303,7 @@
         private PictureBox pcbImagem;
         private TextBox txtVolume;
         private Label lblVolume;
-        private ComboBox cboVolume;
+        private ComboBox cboUnidadeMedida;
         private Button btnCancelar;
         private Button btnCadastrar;
         private Button btnLimpar;

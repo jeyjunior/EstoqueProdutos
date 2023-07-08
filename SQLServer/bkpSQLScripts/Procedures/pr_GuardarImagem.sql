@@ -1,22 +1,14 @@
 USE [EstoqueProdutos]
 GO
 
-/****** Object:  StoredProcedure [dbo].[pr_GuardarImagem]    Script Date: 07/07/2023 19:03:23 ******/
 DROP PROCEDURE [dbo].[pr_GuardarImagem]
-GO
-
-/****** Object:  StoredProcedure [dbo].[pr_GuardarImagem]    Script Date: 07/07/2023 19:03:23 ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
 GO
 
 
 CREATE PROCEDURE [dbo].[pr_GuardarImagem]
 	@Nome VARCHAR(30) null,
 	@Formato VARCHAR(5) null,
-	@Imagem VARBINARY(MAX)
+	@Imagem VARBINARY(MAX) null
 
 AS
 BEGIN
@@ -40,11 +32,10 @@ BEGIN
     END
 
 	IF @Imagem Is not null
-	BEGIN
-		INSERT INTO tblImagens (NOME, FORMATO, IMAGEM)
-		VALUES (@Nome, @Formato, @Imagem)
-	END
-
+		BEGIN
+			INSERT INTO tblImagens (NOME, FORMATO, IMAGEM)
+			VALUES (@Nome, @Formato, @Imagem)
+		END
 END
 GO
 
