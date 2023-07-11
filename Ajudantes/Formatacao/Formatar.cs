@@ -48,33 +48,48 @@ namespace EstoqueProdutos.Ajudantes.Formatacao
             return text.ToUpper().Trim();
         }
 
-        public static string FormatarNomeDoFormatoImagem(this string text)
+        public static string FormatarNomeDoFormatoImagem(this string texto)
         {
-            string value = text.RemoverEspacoVazio();
+            string value = texto.RemoverEspacoVazio();
             value = value.ToLower();
 
-            if(!text.Contains('.'))
+            if(!texto.Contains('.'))
                 value = "." + value;
     
             return value;
         }
         
-        public static string AplicarMascaraDinheiro(this string text)
+        public static string AplicarMascaraDinheiro(this string texto)
         {
-            if (!text.Contains("R$ "))
-                text = "R$ " + text.Trim();
+            if (!texto.Contains("R$ "))
+                texto = "R$ " + texto.Trim();
 
-            return text;
+            return texto;
         }
 
-        public static string RemoverMascarDinheiro(this string text)
+        public static string RemoverMascarDinheiro(this string texto)
         {
-            if (text.Contains("R$ "))
-                text = text.Replace("R$ ", "");
+            if (texto.Contains("R$ "))
+                texto = texto.Replace("R$ ", "");
 
-            return text;
+            return texto;
         }
 
+        public static string TrocarVirgulaPorPonto(this string texto)
+        {
+            if(texto.Contains(','))
+                texto = texto.Replace(',', '.');
 
+            if (texto.Contains(';'))
+                texto = texto.Replace(';', '.');
+
+            return texto;
+        }
+        
+        public static string LimitarTamanhoString(this string texto, int tamanho)
+        {
+            return texto.Length > tamanho ? texto.Remove(tamanho) : texto;
+        }
+    
     }
 }

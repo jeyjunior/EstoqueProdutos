@@ -11,65 +11,68 @@ namespace EstoqueProdutos.SQLServer.Procedures
 {
     public static class Pr_GuardarImagem
     {
-        public static bool Guardar(byte[] imgByte)
+        public static int Guardar(byte[] imgByte)
         {
             return Guardar(null, String.Empty, String.Empty, imgByte);
         }
 
-        public static bool Guardar(string nome, byte[] imgByte)
+        public static int Guardar(string nome, byte[] imgByte)
         {
             return Guardar(null, nome, String.Empty, imgByte);
         }
 
-        public static bool Guardar(int? PK_ID, string nome, string formato, byte[] imgByte)
+        public static int Guardar(int? PK_ID, string nome, string formato, byte[] imgByte)
         {
             try
             {
-                StringBuilder sb = new StringBuilder();
-
-                sb.AppendLine("EXEC         pr_GuardarImagem");
-                sb.AppendLine("             @PK_ID = @PK_ID,");
-                sb.AppendLine("             @Nome = @Nome,");
-                sb.AppendLine("             @Formato = @Formato,");
-                sb.AppendLine("             @Imagem = @Imagem");
-
-                string sql = sb.ToString();
-
-                if (nome.Length > 30)
-                    nome = nome.Remove(30);
-
                 using (SqlConnection connection = new SqlConnection(StringConexao.Conexao))
                 {
-                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    using (SqlCommand command = new SqlCommand("pr_GuardarImagem", connection))
                     {
-                        var pk_id_sqlParameter = DBNull.Value;
-
-                        if(PK_ID is null)
-                            command.Parameters.Add("@PK_ID", SqlDbType.Int).Value = pk_id_sqlParameter;
-                        else
-                            command.Parameters.Add("@PK_ID", SqlDbType.Int).Value = PK_ID;
-
-                        command.Parameters.Add("@Nome", SqlDbType.VarChar, 30).Value = nome;
-                        command.Parameters.Add("@Formato", SqlDbType.VarChar, 30).Value = formato;
-                        command.Parameters.Add("@Imagem", SqlDbType.VarBinary, -1).Value = imgByte;
-
+                        command.CommandType = CommandType.StoredProcedure;
                         connection.Open();
-                        int result = command.ExecuteNonQuery();
 
-                        if (result > 0)
-                        {
-                            MessageBox.Show("Produto cadastrado com sucesso!", "Cadastro", MessageBoxButtons.OK);
-                        }
+                        SqlParameter ultimoID = ParametroDeSaida();
+                        command.Parameters.Add(ultimoID);
+
+                        if (PK_ID is null)
+                            command.Parameters.AddWithValue("@PK_ID", DBNull.Value);
+                        else
+                            command.Parameters.AddWithValue("@PK_ID", PK_ID);
+
+                        command.Parameters.AddWithValue("@Nome", nome);
+                        command.Parameters.AddWithValue("@Formato", formato);
+                        command.Parameters.AddWithValue("@Imagem", imgByte);
+
+                        command.ExecuteNonQuery();
+
+                        int imgPK_ID = Convert.ToInt32(ultimoID.Value);
+
+                        return imgPK_ID;
                     }
                 }
             }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Falha ao cadastrar imagem!\nErro: " + ex.Message, "Imagem", MessageBoxButtons.OK);
+                return 0;
+            }
             catch (Exception ex)
             {
-                MessageBox.Show("Falha ao cadastrar produto!\nErro: " + ex.Message, "Cadastro", MessageBoxButtons.OK);
-                return false;
+                MessageBox.Show("Falha ao executar operação cadastro imagem!\nErro: " + ex.Message, "Cadastro", MessageBoxButtons.OK);
+                return 0;
             }
+        }
 
-            return true;
+
+
+        private static SqlParameter ParametroDeSaida()
+        {
+            SqlParameter parametro = new SqlParameter();
+            parametro.ParameterName = "@UltimoID";
+            parametro.SqlDbType = SqlDbType.Int;
+            parametro.Direction = ParameterDirection.Output;
+            return parametro;
         }
     }
 }

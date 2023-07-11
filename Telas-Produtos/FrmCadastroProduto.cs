@@ -107,8 +107,19 @@ namespace EstoqueProdutos.Telas_Produtos
 
         private bool Cadastrar()
         {
-            txtNome.Text = txtNome.Text.SanitizarTexto(30).PrimeiraLetraMaiuscula();
-            txtDescri.Text = txtDescri.Text.SanitizarTexto(90);
+            GuardarImagem();
+            //txtNome.Text = txtNome.Text.SanitizarTexto(30).PrimeiraLetraMaiuscula();
+            //txtDescri.Text = txtDescri.Text.SanitizarTexto(90);
+
+            //string? preco = txtPreco.Text.RemoverMascarDinheiro();
+            //decimal precoUnitario = !String.IsNullOrEmpty(preco) ? Convert.ToDecimal(preco) : 0.00m;
+
+            //decimal volume = !String.IsNullOrEmpty(txtVolume.Text) ? Convert.ToDecimal(txtVolume.Text) : 0.00m;
+
+            //string? PK_ID_Fornecedor = cboFornecedor.SelectedValue.ToString();
+            //string? PK_ID_Categoria = cboCategoria.SelectedValue.ToString();
+            //string? PK_ID_Unidade = cboUnidadeMedida.SelectedValue.ToString();
+            //string? PK_ID_Embalagem = cboEmbalagem.SelectedValue.ToString();
 
             return true;
         }
@@ -171,10 +182,13 @@ namespace EstoqueProdutos.Telas_Produtos
 
         private void txtPreco_Leave(object sender, EventArgs e)
         {
-            string text = ((TextBox)sender).Text;
-
-            if (!String.IsNullOrEmpty(text))
-                ((TextBox)sender).Text = text.AplicarMascaraDinheiro();
+            if (!String.IsNullOrEmpty(txtPreco.Text))
+            {
+                txtPreco.Text = txtPreco.Text.RemoverMascarDinheiro();
+                decimal preco = Convert.ToDecimal(txtPreco.Text);
+                txtPreco.Text = Math.Round(preco, 2).ToString();
+                txtPreco.Text = txtPreco.Text.AplicarMascaraDinheiro();
+            }
         }
 
         private void txtPreco_Enter(object sender, EventArgs e)

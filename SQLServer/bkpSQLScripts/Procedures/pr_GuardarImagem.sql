@@ -1,17 +1,15 @@
 USE [EstoqueProdutos]
 GO
 
-/****** Object:  StoredProcedure [dbo].[pr_GuardarImagem]    Script Date: 08/07/2023 17:07:35 ******/
+/****** Object:  StoredProcedure [dbo].[pr_GuardarImagem]    Script Date: 10/07/2023 19:48:52 ******/
 DROP PROCEDURE [dbo].[pr_GuardarImagem]
 GO
-
-
 CREATE PROCEDURE [dbo].[pr_GuardarImagem]
 	@PK_ID int = null,
-	@Nome VARCHAR(30) null,
-	@Formato VARCHAR(5) null,
-	@Imagem VARBINARY(MAX) null
-
+	@Nome VARCHAR(30) = null,
+	@Formato VARCHAR(5) = null,
+	@Imagem VARBINARY(MAX) = null,
+	@UltimoID int OUTPUT
 AS
 BEGIN
 	IF LEN(@Nome) > 30
@@ -28,19 +26,20 @@ BEGIN
 
 	DECLARE 
 		@Resultado VARCHAR(30)
-
+	
+	-- Verificar se já existe uma imagem com o mesmo nome
 	SELECT TOP 1 @Resultado = NOME FROM tblImagens WHERE NOME = @Nome
-	--SELECT TOP 1 @PK_ID_Existente = PK_ID FROM tblImagens
 	
 	IF (@PK_ID is null)
-		BEGIN
-			IF (@Resultado is null)
-			BEGIN 
-				INSERT INTO tblImagens (NOME, FORMATO, IMAGEM)
-				VALUES (@Nome, @Formato, @Imagem)
-			END
+	BEGIN
+		IF (@Resultado is null)
+		BEGIN 
+			INSERT INTO tblImagens (NOME, FORMATO, IMAGEM)
+			VALUES (@Nome, @Formato, @Imagem)
+
+			-- Retorna o último ID adicionado à tabela
+			SET @UltimoID = SCOPE_IDENTITY();
 		END
+	END
 END
 GO
-
-
