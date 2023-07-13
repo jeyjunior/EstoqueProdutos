@@ -15,7 +15,7 @@ namespace EstoqueProdutos.Ajudantes.Bind
         {
             try
             {
-                DataTable dt = Pr_ObterImagens.Obter();
+                DataTable dt = Pr_ObterImagens.ObterPrimeiraImagem();
 
                 if (dt.Rows.Count <= 0)
                     throw new Exception();

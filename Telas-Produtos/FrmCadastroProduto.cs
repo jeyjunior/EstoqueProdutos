@@ -34,15 +34,16 @@ namespace EstoqueProdutos.Telas_Produtos
         #region Metodos
 
         #region BuscarImagem, GuardarImagem
-        private void GuardarImagem()
+        private int? GuardarImagem()
         {
+            int? novoID = null;
             if (pcbImagem.Image is null)
-                return;
+                return novoID;
 
             int? PK_ID = (int?)pcbImagem.Tag;
 
             if (PK_ID is not null)
-                return;
+                return novoID;
 
             try
             {
@@ -53,12 +54,15 @@ namespace EstoqueProdutos.Telas_Produtos
                     imgByte = ms.ToArray();
                 }
 
-                Pr_GuardarImagem.Guardar(PK_ID, nomeImagem, formatoImagem, imgByte);
+                novoID = Pr_GuardarImagem.Guardar(PK_ID, nomeImagem, formatoImagem, imgByte);
+                
             }
             catch (Exception)
             {
                 MessageBox.Show("Ocorreu um erro no savalmente da imagem!");
             }
+
+            return novoID;
         }
 
         private void BuscarImagemRepositorioLocal()
@@ -107,20 +111,42 @@ namespace EstoqueProdutos.Telas_Produtos
 
         private bool Cadastrar()
         {
-            GuardarImagem();
-            //txtNome.Text = txtNome.Text.SanitizarTexto(30).PrimeiraLetraMaiuscula();
-            //txtDescri.Text = txtDescri.Text.SanitizarTexto(90);
+            int? PK_ID_img = GuardarImagem();
 
-            //string? preco = txtPreco.Text.RemoverMascarDinheiro();
-            //decimal precoUnitario = !String.IsNullOrEmpty(preco) ? Convert.ToDecimal(preco) : 0.00m;
+            txtNome.Text = txtNome.Text.SanitizarTexto(30).PrimeiraLetraMaiuscula();
+            txtDescri.Text = txtDescri.Text.SanitizarTexto(90);
 
-            //decimal volume = !String.IsNullOrEmpty(txtVolume.Text) ? Convert.ToDecimal(txtVolume.Text) : 0.00m;
+            string? preco = txtPreco.Text.RemoverMascarDinheiro();
+            decimal precoUnitario = !String.IsNullOrEmpty(preco) ? Convert.ToDecimal(preco) : 0.00m;
 
-            //string? PK_ID_Fornecedor = cboFornecedor.SelectedValue.ToString();
-            //string? PK_ID_Categoria = cboCategoria.SelectedValue.ToString();
-            //string? PK_ID_Unidade = cboUnidadeMedida.SelectedValue.ToString();
-            //string? PK_ID_Embalagem = cboEmbalagem.SelectedValue.ToString();
+            decimal volume = !String.IsNullOrEmpty(txtVolume.Text) ? Convert.ToDecimal(txtVolume.Text) : 0.00m;
 
+            int PK_ID_Fornecedor = Convert.ToInt32(cboFornecedor.SelectedValue.ToString());
+            int PK_ID_Categoria = Convert.ToInt32(cboCategoria.SelectedValue.ToString());
+            int PK_ID_Embalagem = Convert.ToInt32(cboEmbalagem.SelectedValue.ToString());
+            int PK_ID_Unidade = Convert.ToInt32(cboUnidadeMedida.SelectedValue.ToString());
+
+            Produto produto = new();
+
+            produto.Nome = txtNome.Text;
+            produto.Preco = precoUnitario;
+            produto.FK_tblCategoria_ID = PK_ID_Categoria;
+            produto.FK_tblFornecedor_ID = PK_ID_Fornecedor;
+            produto.FK_tblTipoEmbalagem_ID = PK_ID_Embalagem;
+            produto.Volume = volume;
+            produto.FK_tblUnidadeMedida_ID = PK_ID_Unidade;
+            produto.FK_Imagem_ID = PK_ID_img is null ? 100 : PK_ID_img;
+            produto.Descricao = String.IsNullOrWhiteSpace(txtDescri.Text) ? null : txtDescri.Text;
+
+            Pr_GuardarProduto.Guardar(produto);
+
+            if(String.IsNullOrWhiteSpace(Pr_GuardarProduto.ErroMensagem))
+            {
+                MessageBox.Show("Produto cadastrado com sucesso!");
+                return false;
+            }
+
+            MessageBox.Show("Erro: \n\n" + Pr_GuardarProduto.ErroMensagem);
             return true;
         }
 
@@ -146,8 +172,12 @@ namespace EstoqueProdutos.Telas_Produtos
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            //GuardarImagem();
-            Cadastrar();
+            var result = Cadastrar();
+
+            if (result)
+                btnLimpar.PerformClick();
+
+            //this.Close();
         }
 
         private void pcbImagem_Click(object sender, EventArgs e)
@@ -208,7 +238,9 @@ namespace EstoqueProdutos.Telas_Produtos
             cboEmbalagem.SelectedIndex = 0;
             cboUnidadeMedida.SelectedIndex = 0;
 
+            //pcbImagem.Dispose();
             pcbImagem.Image = null;
+            Imagem.ObterImagemStandard(pcbImagem);
         }
 
         private void txtVolume_KeyPress(object sender, KeyPressEventArgs e)

@@ -1,4 +1,5 @@
-﻿using EstoqueProdutos.SQLServer.Conexao;
+﻿using EstoqueProdutos.Ajudantes.Bind;
+using EstoqueProdutos.SQLServer.Conexao;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,7 +12,7 @@ namespace EstoqueProdutos.SQLServer.Procedures
 {
     public static class Pr_ObterImagens
     {
-        public static DataTable Obter()
+        public static DataTable ObterPrimeiraImagem()
         {
             DataTable dt = new DataTable();
 
@@ -22,6 +23,29 @@ namespace EstoqueProdutos.SQLServer.Procedures
                 using (SqlCommand command = new SqlCommand(select, connection))
                 {
                     connection.Open();
+
+                    command.Parameters.AddWithValue("@TipoPesquisa", 1);
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    adapter.Fill(dt);
+                }
+            }
+
+            return dt;
+        }
+
+        public static DataTable ObterTodasImagens()
+        {
+            DataTable dt = new DataTable();
+
+            string select = "EXEC pr_ObterImagens";
+
+            using (SqlConnection connection = new SqlConnection(StringConexao.Conexao))
+            {
+                using (SqlCommand command = new SqlCommand(select, connection))
+                {
+                    connection.Open();
+
+                    command.Parameters.AddWithValue("@TipoPesquisa", 2);
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
                     adapter.Fill(dt);
                 }
