@@ -16,15 +16,15 @@ namespace EstoqueProdutos.SQLServer.Procedures
         {
             DataTable dt = new DataTable();
 
-            string select = "EXEC pr_ObterImagens";
+            string select = "pr_ObterImagens";
 
             using (SqlConnection connection = new SqlConnection(StringConexao.Conexao))
             {
                 using (SqlCommand command = new SqlCommand(select, connection))
                 {
-                    connection.Open();
-
+                    command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@TipoPesquisa", 1);
+
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
                     adapter.Fill(dt);
                 }
@@ -37,15 +37,15 @@ namespace EstoqueProdutos.SQLServer.Procedures
         {
             DataTable dt = new DataTable();
 
-            string select = "EXEC pr_ObterImagens";
+            string select = "pr_ObterImagens";
 
             using (SqlConnection connection = new SqlConnection(StringConexao.Conexao))
             {
                 using (SqlCommand command = new SqlCommand(select, connection))
                 {
-                    connection.Open();
-
+                    command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@TipoPesquisa", 2);
+
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
                     adapter.Fill(dt);
                 }

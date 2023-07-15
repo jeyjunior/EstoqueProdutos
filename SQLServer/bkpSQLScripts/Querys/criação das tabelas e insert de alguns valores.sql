@@ -23,6 +23,10 @@ CREATE TABLE tblUnidadeMedida (
    Extenso VARCHAR(20)
 );
 
+DROP TABLE tblEstoque
+DROP TABLE tblProduto
+DROP TABLE tblImagens
+
 CREATE TABLE tblImagens (
    PK_ID INT IDENTITY(100, 1) PRIMARY KEY,
    NOME VARCHAR(30) null,

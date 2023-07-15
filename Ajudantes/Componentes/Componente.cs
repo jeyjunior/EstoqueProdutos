@@ -33,40 +33,22 @@ namespace EstoqueProdutos.Ajudantes.Componentes
 
         public static bool Desabilitar(this Control sender, Button btnCadastrar)
         {
-            sender.Enabled = false;
-
-            btnCadastrar.Enabled = false;
-            btnCadastrar.BackColor = Color.LightGray;
-
-            return true;
+            return sender.Enabled = false;
         }
 
         public static bool Habilitar(this Control sender, Button btnCadastrar)
         {
-            sender.Enabled = true;
-
-            btnCadastrar.Enabled = true;
-            btnCadastrar.BackColor = Color.Green;
-
-            return true;
+            return sender.Enabled = true; 
         }
     
         public static bool HabilitarBtnCadastrar(this Control sender)
         {
-            sender.Enabled = true;
-            sender.BackColor = Color.Green;
-            sender.ForeColor = Color.White;
-
-            return sender.Enabled;
+            return sender.Enabled = true;
         }
 
         public static bool DesabilitarBtnCadastrar(this Control sender)
         {
-            sender.Enabled = false;
-            sender.BackColor = Color.LightGray;
-            sender.ForeColor = Color.White;
-
-            return sender.Enabled;
+            return sender.Enabled = false;
         }
     }
 }

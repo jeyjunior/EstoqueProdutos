@@ -14,13 +14,13 @@ using System.Data.SqlClient;
 
 namespace EstoqueProdutos.Telas_Produtos
 {
-    public partial class FrmCadastroProduto : Form
+    public partial class FrmBase : Form
     {
         private string nomeImagem = String.Empty;
         private string formatoImagem = String.Empty;
         private byte[]? imgByte;
 
-        public FrmCadastroProduto()
+        public FrmBase()
         {
             InitializeComponent();
         }

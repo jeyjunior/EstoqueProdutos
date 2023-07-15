@@ -19,7 +19,7 @@ namespace EstoqueProdutos
         {
             lblContagem.Text = "Total de produtos: " + dtgProdutos.Rows.Count;
         }
-        
+
         private IProgress<int> BarraProgresso()
         {
             progressBar.Visible = true;
@@ -35,13 +35,8 @@ namespace EstoqueProdutos
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            DataTable result = SQLServer.Procedures.PesquisarProduto.ObterTodosProdutos();
-
-            dtgProdutos.Rows.Clear();
-
-            if (result.Rows.Count > 0)
-                foreach (DataRow row in result.Rows)
-                    dtgProdutos.Rows.Add(row[0], row[1], row[3], row[4], "R$ " + row[2], row[5]);
+            FrmPesquisar frmPesquisar = new FrmPesquisar();
+            frmPesquisar.Show();
         }
 
         private void dtgProdutos_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)

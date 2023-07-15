@@ -9,5 +9,5 @@ FROM OPENROWSET(BULK 'C:\Users\jeyjr\OneDrive\Imagens\standard.jpg', SINGLE_BLOB
 
 
 UPDATE tblImagens
-SET DESCRICAO = 'STANDARD'
+SET NOME = 'STANDARD'
 WHERE PK_ID = 100 
