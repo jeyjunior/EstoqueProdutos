@@ -96,7 +96,7 @@ namespace EstoqueProdutos.Ajudantes.Formatacao
             return texto.Length > tamanho ? texto.Remove(tamanho) : texto;
         }
 
-        public static void AplicarMascaraVolume(this TextBox textBox, KeyPressEventArgs e)
+        public static void AplicarMascaraNumerosComCasasDecimais(this TextBox textBox, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',')
                 e.Handled = true;

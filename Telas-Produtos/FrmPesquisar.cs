@@ -16,10 +16,6 @@ namespace EstoqueProdutos.Telas_Produtos
 {
     public partial class FrmPesquisar : Form
     {
-        private string nomeImagem = String.Empty;
-        private string formatoImagem = String.Empty;
-        private byte[]? imgByte;
-
         public FrmPesquisar()
         {
             InitializeComponent();
@@ -69,16 +65,9 @@ namespace EstoqueProdutos.Telas_Produtos
             CarregarDadosDosComponentes();
         }
 
-        private void txtPreco_KeyPress(object sender, KeyPressEventArgs e)
+        private void MascaraCasasDecimais_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox TextBox = ((TextBox)sender);
-
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',')
-                e.Handled = true;
-
-            if (TextBox.Text.Contains(",") && e.KeyChar == ',')
-                e.Handled = true;
-
+            ((TextBox)sender).AplicarMascaraNumerosComCasasDecimais(e);
         }
 
         private void txtPreco_Leave(object sender, EventArgs e)
@@ -93,26 +82,19 @@ namespace EstoqueProdutos.Telas_Produtos
 
         private void btnLimpar_Click(object sender, EventArgs e)
         {
-            txtNome.Clear();
-            txtPreco.Clear();
-            txtVolume.Clear();
+            foreach (Control componente in gpbDadosProduto.Controls)
+            {
+                if (componente is TextBox)
+                    ((TextBox)componente).Clear();
 
-            cboCategoria.SelectedIndex = 0;
-            cboFornecedor.SelectedIndex = 0;
-            cboEmbalagem.SelectedIndex = 0;
-            cboUnidadeMedida.SelectedIndex = 0;
+                if (componente is ComboBox)
+                    ((ComboBox)componente).SelectedIndex = 0;
+            }
         }
 
-        private void txtVolume_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtVolume_Leave(object sender, EventArgs e)
         {
-            TextBox TextBox = ((TextBox)sender);
-
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',')
-                e.Handled = true;
-
-            if (TextBox.Text.Contains(",") && e.KeyChar == ',')
-                e.Handled = true;
-
+            ((TextBox)sender).Text = ((TextBox)sender).Text.LimitarCasasDecimais(2);
         }
 
         private void txtNome_TextChanged(object sender, EventArgs e)
@@ -125,17 +107,11 @@ namespace EstoqueProdutos.Telas_Produtos
             HabilitarBtnCadastrar();
         }
 
-        private void txtVolume_TextChanged(object sender, EventArgs e)
-        {
-            HabilitarBtnCadastrar();
-        }
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
 
         }
 
         #endregion Eventos
-
-
     }
 }

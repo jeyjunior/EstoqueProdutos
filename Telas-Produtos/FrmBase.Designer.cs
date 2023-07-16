@@ -91,7 +91,6 @@
             pcbImagem.SizeMode = PictureBoxSizeMode.StretchImage;
             pcbImagem.TabIndex = 4;
             pcbImagem.TabStop = false;
-            pcbImagem.Click += pcbImagem_Click;
             // 
             // btnBase
             // 
@@ -119,7 +118,6 @@
             Name = "FrmBase";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Formulario Base";
-            Load += FrmCadastroProduto_Load;
             gpbDadosGrupo.ResumeLayout(false);
             gpbDadosGrupo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pcbImagem).EndInit();

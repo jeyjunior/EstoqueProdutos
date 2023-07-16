@@ -191,7 +191,7 @@
             txtPreco.TextAlign = HorizontalAlignment.Right;
             txtPreco.TextChanged += txtPreco_TextChanged;
             txtPreco.Enter += txtPreco_Enter;
-            txtPreco.KeyPress += txtPreco_KeyPress;
+            txtPreco.KeyPress += MascaraCasasDecimais_KeyPress;
             txtPreco.Leave += txtPreco_Leave;
             // 
             // lblPreco
@@ -234,7 +234,7 @@
             txtVolume.TabIndex = 2;
             txtVolume.TextAlign = HorizontalAlignment.Right;
             txtVolume.TextChanged += txtVolume_TextChanged;
-            txtVolume.KeyPress += txtVolume_KeyPress;
+            txtVolume.KeyPress += MascaraCasasDecimais_KeyPress;
             txtVolume.Leave += txtVolume_Leave;
             // 
             // lblVolume

@@ -120,16 +120,9 @@ namespace EstoqueProdutos.Telas_Produtos
             pcbImagem.BuscarImagemRepositorioLocal();
         }
 
-        private void txtPreco_KeyPress(object sender, KeyPressEventArgs e)
+        private void MascaraCasasDecimais_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox TextBox = ((TextBox)sender);
-
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',')
-                e.Handled = true;
-
-            if (TextBox.Text.Contains(",") && e.KeyChar == ',')
-                e.Handled = true;
-
+            ((TextBox)sender).AplicarMascaraNumerosComCasasDecimais(e);
         }
 
         private void txtPreco_Leave(object sender, EventArgs e)
@@ -154,11 +147,6 @@ namespace EstoqueProdutos.Telas_Produtos
             }
 
             pcbImagem.ObterImagemStandard();
-        }
-
-        private void txtVolume_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ((TextBox)sender).AplicarMascaraVolume(e);
         }
 
         private void txtNome_TextChanged(object sender, EventArgs e)
