@@ -235,6 +235,7 @@
             txtVolume.TextAlign = HorizontalAlignment.Right;
             txtVolume.TextChanged += txtVolume_TextChanged;
             txtVolume.KeyPress += txtVolume_KeyPress;
+            txtVolume.Leave += txtVolume_Leave;
             // 
             // lblVolume
             // 

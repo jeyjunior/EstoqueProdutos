@@ -64,7 +64,8 @@ namespace EstoqueProdutos.Telas_Produtos
 
         protected void CarregarDadosDosComponentes()
         {
-            Tabela.ObterData(Pr_ObterFornecedor.Obter(), cboBase, btnBase);
+            //Tabela.ObterData(Pr_ObterFornecedor.Obter(), cboBase, btnBase);
+            
 
             ManipularImagem.ObterImagemStandard(pcbImagem);
 
@@ -101,20 +102,20 @@ namespace EstoqueProdutos.Telas_Produtos
 
         protected void txtPreco_Leave(object sender, EventArgs e)
         {
-            TextBox TextPreco = ((TextBox)sender);
+            //TextBox TextPreco = ((TextBox)sender);
 
-            if (!String.IsNullOrEmpty(TextPreco.Text))
-            {
-                TextPreco.Text = TextPreco.Text.RemoverMascarDinheiro();
-                decimal preco = Convert.ToDecimal(TextPreco.Text);
-                TextPreco.Text = Math.Round(preco, 2).ToString();
-                TextPreco.Text = TextPreco.Text.AplicarMascaraDinheiro();
-            }
+            //if (!String.IsNullOrEmpty(TextPreco.Text))
+            //{
+            //    TextPreco.Text = TextPreco.Text.RemoverMascarDinheiro();
+            //    decimal preco = Convert.ToDecimal(TextPreco.Text);
+            //    TextPreco.Text = Math.Round(preco, 2).ToString();
+            //    TextPreco.Text = TextPreco.Text.AplicarMascaraDinheiro();
+            //}
         }
 
         protected void txtPreco_Enter(object sender, EventArgs e)
         {
-            ((TextBox)sender).Text = ((TextBox)sender).Text.RemoverMascarDinheiro();
+            //((TextBox)sender).Text = ((TextBox)sender).Text.RemoverMascarDinheiro();
         }
 
         protected void txtVolume_KeyPress(object sender, KeyPressEventArgs e)

@@ -31,12 +31,12 @@ namespace EstoqueProdutos.Telas_Produtos
 
         private void CarregarDadosDosComponentes()
         {
-            Tabela.ObterData(Pr_ObterUnidadeMedida.Obter(), cboUnidadeMedida, btnPesquisar);
-            Tabela.ObterData(Pr_ObterFornecedor.Obter(), cboFornecedor, btnPesquisar);
-            Tabela.ObterData(pr_ObterCategoria.Obter(), cboCategoria, btnPesquisar);
-            Tabela.ObterData(Pr_ObterEmbalagem.Obter(), cboEmbalagem, btnPesquisar);
-            Tabela.ObterData(Pr_ObterOperador.OperadorSimples(), cboOperadorPreco, btnPesquisar);
-            Tabela.ObterData(Pr_ObterOperador.OperadorSimples(), cboOperadorVolume, btnPesquisar);
+            //Tabela.ObterData(Pr_ObterUnidadeMedida.Obter(), cboUnidadeMedida, btnPesquisar);
+            //Tabela.ObterData(Pr_ObterFornecedor.Obter(), cboFornecedor, btnPesquisar);
+            //Tabela.ObterData(pr_ObterCategoria.Obter(), cboCategoria, btnPesquisar);
+            //Tabela.ObterData(Pr_ObterEmbalagem.Obter(), cboEmbalagem, btnPesquisar);
+            //Tabela.ObterData(Pr_ObterOperador.OperadorSimples(), cboOperadorPreco, btnPesquisar);
+            //Tabela.ObterData(Pr_ObterOperador.OperadorSimples(), cboOperadorVolume, btnPesquisar);
 
             HabilitarComponente.DesabilitarBtnCadastrar(btnPesquisar);
         }
@@ -83,18 +83,12 @@ namespace EstoqueProdutos.Telas_Produtos
 
         private void txtPreco_Leave(object sender, EventArgs e)
         {
-            if (!String.IsNullOrEmpty(txtPreco.Text))
-            {
-                txtPreco.Text = txtPreco.Text.RemoverMascarDinheiro();
-                decimal preco = Convert.ToDecimal(txtPreco.Text);
-                txtPreco.Text = Math.Round(preco, 2).ToString();
-                txtPreco.Text = txtPreco.Text.AplicarMascaraDinheiro();
-            }
+            ((TextBox)sender).AplicarMascaraDinheiro();
         }
 
         private void txtPreco_Enter(object sender, EventArgs e)
         {
-            ((TextBox)sender).Text = ((TextBox)sender).Text.RemoverMascarDinheiro();
+            ((TextBox)sender).RemoverMascarDinheiro();
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)

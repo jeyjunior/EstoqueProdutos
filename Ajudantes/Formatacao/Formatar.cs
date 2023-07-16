@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace EstoqueProdutos.Ajudantes.Formatacao
 {
@@ -23,8 +24,6 @@ namespace EstoqueProdutos.Ajudantes.Formatacao
 
             return textoSanitizado;
         }
-
-
 
         public static string RemoverEspacoVazio(this string text)
         {
@@ -59,20 +58,26 @@ namespace EstoqueProdutos.Ajudantes.Formatacao
             return value;
         }
         
-        public static string AplicarMascaraDinheiro(this string texto)
+        public static string AplicarMascaraDinheiro(this TextBox txt)
         {
-            if (!texto.Contains("R$ "))
-                texto = "R$ " + texto.Trim();
+            if (String.IsNullOrEmpty(txt.Text))
+                return String.Empty;
 
-            return texto;
+            txt.RemoverMascarDinheiro();
+            txt.Text = txt.Text.LimitarCasasDecimais(2);
+
+            if (!txt.Text.Contains("R$ "))
+                txt.Text = "R$ " + txt.Text.Trim();
+
+            return txt.Text;
         }
 
-        public static string RemoverMascarDinheiro(this string texto)
+        public static string RemoverMascarDinheiro(this TextBox txt)
         {
-            if (texto.Contains("R$ "))
-                texto = texto.Replace("R$ ", "");
+            if (txt.Text.Contains("R$ "))
+                txt.Text = txt.Text.Replace("R$ ", "");
 
-            return texto;
+            return txt.Text;
         }
 
         public static string TrocarVirgulaPorPonto(this string texto)
@@ -90,6 +95,33 @@ namespace EstoqueProdutos.Ajudantes.Formatacao
         {
             return texto.Length > tamanho ? texto.Remove(tamanho) : texto;
         }
-    
+
+        public static void AplicarMascaraVolume(this TextBox textBox, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',')
+                e.Handled = true;
+
+            if (textBox.Text.Contains(",") && e.KeyChar == ',')
+                e.Handled = true;
+        }
+
+        public static string LimitarCasasDecimais(this string texto, int casasDecimais)
+        {
+            if(String.IsNullOrWhiteSpace(texto))
+                return texto;
+
+            try
+            {
+                decimal preco = Convert.ToDecimal(texto);
+                texto = Math.Round(preco, casasDecimais).ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao limitar casas decimais.\nErro: " + ex.Message);
+                return String.Empty;
+            }
+
+            return texto;
+        }
     }
 }
