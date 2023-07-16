@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EstoqueProdutos.Ajudantes.Componentes
 {
-    public static class Componente
+    public static class HabilitarComponente
     {
         /// <summary>
         /// Desabilitar componente(s) individualmente

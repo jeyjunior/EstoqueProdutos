@@ -23,6 +23,19 @@ CREATE TABLE tblUnidadeMedida (
    Extenso VARCHAR(20)
 );
 
+CREATE TABLE tblOperador (
+   PK_ID INT IDENTITY(100, 1) PRIMARY KEY,
+   Sigla VARCHAR(5),
+   Extenso VARCHAR(20)
+);
+
+CREATE TABLE tblOperadorEspecial (
+   PK_ID INT IDENTITY(100, 1) PRIMARY KEY,
+   Sigla VARCHAR(20),
+   Extenso VARCHAR(50)
+);
+
+
 DROP TABLE tblEstoque
 DROP TABLE tblProduto
 DROP TABLE tblImagens
@@ -120,3 +133,27 @@ VALUES
    ('un', 'Unidade'),
    ('dz', 'Dúzia'),
    ('pç', 'Peça');
+
+      -- Inserção de valores para tblUnidadeMedida
+INSERT INTO tblOperador(Sigla, Extenso)
+VALUES
+   ('n', 'Nenhum'),
+   ('=', 'Igual'),
+   ('<', 'Menor que'),
+   ('>', 'Maior que'),
+   ('<>', 'Diferente de'),
+   ('>=', 'Maior ou igual que'),
+   ('<=', 'Menor ou igual que')
+   
+
+INSERT INTO tblOperadorEspecial (Sigla, Extenso)
+VALUES
+   ('n', 'Nenhum'),
+   ('IS NULL', 'É nulo'),
+   ('IS NOT NULL', 'Não é nulo'),
+   ('BETWEEN', 'Entre (inclusive)'),
+   ('NOT BETWEEN', 'Fora do intervalo'),
+   ('IN', 'Está em uma lista'),
+   ('NOT IN', 'Não está em uma lista'),
+   ('LIKE', 'Corresponde a um padrão'),
+   ('NOT LIKE', 'Não corresponde a um padrão');

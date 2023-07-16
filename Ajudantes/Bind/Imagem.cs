@@ -9,38 +9,12 @@ using System.Threading.Tasks;
 
 namespace EstoqueProdutos.Ajudantes.Bind
 {
-    public static class Imagem
+    public class Imagem
     {
-        public static bool ObterImagemStandard(PictureBox pictureBox)
-        {
-            try
-            {
-                DataTable dt = Pr_ObterImagens.ObterPrimeiraImagem();
-
-                if (dt.Rows.Count <= 0)
-                    throw new Exception();
-
-                byte[] imagemBytes = (byte[])dt.Rows[0]["IMAGEM"];
-
-                using (MemoryStream ms = new MemoryStream(imagemBytes))
-                {
-                    Image imagem = Image.FromStream(ms);
-
-                    int tag = Convert.ToInt32(dt.Rows[0][0]);
-                    pictureBox.Tag = tag; //PK_ID
-                    pictureBox.Image = imagem;
-                }
-            }
-            catch (SqlException)
-            {
-                return false;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-
-            return true;
-        }
+        public int PK_ID { get; set; }
+        public string Nome { get; set; } = String.Empty;
+        public string Formato { get; set; } = String.Empty;
+        public byte[]? ImgByte { get; set; } = null;
+        public Image Image { get; set; }
     }
 }

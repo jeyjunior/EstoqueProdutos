@@ -16,10 +16,6 @@ namespace EstoqueProdutos.Telas_Produtos
 {
     public partial class FrmCadastroProduto : Form
     {
-        private string nomeImagem = String.Empty;
-        private string formatoImagem = String.Empty;
-        private byte[]? imgByte;
-
         public FrmCadastroProduto()
         {
             InitializeComponent();
@@ -28,29 +24,19 @@ namespace EstoqueProdutos.Telas_Produtos
         #region Metodos
 
         #region BuscarImagem, GuardarImagem
-        private int? GuardarImagem()
+        private void GuardarImagem()
         {
-            if (pcbImagem.Image is null)
-                return 100;
-
-            int? PK_ID = (int?)pcbImagem.Tag;
-
-            if (PK_ID is not null)
-                return 100;
-
-            int novoID = 100;
+            if (pcbImagem.Image is null || ((Imagem)pcbImagem.Tag).PK_ID == 100)
+            {
+                ((Imagem)pcbImagem.Tag).PK_ID = 100;
+                return;
+            }
 
             try
             {
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    Image img = pcbImagem.Image;
-                    img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                    imgByte = ms.ToArray();
-                }
+                Imagem imagem = (Imagem)pcbImagem.Tag;
 
-                novoID = Pr_GuardarImagem.Guardar(PK_ID, nomeImagem, formatoImagem, imgByte);
-
+                imagem.PK_ID = Pr_GuardarImagem.Guardar(imagem.Nome, imagem.Formato, imagem.ImgByte);
             }
             catch (SqlException ex)
             {
@@ -60,15 +46,10 @@ namespace EstoqueProdutos.Telas_Produtos
             {
                 MessageBox.Show("Ocorreu um erro no savalmente da imagem!");
             }
-
-            return novoID;
         }
 
         private void BuscarImagemRepositorioLocal()
         {
-            nomeImagem = String.Empty;
-            formatoImagem = String.Empty;
-
             try
             {
                 OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -78,10 +59,25 @@ namespace EstoqueProdutos.Telas_Produtos
                 {
                     string caminhoArquivo = openFileDialog.FileName;
 
-                    nomeImagem = Path.GetFileNameWithoutExtension(caminhoArquivo).PrimeiraLetraMaiuscula();
-                    formatoImagem = Path.GetExtension(caminhoArquivo).FormatarNomeDoFormatoImagem();
-                    pcbImagem.Image = Image.FromFile(caminhoArquivo);
-                    pcbImagem.Tag = null;
+                    if (!File.Exists(caminhoArquivo))
+                        throw new Exception("Falha ao carregar arquivo, verifique se a imagem existe!");
+
+                    Imagem imagem = new Imagem()
+                    {
+                        PK_ID = 0, //Novo Id sera obtido assim que guarda-la no db
+                        Nome = Path.GetFileNameWithoutExtension(caminhoArquivo).PrimeiraLetraMaiuscula(),
+                        Formato = Path.GetExtension(caminhoArquivo).FormatarNomeDoFormatoImagem(),
+                        Image = Image.FromFile(caminhoArquivo)
+                    };
+
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        imagem.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        imagem.ImgByte = ms.ToArray();
+                    }
+
+                    pcbImagem.Tag = imagem;
+                    pcbImagem.Image = imagem.Image;
                 }
             }
             catch (Exception ex)
@@ -96,21 +92,21 @@ namespace EstoqueProdutos.Telas_Produtos
 
         private void CarregarDadosDosComponentes()
         {
-            Tabela.ObterDataSource(Pr_ObterUnidadeMedida.Obter(), cboUnidadeMedida, btnCadastrar);
-            Tabela.ObterDataSource(Pr_ObterFornecedor.Obter(), cboFornecedor, btnCadastrar);
-            Tabela.ObterDataSource(pr_ObterCategoria.Obter(), cboCategoria, btnCadastrar);
-            Tabela.ObterDataSource(Pr_ObterEmbalagem.Obter(), cboEmbalagem, btnCadastrar);
+            Tabela.ObterData(Pr_ObterUnidadeMedida.Obter(), cboUnidadeMedida, btnCadastrar);
+            Tabela.ObterData(Pr_ObterFornecedor.Obter(), cboFornecedor, btnCadastrar);
+            Tabela.ObterData(pr_ObterCategoria.Obter(), cboCategoria, btnCadastrar);
+            Tabela.ObterData(Pr_ObterEmbalagem.Obter(), cboEmbalagem, btnCadastrar);
 
-            Imagem.ObterImagemStandard(pcbImagem);
+            ManipularImagem.ObterImagemStandard(pcbImagem);
 
-            Componente.DesabilitarBtnCadastrar(btnCadastrar);
+            HabilitarComponente.DesabilitarBtnCadastrar(btnCadastrar);
         }
 
         #endregion Carregar dados dos Componentes
 
         private bool Cadastrar()
         {
-            int? PK_ID_img = GuardarImagem();
+            GuardarImagem();
 
             txtNome.Text = txtNome.Text.SanitizarTexto(30).PrimeiraLetraMaiuscula();
             txtDescri.Text = txtDescri.Text.SanitizarTexto(90);
@@ -134,7 +130,7 @@ namespace EstoqueProdutos.Telas_Produtos
             produto.FK_tblTipoEmbalagem_ID = PK_ID_Embalagem;
             produto.Volume = volume;
             produto.FK_tblUnidadeMedida_ID = PK_ID_Unidade;
-            produto.FK_Imagem_ID = PK_ID_img is null ? 100 : PK_ID_img;
+            produto.FK_Imagem_ID = ((Imagem)pcbImagem.Tag).PK_ID;
             produto.Descricao = String.IsNullOrWhiteSpace(txtDescri.Text) ? null : txtDescri.Text;
 
             Pr_GuardarProduto.Guardar(produto);
@@ -230,9 +226,7 @@ namespace EstoqueProdutos.Telas_Produtos
             cboEmbalagem.SelectedIndex = 0;
             cboUnidadeMedida.SelectedIndex = 0;
 
-            //pcbImagem.Dispose();
-            pcbImagem.Image = null;
-            Imagem.ObterImagemStandard(pcbImagem);
+            ManipularImagem.ObterImagemStandard(pcbImagem);
         }
 
         private void txtVolume_KeyPress(object sender, KeyPressEventArgs e)

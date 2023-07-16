@@ -12,11 +12,19 @@ namespace EstoqueProdutos.Ajudantes.Bind
 {
     public static class Tabela
     {
-        public static bool ObterDataSource(DataTable dt, ComboBox cbo)
+        public static bool ObterData(DataTable dt, ComboBox cbo)
         {
-            return ObterDataSource(dt, cbo, new Button());
+            return ObterData(dt, cbo, new Button());
         }
-        public static bool ObterDataSource(DataTable dt, ComboBox cbo, Button btn)
+        /// <summary>
+        /// Caso os dados não sejam carregados corretamente, desabilita um btn de ação do formulario
+        /// ex.: Bloqueia a opção de cadastrar produto caso um cbo não seja populado
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <param name="cbo"></param>
+        /// <param name="btn"></param>
+        /// <returns></returns>
+        public static bool ObterData(DataTable dt, ComboBox cbo, Button btn)
         {
             try
             {
@@ -29,18 +37,18 @@ namespace EstoqueProdutos.Ajudantes.Bind
                 cbo.DisplayMember = dt.Columns[1].ColumnName;
                 cbo.DataSource = dt;
 
-                Componente.Habilitar(cbo, btn);
+                HabilitarComponente.Habilitar(cbo, btn);
             }
             catch (SqlException ex)
             {
                 MessageBox.Show("Falha ao carregar dados!");
-                Componente.Desabilitar(cbo, btn);
+                HabilitarComponente.Desabilitar(cbo, btn);
                 return false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Falha ao executar operação!\n\nErro: " + ex.Message);
-                Componente.Desabilitar(cbo, btn);
+                HabilitarComponente.Desabilitar(cbo, btn);
                 return false;
             }
             

@@ -102,12 +102,12 @@
             // 
             // lblFornecedor
             // 
-            lblFornecedor.AutoSize = true;
-            lblFornecedor.Location = new Point(363, 216);
+            lblFornecedor.Location = new Point(284, 216);
             lblFornecedor.Name = "lblFornecedor";
-            lblFornecedor.Size = new Size(84, 20);
+            lblFornecedor.Size = new Size(248, 20);
             lblFornecedor.TabIndex = 15;
             lblFornecedor.Text = "Fornecedor";
+            lblFornecedor.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // cboFornecedor
             // 
@@ -120,12 +120,12 @@
             // 
             // lblCategoria
             // 
-            lblCategoria.AutoSize = true;
-            lblCategoria.Location = new Point(105, 216);
+            lblCategoria.Location = new Point(19, 216);
             lblCategoria.Name = "lblCategoria";
-            lblCategoria.Size = new Size(74, 20);
+            lblCategoria.Size = new Size(248, 20);
             lblCategoria.TabIndex = 13;
             lblCategoria.Text = "Categoria";
+            lblCategoria.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // cboCategoria
             // 
@@ -138,12 +138,12 @@
             // 
             // lblEmbalagem
             // 
-            lblEmbalagem.AutoSize = true;
-            lblEmbalagem.Location = new Point(245, 156);
+            lblEmbalagem.Location = new Point(226, 156);
             lblEmbalagem.Name = "lblEmbalagem";
-            lblEmbalagem.Size = new Size(89, 20);
+            lblEmbalagem.Size = new Size(108, 20);
             lblEmbalagem.TabIndex = 11;
             lblEmbalagem.Text = "Embalagem";
+            lblEmbalagem.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // cboEmbalagem
             // 
@@ -156,12 +156,12 @@
             // 
             // lblUnidade
             // 
-            lblUnidade.AutoSize = true;
             lblUnidade.Location = new Point(151, 157);
             lblUnidade.Name = "lblUnidade";
             lblUnidade.Size = new Size(65, 20);
             lblUnidade.TabIndex = 9;
             lblUnidade.Text = "Unidade";
+            lblUnidade.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // txtDescri
             // 
@@ -196,12 +196,12 @@
             // 
             // lblPreco
             // 
-            lblPreco.AutoSize = true;
-            lblPreco.Location = new Point(432, 157);
+            lblPreco.Location = new Point(363, 157);
             lblPreco.Name = "lblPreco";
-            lblPreco.Size = new Size(46, 20);
+            lblPreco.Size = new Size(169, 20);
             lblPreco.TabIndex = 5;
             lblPreco.Text = "Preço";
+            lblPreco.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // cboUnidadeMedida
             // 
@@ -238,12 +238,12 @@
             // 
             // lblVolume
             // 
-            lblVolume.AutoSize = true;
-            lblVolume.Location = new Point(39, 156);
+            lblVolume.Location = new Point(19, 156);
             lblVolume.Name = "lblVolume";
-            lblVolume.Size = new Size(59, 20);
+            lblVolume.Size = new Size(119, 20);
             lblVolume.TabIndex = 2;
             lblVolume.Text = "Volume";
+            lblVolume.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnCadastrar
             // 
