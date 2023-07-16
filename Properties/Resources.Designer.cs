@@ -63,9 +63,9 @@ namespace EstoqueProdutos.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ic_fluent_eraser_24_filled_32 {
+        internal static System.Drawing.Bitmap _new {
             get {
-                object obj = ResourceManager.GetObject("ic_fluent_eraser_24_filled_32", resourceCulture);
+                object obj = ResourceManager.GetObject("_new", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace EstoqueProdutos.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ic_fluent_eraser_24_regular_32 {
+        internal static System.Drawing.Bitmap erase {
             get {
-                object obj = ResourceManager.GetObject("ic_fluent_eraser_24_regular_32", resourceCulture);
+                object obj = ResourceManager.GetObject("erase", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace EstoqueProdutos.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ic_fluent_form_new_24_filled_32 {
+        internal static System.Drawing.Bitmap erase_color {
             get {
-                object obj = ResourceManager.GetObject("ic_fluent_form_new_24_filled_32", resourceCulture);
+                object obj = ResourceManager.GetObject("erase_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace EstoqueProdutos.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ic_fluent_form_new_24_regular_32 {
+        internal static System.Drawing.Bitmap erase_color_outline {
             get {
-                object obj = ResourceManager.GetObject("ic_fluent_form_new_24_regular_32", resourceCulture);
+                object obj = ResourceManager.GetObject("erase_color_outline", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace EstoqueProdutos.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ic_fluent_save_24_filled_32 {
+        internal static System.Drawing.Bitmap erase_outline {
             get {
-                object obj = ResourceManager.GetObject("ic_fluent_save_24_filled_32", resourceCulture);
+                object obj = ResourceManager.GetObject("erase_outline", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,79 @@ namespace EstoqueProdutos.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ic_fluent_save_24_regular_32 {
+        internal static System.Drawing.Bitmap new_color {
             get {
-                object obj = ResourceManager.GetObject("ic_fluent_save_24_regular_32", resourceCulture);
+                object obj = ResourceManager.GetObject("new_color", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap new_color_outline {
+            get {
+                object obj = ResourceManager.GetObject("new_color_outline", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap new_outline {
+            get {
+                object obj = ResourceManager.GetObject("new_outline", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap save {
+            get {
+                object obj = ResourceManager.GetObject("save", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap save_color {
+            get {
+                object obj = ResourceManager.GetObject("save_color", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap save_color_outline {
+            get {
+                object obj = ResourceManager.GetObject("save_color_outline", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap save_outline {
+            get {
+                object obj = ResourceManager.GetObject("save_outline", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search {
+            get {
+                object obj = ResourceManager.GetObject("search", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

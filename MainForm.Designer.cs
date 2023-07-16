@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle25 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle26 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle27 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle28 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle29 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle30 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle17 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle18 = new DataGridViewCellStyle();
             pnlSide = new Panel();
             pnlMain = new Panel();
             progressBar = new ProgressBar();
@@ -57,7 +57,8 @@
             // pnlSide
             // 
             pnlSide.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            pnlSide.BackColor = Color.Gainsboro;
+            pnlSide.BackColor = Color.White;
+            pnlSide.BorderStyle = BorderStyle.FixedSingle;
             pnlSide.Location = new Point(9, 12);
             pnlSide.Name = "pnlSide";
             pnlSide.Size = new Size(70, 649);
@@ -66,7 +67,8 @@
             // pnlMain
             // 
             pnlMain.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            pnlMain.BackColor = Color.Gainsboro;
+            pnlMain.BackColor = Color.White;
+            pnlMain.BorderStyle = BorderStyle.FixedSingle;
             pnlMain.Controls.Add(progressBar);
             pnlMain.Controls.Add(lblTItulo);
             pnlMain.Controls.Add(btnDeletarProduto);
@@ -83,9 +85,9 @@
             // progressBar
             // 
             progressBar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            progressBar.Location = new Point(11, 611);
+            progressBar.Location = new Point(8, 609);
             progressBar.Name = "progressBar";
-            progressBar.Size = new Size(1135, 10);
+            progressBar.Size = new Size(1136, 10);
             progressBar.TabIndex = 7;
             // 
             // lblTItulo
@@ -94,7 +96,7 @@
             lblTItulo.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             lblTItulo.Location = new Point(350, 7);
             lblTItulo.Name = "lblTItulo";
-            lblTItulo.Size = new Size(360, 54);
+            lblTItulo.Size = new Size(358, 54);
             lblTItulo.TabIndex = 6;
             lblTItulo.Text = "PRODUTOS";
             lblTItulo.TextAlign = ContentAlignment.MiddleCenter;
@@ -117,8 +119,7 @@
             // 
             // btnCadastrarProduto
             // 
-            btnCadastrarProduto.Image = Properties.Resources.ic_fluent_form_new_24_regular_32;
-            btnCadastrarProduto.ImageAlign = ContentAlignment.BottomRight;
+            btnCadastrarProduto.Image = Properties.Resources.new_color;
             btnCadastrarProduto.Location = new Point(11, 13);
             btnCadastrarProduto.Name = "btnCadastrarProduto";
             btnCadastrarProduto.Size = new Size(45, 45);
@@ -129,20 +130,24 @@
             // btnPesquisar
             // 
             btnPesquisar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnPesquisar.Location = new Point(878, 13);
+            btnPesquisar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnPesquisar.Image = Properties.Resources.search;
+            btnPesquisar.Location = new Point(964, 13);
             btnPesquisar.Name = "btnPesquisar";
-            btnPesquisar.Size = new Size(267, 45);
+            btnPesquisar.Size = new Size(179, 45);
             btnPesquisar.TabIndex = 2;
             btnPesquisar.Text = "Pesquisar";
+            btnPesquisar.TextAlign = ContentAlignment.MiddleRight;
+            btnPesquisar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnPesquisar.UseVisualStyleBackColor = true;
             btnPesquisar.Click += btnPesquisar_Click;
             // 
             // lblContagem
             // 
             lblContagem.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            lblContagem.Location = new Point(0, 624);
+            lblContagem.Location = new Point(0, 622);
             lblContagem.Name = "lblContagem";
-            lblContagem.Size = new Size(1152, 24);
+            lblContagem.Size = new Size(1150, 24);
             lblContagem.TabIndex = 1;
             lblContagem.Text = "Total: 1000";
             lblContagem.TextAlign = ContentAlignment.MiddleCenter;
@@ -154,14 +159,16 @@
             dtgProdutos.AllowUserToResizeColumns = false;
             dtgProdutos.AllowUserToResizeRows = false;
             dtgProdutos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridViewCellStyle25.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle25.BackColor = SystemColors.Control;
-            dataGridViewCellStyle25.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle25.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle25.SelectionBackColor = SystemColors.ControlLightLight;
-            dataGridViewCellStyle25.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle25.WrapMode = DataGridViewTriState.True;
-            dtgProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
+            dtgProdutos.BackgroundColor = Color.WhiteSmoke;
+            dtgProdutos.BorderStyle = BorderStyle.None;
+            dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = SystemColors.Control;
+            dataGridViewCellStyle13.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle13.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle13.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = DataGridViewTriState.True;
+            dtgProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             dtgProdutos.ColumnHeadersHeight = 35;
             dtgProdutos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dtgProdutos.Columns.AddRange(new DataGridViewColumn[] { colID, colProduto, colCategoria, colFornecedor, colPreco, colIDImagem });
@@ -174,14 +181,14 @@
             dtgProdutos.RowHeadersWidth = 100;
             dtgProdutos.RowTemplate.Height = 29;
             dtgProdutos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgProdutos.Size = new Size(1138, 539);
+            dtgProdutos.Size = new Size(1136, 537);
             dtgProdutos.TabIndex = 0;
             dtgProdutos.RowsAdded += dtgProdutos_RowsAdded;
             // 
             // colID
             // 
-            dataGridViewCellStyle26.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
-            colID.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle14.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
+            colID.DefaultCellStyle = dataGridViewCellStyle14;
             colID.HeaderText = "ID";
             colID.MinimumWidth = 6;
             colID.Name = "colID";
@@ -192,9 +199,9 @@
             // colProduto
             // 
             colProduto.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle27.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle27.Padding = new Padding(15, 0, 0, 0);
-            colProduto.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle15.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle15.Padding = new Padding(15, 0, 0, 0);
+            colProduto.DefaultCellStyle = dataGridViewCellStyle15;
             colProduto.HeaderText = "PRODUTO";
             colProduto.MinimumWidth = 6;
             colProduto.Name = "colProduto";
@@ -202,9 +209,9 @@
             // 
             // colCategoria
             // 
-            dataGridViewCellStyle28.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle28.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
-            colCategoria.DefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
+            colCategoria.DefaultCellStyle = dataGridViewCellStyle16;
             colCategoria.HeaderText = "CATEGORIA";
             colCategoria.MinimumWidth = 6;
             colCategoria.Name = "colCategoria";
@@ -213,8 +220,8 @@
             // 
             // colFornecedor
             // 
-            dataGridViewCellStyle29.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            colFornecedor.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle17.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            colFornecedor.DefaultCellStyle = dataGridViewCellStyle17;
             colFornecedor.HeaderText = "FORNECEDOR";
             colFornecedor.MinimumWidth = 6;
             colFornecedor.Name = "colFornecedor";
@@ -223,9 +230,9 @@
             // 
             // colPreco
             // 
-            dataGridViewCellStyle30.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle30.Padding = new Padding(0, 0, 10, 0);
-            colPreco.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle18.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle18.Padding = new Padding(0, 0, 10, 0);
+            colPreco.DefaultCellStyle = dataGridViewCellStyle18;
             colPreco.HeaderText = "PRECO";
             colPreco.MinimumWidth = 6;
             colPreco.Name = "colPreco";
@@ -245,6 +252,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.SlateGray;
             ClientSize = new Size(1262, 673);
             Controls.Add(pnlMain);
             Controls.Add(pnlSide);

@@ -252,7 +252,7 @@
             btnCadastrar.FlatAppearance.BorderSize = 0;
             btnCadastrar.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
             btnCadastrar.ForeColor = Color.Black;
-            btnCadastrar.Image = Properties.Resources.ic_fluent_save_24_filled_32;
+            btnCadastrar.Image = Properties.Resources.save_color;
             btnCadastrar.Location = new Point(512, 316);
             btnCadastrar.Name = "btnCadastrar";
             btnCadastrar.Size = new Size(45, 45);
@@ -265,7 +265,7 @@
             btnLimpar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnLimpar.BackColor = Color.Transparent;
             btnLimpar.FlatAppearance.BorderSize = 0;
-            btnLimpar.Image = Properties.Resources.ic_fluent_eraser_24_regular_32;
+            btnLimpar.Image = Properties.Resources.erase_color;
             btnLimpar.Location = new Point(461, 316);
             btnLimpar.Name = "btnLimpar";
             btnLimpar.Size = new Size(45, 45);
