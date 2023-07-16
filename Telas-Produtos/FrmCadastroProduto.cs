@@ -23,71 +23,6 @@ namespace EstoqueProdutos.Telas_Produtos
 
         #region Metodos
 
-        #region BuscarImagem, GuardarImagem
-        private void GuardarImagem()
-        {
-            if (pcbImagem.Image is null || ((Imagem)pcbImagem.Tag).PK_ID == 100)
-            {
-                ((Imagem)pcbImagem.Tag).PK_ID = 100;
-                return;
-            }
-
-            try
-            {
-                Imagem imagem = (Imagem)pcbImagem.Tag;
-
-                imagem.PK_ID = Pr_GuardarImagem.Guardar(imagem.Nome, imagem.Formato, imagem.ImgByte);
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Falha ao registrar imagem no banco!\nErro: " + ex.Message);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ocorreu um erro no savalmente da imagem!");
-            }
-        }
-
-        private void BuscarImagemRepositorioLocal()
-        {
-            try
-            {
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                openFileDialog.Filter = "Imagens PNG e JPEG|*.png;*.jpeg;*.jpg";
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    string caminhoArquivo = openFileDialog.FileName;
-
-                    if (!File.Exists(caminhoArquivo))
-                        throw new Exception("Falha ao carregar arquivo, verifique se a imagem existe!");
-
-                    Imagem imagem = new Imagem()
-                    {
-                        PK_ID = 0, //Novo Id sera obtido assim que guarda-la no db
-                        Nome = Path.GetFileNameWithoutExtension(caminhoArquivo).PrimeiraLetraMaiuscula(),
-                        Formato = Path.GetExtension(caminhoArquivo).FormatarNomeDoFormatoImagem(),
-                        Image = Image.FromFile(caminhoArquivo)
-                    };
-
-                    using (MemoryStream ms = new MemoryStream())
-                    {
-                        imagem.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                        imagem.ImgByte = ms.ToArray();
-                    }
-
-                    pcbImagem.Tag = imagem;
-                    pcbImagem.Image = imagem.Image;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Falha ao carregar imagens!\nErro: " + ex.Message);
-            }
-        }
-
-        #endregion Imagem
-
         #region Carregar dados dos Componentes
 
         private void CarregarDadosDosComponentes()
@@ -97,7 +32,7 @@ namespace EstoqueProdutos.Telas_Produtos
             Tabela.ObterData(pr_ObterCategoria.Obter(), cboCategoria, btnCadastrar);
             Tabela.ObterData(Pr_ObterEmbalagem.Obter(), cboEmbalagem, btnCadastrar);
 
-            ManipularImagem.ObterImagemStandard(pcbImagem);
+            pcbImagem.ObterImagemStandard();
 
             HabilitarComponente.DesabilitarBtnCadastrar(btnCadastrar);
         }
@@ -106,7 +41,7 @@ namespace EstoqueProdutos.Telas_Produtos
 
         private bool Cadastrar()
         {
-            GuardarImagem();
+            ((Imagem)pcbImagem.Tag).PK_ID = ManipularImagem.GuardarImagem(pcbImagem);
 
             txtNome.Text = txtNome.Text.SanitizarTexto(30).PrimeiraLetraMaiuscula();
             txtDescri.Text = txtDescri.Text.SanitizarTexto(90);
@@ -178,7 +113,7 @@ namespace EstoqueProdutos.Telas_Produtos
 
         private void pcbImagem_Click(object sender, EventArgs e)
         {
-            BuscarImagemRepositorioLocal();
+            pcbImagem.BuscarImagemRepositorioLocal();
         }
 
         private void FrmCadastroProduto_Load(object sender, EventArgs e)
@@ -226,7 +161,7 @@ namespace EstoqueProdutos.Telas_Produtos
             cboEmbalagem.SelectedIndex = 0;
             cboUnidadeMedida.SelectedIndex = 0;
 
-            ManipularImagem.ObterImagemStandard(pcbImagem);
+            pcbImagem.ObterImagemStandard();
         }
 
         private void txtVolume_KeyPress(object sender, KeyPressEventArgs e)

@@ -8,12 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using EstoqueProdutos.Ajudantes.Bind;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using EstoqueProdutos.Ajudantes.Formatacao;
 
 namespace EstoqueProdutos.Ajudantes.Componentes
 {
     public static class ManipularImagem
     {
-        public static bool ObterImagemStandard(PictureBox pictureBox)
+        public static bool ObterImagemStandard(this PictureBox pictureBox)
         {
             try
             {
@@ -52,5 +53,67 @@ namespace EstoqueProdutos.Ajudantes.Componentes
             return true;
         }
 
+        public static void BuscarImagemRepositorioLocal(this PictureBox pictureBox)
+        {
+            try
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "Imagens PNG e JPEG|*.png;*.jpeg;*.jpg";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string caminhoArquivo = openFileDialog.FileName;
+
+                    if (!File.Exists(caminhoArquivo))
+                        throw new Exception("Falha ao carregar arquivo, verifique se a imagem existe!");
+
+                    Imagem imagem = new Imagem()
+                    {
+                        PK_ID = 0, //Novo Id sera obtido assim que guarda-la no db
+                        Nome = Path.GetFileNameWithoutExtension(caminhoArquivo).PrimeiraLetraMaiuscula(),
+                        Formato = Path.GetExtension(caminhoArquivo).FormatarNomeDoFormatoImagem(),
+                        Image = Image.FromFile(caminhoArquivo)
+                    };
+
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        imagem.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        imagem.ImgByte = ms.ToArray();
+                    }
+
+                    pictureBox.Tag = imagem;
+                    pictureBox.Image = imagem.Image;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Falha ao carregar imagens!\nErro: " + ex.Message);
+            }
+        }
+
+        public static int GuardarImagem(this PictureBox pictureBox)
+        {
+            if (pictureBox.Image is null || ((Imagem)pictureBox.Tag).PK_ID == 100)
+            {
+                return 100;
+            }
+
+            int newID = 100;
+            try
+            {
+                Imagem imagem = (Imagem)pictureBox.Tag;
+                newID = Pr_GuardarImagem.Guardar(imagem.Nome, imagem.Formato, imagem.ImgByte);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Falha ao registrar imagem no banco!\nErro: " + ex.Message);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ocorreu um erro no savalmente da imagem!");
+            }
+
+            return newID;
+        }
     }
 }
