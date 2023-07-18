@@ -18,7 +18,7 @@ namespace EstoqueProdutos.Ajudantes.Componentes
         {
             try
             {
-                DataTable dt = Pr_ObterImagens.ObterPrimeiraImagem();
+                DataTable dt = Pr_PesquisarImagens.ObterPrimeiraImagem();
 
                 if (dt.Rows.Count <= 0)
                     throw new Exception();

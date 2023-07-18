@@ -29,17 +29,16 @@ namespace EstoqueProdutos.SQLServer.Procedures
             using (SqlConnection connection = new SqlConnection(StringConexao.Conexao))
             {
                 connection.Open();
-                string procedure = "Procedure.prPesquisarProdutos.ToString();";
+                string select = "EXEC   prPesquisarProdutos";
 
-                using (SqlCommand command = new SqlCommand(procedure, connection))
+                using (SqlCommand command = new SqlCommand(select, connection))
                 {
-                    command.CommandType = CommandType.StoredProcedure;
-
                     command.Parameters.Add("@TipoPesquisa", SqlDbType.Int).Value = tipo;
                     command.Parameters.Add("@ID", SqlDbType.Int).Value = id;
                     command.Parameters.Add("@Nome", SqlDbType.VarChar, 120).Value = DBNull.Value;
                     command.Parameters.Add("@ParametroComplementar", SqlDbType.VarChar, 120).Value = DBNull.Value;
 
+                    connection.Open();
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
                     adapter.Fill(table);
                 }

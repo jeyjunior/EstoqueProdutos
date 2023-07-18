@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace EstoqueProdutos.SQLServer.Procedures
 {
-    public static class Pr_ObterUnidadeMedida
+    public static class Pr_PesquisarEmbalagem
     {
         public static DataTable Obter()
         {
             DataTable dt = new DataTable();
 
-            string select = "EXEC pr_ObterUnidadeMedida";
+            string select = "EXEC pr_PesquisarEmbalagem";
 
             using (SqlConnection connection = new SqlConnection(StringConexao.Conexao))
             {

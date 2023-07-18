@@ -1,10 +1,10 @@
 USE [EstoqueProdutos]
 GO
 
---DROP PROCEDURE [dbo].[pr_ObterOperador]
---GO
+DROP PROCEDURE [dbo].[pr_ObterOperador]
+GO
 
-CREATE PROCEDURE [dbo].[pr_ObterOperador]
+CREATE PROCEDURE [dbo].[pr_PesquisarOperador]
 	@TipoOperador INT
 AS
 BEGIN

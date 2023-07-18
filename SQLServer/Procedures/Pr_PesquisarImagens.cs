@@ -10,21 +10,27 @@ using System.Threading.Tasks;
 
 namespace EstoqueProdutos.SQLServer.Procedures
 {
-    public static class Pr_ObterOperador
+    public static class Pr_PesquisarImagens
     {
-        public static DataTable OperadorSimples()
+        private static StringBuilder Select()
+        {
+            StringBuilder select = new StringBuilder();
+            select.AppendLine("EXEC pr_PesquisarImagens");
+            select.AppendLine("@TipoPesquisa = @TipoPesquisa");
+
+            return select;
+        }
+
+        public static DataTable ObterPrimeiraImagem()
         {
             DataTable dt = new DataTable();
 
-            string select = "pr_ObterOperador";
-
             using (SqlConnection connection = new SqlConnection(StringConexao.Conexao))
             {
-                using (SqlCommand command = new SqlCommand(select, connection))
+                using (SqlCommand command = new SqlCommand(Select().ToString(), connection))
                 {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@TipoOperador", 1);
-
+                    connection.Open();
+                    command.Parameters.AddWithValue("@TipoPesquisa", 1);
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
                     adapter.Fill(dt);
                 }
@@ -32,19 +38,17 @@ namespace EstoqueProdutos.SQLServer.Procedures
 
             return dt;
         }
-        public static DataTable OperadorEspecial()
+
+        public static DataTable ObterTodasImagens()
         {
             DataTable dt = new DataTable();
 
-            string select = "pr_ObterOperador";
-
             using (SqlConnection connection = new SqlConnection(StringConexao.Conexao))
             {
-                using (SqlCommand command = new SqlCommand(select, connection))
+                using (SqlCommand command = new SqlCommand(Select().ToString(), connection))
                 {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@TipoOperador", 2);
-
+                    connection.Open();
+                    command.Parameters.AddWithValue("@TipoPesquisa", 2);
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
                     adapter.Fill(dt);
                 }

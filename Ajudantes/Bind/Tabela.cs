@@ -16,12 +16,12 @@ namespace EstoqueProdutos.Ajudantes.Bind
     /// </summary>
     public static class Tabela
     {
-        public static bool ObterData(this ComboBox cbo, DataTable dt)
+        public static bool AtribuirData(this ComboBox cbo, DataTable dt)
         {
-            return ObterData(cbo, dt, new Button());
+            return AtribuirData(cbo, dt, new Button());
         }
         
-        public static bool ObterData(this ComboBox cbo, DataTable dt, Button btn)
+        public static bool AtribuirData(this ComboBox cbo, DataTable dt, Button btn)
         {
             try
             {
@@ -49,36 +49,40 @@ namespace EstoqueProdutos.Ajudantes.Bind
 
             return true;
         }
+
+        public static bool AtribuirDataOperador(this ComboBox cbo, DataTable dt)
+        {
+            return AtribuirDataOperador(cbo, dt, new Button());
+        }
         
-        //public static bool ObterData(DataTable dt, ComboBox cbo, Button btn)
-        //{
-        //    try
-        //    {
-        //        //DataTable dt = Pr_ObterUnidadeMedida.Obter();
+        public static bool AtribuirDataOperador(this ComboBox cbo, DataTable dt, Button btn)
+        {
+            try
+            {
+                if (dt.Rows.Count <= 0)
+                    throw new Exception();
 
-        //        if (dt.Rows.Count <= 0)
-        //            throw new Exception();
+                cbo.ValueMember = dt.Columns[0].ColumnName;
+                cbo.DisplayMember = dt.Columns[2].ColumnName;
+                cbo.DataSource = dt;
 
-        //        cbo.ValueMember = dt.Columns[0].ColumnName;
-        //        cbo.DisplayMember = dt.Columns[1].ColumnName;
-        //        cbo.DataSource = dt;
+                HabilitarComponente.Habilitar(cbo, btn);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Falha ao carregar dados!");
+                HabilitarComponente.Desabilitar(cbo, btn);
+                return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Falha ao executar operação!\n\nErro: " + ex.Message);
+                HabilitarComponente.Desabilitar(cbo, btn);
+                return false;
+            }
 
-        //        HabilitarComponente.Habilitar(cbo, btn);
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        MessageBox.Show("Falha ao carregar dados!");
-        //        HabilitarComponente.Desabilitar(cbo, btn);
-        //        return false;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Falha ao executar operação!\n\nErro: " + ex.Message);
-        //        HabilitarComponente.Desabilitar(cbo, btn);
-        //        return false;
-        //    }
-            
-        //    return true;
-        //}
+            return true;
+        }
+
     }
 }

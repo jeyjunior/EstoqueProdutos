@@ -9,19 +9,22 @@ using System.Threading.Tasks;
 
 namespace EstoqueProdutos.SQLServer.Procedures
 {
-    public static class Pr_ObterEmbalagem
+    public static class Pr_PesquisarProduto
     {
-        public static DataTable Obter()
+        public static DataTable Obter(string customFilter)
         {
             DataTable dt = new DataTable();
 
-            string select = "EXEC pr_ObterEmbalagem";
+            string select = "EXEC pr_PesquisarProduto @CustomFilter";
 
             using (SqlConnection connection = new SqlConnection(StringConexao.Conexao))
             {
                 using (SqlCommand command = new SqlCommand(select, connection))
                 {
                     connection.Open();
+
+                    command.Parameters.AddWithValue("@CustomFilter", customFilter);
+
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
                     adapter.Fill(dt);
                 }
@@ -29,5 +32,6 @@ namespace EstoqueProdutos.SQLServer.Procedures
 
             return dt;
         }
+
     }
 }

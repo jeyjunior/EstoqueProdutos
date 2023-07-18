@@ -76,6 +76,7 @@
             // gpbDadosProduto
             // 
             gpbDadosProduto.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            gpbDadosProduto.BackColor = SystemColors.Control;
             gpbDadosProduto.Controls.Add(lblFornecedor);
             gpbDadosProduto.Controls.Add(cboFornecedor);
             gpbDadosProduto.Controls.Add(lblCategoria);
@@ -278,6 +279,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Control;
             ClientSize = new Size(572, 374);
             Controls.Add(btnLimpar);
             Controls.Add(btnCadastrar);
@@ -285,7 +287,7 @@
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             Name = "FrmCadastroProduto";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastrar Produto";
             Load += FrmCadastroProduto_Load;
             gpbDadosProduto.ResumeLayout(false);

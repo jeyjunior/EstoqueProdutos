@@ -21,13 +21,12 @@ namespace EstoqueProdutos.SQLServer.Procedures
 
             try
             {
+                string select = "EXEC pr_GuardarProduto";
+
                 using (SqlConnection connection = new SqlConnection(StringConexao.Conexao))
                 {
-                    using (SqlCommand command = new SqlCommand("pr_GuardarProduto", connection))
+                    using (SqlCommand command = new SqlCommand(select, connection))
                     {
-                        command.CommandType = CommandType.StoredProcedure;
-                        connection.Open();
-
                         command.Parameters.AddWithValue("@Nome", produto.Nome);
                         command.Parameters.AddWithValue("@Preco", produto.Preco);
                         command.Parameters.AddWithValue("@FK_tblCategoria_ID", produto.FK_tblCategoria_ID);
@@ -37,6 +36,8 @@ namespace EstoqueProdutos.SQLServer.Procedures
                         command.Parameters.AddWithValue("@FK_tblUnidadeMedida_ID", produto.FK_tblUnidadeMedida_ID);
                         command.Parameters.AddWithValue("@FK_Imagem_ID", produto.FK_Imagem_ID);
                         command.Parameters.AddWithValue("@Descricao", produto.Descricao);
+
+                        connection.Open();
 
                         // Definir parâmetro @Erro
                         SqlParameter outputParameter = new SqlParameter("@Erro", SqlDbType.VarChar, 100);

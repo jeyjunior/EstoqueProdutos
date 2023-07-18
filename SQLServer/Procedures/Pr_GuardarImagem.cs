@@ -15,20 +15,18 @@ namespace EstoqueProdutos.SQLServer.Procedures
         {
             try
             {
+                string select = "EXEC pr_GuardarImagem";
                 using (SqlConnection connection = new SqlConnection(StringConexao.Conexao))
                 {
-                    using (SqlCommand command = new SqlCommand("pr_GuardarImagem", connection))
+                    using (SqlCommand command = new SqlCommand(select, connection))
                     {
-                        command.CommandType = CommandType.StoredProcedure;
-                        connection.Open();
-
                         SqlParameter ultimoID = ParametroDeSaida();
                         command.Parameters.Add(ultimoID);
-
                         command.Parameters.AddWithValue("@Nome", nome);
                         command.Parameters.AddWithValue("@Formato", formato);
                         command.Parameters.AddWithValue("@Imagem", imgByte);
 
+                        connection.Open();
                         command.ExecuteNonQuery();
                         return Convert.ToInt32(ultimoID.Value);
                     }

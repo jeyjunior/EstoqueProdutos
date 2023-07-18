@@ -94,10 +94,10 @@ namespace EstoqueProdutos.Telas_Produtos
         #region Eventos
         private void FrmCadastroProduto_Load(object sender, EventArgs e)
         {
-            cboUnidadeMedida.ObterData(Pr_ObterUnidadeMedida.Obter(), btnCadastrar);
-            cboFornecedor.ObterData(Pr_ObterFornecedor.Obter(), btnCadastrar);
-            cboCategoria.ObterData(pr_ObterCategoria.Obter(), btnCadastrar);
-            cboEmbalagem.ObterData(Pr_ObterEmbalagem.Obter(), btnCadastrar);
+            cboUnidadeMedida.AtribuirData(Pr_ObterUnidadeMedida.Obter(), btnCadastrar);
+            cboFornecedor.AtribuirData(Pr_ObterFornecedor.Obter(), btnCadastrar);
+            cboCategoria.AtribuirData(Pr_PesquisarCategoria.Obter(), btnCadastrar);
+            cboEmbalagem.AtribuirData(Pr_PesquisarEmbalagem.Obter(), btnCadastrar);
 
             pcbImagem.ObterImagemStandard();
 
