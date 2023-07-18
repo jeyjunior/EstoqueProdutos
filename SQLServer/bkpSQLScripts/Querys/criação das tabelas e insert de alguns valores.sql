@@ -23,6 +23,7 @@ CREATE TABLE tblUnidadeMedida (
    Extenso VARCHAR(20)
 );
 
+
 CREATE TABLE tblOperador (
    PK_ID INT IDENTITY(100, 1) PRIMARY KEY,
    Sigla VARCHAR(5),
@@ -151,7 +152,7 @@ VALUES
    ('n', 'Nenhum'),
    ('IS NULL', 'É nulo'),
    ('IS NOT NULL', 'Não é nulo'),
-   ('BETWEEN', 'Entre (inclusive)'),
+   ('BETWEEN', 'Entre '),
    ('NOT BETWEEN', 'Fora do intervalo'),
    ('IN', 'Está em uma lista'),
    ('NOT IN', 'Não está em uma lista'),
