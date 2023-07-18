@@ -15,9 +15,15 @@ namespace EstoqueProdutos.Telas_Produtos
 {
     public partial class FrmPesquisar : Form
     {
-        public FrmPesquisar()
+        private DataGridView dtg;
+        private Button btnPesquisarMainForm;
+
+        public FrmPesquisar(DataGridView dtg, Button btnPesquisarMainForm)
         {
             InitializeComponent();
+
+            this.dtg = dtg;
+            this.btnPesquisarMainForm = btnPesquisarMainForm;
         }
 
         #region Metodos
@@ -83,7 +89,7 @@ namespace EstoqueProdutos.Telas_Produtos
                 customFilter += "    AND PRECO_UNITARIO " + ObterTipoOperador(cboOperadorPreco) + " " + preco;
             }
 
-            DataTable dt = Pr_PesquisarProduto.Obter(customFilter);
+            Tabela.AtribuirDataAoGridView(Pr_PesquisarProduto.Obter(customFilter), dtg);
         }
 
         private void txtNome_KeyPress(object sender, KeyPressEventArgs e)
@@ -112,21 +118,10 @@ namespace EstoqueProdutos.Telas_Produtos
 
             txtPreco.Enabled = true;
         }
+        private void FrmPesquisar_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            btnPesquisarMainForm.Enabled = true;
+        }
+
     }
 }
-//if (!String.IsNullOrWhiteSpace(txtPreco.Text))
-//{
-//    string cmdPreco = "    AND PRECO_UNITARIO ";
-//    string preco_unitario = txtPreco.RemoverMascarDinheiro();
-//    var operadorSelecionado = ObterTipoOperador(cboOperadorPreco);
-
-
-//    if (String.IsNullOrWhiteSpace(operadorSelecionado))
-//    {
-//        customFilter.AppendLine(cmdPreco + " > " + preco_unitario );
-//    }
-//    else
-//    {
-//        customFilter.AppendLine(cmdPreco + operadorSelecionado + preco_unitario);
-//    }
-//}

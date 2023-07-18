@@ -35,8 +35,10 @@ namespace EstoqueProdutos
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            FrmPesquisar frmPesquisar = new FrmPesquisar();
+            FrmPesquisar frmPesquisar = new FrmPesquisar(dtgProdutos, (Button)sender);
             frmPesquisar.Show();
+
+            ((Button)sender).Enabled = false;
         }
 
         private void dtgProdutos_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)

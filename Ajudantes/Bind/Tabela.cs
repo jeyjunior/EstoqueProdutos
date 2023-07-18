@@ -1,5 +1,6 @@
 ﻿using EstoqueProdutos.Ajudantes.Componentes;
 using EstoqueProdutos.SQLServer.Procedures;
+using Sql.DataAttributes;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -84,5 +85,32 @@ namespace EstoqueProdutos.Ajudantes.Bind
             return true;
         }
 
+        public static bool AtribuirDataAoGridView(DataTable dt, DataGridView dtg)
+        {
+            if (dt.Rows.Count <= 0)
+                return false;
+
+            dtg.Rows.Clear();
+
+
+            foreach (DataRow row in dt.Rows)
+            {
+                dtg.Rows.Add(
+                    row["PK_ID"],
+                    row["NOME"],
+                    row["PRECO_UNITARIO"],
+                    row["Embalagem"],
+                    row["VOLUME"],
+                    row["Sigla"],
+                    row["Categoria"],
+                    row["Fornecedor"],
+                    row["DESCRICAO"],
+                    row["FK_Imagem_ID"]
+                    );
+            }
+
+
+            return true;
+        }
     }
 }

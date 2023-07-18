@@ -295,6 +295,7 @@
             Name = "FrmPesquisar";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Pesquisar";
+            FormClosed += FrmPesquisar_FormClosed;
             Load += FrmCadastroProduto_Load;
             gpbDadosProduto.ResumeLayout(false);
             gpbDadosProduto.PerformLayout();

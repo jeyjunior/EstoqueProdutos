@@ -32,6 +32,5 @@ namespace EstoqueProdutos.SQLServer.Procedures
 
             return dt;
         }
-
     }
 }
