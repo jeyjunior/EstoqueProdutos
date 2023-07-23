@@ -72,7 +72,6 @@
             txtNome.PlaceholderText = "Brahama puro malte";
             txtNome.Size = new Size(341, 27);
             txtNome.TabIndex = 0;
-            txtNome.KeyPress += txtNome_KeyPress;
             // 
             // gpbDadosProduto
             // 
@@ -137,7 +136,6 @@
             cboOperadorPreco.Name = "cboOperadorPreco";
             cboOperadorPreco.Size = new Size(156, 28);
             cboOperadorPreco.TabIndex = 16;
-            cboOperadorPreco.SelectedIndexChanged += cboOperadorPreco_SelectedIndexChanged;
             // 
             // lblFornecedor
             // 
@@ -211,9 +209,6 @@
             txtPreco.Size = new Size(182, 27);
             txtPreco.TabIndex = 5;
             txtPreco.TextAlign = HorizontalAlignment.Right;
-            txtPreco.Enter += txtPreco_Enter;
-            txtPreco.KeyPress += MascaraCasasDecimais_KeyPress;
-            txtPreco.Leave += txtPreco_Leave;
             // 
             // lblPreco
             // 
@@ -243,8 +238,6 @@
             txtVolume.Size = new Size(104, 27);
             txtVolume.TabIndex = 2;
             txtVolume.TextAlign = HorizontalAlignment.Right;
-            txtVolume.KeyPress += MascaraCasasDecimais_KeyPress;
-            txtVolume.Leave += txtVolume_Leave;
             // 
             // lblVolume
             // 
@@ -265,7 +258,6 @@
             btnLimpar.Size = new Size(45, 45);
             btnLimpar.TabIndex = 10;
             btnLimpar.UseVisualStyleBackColor = false;
-            btnLimpar.Click += btnLimpar_Click;
             // 
             // btnPesquisar
             // 
@@ -280,7 +272,6 @@
             btnPesquisar.TextAlign = ContentAlignment.MiddleRight;
             btnPesquisar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnPesquisar.UseVisualStyleBackColor = true;
-            btnPesquisar.Click += btnPesquisar_Click;
             // 
             // FrmPesquisar
             // 
@@ -295,8 +286,6 @@
             Name = "FrmPesquisar";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Pesquisar";
-            FormClosed += FrmPesquisar_FormClosed;
-            Load += FrmCadastroProduto_Load;
             gpbDadosProduto.ResumeLayout(false);
             gpbDadosProduto.PerformLayout();
             ResumeLayout(false);

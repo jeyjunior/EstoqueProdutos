@@ -71,7 +71,6 @@
             txtNome.PlaceholderText = "Brahama puro malte";
             txtNome.Size = new Size(370, 27);
             txtNome.TabIndex = 0;
-            txtNome.TextChanged += txtNome_TextChanged;
             // 
             // gpbDadosProduto
             // 
@@ -190,10 +189,6 @@
             txtPreco.Size = new Size(169, 27);
             txtPreco.TabIndex = 5;
             txtPreco.TextAlign = HorizontalAlignment.Right;
-            txtPreco.TextChanged += txtPreco_TextChanged;
-            txtPreco.Enter += txtPreco_Enter;
-            txtPreco.KeyPress += MascaraCasasDecimais_KeyPress;
-            txtPreco.Leave += txtPreco_Leave;
             // 
             // lblPreco
             // 
@@ -223,7 +218,6 @@
             pcbImagem.SizeMode = PictureBoxSizeMode.StretchImage;
             pcbImagem.TabIndex = 4;
             pcbImagem.TabStop = false;
-            pcbImagem.Click += pcbImagem_Click;
             // 
             // txtVolume
             // 
@@ -234,9 +228,6 @@
             txtVolume.Size = new Size(122, 27);
             txtVolume.TabIndex = 2;
             txtVolume.TextAlign = HorizontalAlignment.Right;
-            txtVolume.TextChanged += txtVolume_TextChanged;
-            txtVolume.KeyPress += MascaraCasasDecimais_KeyPress;
-            txtVolume.Leave += txtVolume_Leave;
             // 
             // lblVolume
             // 
@@ -260,7 +251,6 @@
             btnCadastrar.Size = new Size(45, 45);
             btnCadastrar.TabIndex = 8;
             btnCadastrar.UseVisualStyleBackColor = false;
-            btnCadastrar.Click += btnCadastrar_Click;
             // 
             // btnLimpar
             // 
@@ -273,7 +263,6 @@
             btnLimpar.Size = new Size(45, 45);
             btnLimpar.TabIndex = 10;
             btnLimpar.UseVisualStyleBackColor = false;
-            btnLimpar.Click += btnLimpar_Click;
             // 
             // FrmCadastroProduto
             // 
@@ -289,7 +278,6 @@
             Name = "FrmCadastroProduto";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastrar Produto";
-            Load += FrmCadastroProduto_Load;
             gpbDadosProduto.ResumeLayout(false);
             gpbDadosProduto.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pcbImagem).EndInit();
