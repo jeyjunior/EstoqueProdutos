@@ -13,6 +13,7 @@
     <PackageReference Include="SimpleInjector" Version="5.4.1" />
     <PackageReference Include="SqlData" Version="1.1.4" />
     <PackageReference Include="SqlData.Core" Version="2.0.37" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,7 +30,7 @@
     <Compile Update="Telas-Produtos\FrmPesquisar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Telas-Produtos\FrmBase.cs">
+    <Compile Update="Telas-Base\FrmBase.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
