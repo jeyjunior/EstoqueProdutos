@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace EstoqueProdutos.Entidades
 {
-    public class Imagens
+    public class Imagem
     {
-        public int PK_ID { get; set; }
+        public int PK_Imagem { get; set; }
         public string Nome { get; set; }
         public string Formato { get; set; }
-        public byte[] Imagem { get; set; }
+        public byte[] Img { get; set; }
     }
 }

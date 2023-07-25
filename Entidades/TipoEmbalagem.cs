@@ -8,7 +8,7 @@ namespace EstoqueProdutos.Entidades
 {
     public class TipoEmbalagem
     {
-        public int PK_ID { get; set; }
+        public int PK_TipoEmbalagem { get; set; }
         public string Nome { get; set; }
     }
 }

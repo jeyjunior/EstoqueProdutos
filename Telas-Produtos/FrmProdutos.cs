@@ -21,7 +21,7 @@ namespace EstoqueProdutos.Telas_Produtos
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
             ProdutoColecao produtoColecao = new ProdutoColecao();
-            produtoColecao.ObterProdutoMultiMapPorId(100);
+            var result = produtoColecao.ObterProdutoPorId(new Entidades.Produto.ProdutoPesquisaPorID { PK_Produto = 100, Operadores = new Entidades.Operadores() { Sigla = " >" } });
         }
     }
 }

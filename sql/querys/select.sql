@@ -5,4 +5,4 @@ SELECT * FROM TipoEmbalagem
 SELECT * FROM UnidadeMedida
 SELECT * FROM Operadores
 SELECT * FROM OperadoresEspeciais
-SELECT * FROM Imagens
+SELECT * FROM Imagem

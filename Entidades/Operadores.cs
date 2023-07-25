@@ -8,7 +8,7 @@ namespace EstoqueProdutos.Entidades
 {
     public class Operadores
     {
-        public int PK_ID { get; set; }
+        public int PK_Operadores { get; set; }
         public string Sigla { get; set; }
         public string Extenso { get; set; }
     }

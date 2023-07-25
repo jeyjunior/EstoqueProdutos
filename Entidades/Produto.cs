@@ -8,15 +8,32 @@ namespace EstoqueProdutos.Entidades
 {
     public class Produto
     {
-        public int PK_ID { get; set; }
+        public int PK_Produto { get; set; }
         public string Nome { get; set; }
         public decimal Volume { get; set; }
         public decimal Preco { get; set; }
         public string Descricao { get; set; }
-        public int FK_Categoria_ID { get; set; }
-        public int FK_Fornecedor_ID { get; set; }
-        public int FK_TipoEmbalagem_ID { get; set; }
-        public int FK_UnidadeMedida_ID { get; set; }
-        public int FK_Imagem_ID { get; set; }
+        public int FK_Categoria { get; set; }
+        public int FK_Fornecedor { get; set; }
+        public int FK_TipoEmbalagem { get; set; }
+        public int FK_UnidadeMedida { get; set; }
+        public int FK_Imagem { get; set; }
+
+        public virtual Fornecedor tblFornecedor { get; set; }
+        public virtual Categoria tblCategoria { get; set; }
+        public virtual TipoEmbalagem tblTipoEmbalagem { get; set; }
+        public virtual UnidadeMedida tblUnidadeMedida { get; set; }
+        public virtual Imagem tblImagem { get; set; }
+
+
+
+        public virtual Operadores Operadores { get; set; }
+
+        public class ProdutoPesquisaPorID 
+        {
+            public int PK_Produto { get; set; }
+            public Operadores Operadores { get; set; }
+        }
+
     }
 }

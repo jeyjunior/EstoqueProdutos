@@ -78,17 +78,19 @@ VALUES
    ('NOT LIKE', 'Não corresponde a um padrão');
 
 
-INSERT INTO Imagens (Imagem) 
+INSERT INTO Imagem (Imagem) 
 SELECT BulkColumn
-FROM OPENROWSET(BULK 'C:\...\standard.png', SINGLE_BLOB) AS Imagem;
+FROM OPENROWSET(BULK 'C:...standard.png', SINGLE_BLOB) AS Imagem;
 
 
-UPDATE Imagens
+UPDATE Imagem
 SET Nome = 'STANDARD'
-WHERE PK_ID = 100 
+WHERE PK_Imagem = 100 
 
 
 
 INSERT INTO Produto
 VALUES
-	('Nome produto', 10.55, 5.66, 'Descrição do Produto', 104, 102, 107, 103, 100)
+	('Produto Exemplo 1', 11.11, 22.22, 'Descrição do Produto 1', 101, 102, 103, 104, 100),
+	('Produto Exemplo 2', 33.33, 44.44, 'Descrição do Produto 2', 104, 103, 102, 101, 100),
+	('Produto Exemplo 3', 55.55, 66.66, 'Descrição do Produto 3', 105, 105, 105, 105, 100)

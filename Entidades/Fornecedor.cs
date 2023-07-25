@@ -8,7 +8,7 @@ namespace EstoqueProdutos.Entidades
 {
     public class Fornecedor
     {
-        public int PK_ID { get; set; }
+        public int PK_Fornecedor { get; set; }
         public string Nome { get; set; }
         public string CNPJ { get; set; }
         public string Endereco { get; set; }

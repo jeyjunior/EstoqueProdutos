@@ -8,8 +8,8 @@ namespace EstoqueProdutos.Entidades
 {
     public class Estoque
     {
-        public int PK_ID { get; set; }
-        public int FK_Produto_ID { get; set; }
+        public int PK_Estoque { get; set; }
+        public int FK_Produto { get; set; }
         public int Quantidade { get; set; }
         public decimal Preco { get; set; }
     }

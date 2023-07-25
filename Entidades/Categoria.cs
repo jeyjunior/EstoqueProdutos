@@ -8,7 +8,7 @@ namespace EstoqueProdutos.Entidades
 {
     public class Categoria
     {
-        public int PK_ID { get; set; }
+        public int PK_Categoria { get; set; }
         public string Nome { get; set; }
     }
 }
