@@ -9,7 +9,7 @@ namespace EstoqueProdutos.Telas_Base
 {
     public class FormularioGestor : FormularioBase, IGestorDeTelas
     {
-        protected List<string> TelasAbertas = new List<string>();
+        protected List<FormularioBase> TelasAbertas = new List<FormularioBase>();
 
         protected int LimiteMaxTelasAbertas { get; set; } = 2;
         
@@ -18,27 +18,27 @@ namespace EstoqueProdutos.Telas_Base
 
         }
         
-        public virtual bool AbrirTelaSubordinada(FormularioBase formularioBase)
+        public virtual void AbrirTelaSubordinada(Func<FormularioBase> criarFormulario, string nomeFormulario)
         {
-            if (TelasAbertas.Count >= LimiteMaxTelasAbertas)
-                return false;
-
-            if (!TelasAbertas.Contains(formularioBase.Name))
+            var formularioBase = criarFormulario();
+            var formularioExistente = TelasAbertas.Find(c => c.Name == nomeFormulario);
+            if (formularioExistente != null)
             {
-                TelasAbertas.Add(formularioBase.Name);
-                formularioBase.Show();
-                return true;
+                formularioExistente.BringToFront();
+                formularioExistente.Focus();
             }
-
-            formularioBase.Focus();
-            return false;
+            else
+            {
+                TelasAbertas.Add(formularioBase);
+                formularioBase.Show();
+            }
         }
 
         public virtual bool FecharTelaSubordinada(FormularioBase formularioBase)
         {
-            if (TelasAbertas.Contains(formularioBase.Name))
+            if (TelasAbertas.Contains(formularioBase))
             {
-                TelasAbertas.Remove(formularioBase.Name);
+                TelasAbertas.Remove(formularioBase);
                 formularioBase.Dispose();
                 return true;
             }

@@ -9,7 +9,7 @@ namespace EstoqueProdutos.Interfaces
 {
     public interface IGestorDeTelas
     {
-        bool AbrirTelaSubordinada(FormularioBase formularioBase);
+        void AbrirTelaSubordinada(Func<FormularioBase> criarFormulario, string nomeFormulario);
         //bool VerificarSeTelaEstaFechada(ITela form);
         bool FecharTelaSubordinada(FormularioBase formularioBase);
     }

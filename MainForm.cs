@@ -8,7 +8,6 @@ namespace EstoqueProdutos
 {
     public partial class MainForm : FormularioGestor
     {
-        private FrmProdutos FrmProdutos;
         public MainForm()
         {
             InitializeComponent();
@@ -17,9 +16,7 @@ namespace EstoqueProdutos
 
         private void btnProdutos_Click(object sender, EventArgs e)
         {
-           FrmProdutos = new FrmProdutos(this);
-
-            AbrirTelaSubordinada(FrmProdutos);
+            AbrirTelaSubordinada(() => new FrmProdutos(this), "FrmProdutos");
         }
     }
 }
