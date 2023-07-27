@@ -12,7 +12,7 @@ namespace EstoqueProdutos.Interfaces
     {
         IEnumerable<Produto> ObterTodosProdutos();
         IEnumerable<Produto> ObterLista(string personalizado);
-        Produto ObterProdutoPorId(ProdutoPesquisaPorID produtoPesquisaPorID);
+        Produto ObterProdutoPorId(ProdutoPesquisarPorID produtoPesquisaPorID);
         void InserirProduto(Produto produto);
         void AtualizarProduto(Produto produto);
         void ExcluirProduto(int id);

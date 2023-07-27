@@ -87,7 +87,7 @@ namespace EstoqueProdutos.Repositorios
             }
         }
 
-        public Produto ObterProdutoPorId(ProdutoPesquisaPorID produtoPesquisaPorID)
+        public Produto ObterProdutoPorId(ProdutoPesquisarPorID produtoPesquisaPorID)
         {
             using (var connection = new SqlConnection(connectionString))
             {
@@ -96,7 +96,7 @@ namespace EstoqueProdutos.Repositorios
                 string condition = "";
                 string sql = SelectBasico();
 
-                condition = " WHERE Produto.PK_Produto " + produtoPesquisaPorID.Operadores.Sigla + " " + produtoPesquisaPorID.PK_Produto;
+                condition = " WHERE Produto.PK_Produto = @PK_Produto";
 
                 sql = sql + condition;
 
@@ -112,7 +112,7 @@ namespace EstoqueProdutos.Repositorios
                         produto.tblImagem = imagem;
                         return produto;
                     },
-                    produtoPesquisaPorID.PK_Produto,
+                    produtoPesquisaPorID,
                     splitOn: "PK_Produto, PK_Categoria, PK_Fornecedor, PK_TipoEmbalagem, PK_UnidadeMedida, PK_Imagem"
                 );
 

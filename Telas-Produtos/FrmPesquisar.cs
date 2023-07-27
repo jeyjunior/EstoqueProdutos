@@ -1,20 +1,27 @@
 ﻿
 
+using EstoqueProdutos.Interfaces;
+
 namespace EstoqueProdutos.Telas_Produtos
 {
     public partial class FrmPesquisar : Form
     {
+
         public FrmPesquisar()
         {
             InitializeComponent();
+            
         }
 
-        #region Metodos
 
-        #endregion
+        private void FrmPesquisar_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
+        }
 
-        #region Eventos
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
 
-        #endregion Eventos
+        }
     }
 }

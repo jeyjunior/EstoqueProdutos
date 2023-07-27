@@ -1,4 +1,7 @@
-﻿using EstoqueProdutos.Repositorios;
+﻿using EstoqueProdutos.Entidades;
+using EstoqueProdutos.Interfaces;
+using EstoqueProdutos.Repositorios;
+using EstoqueProdutos.Telas_Base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,19 +12,33 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace EstoqueProdutos.Telas_Produtos
 {
-    public partial class FrmProdutos : Form
+    public partial class FrmProdutos : FormularioGestor
     {
-        public FrmProdutos()
+        public FrmProdutos(IGestorDeTelas? gestorDeTelas = null): base (gestorDeTelas)
         {
             InitializeComponent();
         }
 
+        #region Eventos
+
+        private void FrmProdutos_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion Eventos
+
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            ProdutoColecao produtoColecao = new ProdutoColecao();
-            var result = produtoColecao.ObterProdutoPorId(new Entidades.Produto.ProdutoPesquisaPorID { PK_Produto = 100, Operadores = new Entidades.Operadores() { Sigla = " >" } });
+
+        }
+
+        private void FrmProdutos_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Fechar();
         }
     }
 }

@@ -26,14 +26,9 @@ namespace EstoqueProdutos.Entidades
         public virtual Imagem tblImagem { get; set; }
 
 
-
-        public virtual Operadores Operadores { get; set; }
-
-        public class ProdutoPesquisaPorID 
+        public class ProdutoPesquisarPorID
         {
-            public int PK_Produto { get; set; }
-            public Operadores Operadores { get; set; }
+            public int PK_Produto {get; set;}
         }
-
     }
 }

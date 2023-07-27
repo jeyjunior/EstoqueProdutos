@@ -272,6 +272,7 @@
             btnPesquisar.TextAlign = ContentAlignment.MiddleRight;
             btnPesquisar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnPesquisar.UseVisualStyleBackColor = true;
+            btnPesquisar.Click += btnPesquisar_Click;
             // 
             // FrmPesquisar
             // 
@@ -286,6 +287,7 @@
             Name = "FrmPesquisar";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Pesquisar";
+            FormClosed += FrmPesquisar_FormClosed;
             gpbDadosProduto.ResumeLayout(false);
             gpbDadosProduto.PerformLayout();
             ResumeLayout(false);

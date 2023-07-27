@@ -69,7 +69,6 @@
             btnPesquisar.TextAlign = ContentAlignment.MiddleRight;
             btnPesquisar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnPesquisar.UseVisualStyleBackColor = true;
-            btnPesquisar.Click += btnPesquisar_Click;
             // 
             // dtgProdutos
             // 
@@ -270,6 +269,7 @@
             Controls.Add(dtgProdutos);
             Name = "FrmProdutos";
             Text = "Produtos";
+            FormClosed += FrmProdutos_FormClosed;
             ((System.ComponentModel.ISupportInitialize)dtgProdutos).EndInit();
             pnlTop.ResumeLayout(false);
             ResumeLayout(false);
