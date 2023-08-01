@@ -27,12 +27,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Update="Telas-Produtos\FrmPesquisar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Telas-Base\FrmBase.cs">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
 
   <ItemGroup>

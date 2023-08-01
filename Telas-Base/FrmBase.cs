@@ -1,34 +1,31 @@
-﻿
-namespace EstoqueProdutos.Telas_Produtos
+﻿using EstoqueProdutos.Interfaces.Telas;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace EstoqueProdutos.Telas_Base
 {
-    public partial class FrmBase : Form
+    public partial class FrmBase : Form, IFrmBase
     {
+        protected IFrmGestor FrmGestor { get; set; }
 
-        #region Classes
-
-        #endregion Classes
-
-
-        #region Propriedades
-
-        #endregion Propriedades
-
-
-        #region Construtor
         public FrmBase()
         {
             InitializeComponent();
         }
 
-        #endregion Construtor
+        public FrmBase(IFrmGestor frmGestor) : this()
+        {
+            FrmGestor = frmGestor;
+        }
 
-        #region Metodos
-
-        #endregion  Metodos
 
 
-        #region Eventos
-
-        #endregion  Eventos
     }
 }
