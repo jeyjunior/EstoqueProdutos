@@ -8,6 +8,6 @@ namespace EstoqueProdutos.Interfaces.Telas
 {
     public interface IFrmBase
     {
-
+        void ObterFrmGestor(IFrmGestor frmGestor);
     }
 }

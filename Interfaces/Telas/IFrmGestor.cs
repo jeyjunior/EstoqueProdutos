@@ -9,6 +9,8 @@ namespace EstoqueProdutos.Interfaces.Telas
 {
     public interface IFrmGestor
     {
-        
+        void AbrirFilho<T>() where T : FrmBase, IFrmBase, new();
+        void FecharFilho(Type tipoClasseHerdeira);
+        //void FecharFilho<T>() where T : FrmBase, IFrmBase;
     }
 }
