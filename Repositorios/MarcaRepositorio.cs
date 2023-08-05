@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace EstoqueProdutos.Repositorios
 {
-    public class MarcaRepositorio : Repositorio<Marca>, IMarcaRepositorio
+    public class MarcaRepositorio : Repositorio<Marca>
     {
 
     }

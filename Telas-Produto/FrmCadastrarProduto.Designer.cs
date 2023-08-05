@@ -58,7 +58,7 @@
             lblCategoria = new Label();
             gpMarcaCategoria = new GroupBox();
             button2 = new Button();
-            button1 = new Button();
+            btnCadastrarMarca = new Button();
             gpFormatoTipoEmbalagem = new GroupBox();
             button4 = new Button();
             button3 = new Button();
@@ -166,8 +166,10 @@
             // 
             // cboUnidade
             // 
+            cboUnidade.DropDownHeight = 150;
             cboUnidade.DropDownStyle = ComboBoxStyle.DropDownList;
             cboUnidade.FormattingEnabled = true;
+            cboUnidade.IntegralHeight = false;
             cboUnidade.Location = new Point(177, 46);
             cboUnidade.Name = "cboUnidade";
             cboUnidade.Size = new Size(83, 28);
@@ -347,8 +349,10 @@
             // 
             // cboMarca
             // 
+            cboMarca.DropDownHeight = 150;
             cboMarca.DropDownStyle = ComboBoxStyle.DropDownList;
             cboMarca.FormattingEnabled = true;
+            cboMarca.IntegralHeight = false;
             cboMarca.Location = new Point(21, 44);
             cboMarca.Name = "cboMarca";
             cboMarca.Size = new Size(239, 28);
@@ -367,8 +371,10 @@
             // 
             // cboCategoria
             // 
+            cboCategoria.DropDownHeight = 150;
             cboCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCategoria.FormattingEnabled = true;
+            cboCategoria.IntegralHeight = false;
             cboCategoria.Location = new Point(313, 44);
             cboCategoria.Name = "cboCategoria";
             cboCategoria.Size = new Size(245, 28);
@@ -388,7 +394,7 @@
             // gpMarcaCategoria
             // 
             gpMarcaCategoria.Controls.Add(button2);
-            gpMarcaCategoria.Controls.Add(button1);
+            gpMarcaCategoria.Controls.Add(btnCadastrarMarca);
             gpMarcaCategoria.Controls.Add(lblCategoria);
             gpMarcaCategoria.Controls.Add(cboCategoria);
             gpMarcaCategoria.Controls.Add(lblMarca);
@@ -416,21 +422,22 @@
             button2.Text = "+";
             button2.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // btnCadastrarMarca
             // 
-            button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            button1.BackColor = Color.FromArgb(0, 192, 192);
-            button1.FlatAppearance.BorderColor = Color.Silver;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(266, 43);
-            button1.Name = "button1";
-            button1.Size = new Size(29, 29);
-            button1.TabIndex = 8;
-            button1.Text = "+";
-            button1.UseVisualStyleBackColor = false;
+            btnCadastrarMarca.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnCadastrarMarca.BackColor = Color.FromArgb(0, 192, 192);
+            btnCadastrarMarca.FlatAppearance.BorderColor = Color.Silver;
+            btnCadastrarMarca.FlatAppearance.BorderSize = 0;
+            btnCadastrarMarca.FlatStyle = FlatStyle.Flat;
+            btnCadastrarMarca.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCadastrarMarca.ForeColor = Color.White;
+            btnCadastrarMarca.Location = new Point(266, 43);
+            btnCadastrarMarca.Name = "btnCadastrarMarca";
+            btnCadastrarMarca.Size = new Size(29, 29);
+            btnCadastrarMarca.TabIndex = 8;
+            btnCadastrarMarca.Text = "+";
+            btnCadastrarMarca.UseVisualStyleBackColor = false;
+            btnCadastrarMarca.Click += btnCadastrarMarca_Click;
             // 
             // gpFormatoTipoEmbalagem
             // 
@@ -492,8 +499,10 @@
             // 
             // cboEmbalagem
             // 
+            cboEmbalagem.DropDownHeight = 150;
             cboEmbalagem.DropDownStyle = ComboBoxStyle.DropDownList;
             cboEmbalagem.FormattingEnabled = true;
+            cboEmbalagem.IntegralHeight = false;
             cboEmbalagem.Location = new Point(313, 44);
             cboEmbalagem.Name = "cboEmbalagem";
             cboEmbalagem.Size = new Size(245, 28);
@@ -512,8 +521,10 @@
             // 
             // cboFormato
             // 
+            cboFormato.DropDownHeight = 150;
             cboFormato.DropDownStyle = ComboBoxStyle.DropDownList;
             cboFormato.FormattingEnabled = true;
+            cboFormato.IntegralHeight = false;
             cboFormato.Location = new Point(21, 44);
             cboFormato.Name = "cboFormato";
             cboFormato.Size = new Size(239, 28);
@@ -521,7 +532,7 @@
             // 
             // btnSair
             // 
-            btnSair.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnSair.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnSair.BackColor = Color.Red;
             btnSair.FlatAppearance.BorderColor = Color.DarkRed;
             btnSair.FlatStyle = FlatStyle.Flat;
@@ -537,7 +548,7 @@
             // 
             // btnSalvar
             // 
-            btnSalvar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnSalvar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnSalvar.BackColor = Color.Green;
             btnSalvar.FlatAppearance.BorderColor = Color.Green;
             btnSalvar.FlatStyle = FlatStyle.Flat;
@@ -552,7 +563,7 @@
             // 
             // btnLimpar
             // 
-            btnLimpar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnLimpar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnLimpar.BackColor = Color.White;
             btnLimpar.FlatAppearance.BorderColor = Color.Silver;
             btnLimpar.FlatStyle = FlatStyle.Flat;
@@ -578,7 +589,6 @@
             Controls.Add(gpDetalhesProduto);
             Controls.Add(gpProduto);
             Name = "FrmCadastrarProduto";
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastrar Produtos";
             Load += FrmCadastrarProduto_Load;
             gpProduto.ResumeLayout(false);
@@ -633,7 +643,7 @@
         private Label lblFabricacao;
         private DateTimePicker dtpFabricacao;
         private Button button2;
-        private Button button1;
+        private Button btnCadastrarMarca;
         private Button button4;
         private Button button3;
     }

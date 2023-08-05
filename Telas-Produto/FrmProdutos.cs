@@ -16,7 +16,7 @@ namespace EstoqueProdutos.Telas_Produto
         {
             InitializeComponent();
         }
-        protected override void AbrirFilho<T>()
+        protected override void AbrirFilho<T>(EventHandler? e = null)
         {
             base.AbrirFilho<T>();
         }

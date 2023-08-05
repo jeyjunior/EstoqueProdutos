@@ -25,7 +25,8 @@ namespace EstoqueProdutos.Telas_Base
             InitializeComponent();
         }
 
-        protected virtual void AbrirFilho<T>() where T : FrmBase, IFrmBase, new()
+
+        protected virtual void AbrirFilho<T>(EventHandler? e = null) where T : FrmBase, IFrmBase, new()
         {
             try
             {
@@ -39,6 +40,10 @@ namespace EstoqueProdutos.Telas_Base
 
                     novoFilho.ObterFrmGestor(this);
                     novoFilho.FormClosed += FrmBase_FormClosed;
+
+                    if (e != null)
+                        novoFilho.FormClosed += new FormClosedEventHandler(e);
+
                     novoFilho.Show();
                 }
                 else

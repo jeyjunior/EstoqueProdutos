@@ -11,5 +11,6 @@ namespace EstoqueProdutos.Interfaces
     public interface IRepositorio<T>
     {
         IEnumerable<T> ObterTabela();
+        bool InserirDadosNaTabela(T entity);
     }
 }
