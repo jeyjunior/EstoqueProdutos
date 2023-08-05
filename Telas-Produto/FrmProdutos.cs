@@ -1,27 +1,29 @@
-﻿using EstoqueProdutos.Interfaces.Telas;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EstoqueProdutos.Telas_Produto
 {
-    public partial class FrmEditarProduto : Telas_Base.FrmBase
+    public partial class FrmProdutos : Telas_Base.FrmGestor
     {
-        public FrmEditarProduto()
+        public FrmProdutos()
         {
             InitializeComponent();
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        protected override void AbrirFilho<T>()
         {
-            Fechar();
+            base.AbrirFilho<T>();
+        }
+
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            AbrirFilho<FrmCadastrarProduto>();
         }
     }
 }

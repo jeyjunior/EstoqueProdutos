@@ -25,22 +25,30 @@ namespace EstoqueProdutos.Telas_Base
             InitializeComponent();
         }
 
-        public void AbrirFilho<T>() where T : FrmBase, IFrmBase, new()
+        protected virtual void AbrirFilho<T>() where T : FrmBase, IFrmBase, new()
         {
-            Type tipoT = typeof(T);
-            FrmBase? filhoEncontrado = filhosInstanciados.FirstOrDefault(f => f.GetType() == tipoT);
-            
-            if (filhoEncontrado == null)
+            try
             {
-                var novoFilho = new T();
-                filhosInstanciados.Add(novoFilho);
+                Type tipoT = typeof(T);
+                FrmBase? filhoEncontrado = filhosInstanciados.FirstOrDefault(f => f.GetType() == tipoT);
 
-                novoFilho.ObterFrmGestor(this);
-                novoFilho.Show();
+                if (filhoEncontrado == null)
+                {
+                    var novoFilho = new T();
+                    filhosInstanciados.Add(novoFilho);
+
+                    novoFilho.ObterFrmGestor(this);
+                    novoFilho.FormClosed += FrmBase_FormClosed;
+                    novoFilho.Show();
+                }
+                else
+                {
+                    filhoEncontrado.Focus();
+                }
             }
-            else
+            catch (Exception)
             {
-                filhoEncontrado.Focus();
+                MessageBox.Show("Falha ao abrir telas!");
             }
         }
 
@@ -55,18 +63,12 @@ namespace EstoqueProdutos.Telas_Base
             }
         }
 
-
-
-        //public void FecharFilho<T>() where T : FrmBase, IFrmBase
-        //{
-        //    Type tipoT = typeof(T);
-        //    FrmBase? filhoEncontrado = filhosInstanciados.FirstOrDefault(f => f.GetType() == tipoT);
-
-        //    if (filhoEncontrado != null)
-        //    {
-        //        filhosInstanciados.Remove(filhoEncontrado);
-        //        filhoEncontrado.Close();
-        //    }
-        //}
+        private void FrmBase_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (sender is FrmBase frmBase)
+            {
+                frmBase.FecharTela();
+            }
+        }
     }
 }

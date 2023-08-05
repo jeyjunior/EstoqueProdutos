@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace EstoqueProdutos.Entidades
 {
-    public class UnidadeMedida
+    public class Marca
     {
-        public int PK_UnidadeMedida { get; set; }
-        public string Sigla { get; set; }
-        public string Extenso { get; set; }
+        public int PK_Marca { get; set; }
+        public string? Nome { get; set; }
+        public string? Descricao { get; set; }
     }
 }
+ 

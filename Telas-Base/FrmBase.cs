@@ -27,13 +27,18 @@ namespace EstoqueProdutos.Telas_Base
             FrmGestor = frmGestor;
         }
 
-        protected virtual void Fechar()
+        public void FecharTela()
         {
-            Type tipoClasseHerdeira = this.GetType();
-            MethodInfo metodoFecharFilho = FrmGestor.GetType().GetMethod("FecharFilho");
-            metodoFecharFilho.Invoke(FrmGestor, new object[] { tipoClasseHerdeira });
+            try
+            {
+                Type tipoClasseHerdeira = this.GetType();
+                MethodInfo? metodoFecharFilho = FrmGestor.GetType().GetMethod("FecharFilho");
+                metodoFecharFilho?.Invoke(FrmGestor, new object[] { tipoClasseHerdeira });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Falha ao tentar fechar tela\nErro: " + ex.Message);
+            }
         }
-
-
     }
 }
