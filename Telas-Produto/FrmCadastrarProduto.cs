@@ -1,6 +1,7 @@
 ﻿using EstoqueProdutos.Entidades;
 using EstoqueProdutos.Interfaces;
 using EstoqueProdutos.Repositorios;
+using EstoqueProdutos.Telas_Base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -86,15 +87,27 @@ namespace EstoqueProdutos.Telas_Produto
         {
 
         }
+
         private void btnCadastrarMarca_Click(object sender, EventArgs e)
         {
-            var repositorioCategoria = new MarcaRepositorio();
-            AbrirFilhoCadastroSimples(repositorioCategoria, AtualizarCboMarca_Click);
+            AbrirFilho<FrmCadastroSimples>(AtualizarCboMarca_Click);
+
+            if (ObterFilho<FrmCadastroSimples>() is FrmCadastroSimples cadastroSimples) 
+            {
+                cadastroSimples.ObterRepositorio<MarcaRepositorio>();
+                cadastroSimples.ObterEntidade<Marca>();
+            }
         }
+
         private void btnCadastrarCategoria_Click(object sender, EventArgs e)
         {
-            var repositorioCategoria = new CategoriaRepositorio();
-            AbrirFilhoCadastroSimples(repositorioCategoria, AtualizarCboCategoria_Click);
+            AbrirFilho<FrmCadastroSimples>(AtualizarCboCategoria_Click);
+
+            if (ObterFilho<FrmCadastroSimples>() is FrmCadastroSimples cadastroSimples)
+            {
+                cadastroSimples.ObterRepositorio<CategoriaRepositorio>();
+                cadastroSimples.ObterEntidade<Categoria>();
+            }
         }
 
         private void AtualizarCboMarca_Click(object sender, EventArgs e)

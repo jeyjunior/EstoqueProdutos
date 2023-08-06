@@ -3,6 +3,7 @@ using EstoqueProdutos.Formatacao;
 using EstoqueProdutos.Interfaces;
 using EstoqueProdutos.Repositorios;
 using Polly.Timeout;
+using Sql;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,30 +15,40 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EstoqueProdutos
+namespace EstoqueProdutos.Telas_Base
 {
-    public partial class FrmCadastroSimples<T> : Telas_Base.FrmBase
+    public partial class FrmCadastroSimples : Telas_Base.FrmBase
     {
-        private IRepositorio<T> repositorio;
+        object repositorio;
+        object entidade;
 
-        public FrmCadastroSimples(IRepositorio<T> repositorio)
+        public FrmCadastroSimples()
         {
             InitializeComponent();
-            this.repositorio = repositorio;
+        }
+
+        public void ObterRepositorio<T>() where T : class
+        {
+            repositorio = Activator.CreateInstance<T>();
+        }
+
+        public void ObterEntidade<T>() where T : class
+        {
+            entidade = Activator.CreateInstance<T>();
         }
 
         private void LimparCampos()
         {
-            txtNomeMarca.Clear();
+            txtNome.Clear();
             txtDescricao.Clear();
 
-            txtNomeMarca.Focus();
+            txtNome.Focus();
             HabilitarComponentes();
         }
 
         private void HabilitarComponentes()
         {
-            if (txtNomeMarca.TextLength > 0)
+            if (txtNome.TextLength > 0)
             {
                 btnSalvar.Enabled = true;
                 btnSalvar.BackColor = Color.Green;
@@ -58,18 +69,41 @@ namespace EstoqueProdutos
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            T entidade = GetEntidade();
+            string nome = txtNome.Text.LimparTexto();
+            string descricao = txtDescricao.Text.LimparTexto();
 
-            var resultado = repositorio.InserirDadosNaTabela(entidade);
+            PropertyInfo[] prop = entidade.GetType().GetProperties();
 
-            if (resultado)
+            prop.ToList().ForEach(p =>
             {
-                LimparCampos();
-                MessageBox.Show("Cadastrado com sucesso!");
-            }
-            else
+                if (p.Name == "Nome") 
+                {
+                    if (entidade.GetType().GetProperty("Nome") is PropertyInfo pNome &&
+                    pNome.PropertyType == typeof(string))
+                    {
+                        pNome.SetValue(entidade, nome);
+                    }
+                    else if(entidade.GetType().GetProperty("Descricao") is PropertyInfo pDesc &&
+                        pDesc.PropertyType == typeof(string))
+                    { 
+                        pDesc.SetValue(entidade, descricao);
+                    }
+                }
+            });
+
+
+            if (repositorio.GetType().GetMethod("InserirDadosNaTabela") is MethodInfo metodo)
             {
-                MessageBox.Show("Falha ao cadastrar!");
+                object? resultado = metodo.Invoke(repositorio, new object[] { entidade });
+
+                if (resultado != null && (bool)resultado)
+                {
+                    MessageBox.Show("Cadastro realizado com sucesso!");
+                }
+                else 
+                {
+                    MessageBox.Show("Falha no cadastro!");
+                }
             }
         }
 
@@ -86,27 +120,6 @@ namespace EstoqueProdutos
         private void txtNomeMarca_TextChanged(object sender, EventArgs e)
         {
             HabilitarComponentes();
-        }
-
-        private T GetEntidade()
-        {
-            return PreencherEntidade();
-        }
-
-        private T PreencherEntidade()
-        {
-            T entidade = Activator.CreateInstance<T>();
-
-            PropertyInfo propNome = typeof(T).GetProperty("Nome");
-            PropertyInfo propDescricao = typeof(T).GetProperty("Descricao");
-
-            if (propNome != null && propDescricao != null)
-            {
-                propNome.SetValue(entidade, txtNomeMarca.Text);
-                propDescricao.SetValue(entidade, txtDescricao.Text);
-            }
-
-            return entidade;
         }
     }
 }

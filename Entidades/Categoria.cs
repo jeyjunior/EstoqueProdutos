@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EstoqueProdutos.Entidades
 {
-    public class Categoria
+    public class Categoria : IEntidade
     {
         public int PK_Categoria { get; set; }
         public string Nome { get; set; }
