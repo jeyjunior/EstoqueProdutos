@@ -57,11 +57,11 @@
             cboCategoria = new ComboBox();
             lblCategoria = new Label();
             gpMarcaCategoria = new GroupBox();
-            button2 = new Button();
+            btnCadastrarCategoria = new Button();
             btnCadastrarMarca = new Button();
             gpFormatoTipoEmbalagem = new GroupBox();
-            button4 = new Button();
-            button3 = new Button();
+            btnCadastrarEmbalagem = new Button();
+            btnCadastrarFormato = new Button();
             lblEmbalagem = new Label();
             cboEmbalagem = new ComboBox();
             lblFormato = new Label();
@@ -393,7 +393,7 @@
             // 
             // gpMarcaCategoria
             // 
-            gpMarcaCategoria.Controls.Add(button2);
+            gpMarcaCategoria.Controls.Add(btnCadastrarCategoria);
             gpMarcaCategoria.Controls.Add(btnCadastrarMarca);
             gpMarcaCategoria.Controls.Add(lblCategoria);
             gpMarcaCategoria.Controls.Add(cboCategoria);
@@ -406,21 +406,22 @@
             gpMarcaCategoria.TabStop = false;
             gpMarcaCategoria.Text = "Marca e Categoria";
             // 
-            // button2
+            // btnCadastrarCategoria
             // 
-            button2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            button2.BackColor = Color.FromArgb(0, 192, 192);
-            button2.FlatAppearance.BorderColor = Color.Silver;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.ForeColor = Color.White;
-            button2.Location = new Point(564, 43);
-            button2.Name = "button2";
-            button2.Size = new Size(29, 29);
-            button2.TabIndex = 11;
-            button2.Text = "+";
-            button2.UseVisualStyleBackColor = false;
+            btnCadastrarCategoria.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnCadastrarCategoria.BackColor = Color.FromArgb(0, 192, 192);
+            btnCadastrarCategoria.FlatAppearance.BorderColor = Color.Silver;
+            btnCadastrarCategoria.FlatAppearance.BorderSize = 0;
+            btnCadastrarCategoria.FlatStyle = FlatStyle.Flat;
+            btnCadastrarCategoria.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCadastrarCategoria.ForeColor = Color.White;
+            btnCadastrarCategoria.Location = new Point(564, 43);
+            btnCadastrarCategoria.Name = "btnCadastrarCategoria";
+            btnCadastrarCategoria.Size = new Size(29, 29);
+            btnCadastrarCategoria.TabIndex = 11;
+            btnCadastrarCategoria.Text = "+";
+            btnCadastrarCategoria.UseVisualStyleBackColor = false;
+            btnCadastrarCategoria.Click += btnCadastrarCategoria_Click;
             // 
             // btnCadastrarMarca
             // 
@@ -441,8 +442,8 @@
             // 
             // gpFormatoTipoEmbalagem
             // 
-            gpFormatoTipoEmbalagem.Controls.Add(button4);
-            gpFormatoTipoEmbalagem.Controls.Add(button3);
+            gpFormatoTipoEmbalagem.Controls.Add(btnCadastrarEmbalagem);
+            gpFormatoTipoEmbalagem.Controls.Add(btnCadastrarFormato);
             gpFormatoTipoEmbalagem.Controls.Add(lblEmbalagem);
             gpFormatoTipoEmbalagem.Controls.Add(cboEmbalagem);
             gpFormatoTipoEmbalagem.Controls.Add(lblFormato);
@@ -454,37 +455,37 @@
             gpFormatoTipoEmbalagem.TabStop = false;
             gpFormatoTipoEmbalagem.Text = "Formato e Tipo de Embalagem";
             // 
-            // button4
+            // btnCadastrarEmbalagem
             // 
-            button4.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            button4.BackColor = Color.FromArgb(0, 192, 192);
-            button4.FlatAppearance.BorderColor = Color.Silver;
-            button4.FlatAppearance.BorderSize = 0;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
-            button4.ForeColor = Color.White;
-            button4.Location = new Point(564, 43);
-            button4.Name = "button4";
-            button4.Size = new Size(29, 29);
-            button4.TabIndex = 12;
-            button4.Text = "+";
-            button4.UseVisualStyleBackColor = false;
+            btnCadastrarEmbalagem.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnCadastrarEmbalagem.BackColor = Color.FromArgb(0, 192, 192);
+            btnCadastrarEmbalagem.FlatAppearance.BorderColor = Color.Silver;
+            btnCadastrarEmbalagem.FlatAppearance.BorderSize = 0;
+            btnCadastrarEmbalagem.FlatStyle = FlatStyle.Flat;
+            btnCadastrarEmbalagem.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCadastrarEmbalagem.ForeColor = Color.White;
+            btnCadastrarEmbalagem.Location = new Point(564, 43);
+            btnCadastrarEmbalagem.Name = "btnCadastrarEmbalagem";
+            btnCadastrarEmbalagem.Size = new Size(29, 29);
+            btnCadastrarEmbalagem.TabIndex = 12;
+            btnCadastrarEmbalagem.Text = "+";
+            btnCadastrarEmbalagem.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // btnCadastrarFormato
             // 
-            button3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            button3.BackColor = Color.FromArgb(0, 192, 192);
-            button3.FlatAppearance.BorderColor = Color.Silver;
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
-            button3.ForeColor = Color.White;
-            button3.Location = new Point(266, 43);
-            button3.Name = "button3";
-            button3.Size = new Size(29, 29);
-            button3.TabIndex = 11;
-            button3.Text = "+";
-            button3.UseVisualStyleBackColor = false;
+            btnCadastrarFormato.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnCadastrarFormato.BackColor = Color.FromArgb(0, 192, 192);
+            btnCadastrarFormato.FlatAppearance.BorderColor = Color.Silver;
+            btnCadastrarFormato.FlatAppearance.BorderSize = 0;
+            btnCadastrarFormato.FlatStyle = FlatStyle.Flat;
+            btnCadastrarFormato.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCadastrarFormato.ForeColor = Color.White;
+            btnCadastrarFormato.Location = new Point(266, 43);
+            btnCadastrarFormato.Name = "btnCadastrarFormato";
+            btnCadastrarFormato.Size = new Size(29, 29);
+            btnCadastrarFormato.TabIndex = 11;
+            btnCadastrarFormato.Text = "+";
+            btnCadastrarFormato.UseVisualStyleBackColor = false;
             // 
             // lblEmbalagem
             // 
@@ -642,9 +643,9 @@
         private CheckBox chkFabricacao;
         private Label lblFabricacao;
         private DateTimePicker dtpFabricacao;
-        private Button button2;
+        private Button btnCadastrarCategoria;
         private Button btnCadastrarMarca;
-        private Button button4;
-        private Button button3;
+        private Button btnCadastrarEmbalagem;
+        private Button btnCadastrarFormato;
     }
 }

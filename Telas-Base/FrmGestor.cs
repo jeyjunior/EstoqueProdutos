@@ -1,4 +1,5 @@
-﻿using EstoqueProdutos.Interfaces.Telas;
+﻿using EstoqueProdutos.Interfaces;
+using EstoqueProdutos.Interfaces.Telas;
 using EstoqueProdutos.Telas_Base;
 using System;
 using System.CodeDom;
@@ -25,6 +26,39 @@ namespace EstoqueProdutos.Telas_Base
             InitializeComponent();
         }
 
+        protected virtual void AbrirFilhoCadastroSimples<T>(IRepositorio<T> repositorio, EventHandler? e = null) where T : class
+        {
+            try
+            {
+                Type tipoFormulario = typeof(FrmCadastroSimples<>).MakeGenericType(typeof(T));
+                FrmBase? filhoEncontrado = filhosInstanciados.FirstOrDefault(f => f.GetType() == tipoFormulario);
+
+                if (filhoEncontrado == null)
+                {
+                    var novoFilho = Activator.CreateInstance(tipoFormulario, repositorio) as FrmBase;
+                    if (novoFilho != null)
+                    {
+                        filhosInstanciados.Add(novoFilho);
+
+                        novoFilho.ObterFrmGestor(this);
+                        novoFilho.FormClosed += FrmBase_FormClosed;
+
+                        if (e != null)
+                            novoFilho.FormClosed += new FormClosedEventHandler(e);
+
+                        novoFilho.Show();
+                    }
+                }
+                else
+                {
+                    filhoEncontrado.Focus();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Falha ao abrir tela de cadastro!");
+            }
+        }
 
         protected virtual void AbrirFilho<T>(EventHandler? e = null) where T : FrmBase, IFrmBase, new()
         {

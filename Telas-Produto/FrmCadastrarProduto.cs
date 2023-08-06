@@ -19,6 +19,7 @@ namespace EstoqueProdutos.Telas_Produto
 
         #region Classes
         IRepositorio<Marca> marcaRepositorio = new MarcaRepositorio();
+        IRepositorio<Categoria> categoriaRepositorio = new CategoriaRepositorio();
         #endregion Classes
 
         #region Propriedades
@@ -39,6 +40,7 @@ namespace EstoqueProdutos.Telas_Produto
             try
             {
                 BindCboMarca();
+                BindCboCategoria();
             }
             catch (Exception ex)
             {
@@ -50,14 +52,24 @@ namespace EstoqueProdutos.Telas_Produto
         {
             var result = marcaRepositorio.ObterTabela();
 
-            if(result != null)
+            if (result != null)
             {
                 cboMarca.DataSource = result.OrderBy(c => c.Nome).ToList();
                 cboMarca.DisplayMember = "Nome";
                 cboMarca.ValueMember = "PK_Marca";
             }
         }
+        private void BindCboCategoria()
+        {
+            var result = categoriaRepositorio.ObterTabela();
 
+            if (result != null)
+            {
+                cboCategoria.DataSource = result.OrderBy(c => c.Nome).ToList();
+                cboCategoria.DisplayMember = "Nome";
+                cboCategoria.ValueMember = "PK_Categoria";
+            }
+        }
         #endregion Metodos
 
         #region Eventos
@@ -76,12 +88,23 @@ namespace EstoqueProdutos.Telas_Produto
         }
         private void btnCadastrarMarca_Click(object sender, EventArgs e)
         {
-            AbrirFilho<Telas_ProdutoMarcas.FrmCadastrarMarca>(AtualizarCboMarca_Click);
+            var repositorioCategoria = new MarcaRepositorio();
+            AbrirFilhoCadastroSimples(repositorioCategoria, AtualizarCboMarca_Click);
+        }
+        private void btnCadastrarCategoria_Click(object sender, EventArgs e)
+        {
+            var repositorioCategoria = new CategoriaRepositorio();
+            AbrirFilhoCadastroSimples(repositorioCategoria, AtualizarCboCategoria_Click);
         }
 
         private void AtualizarCboMarca_Click(object sender, EventArgs e)
         {
             BindCboMarca();
+        }
+
+        private void AtualizarCboCategoria_Click(object sender, EventArgs e)
+        {
+            BindCboCategoria();
         }
 
         #endregion Eventos

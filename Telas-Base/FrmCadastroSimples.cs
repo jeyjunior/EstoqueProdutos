@@ -2,34 +2,30 @@
 using EstoqueProdutos.Formatacao;
 using EstoqueProdutos.Interfaces;
 using EstoqueProdutos.Repositorios;
+using Polly.Timeout;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EstoqueProdutos.Telas_ProdutoMarcas
+namespace EstoqueProdutos
 {
-    public partial class FrmCadastrarCategoria : Telas_Base.FrmBase
+    public partial class FrmCadastroSimples<T> : Telas_Base.FrmBase
     {
-        #region Classes
-        IRepositorio<Marca> marcaRepositorio = new MarcaRepositorio();
-        #endregion Classes
+        private IRepositorio<T> repositorio;
 
-        #region Propriedades
-
-        #endregion Propriedades
-
-        public FrmCadastrarCategoria()
+        public FrmCadastroSimples(IRepositorio<T> repositorio)
         {
             InitializeComponent();
+            this.repositorio = repositorio;
         }
 
-        #region Metodos
         private void LimparCampos()
         {
             txtNomeMarca.Clear();
@@ -55,32 +51,25 @@ namespace EstoqueProdutos.Telas_ProdutoMarcas
             }
         }
 
-        #endregion Metodos
-
-        #region Eventos
-        private void FrmCadastrarMarca_Load(object sender, EventArgs e)
+        private void FrmCadastroSimples_Load(object sender, EventArgs e)
         {
             LimparCampos();
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            var novaMarca = new Marca()
-            {
-                Nome = txtNomeMarca.Text.LimparTexto(),
-                Descricao = txtDescricao.Text.LimparTexto()
-            };
+            T entidade = GetEntidade();
 
-            var resultado = marcaRepositorio.InserirDadosNaTabela(novaMarca);
+            var resultado = repositorio.InserirDadosNaTabela(entidade);
 
             if (resultado)
             {
                 LimparCampos();
-                MessageBox.Show("Marca cadastrada com sucesso!");
+                MessageBox.Show("Cadastrado com sucesso!");
             }
             else
             {
-                MessageBox.Show("Falha ao cadastrar Marca!");
+                MessageBox.Show("Falha ao cadastrar!");
             }
         }
 
@@ -99,8 +88,25 @@ namespace EstoqueProdutos.Telas_ProdutoMarcas
             HabilitarComponentes();
         }
 
-        #endregion Eventos
+        private T GetEntidade()
+        {
+            return PreencherEntidade();
+        }
 
+        private T PreencherEntidade()
+        {
+            T entidade = Activator.CreateInstance<T>();
 
+            PropertyInfo propNome = typeof(T).GetProperty("Nome");
+            PropertyInfo propDescricao = typeof(T).GetProperty("Descricao");
+
+            if (propNome != null && propDescricao != null)
+            {
+                propNome.SetValue(entidade, txtNomeMarca.Text);
+                propDescricao.SetValue(entidade, txtDescricao.Text);
+            }
+
+            return entidade;
+        }
     }
 }

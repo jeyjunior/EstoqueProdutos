@@ -1,6 +1,6 @@
-﻿namespace EstoqueProdutos.Telas_ProdutoMarcas
+﻿namespace EstoqueProdutos
 {
-    partial class FrmCadastrarCategoria
+    partial class FrmCadastroSimples<T>
     {
         /// <summary>
         /// Required designer variable.
@@ -50,7 +50,7 @@
             gpMarca.Size = new Size(465, 148);
             gpMarca.TabIndex = 1;
             gpMarca.TabStop = false;
-            gpMarca.Text = "Marca";
+            gpMarca.Text = "Categoria";
             // 
             // txtDescricao
             // 
@@ -94,7 +94,7 @@
             lblNomeMarca.Name = "lblNomeMarca";
             lblNomeMarca.Size = new Size(281, 24);
             lblNomeMarca.TabIndex = 2;
-            lblNomeMarca.Text = "Nome da Marca:";
+            lblNomeMarca.Text = "Nome da Categoria:";
             lblNomeMarca.TextAlign = ContentAlignment.BottomLeft;
             // 
             // btnLimpar
@@ -143,7 +143,7 @@
             btnSair.UseVisualStyleBackColor = false;
             btnSair.Click += btnSair_Click;
             // 
-            // FrmCadastrarMarca
+            // FrmCadastrarCategoria
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -156,11 +156,10 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "FrmCadastrarMarca";
+            Name = "FrmCadastrarCategoria";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Cadastrar Marca";
-            Load += FrmCadastrarMarca_Load;
+            Text = "Cadastrar Categoria";
             gpMarca.ResumeLayout(false);
             gpMarca.PerformLayout();
             ResumeLayout(false);
