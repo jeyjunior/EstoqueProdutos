@@ -21,6 +21,8 @@ namespace EstoqueProdutos.Telas_Produto
         #region Classes
         IRepositorio<Marca> marcaRepositorio = new MarcaRepositorio();
         IRepositorio<Categoria> categoriaRepositorio = new CategoriaRepositorio();
+        IRepositorio<Formato> formatoRepositorio = new FormatoRepositorio();
+        IRepositorio<Embalagem> embalagemRepositorio = new EmbalagemRepositorio();
         #endregion Classes
 
         #region Propriedades
@@ -42,6 +44,7 @@ namespace EstoqueProdutos.Telas_Produto
             {
                 BindCboMarca();
                 BindCboCategoria();
+                BindCboFormato();
             }
             catch (Exception ex)
             {
@@ -71,6 +74,28 @@ namespace EstoqueProdutos.Telas_Produto
                 cboCategoria.ValueMember = "PK_Categoria";
             }
         }
+        private void BindCboFormato()
+        {
+            var result = formatoRepositorio.ObterTabela();
+
+            if (result != null)
+            {
+                cboFormato.DataSource = result.OrderBy(c => c.Nome).ToList();
+                cboFormato.DisplayMember = "Nome";
+                cboFormato.ValueMember = "PK_Formato";
+            }
+        }
+        private void BindCboEmbalagem()
+        {
+            var result = embalagemRepositorio.ObterTabela();
+
+            if (result != null)
+            {
+                cboEmbalagem.DataSource = result.OrderBy(c => c.Nome).ToList();
+                cboEmbalagem.DisplayMember = "Nome";
+                cboEmbalagem.ValueMember = "PK_Embalagem";
+            }
+        }
         #endregion Metodos
 
         #region Eventos
@@ -92,7 +117,7 @@ namespace EstoqueProdutos.Telas_Produto
         {
             AbrirFilho<FrmCadastroSimples>(AtualizarCboMarca_Click);
 
-            if (ObterFilho<FrmCadastroSimples>() is FrmCadastroSimples cadastroSimples) 
+            if (ObterFilho<FrmCadastroSimples>() is FrmCadastroSimples cadastroSimples)
             {
                 cadastroSimples.ObterRepositorio<MarcaRepositorio>();
                 cadastroSimples.ObterEntidade<Marca>();
@@ -109,6 +134,27 @@ namespace EstoqueProdutos.Telas_Produto
                 cadastroSimples.ObterEntidade<Categoria>();
             }
         }
+        private void btnCadastrarFormato_Click(object sender, EventArgs e)
+        {
+            AbrirFilho<FrmCadastroSimples>(AtualizarCboFormato_Click);
+
+            if (ObterFilho<FrmCadastroSimples>() is FrmCadastroSimples cadastroSimples)
+            {
+                cadastroSimples.ObterRepositorio<FormatoRepositorio>();
+                cadastroSimples.ObterEntidade<Formato>();
+            }
+        }
+
+        private void btnCadastrarEmbalagem_Click(object sender, EventArgs e)
+        {
+            AbrirFilho<FrmCadastroSimples>(AtualizarCboEmbalagem_Click);
+
+            if (ObterFilho<FrmCadastroSimples>() is FrmCadastroSimples cadastroSimples)
+            {
+                cadastroSimples.ObterRepositorio<EmbalagemRepositorio>();
+                cadastroSimples.ObterEntidade<Embalagem>();
+            }
+        }
 
         private void AtualizarCboMarca_Click(object sender, EventArgs e)
         {
@@ -120,7 +166,21 @@ namespace EstoqueProdutos.Telas_Produto
             BindCboCategoria();
         }
 
+        private void AtualizarCboFormato_Click(object sender, EventArgs e)
+        {
+            BindCboFormato();
+        }
+        private void AtualizarCboEmbalagem_Click(object sender, EventArgs e)
+        {
+            BindCboEmbalagem();
+        }
+
         #endregion Eventos
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+
+        }
 
     }
 }

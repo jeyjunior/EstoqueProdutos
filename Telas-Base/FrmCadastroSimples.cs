@@ -35,6 +35,24 @@ namespace EstoqueProdutos.Telas_Base
         public void ObterEntidade<T>() where T : class
         {
             entidade = Activator.CreateInstance<T>();
+
+            if (entidade != null)
+            {
+                this.Text = $"Cadastrar {entidade.GetType().Name}";
+
+                string nome = entidade.GetType().Name;
+
+                if (nome[nome.Length - 1] == 'o' || nome[nome.Length - 1] == 'O')
+                {
+                    lblNome.Text = $"Nome do {nome}";
+                    lblDescricao.Text = $"Descrição do {nome}";
+                }
+                else 
+                {
+                    lblNome.Text = $"Nome da {nome}";
+                    lblDescricao.Text = $"Descrição da {nome}";
+                }
+            }
         }
 
         private void LimparCampos()
@@ -76,16 +94,16 @@ namespace EstoqueProdutos.Telas_Base
 
             prop.ToList().ForEach(p =>
             {
-                if (p.Name == "Nome") 
+                if (p.Name == "Nome")
                 {
                     if (entidade.GetType().GetProperty("Nome") is PropertyInfo pNome &&
                     pNome.PropertyType == typeof(string))
                     {
                         pNome.SetValue(entidade, nome);
                     }
-                    else if(entidade.GetType().GetProperty("Descricao") is PropertyInfo pDesc &&
+                    else if (entidade.GetType().GetProperty("Descricao") is PropertyInfo pDesc &&
                         pDesc.PropertyType == typeof(string))
-                    { 
+                    {
                         pDesc.SetValue(entidade, descricao);
                     }
                 }
@@ -99,10 +117,12 @@ namespace EstoqueProdutos.Telas_Base
                 if (resultado != null && (bool)resultado)
                 {
                     MessageBox.Show("Cadastro realizado com sucesso!");
+                    LimparCampos();
                 }
-                else 
+                else
                 {
                     MessageBox.Show("Falha no cadastro!");
+                    txtNome.Focus();
                 }
             }
         }

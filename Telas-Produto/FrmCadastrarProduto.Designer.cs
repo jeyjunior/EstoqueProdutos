@@ -470,6 +470,7 @@
             btnCadastrarEmbalagem.TabIndex = 12;
             btnCadastrarEmbalagem.Text = "+";
             btnCadastrarEmbalagem.UseVisualStyleBackColor = false;
+            btnCadastrarEmbalagem.Click += btnCadastrarEmbalagem_Click;
             // 
             // btnCadastrarFormato
             // 
@@ -486,6 +487,7 @@
             btnCadastrarFormato.TabIndex = 11;
             btnCadastrarFormato.Text = "+";
             btnCadastrarFormato.UseVisualStyleBackColor = false;
+            btnCadastrarFormato.Click += btnCadastrarFormato_Click;
             // 
             // lblEmbalagem
             // 
@@ -574,6 +576,7 @@
             btnLimpar.TabIndex = 6;
             btnLimpar.Text = "Limpar";
             btnLimpar.UseVisualStyleBackColor = false;
+            btnLimpar.Click += btnLimpar_Click;
             // 
             // FrmCadastrarProduto
             // 

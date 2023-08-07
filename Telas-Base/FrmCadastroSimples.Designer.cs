@@ -34,7 +34,7 @@
             txtDescricao = new TextBox();
             lblDescricao = new Label();
             txtNome = new TextBox();
-            lblNomeMarca = new Label();
+            lblNome = new Label();
             SuspendLayout();
             // 
             // btnLimpar
@@ -116,16 +116,16 @@
             txtNome.Size = new Size(466, 26);
             txtNome.TabIndex = 11;
             // 
-            // lblNomeMarca
+            // lblNome
             // 
-            lblNomeMarca.Font = new Font("Verdana", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
-            lblNomeMarca.ForeColor = Color.FromArgb(54, 54, 54);
-            lblNomeMarca.Location = new Point(12, 5);
-            lblNomeMarca.Name = "lblNomeMarca";
-            lblNomeMarca.Size = new Size(321, 24);
-            lblNomeMarca.TabIndex = 13;
-            lblNomeMarca.Text = "Nome:";
-            lblNomeMarca.TextAlign = ContentAlignment.BottomLeft;
+            lblNome.Font = new Font("Verdana", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
+            lblNome.ForeColor = Color.FromArgb(54, 54, 54);
+            lblNome.Location = new Point(12, 5);
+            lblNome.Name = "lblNome";
+            lblNome.Size = new Size(321, 24);
+            lblNome.TabIndex = 13;
+            lblNome.Text = "Nome:";
+            lblNome.TextAlign = ContentAlignment.BottomLeft;
             // 
             // FrmCadastroSimples
             // 
@@ -136,7 +136,7 @@
             Controls.Add(txtDescricao);
             Controls.Add(lblDescricao);
             Controls.Add(txtNome);
-            Controls.Add(lblNomeMarca);
+            Controls.Add(lblNome);
             Controls.Add(btnLimpar);
             Controls.Add(btnSalvar);
             Controls.Add(btnSair);
@@ -158,6 +158,6 @@
         private TextBox txtDescricao;
         private Label lblDescricao;
         private TextBox txtNome;
-        private Label lblNomeMarca;
+        private Label lblNome;
     }
 }

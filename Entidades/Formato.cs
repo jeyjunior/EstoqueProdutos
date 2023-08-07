@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EstoqueProdutos.Formatacao
+namespace EstoqueProdutos.Entidades
 {
-    public class CadastroGenerico
+    public class Formato
     {
+        public int PK_Formato { get; set; }
         public string Nome { get; set; }
-        public string Descricao { get; set; }
+        public string? Descricao { get; set; }
     }
 }
