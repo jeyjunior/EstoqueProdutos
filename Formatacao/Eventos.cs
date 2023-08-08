@@ -34,5 +34,19 @@ namespace EstoqueProdutos.Formatacao
                 e.Handled = true;
             }
         }
+
+        public static void AlterarCorButton_EnabledChanged(Button btn, Color colorEnabled, Color colorDisabled,EventArgs e) 
+        {
+            if (btn.Enabled)
+            {
+                btn.BackColor = colorEnabled;
+                btn.FlatAppearance.BorderColor = colorEnabled;
+            }
+            else
+            {
+                btn.BackColor = colorDisabled;
+                btn.FlatAppearance.BorderColor = colorDisabled;
+            }
+        }
     }
 }

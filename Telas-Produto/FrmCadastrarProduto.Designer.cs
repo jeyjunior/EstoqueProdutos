@@ -273,6 +273,7 @@
             dtpFabricacao.Size = new Size(108, 23);
             dtpFabricacao.TabIndex = 3;
             dtpFabricacao.Value = new DateTime(2023, 8, 4, 0, 0, 0, 0);
+            dtpFabricacao.ValueChanged += dtpFabricacao_ValueChanged;
             // 
             // chkValidade
             // 
@@ -579,10 +580,10 @@
             btnSair.FlatStyle = FlatStyle.Flat;
             btnSair.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnSair.ForeColor = Color.White;
-            btnSair.Location = new Point(10, 421);
+            btnSair.Location = new Point(10, 422);
             btnSair.Margin = new Padding(3, 2, 3, 2);
             btnSair.Name = "btnSair";
-            btnSair.Size = new Size(82, 22);
+            btnSair.Size = new Size(82, 37);
             btnSair.TabIndex = 7;
             btnSair.Text = "Sair";
             btnSair.UseVisualStyleBackColor = false;
@@ -591,18 +592,21 @@
             // btnSalvar
             // 
             btnSalvar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnSalvar.BackColor = Color.Green;
-            btnSalvar.FlatAppearance.BorderColor = Color.Green;
+            btnSalvar.BackColor = Color.LightGray;
+            btnSalvar.Enabled = false;
+            btnSalvar.FlatAppearance.BorderColor = Color.LightGray;
             btnSalvar.FlatStyle = FlatStyle.Flat;
             btnSalvar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnSalvar.ForeColor = Color.White;
-            btnSalvar.Location = new Point(462, 421);
+            btnSalvar.Location = new Point(462, 422);
             btnSalvar.Margin = new Padding(3, 2, 3, 2);
             btnSalvar.Name = "btnSalvar";
-            btnSalvar.Size = new Size(82, 22);
+            btnSalvar.Size = new Size(82, 37);
             btnSalvar.TabIndex = 5;
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = false;
+            btnSalvar.EnabledChanged += btnSalvar_EnabledChanged;
+            btnSalvar.Click += btnSalvar_Click;
             // 
             // btnLimpar
             // 
@@ -610,10 +614,10 @@
             btnLimpar.BackColor = Color.White;
             btnLimpar.FlatAppearance.BorderColor = Color.Silver;
             btnLimpar.FlatStyle = FlatStyle.Flat;
-            btnLimpar.Location = new Point(374, 421);
+            btnLimpar.Location = new Point(374, 422);
             btnLimpar.Margin = new Padding(3, 2, 3, 2);
             btnLimpar.Name = "btnLimpar";
-            btnLimpar.Size = new Size(82, 22);
+            btnLimpar.Size = new Size(82, 37);
             btnLimpar.TabIndex = 6;
             btnLimpar.Text = "Limpar";
             btnLimpar.UseVisualStyleBackColor = false;
@@ -624,7 +628,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(554, 450);
+            ClientSize = new Size(554, 466);
             Controls.Add(btnLimpar);
             Controls.Add(btnSalvar);
             Controls.Add(btnSair);

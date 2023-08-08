@@ -1,4 +1,5 @@
 ﻿using EstoqueProdutos.Entidades;
+using EstoqueProdutos.Formatacao;
 using EstoqueProdutos.Interfaces;
 using EstoqueProdutos.Repositorios;
 using EstoqueProdutos.Telas_Base;
@@ -24,6 +25,7 @@ namespace EstoqueProdutos.Telas_Produto
         IRepositorio<Formato> formatoRepositorio = new FormatoRepositorio();
         IRepositorio<Embalagem> embalagemRepositorio = new EmbalagemRepositorio();
         IRepositorio<UnidadeMedida> unidadeMedidaRepositorio = new UnidadeMedidaRepositorio();
+        IRepositorio<Produto> produtoRepositorio = new ProdutoRepositorio();
         #endregion Classes
 
         #region Propriedades
@@ -46,7 +48,7 @@ namespace EstoqueProdutos.Telas_Produto
                 BindCboMarca();
                 BindCboCategoria();
                 BindCboFormato();
-                BindCboEmbalagem(); 
+                BindCboEmbalagem();
                 BindCboUnidadeDeMedida();
                 InicializarDatas();
                 InicializarTextBoxs();
@@ -59,11 +61,18 @@ namespace EstoqueProdutos.Telas_Produto
         }
         private void BindCboMarca()
         {
-            var result = marcaRepositorio.ObterTabela();
+            var result = marcaRepositorio.ObterTabela().ToList();
+            result.Insert(0,
+                new Marca
+                {
+                    PK_Marca = 0,
+                    Nome = "Nenhuma",
+                    Descricao = "Nenhuma"
+                });
 
             if (result != null)
             {
-                cboMarca.DataSource = result.OrderBy(c => c.Nome).ToList();
+                cboMarca.DataSource = result;
                 cboMarca.DisplayMember = "Nome";
                 cboMarca.ValueMember = "PK_Marca";
                 cboMarca.SelectedIndex = 0;
@@ -71,11 +80,19 @@ namespace EstoqueProdutos.Telas_Produto
         }
         private void BindCboCategoria()
         {
-            var result = categoriaRepositorio.ObterTabela();
+            var result = categoriaRepositorio.ObterTabela().ToList();
+            result.Insert(0,
+                new Categoria
+                {
+                    PK_Categoria = 0,
+                    Nome = "Nenhuma",
+                    Descricao = "Nenhuma"
+                });
+
 
             if (result != null)
             {
-                cboCategoria.DataSource = result.OrderBy(c => c.Nome).ToList();
+                cboCategoria.DataSource = result;
                 cboCategoria.DisplayMember = "Nome";
                 cboCategoria.ValueMember = "PK_Categoria";
                 cboCategoria.SelectedIndex = 0;
@@ -84,11 +101,18 @@ namespace EstoqueProdutos.Telas_Produto
 
         private void BindCboFormato()
         {
-            var result = formatoRepositorio.ObterTabela();
+            var result = formatoRepositorio.ObterTabela().ToList();
+            result.Insert(0,
+                new Formato
+                {
+                    PK_Formato = 0,
+                    Nome = "Nenhum",
+                    Descricao = "Nenhum"
+                });
 
             if (result != null)
             {
-                cboFormato.DataSource = result.OrderBy(c => c.Nome).ToList();
+                cboFormato.DataSource = result;
                 cboFormato.DisplayMember = "Nome";
                 cboFormato.ValueMember = "PK_Formato";
                 cboFormato.SelectedIndex = 0;
@@ -97,11 +121,18 @@ namespace EstoqueProdutos.Telas_Produto
 
         private void BindCboEmbalagem()
         {
-            var result = embalagemRepositorio.ObterTabela();
+            var result = embalagemRepositorio.ObterTabela().ToList();
+            result.Insert(0,
+                new Embalagem
+                {
+                    PK_Embalagem = 0,
+                    Nome = "Nenhuma",
+                    Descricao = "Nenhuma"
+                });
 
             if (result != null)
             {
-                cboEmbalagem.DataSource = result.OrderBy(c => c.Nome).ToList();
+                cboEmbalagem.DataSource = result;
                 cboEmbalagem.DisplayMember = "Nome";
                 cboEmbalagem.ValueMember = "PK_Embalagem";
                 cboEmbalagem.SelectedIndex = 0;
@@ -110,8 +141,14 @@ namespace EstoqueProdutos.Telas_Produto
 
         private void BindCboUnidadeDeMedida()
         {
-            List<UnidadeMedida> result = unidadeMedidaRepositorio.ObterTabela().ToList();
-            result.Insert(0, new UnidadeMedida { PK_UnidadeMedida = 0, Sigla = "n", Extenso = "Nenhum" });
+            var result = unidadeMedidaRepositorio.ObterTabela().ToList();
+            result.Insert(0,
+                new UnidadeMedida
+                {
+                    PK_UnidadeMedida = 0,
+                    Sigla = "n",
+                    Extenso = "Nenhum"
+                });
 
             if (result != null)
             {
@@ -123,7 +160,7 @@ namespace EstoqueProdutos.Telas_Produto
             }
         }
 
-        private void InicializarTextBoxs() 
+        private void InicializarTextBoxs()
         {
             txtNomeProduto.Text = "";
             txtDescricao.Text = "";
@@ -137,6 +174,21 @@ namespace EstoqueProdutos.Telas_Produto
         {
             chkValidade.Checked = false;
             chkFabricacao.Checked = false;
+
+            dtpFabricacao.MaxDate = DateTime.Today;
+            dtpValidade.MinDate = dtpFabricacao.Value;
+        }
+
+
+        //Update
+
+        private bool ValidarTextBoxDimensoes() 
+        {
+            bool a = txtAltura.Text.Length > 0;
+            bool l = txtLargura.Text.Length > 0;
+            bool c = txtComprimento.Text.Length > 0;
+
+            return a && l && c;
         }
 
         #endregion Metodos
@@ -253,6 +305,70 @@ namespace EstoqueProdutos.Telas_Produto
         {
             btnSalvar.Enabled = ((TextBox)sender).Text.Length > 0;
         }
+        
+        private void btnSalvar_EnabledChanged(object sender, EventArgs e)
+        {
+            Formatacao
+            .Eventos
+            .AlterarCorButton_EnabledChanged((Button)sender, Color.Green, Color.LightGray, e);
+        }
+        
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!ValidarTextBoxDimensoes())
+                {
+                    MessageBox.Show("Preencha corretamente as dimensões do produto");
+                    return;
+                }
+
+                var produto = new Produto()
+                {
+                    Nome = txtNomeProduto.LimparTexto(),
+                    Descricao = txtDescricao.LimparTexto(),
+                    Volume = txtVolume.ParaDecimal(),
+
+                    DataFabricacao = dtpFabricacao.ParaDataPequena(),
+                    DataValidade = dtpValidade.ParaDataPequena(),
+
+                    Altura = txtAltura.ParaDecimal(),
+                    Largura = txtLargura.ParaDecimal(),
+                    Comprimento = txtComprimento.ParaDecimal(),
+
+                    FK_Categoria = cboCategoria.ObterValorInt(),
+                    FK_Embalagem = cboEmbalagem.ObterValorInt(),
+                    FK_Formato = cboFormato.ObterValorInt(),
+                    FK_Marca = cboMarca.ObterValorInt(),
+                    FK_UnidadeMedida = cboUnidade.ObterValorInt(),
+
+                    FK_Imagem = 1
+                };
+
+                var resultado = produtoRepositorio.InserirDadosNaTabela(produto);
+
+                if (resultado)
+                {
+                    MessageBox.Show("Produto cadastrado com sucesso!");
+                    btnLimpar.PerformClick();
+                }
+                else
+                {
+                    MessageBox.Show("Falha ao cadastrar produto!");
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ocorreu um erro ao tentar executar essa operação!");
+            }
+        }   
+
+        private void dtpFabricacao_ValueChanged(object sender, EventArgs e)
+        {
+            dtpValidade.MinDate = dtpFabricacao.Value;
+        }
+
         #endregion Eventos
+
     }
 }

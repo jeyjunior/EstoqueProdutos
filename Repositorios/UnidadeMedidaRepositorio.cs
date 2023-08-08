@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using EstoqueProdutos.Entidades;
 using EstoqueProdutos.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace EstoqueProdutos.Repositorios
 {
-    public class UnidadeMedidaRepositorio : Repositorio<Entidades.UnidadeMedida>
+    public class UnidadeMedidaRepositorio : Repositorio<UnidadeMedida>
     {
 
     }

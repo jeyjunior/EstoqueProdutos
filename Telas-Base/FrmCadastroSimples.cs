@@ -19,13 +19,15 @@ namespace EstoqueProdutos.Telas_Base
 {
     public partial class FrmCadastroSimples : Telas_Base.FrmBase
     {
-        object repositorio;
-        object entidade;
+        private object repositorio;
+        private object entidade;
 
         public FrmCadastroSimples()
         {
             InitializeComponent();
         }
+
+        #region Metodos
 
         public void ObterRepositorio<T>() where T : class
         {
@@ -66,19 +68,12 @@ namespace EstoqueProdutos.Telas_Base
 
         private void HabilitarComponentes()
         {
-            if (txtNome.TextLength > 0)
-            {
-                btnSalvar.Enabled = true;
-                btnSalvar.BackColor = Color.Green;
-                btnSalvar.FlatAppearance.BorderColor = Color.Green;
-            }
-            else
-            {
-                btnSalvar.Enabled = false;
-                btnSalvar.BackColor = Color.LightGray;
-                btnSalvar.FlatAppearance.BorderColor = Color.LightGray;
-            }
+            btnSalvar.Enabled = txtNome.TextLength > 0;
         }
+
+        #endregion Metodos
+
+        #region Eventos
 
         private void FrmCadastroSimples_Load(object sender, EventArgs e)
         {
@@ -87,8 +82,8 @@ namespace EstoqueProdutos.Telas_Base
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            string nome = txtNome.Text.LimparTexto();
-            string descricao = txtDescricao.Text.LimparTexto();
+            string nome = txtNome.LimparTexto();
+            string descricao = txtDescricao.LimparTexto();
 
             PropertyInfo[] prop = entidade.GetType().GetProperties();
 
@@ -102,7 +97,7 @@ namespace EstoqueProdutos.Telas_Base
                         pNome.SetValue(entidade, nome);
                     }
                 }
-                else if (p.Name == "Descricao") 
+                else if (p.Name == "Descricao")
                 {
                     if (entidade.GetType().GetProperty("Descricao") is PropertyInfo pDesc &&
                             pDesc.PropertyType == typeof(string))
@@ -139,9 +134,18 @@ namespace EstoqueProdutos.Telas_Base
             LimparCampos();
         }
 
-        private void txtNomeMarca_TextChanged(object sender, EventArgs e)
+        private void btnSalvar_EnabledChanged(object sender, EventArgs e)
+        {
+            Formatacao
+            .Eventos
+            .AlterarCorButton_EnabledChanged((Button)sender, Color.Green, Color.LightGray, e);
+        }
+        
+        private void txtNome_TextChanged(object sender, EventArgs e)
         {
             HabilitarComponentes();
         }
+        
+        #endregion Eventos
     }
 }

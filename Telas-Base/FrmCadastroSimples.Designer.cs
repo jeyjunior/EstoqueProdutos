@@ -43,10 +43,10 @@
             btnLimpar.BackColor = Color.White;
             btnLimpar.FlatAppearance.BorderColor = Color.Silver;
             btnLimpar.FlatStyle = FlatStyle.Flat;
-            btnLimpar.Location = new Point(248, 99);
+            btnLimpar.Location = new Point(248, 107);
             btnLimpar.Margin = new Padding(3, 2, 3, 2);
             btnLimpar.Name = "btnLimpar";
-            btnLimpar.Size = new Size(82, 22);
+            btnLimpar.Size = new Size(82, 37);
             btnLimpar.TabIndex = 9;
             btnLimpar.Text = "Limpar";
             btnLimpar.UseVisualStyleBackColor = false;
@@ -55,18 +55,20 @@
             // btnSalvar
             // 
             btnSalvar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnSalvar.BackColor = Color.Green;
-            btnSalvar.FlatAppearance.BorderColor = Color.Green;
+            btnSalvar.BackColor = Color.LightGray;
+            btnSalvar.Enabled = false;
+            btnSalvar.FlatAppearance.BorderColor = Color.LightGray;
             btnSalvar.FlatStyle = FlatStyle.Flat;
             btnSalvar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnSalvar.ForeColor = Color.White;
-            btnSalvar.Location = new Point(336, 99);
+            btnSalvar.Location = new Point(336, 107);
             btnSalvar.Margin = new Padding(3, 2, 3, 2);
             btnSalvar.Name = "btnSalvar";
-            btnSalvar.Size = new Size(82, 22);
+            btnSalvar.Size = new Size(82, 37);
             btnSalvar.TabIndex = 8;
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = false;
+            btnSalvar.EnabledChanged += btnSalvar_EnabledChanged;
             btnSalvar.Click += btnSalvar_Click;
             // 
             // btnSair
@@ -77,10 +79,10 @@
             btnSair.FlatStyle = FlatStyle.Flat;
             btnSair.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnSair.ForeColor = Color.White;
-            btnSair.Location = new Point(10, 99);
+            btnSair.Location = new Point(10, 107);
             btnSair.Margin = new Padding(3, 2, 3, 2);
             btnSair.Name = "btnSair";
-            btnSair.Size = new Size(82, 22);
+            btnSair.Size = new Size(82, 37);
             btnSair.TabIndex = 10;
             btnSair.Text = "Sair";
             btnSair.UseVisualStyleBackColor = false;
@@ -120,6 +122,7 @@
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(408, 22);
             txtNome.TabIndex = 11;
+            txtNome.TextChanged += txtNome_TextChanged;
             // 
             // lblNome
             // 
@@ -137,7 +140,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(429, 130);
+            ClientSize = new Size(429, 158);
             Controls.Add(txtDescricao);
             Controls.Add(lblDescricao);
             Controls.Add(txtNome);
