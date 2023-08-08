@@ -6,7 +6,7 @@ CREATE TABLE Formato (
 
 CREATE TABLE Imagem (
    PK_Imagem INT IDENTITY(1, 1) PRIMARY KEY,
-   Nome VARCHAR(30) null,
+   Nome VARCHAR(30),
    Formato VARCHAR(5) null,
    ImgBinary VARBINARY(MAX)
 );
@@ -40,7 +40,7 @@ CREATE TABLE UnidadeMedida (
 
 CREATE TABLE Produto (
    PK_Produto INT IDENTITY(1, 1) PRIMARY KEY,
-   Nome VARCHAR(45),
+   Nome VARCHAR(45) NOT NULL,
    Volume DECIMAL(10, 2) NULL,
    Descricao VARCHAR(100) NULL,
 
@@ -51,12 +51,12 @@ CREATE TABLE Produto (
    Largura DECIMAL(10, 2) NULL,
    Comprimento DECIMAL(10, 2) NULL,
 
-   FK_Formato INT,
-   FK_Imagem INT,
-   FK_Categoria INT,
-   FK_Marca INT,
-   FK_Embalagem INT,
-   FK_UnidadeMedida INT,
+   FK_Formato INT NULL,
+   FK_Imagem INT NULL,
+   FK_Categoria INT NULL,
+   FK_Marca INT NULL,
+   FK_Embalagem INT NULL,
+   FK_UnidadeMedida INT NULL,
 
    FOREIGN KEY (FK_Formato) REFERENCES Formato (PK_Formato),
    FOREIGN KEY (FK_Imagem) REFERENCES Imagem (PK_Imagem),

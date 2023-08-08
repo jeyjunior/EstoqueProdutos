@@ -43,9 +43,10 @@
             btnLimpar.BackColor = Color.White;
             btnLimpar.FlatAppearance.BorderColor = Color.Silver;
             btnLimpar.FlatStyle = FlatStyle.Flat;
-            btnLimpar.Location = new Point(284, 132);
+            btnLimpar.Location = new Point(248, 99);
+            btnLimpar.Margin = new Padding(3, 2, 3, 2);
             btnLimpar.Name = "btnLimpar";
-            btnLimpar.Size = new Size(94, 29);
+            btnLimpar.Size = new Size(82, 22);
             btnLimpar.TabIndex = 9;
             btnLimpar.Text = "Limpar";
             btnLimpar.UseVisualStyleBackColor = false;
@@ -59,9 +60,10 @@
             btnSalvar.FlatStyle = FlatStyle.Flat;
             btnSalvar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnSalvar.ForeColor = Color.White;
-            btnSalvar.Location = new Point(384, 132);
+            btnSalvar.Location = new Point(336, 99);
+            btnSalvar.Margin = new Padding(3, 2, 3, 2);
             btnSalvar.Name = "btnSalvar";
-            btnSalvar.Size = new Size(94, 29);
+            btnSalvar.Size = new Size(82, 22);
             btnSalvar.TabIndex = 8;
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = false;
@@ -75,9 +77,10 @@
             btnSair.FlatStyle = FlatStyle.Flat;
             btnSair.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnSair.ForeColor = Color.White;
-            btnSair.Location = new Point(12, 132);
+            btnSair.Location = new Point(10, 99);
+            btnSair.Margin = new Padding(3, 2, 3, 2);
             btnSair.Name = "btnSair";
-            btnSair.Size = new Size(94, 29);
+            btnSair.Size = new Size(82, 22);
             btnSair.TabIndex = 10;
             btnSair.Text = "Sair";
             btnSair.UseVisualStyleBackColor = false;
@@ -88,19 +91,20 @@
             txtDescricao.BorderStyle = BorderStyle.FixedSingle;
             txtDescricao.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
             txtDescricao.ForeColor = Color.FromArgb(64, 64, 64);
-            txtDescricao.Location = new Point(12, 87);
+            txtDescricao.Location = new Point(10, 66);
+            txtDescricao.Margin = new Padding(3, 2, 3, 2);
             txtDescricao.MaxLength = 100;
             txtDescricao.Name = "txtDescricao";
-            txtDescricao.Size = new Size(466, 26);
+            txtDescricao.Size = new Size(408, 22);
             txtDescricao.TabIndex = 12;
             // 
             // lblDescricao
             // 
             lblDescricao.Font = new Font("Verdana", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             lblDescricao.ForeColor = Color.FromArgb(54, 54, 54);
-            lblDescricao.Location = new Point(12, 60);
+            lblDescricao.Location = new Point(10, 46);
             lblDescricao.Name = "lblDescricao";
-            lblDescricao.Size = new Size(369, 24);
+            lblDescricao.Size = new Size(323, 18);
             lblDescricao.TabIndex = 14;
             lblDescricao.Text = "Descrição:";
             lblDescricao.TextAlign = ContentAlignment.BottomLeft;
@@ -110,29 +114,30 @@
             txtNome.BorderStyle = BorderStyle.FixedSingle;
             txtNome.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
             txtNome.ForeColor = Color.FromArgb(64, 64, 64);
-            txtNome.Location = new Point(12, 32);
+            txtNome.Location = new Point(10, 24);
+            txtNome.Margin = new Padding(3, 2, 3, 2);
             txtNome.MaxLength = 40;
             txtNome.Name = "txtNome";
-            txtNome.Size = new Size(466, 26);
+            txtNome.Size = new Size(408, 22);
             txtNome.TabIndex = 11;
             // 
             // lblNome
             // 
             lblNome.Font = new Font("Verdana", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             lblNome.ForeColor = Color.FromArgb(54, 54, 54);
-            lblNome.Location = new Point(12, 5);
+            lblNome.Location = new Point(10, 4);
             lblNome.Name = "lblNome";
-            lblNome.Size = new Size(321, 24);
+            lblNome.Size = new Size(281, 18);
             lblNome.TabIndex = 13;
             lblNome.Text = "Nome:";
             lblNome.TextAlign = ContentAlignment.BottomLeft;
             // 
             // FrmCadastroSimples
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(490, 173);
+            ClientSize = new Size(429, 130);
             Controls.Add(txtDescricao);
             Controls.Add(lblDescricao);
             Controls.Add(txtNome);

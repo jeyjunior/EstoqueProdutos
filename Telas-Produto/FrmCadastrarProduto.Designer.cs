@@ -84,9 +84,11 @@
             gpProduto.Controls.Add(txtNomeProduto);
             gpProduto.Controls.Add(lblNomeProduto);
             gpProduto.Controls.Add(pcbImgProduto);
-            gpProduto.Location = new Point(12, 12);
+            gpProduto.Location = new Point(10, 9);
+            gpProduto.Margin = new Padding(3, 2, 3, 2);
             gpProduto.Name = "gpProduto";
-            gpProduto.Size = new Size(610, 171);
+            gpProduto.Padding = new Padding(3, 2, 3, 2);
+            gpProduto.Size = new Size(534, 128);
             gpProduto.TabIndex = 0;
             gpProduto.TabStop = false;
             gpProduto.Text = "Produto";
@@ -96,18 +98,19 @@
             txtDescricao.BorderStyle = BorderStyle.FixedSingle;
             txtDescricao.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
             txtDescricao.ForeColor = Color.FromArgb(64, 64, 64);
-            txtDescricao.Location = new Point(167, 126);
+            txtDescricao.Location = new Point(146, 94);
+            txtDescricao.Margin = new Padding(3, 2, 3, 2);
             txtDescricao.Name = "txtDescricao";
-            txtDescricao.Size = new Size(426, 26);
+            txtDescricao.Size = new Size(373, 22);
             txtDescricao.TabIndex = 2;
             // 
             // lblDescricao
             // 
             lblDescricao.Font = new Font("Verdana", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             lblDescricao.ForeColor = Color.FromArgb(54, 54, 54);
-            lblDescricao.Location = new Point(167, 99);
+            lblDescricao.Location = new Point(146, 74);
             lblDescricao.Name = "lblDescricao";
-            lblDescricao.Size = new Size(329, 24);
+            lblDescricao.Size = new Size(288, 18);
             lblDescricao.TabIndex = 4;
             lblDescricao.Text = "Descrição:";
             lblDescricao.TextAlign = ContentAlignment.BottomLeft;
@@ -117,18 +120,20 @@
             txtNomeProduto.BorderStyle = BorderStyle.FixedSingle;
             txtNomeProduto.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
             txtNomeProduto.ForeColor = Color.FromArgb(64, 64, 64);
-            txtNomeProduto.Location = new Point(167, 60);
+            txtNomeProduto.Location = new Point(146, 45);
+            txtNomeProduto.Margin = new Padding(3, 2, 3, 2);
             txtNomeProduto.Name = "txtNomeProduto";
-            txtNomeProduto.Size = new Size(426, 26);
+            txtNomeProduto.Size = new Size(373, 22);
             txtNomeProduto.TabIndex = 1;
+            txtNomeProduto.TextChanged += txtNomeProduto_TextChanged;
             // 
             // lblNomeProduto
             // 
             lblNomeProduto.Font = new Font("Verdana", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             lblNomeProduto.ForeColor = Color.FromArgb(54, 54, 54);
-            lblNomeProduto.Location = new Point(167, 33);
+            lblNomeProduto.Location = new Point(146, 25);
             lblNomeProduto.Name = "lblNomeProduto";
-            lblNomeProduto.Size = new Size(281, 24);
+            lblNomeProduto.Size = new Size(246, 18);
             lblNomeProduto.TabIndex = 2;
             lblNomeProduto.Text = "Nome do Produto:";
             lblNomeProduto.TextAlign = ContentAlignment.BottomLeft;
@@ -136,9 +141,10 @@
             // pcbImgProduto
             // 
             pcbImgProduto.BackColor = Color.FromArgb(224, 224, 224);
-            pcbImgProduto.Location = new Point(21, 32);
+            pcbImgProduto.Location = new Point(18, 24);
+            pcbImgProduto.Margin = new Padding(3, 2, 3, 2);
             pcbImgProduto.Name = "pcbImgProduto";
-            pcbImgProduto.Size = new Size(120, 120);
+            pcbImgProduto.Size = new Size(105, 90);
             pcbImgProduto.TabIndex = 1;
             pcbImgProduto.TabStop = false;
             pcbImgProduto.Click += pcbImgProduto_Click;
@@ -147,9 +153,9 @@
             // 
             lblVolume.Font = new Font("Verdana", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             lblVolume.ForeColor = Color.FromArgb(54, 54, 54);
-            lblVolume.Location = new Point(21, 20);
+            lblVolume.Location = new Point(18, 15);
             lblVolume.Name = "lblVolume";
-            lblVolume.Size = new Size(120, 24);
+            lblVolume.Size = new Size(105, 18);
             lblVolume.TabIndex = 2;
             lblVolume.Text = "Volume:";
             lblVolume.TextAlign = ContentAlignment.BottomLeft;
@@ -159,10 +165,13 @@
             txtVolume.BorderStyle = BorderStyle.FixedSingle;
             txtVolume.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
             txtVolume.ForeColor = Color.FromArgb(64, 64, 64);
-            txtVolume.Location = new Point(21, 46);
+            txtVolume.Location = new Point(18, 34);
+            txtVolume.Margin = new Padding(3, 2, 3, 2);
             txtVolume.Name = "txtVolume";
-            txtVolume.Size = new Size(145, 26);
+            txtVolume.Size = new Size(127, 22);
             txtVolume.TabIndex = 0;
+            txtVolume.TextChanged += txtVolume_TextChanged;
+            txtVolume.KeyPress += TextBoxDecimais_KeyPress;
             // 
             // cboUnidade
             // 
@@ -170,18 +179,19 @@
             cboUnidade.DropDownStyle = ComboBoxStyle.DropDownList;
             cboUnidade.FormattingEnabled = true;
             cboUnidade.IntegralHeight = false;
-            cboUnidade.Location = new Point(177, 46);
+            cboUnidade.Location = new Point(155, 34);
+            cboUnidade.Margin = new Padding(3, 2, 3, 2);
             cboUnidade.Name = "cboUnidade";
-            cboUnidade.Size = new Size(83, 28);
+            cboUnidade.Size = new Size(73, 23);
             cboUnidade.TabIndex = 1;
             // 
             // lblUnidade
             // 
             lblUnidade.Font = new Font("Verdana", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             lblUnidade.ForeColor = Color.FromArgb(54, 54, 54);
-            lblUnidade.Location = new Point(177, 21);
+            lblUnidade.Location = new Point(155, 16);
             lblUnidade.Name = "lblUnidade";
-            lblUnidade.Size = new Size(83, 24);
+            lblUnidade.Size = new Size(73, 18);
             lblUnidade.TabIndex = 6;
             lblUnidade.Text = "Un.:";
             lblUnidade.TextAlign = ContentAlignment.BottomLeft;
@@ -190,9 +200,10 @@
             // 
             dtpValidade.CustomFormat = "d";
             dtpValidade.Format = DateTimePickerFormat.Short;
-            dtpValidade.Location = new Point(470, 47);
+            dtpValidade.Location = new Point(411, 35);
+            dtpValidade.Margin = new Padding(3, 2, 3, 2);
             dtpValidade.Name = "dtpValidade";
-            dtpValidade.Size = new Size(123, 27);
+            dtpValidade.Size = new Size(108, 23);
             dtpValidade.TabIndex = 5;
             dtpValidade.Value = new DateTime(2023, 8, 4, 0, 0, 0, 0);
             // 
@@ -200,9 +211,9 @@
             // 
             lblValidade.Font = new Font("Verdana", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             lblValidade.ForeColor = Color.FromArgb(54, 54, 54);
-            lblValidade.Location = new Point(449, 22);
+            lblValidade.Location = new Point(393, 16);
             lblValidade.Name = "lblValidade";
-            lblValidade.Size = new Size(144, 24);
+            lblValidade.Size = new Size(126, 18);
             lblValidade.TabIndex = 8;
             lblValidade.Text = "Data Validade:";
             lblValidade.TextAlign = ContentAlignment.BottomLeft;
@@ -219,9 +230,11 @@
             gpDetalhesProduto.Controls.Add(cboUnidade);
             gpDetalhesProduto.Controls.Add(txtVolume);
             gpDetalhesProduto.Controls.Add(lblVolume);
-            gpDetalhesProduto.Location = new Point(12, 186);
+            gpDetalhesProduto.Location = new Point(10, 140);
+            gpDetalhesProduto.Margin = new Padding(3, 2, 3, 2);
             gpDetalhesProduto.Name = "gpDetalhesProduto";
-            gpDetalhesProduto.Size = new Size(610, 92);
+            gpDetalhesProduto.Padding = new Padding(3, 2, 3, 2);
+            gpDetalhesProduto.Size = new Size(534, 69);
             gpDetalhesProduto.TabIndex = 1;
             gpDetalhesProduto.TabStop = false;
             gpDetalhesProduto.Text = "Detalhes do Produto";
@@ -231,19 +244,21 @@
             chkFabricacao.AutoSize = true;
             chkFabricacao.Checked = true;
             chkFabricacao.CheckState = CheckState.Checked;
-            chkFabricacao.Location = new Point(288, 52);
+            chkFabricacao.Location = new Point(252, 39);
+            chkFabricacao.Margin = new Padding(3, 2, 3, 2);
             chkFabricacao.Name = "chkFabricacao";
-            chkFabricacao.Size = new Size(18, 17);
+            chkFabricacao.Size = new Size(15, 14);
             chkFabricacao.TabIndex = 2;
             chkFabricacao.UseVisualStyleBackColor = true;
+            chkFabricacao.CheckedChanged += chkFabricacao_CheckedChanged;
             // 
             // lblFabricacao
             // 
             lblFabricacao.Font = new Font("Verdana", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             lblFabricacao.ForeColor = Color.FromArgb(54, 54, 54);
-            lblFabricacao.Location = new Point(288, 22);
+            lblFabricacao.Location = new Point(252, 16);
             lblFabricacao.Name = "lblFabricacao";
-            lblFabricacao.Size = new Size(144, 24);
+            lblFabricacao.Size = new Size(126, 18);
             lblFabricacao.TabIndex = 13;
             lblFabricacao.Text = "Data Fabricação:";
             lblFabricacao.TextAlign = ContentAlignment.BottomLeft;
@@ -252,9 +267,10 @@
             // 
             dtpFabricacao.CustomFormat = "d";
             dtpFabricacao.Format = DateTimePickerFormat.Short;
-            dtpFabricacao.Location = new Point(309, 47);
+            dtpFabricacao.Location = new Point(270, 35);
+            dtpFabricacao.Margin = new Padding(3, 2, 3, 2);
             dtpFabricacao.Name = "dtpFabricacao";
-            dtpFabricacao.Size = new Size(123, 27);
+            dtpFabricacao.Size = new Size(108, 23);
             dtpFabricacao.TabIndex = 3;
             dtpFabricacao.Value = new DateTime(2023, 8, 4, 0, 0, 0, 0);
             // 
@@ -263,19 +279,21 @@
             chkValidade.AutoSize = true;
             chkValidade.Checked = true;
             chkValidade.CheckState = CheckState.Checked;
-            chkValidade.Location = new Point(449, 52);
+            chkValidade.Location = new Point(393, 39);
+            chkValidade.Margin = new Padding(3, 2, 3, 2);
             chkValidade.Name = "chkValidade";
-            chkValidade.Size = new Size(18, 17);
+            chkValidade.Size = new Size(15, 14);
             chkValidade.TabIndex = 4;
             chkValidade.UseVisualStyleBackColor = true;
+            chkValidade.CheckedChanged += chkValidade_CheckedChanged;
             // 
             // lblAltura
             // 
             lblAltura.Font = new Font("Verdana", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             lblAltura.ForeColor = Color.FromArgb(54, 54, 54);
-            lblAltura.Location = new Point(21, 19);
+            lblAltura.Location = new Point(18, 14);
             lblAltura.Name = "lblAltura";
-            lblAltura.Size = new Size(179, 24);
+            lblAltura.Size = new Size(157, 18);
             lblAltura.TabIndex = 11;
             lblAltura.Text = "Altura (cm)";
             lblAltura.TextAlign = ContentAlignment.BottomLeft;
@@ -285,18 +303,20 @@
             txtAltura.BorderStyle = BorderStyle.FixedSingle;
             txtAltura.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
             txtAltura.ForeColor = Color.FromArgb(64, 64, 64);
-            txtAltura.Location = new Point(21, 46);
+            txtAltura.Location = new Point(18, 34);
+            txtAltura.Margin = new Padding(3, 2, 3, 2);
             txtAltura.Name = "txtAltura";
-            txtAltura.Size = new Size(179, 26);
+            txtAltura.Size = new Size(157, 22);
             txtAltura.TabIndex = 1;
+            txtAltura.KeyPress += TextBoxDecimais_KeyPress;
             // 
             // lblLargura
             // 
             lblLargura.Font = new Font("Verdana", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             lblLargura.ForeColor = Color.FromArgb(54, 54, 54);
-            lblLargura.Location = new Point(218, 19);
+            lblLargura.Location = new Point(191, 14);
             lblLargura.Name = "lblLargura";
-            lblLargura.Size = new Size(179, 24);
+            lblLargura.Size = new Size(157, 18);
             lblLargura.TabIndex = 13;
             lblLargura.Text = "Largura (cm)";
             lblLargura.TextAlign = ContentAlignment.BottomLeft;
@@ -306,18 +326,20 @@
             txtLargura.BorderStyle = BorderStyle.FixedSingle;
             txtLargura.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
             txtLargura.ForeColor = Color.FromArgb(64, 64, 64);
-            txtLargura.Location = new Point(218, 46);
+            txtLargura.Location = new Point(191, 34);
+            txtLargura.Margin = new Padding(3, 2, 3, 2);
             txtLargura.Name = "txtLargura";
-            txtLargura.Size = new Size(179, 26);
+            txtLargura.Size = new Size(157, 22);
             txtLargura.TabIndex = 2;
+            txtLargura.KeyPress += TextBoxDecimais_KeyPress;
             // 
             // lblComprimento
             // 
             lblComprimento.Font = new Font("Verdana", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             lblComprimento.ForeColor = Color.FromArgb(54, 54, 54);
-            lblComprimento.Location = new Point(414, 19);
+            lblComprimento.Location = new Point(362, 14);
             lblComprimento.Name = "lblComprimento";
-            lblComprimento.Size = new Size(179, 24);
+            lblComprimento.Size = new Size(157, 18);
             lblComprimento.TabIndex = 15;
             lblComprimento.Text = "Comprimento (cm)";
             lblComprimento.TextAlign = ContentAlignment.BottomLeft;
@@ -327,10 +349,12 @@
             txtComprimento.BorderStyle = BorderStyle.FixedSingle;
             txtComprimento.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
             txtComprimento.ForeColor = Color.FromArgb(64, 64, 64);
-            txtComprimento.Location = new Point(414, 46);
+            txtComprimento.Location = new Point(362, 34);
+            txtComprimento.Margin = new Padding(3, 2, 3, 2);
             txtComprimento.Name = "txtComprimento";
-            txtComprimento.Size = new Size(179, 26);
+            txtComprimento.Size = new Size(157, 22);
             txtComprimento.TabIndex = 3;
+            txtComprimento.KeyPress += TextBoxDecimais_KeyPress;
             // 
             // gpDimensoes
             // 
@@ -340,9 +364,11 @@
             gpDimensoes.Controls.Add(lblLargura);
             gpDimensoes.Controls.Add(txtAltura);
             gpDimensoes.Controls.Add(lblAltura);
-            gpDimensoes.Location = new Point(12, 279);
+            gpDimensoes.Location = new Point(10, 209);
+            gpDimensoes.Margin = new Padding(3, 2, 3, 2);
             gpDimensoes.Name = "gpDimensoes";
-            gpDimensoes.Size = new Size(610, 88);
+            gpDimensoes.Padding = new Padding(3, 2, 3, 2);
+            gpDimensoes.Size = new Size(534, 66);
             gpDimensoes.TabIndex = 2;
             gpDimensoes.TabStop = false;
             gpDimensoes.Text = "Dimensões";
@@ -353,18 +379,19 @@
             cboMarca.DropDownStyle = ComboBoxStyle.DropDownList;
             cboMarca.FormattingEnabled = true;
             cboMarca.IntegralHeight = false;
-            cboMarca.Location = new Point(21, 44);
+            cboMarca.Location = new Point(18, 33);
+            cboMarca.Margin = new Padding(3, 2, 3, 2);
             cboMarca.Name = "cboMarca";
-            cboMarca.Size = new Size(239, 28);
+            cboMarca.Size = new Size(210, 23);
             cboMarca.TabIndex = 1;
             // 
             // lblMarca
             // 
             lblMarca.Font = new Font("Verdana", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             lblMarca.ForeColor = Color.FromArgb(54, 54, 54);
-            lblMarca.Location = new Point(21, 19);
+            lblMarca.Location = new Point(18, 14);
             lblMarca.Name = "lblMarca";
-            lblMarca.Size = new Size(274, 24);
+            lblMarca.Size = new Size(240, 18);
             lblMarca.TabIndex = 8;
             lblMarca.Text = "Marca";
             lblMarca.TextAlign = ContentAlignment.BottomLeft;
@@ -375,18 +402,19 @@
             cboCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCategoria.FormattingEnabled = true;
             cboCategoria.IntegralHeight = false;
-            cboCategoria.Location = new Point(313, 44);
+            cboCategoria.Location = new Point(274, 33);
+            cboCategoria.Margin = new Padding(3, 2, 3, 2);
             cboCategoria.Name = "cboCategoria";
-            cboCategoria.Size = new Size(245, 28);
+            cboCategoria.Size = new Size(215, 23);
             cboCategoria.TabIndex = 2;
             // 
             // lblCategoria
             // 
             lblCategoria.Font = new Font("Verdana", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             lblCategoria.ForeColor = Color.FromArgb(54, 54, 54);
-            lblCategoria.Location = new Point(313, 19);
+            lblCategoria.Location = new Point(274, 14);
             lblCategoria.Name = "lblCategoria";
-            lblCategoria.Size = new Size(280, 24);
+            lblCategoria.Size = new Size(245, 18);
             lblCategoria.TabIndex = 10;
             lblCategoria.Text = "Categoria";
             lblCategoria.TextAlign = ContentAlignment.BottomLeft;
@@ -399,9 +427,11 @@
             gpMarcaCategoria.Controls.Add(cboCategoria);
             gpMarcaCategoria.Controls.Add(lblMarca);
             gpMarcaCategoria.Controls.Add(cboMarca);
-            gpMarcaCategoria.Location = new Point(12, 368);
+            gpMarcaCategoria.Location = new Point(10, 276);
+            gpMarcaCategoria.Margin = new Padding(3, 2, 3, 2);
             gpMarcaCategoria.Name = "gpMarcaCategoria";
-            gpMarcaCategoria.Size = new Size(610, 88);
+            gpMarcaCategoria.Padding = new Padding(3, 2, 3, 2);
+            gpMarcaCategoria.Size = new Size(534, 66);
             gpMarcaCategoria.TabIndex = 3;
             gpMarcaCategoria.TabStop = false;
             gpMarcaCategoria.Text = "Marca e Categoria";
@@ -415,9 +445,10 @@
             btnCadastrarCategoria.FlatStyle = FlatStyle.Flat;
             btnCadastrarCategoria.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             btnCadastrarCategoria.ForeColor = Color.White;
-            btnCadastrarCategoria.Location = new Point(564, 43);
+            btnCadastrarCategoria.Location = new Point(494, 32);
+            btnCadastrarCategoria.Margin = new Padding(3, 2, 3, 2);
             btnCadastrarCategoria.Name = "btnCadastrarCategoria";
-            btnCadastrarCategoria.Size = new Size(29, 29);
+            btnCadastrarCategoria.Size = new Size(25, 22);
             btnCadastrarCategoria.TabIndex = 11;
             btnCadastrarCategoria.Text = "+";
             btnCadastrarCategoria.UseVisualStyleBackColor = false;
@@ -432,9 +463,10 @@
             btnCadastrarMarca.FlatStyle = FlatStyle.Flat;
             btnCadastrarMarca.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             btnCadastrarMarca.ForeColor = Color.White;
-            btnCadastrarMarca.Location = new Point(266, 43);
+            btnCadastrarMarca.Location = new Point(233, 32);
+            btnCadastrarMarca.Margin = new Padding(3, 2, 3, 2);
             btnCadastrarMarca.Name = "btnCadastrarMarca";
-            btnCadastrarMarca.Size = new Size(29, 29);
+            btnCadastrarMarca.Size = new Size(25, 22);
             btnCadastrarMarca.TabIndex = 8;
             btnCadastrarMarca.Text = "+";
             btnCadastrarMarca.UseVisualStyleBackColor = false;
@@ -448,9 +480,11 @@
             gpFormatoTipoEmbalagem.Controls.Add(cboEmbalagem);
             gpFormatoTipoEmbalagem.Controls.Add(lblFormato);
             gpFormatoTipoEmbalagem.Controls.Add(cboFormato);
-            gpFormatoTipoEmbalagem.Location = new Point(12, 458);
+            gpFormatoTipoEmbalagem.Location = new Point(10, 344);
+            gpFormatoTipoEmbalagem.Margin = new Padding(3, 2, 3, 2);
             gpFormatoTipoEmbalagem.Name = "gpFormatoTipoEmbalagem";
-            gpFormatoTipoEmbalagem.Size = new Size(610, 89);
+            gpFormatoTipoEmbalagem.Padding = new Padding(3, 2, 3, 2);
+            gpFormatoTipoEmbalagem.Size = new Size(534, 67);
             gpFormatoTipoEmbalagem.TabIndex = 4;
             gpFormatoTipoEmbalagem.TabStop = false;
             gpFormatoTipoEmbalagem.Text = "Formato e Tipo de Embalagem";
@@ -464,9 +498,10 @@
             btnCadastrarEmbalagem.FlatStyle = FlatStyle.Flat;
             btnCadastrarEmbalagem.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             btnCadastrarEmbalagem.ForeColor = Color.White;
-            btnCadastrarEmbalagem.Location = new Point(564, 43);
+            btnCadastrarEmbalagem.Location = new Point(494, 32);
+            btnCadastrarEmbalagem.Margin = new Padding(3, 2, 3, 2);
             btnCadastrarEmbalagem.Name = "btnCadastrarEmbalagem";
-            btnCadastrarEmbalagem.Size = new Size(29, 29);
+            btnCadastrarEmbalagem.Size = new Size(25, 22);
             btnCadastrarEmbalagem.TabIndex = 12;
             btnCadastrarEmbalagem.Text = "+";
             btnCadastrarEmbalagem.UseVisualStyleBackColor = false;
@@ -481,9 +516,10 @@
             btnCadastrarFormato.FlatStyle = FlatStyle.Flat;
             btnCadastrarFormato.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             btnCadastrarFormato.ForeColor = Color.White;
-            btnCadastrarFormato.Location = new Point(266, 43);
+            btnCadastrarFormato.Location = new Point(233, 32);
+            btnCadastrarFormato.Margin = new Padding(3, 2, 3, 2);
             btnCadastrarFormato.Name = "btnCadastrarFormato";
-            btnCadastrarFormato.Size = new Size(29, 29);
+            btnCadastrarFormato.Size = new Size(25, 22);
             btnCadastrarFormato.TabIndex = 11;
             btnCadastrarFormato.Text = "+";
             btnCadastrarFormato.UseVisualStyleBackColor = false;
@@ -493,9 +529,9 @@
             // 
             lblEmbalagem.Font = new Font("Verdana", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             lblEmbalagem.ForeColor = Color.FromArgb(54, 54, 54);
-            lblEmbalagem.Location = new Point(313, 19);
+            lblEmbalagem.Location = new Point(274, 14);
             lblEmbalagem.Name = "lblEmbalagem";
-            lblEmbalagem.Size = new Size(280, 24);
+            lblEmbalagem.Size = new Size(245, 18);
             lblEmbalagem.TabIndex = 10;
             lblEmbalagem.Text = "Embalagem";
             lblEmbalagem.TextAlign = ContentAlignment.BottomLeft;
@@ -506,18 +542,19 @@
             cboEmbalagem.DropDownStyle = ComboBoxStyle.DropDownList;
             cboEmbalagem.FormattingEnabled = true;
             cboEmbalagem.IntegralHeight = false;
-            cboEmbalagem.Location = new Point(313, 44);
+            cboEmbalagem.Location = new Point(274, 33);
+            cboEmbalagem.Margin = new Padding(3, 2, 3, 2);
             cboEmbalagem.Name = "cboEmbalagem";
-            cboEmbalagem.Size = new Size(245, 28);
+            cboEmbalagem.Size = new Size(215, 23);
             cboEmbalagem.TabIndex = 2;
             // 
             // lblFormato
             // 
             lblFormato.Font = new Font("Verdana", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             lblFormato.ForeColor = Color.FromArgb(54, 54, 54);
-            lblFormato.Location = new Point(21, 19);
+            lblFormato.Location = new Point(18, 14);
             lblFormato.Name = "lblFormato";
-            lblFormato.Size = new Size(274, 24);
+            lblFormato.Size = new Size(240, 18);
             lblFormato.TabIndex = 8;
             lblFormato.Text = "Formato";
             lblFormato.TextAlign = ContentAlignment.BottomLeft;
@@ -528,9 +565,10 @@
             cboFormato.DropDownStyle = ComboBoxStyle.DropDownList;
             cboFormato.FormattingEnabled = true;
             cboFormato.IntegralHeight = false;
-            cboFormato.Location = new Point(21, 44);
+            cboFormato.Location = new Point(18, 33);
+            cboFormato.Margin = new Padding(3, 2, 3, 2);
             cboFormato.Name = "cboFormato";
-            cboFormato.Size = new Size(239, 28);
+            cboFormato.Size = new Size(210, 23);
             cboFormato.TabIndex = 1;
             // 
             // btnSair
@@ -541,9 +579,10 @@
             btnSair.FlatStyle = FlatStyle.Flat;
             btnSair.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnSair.ForeColor = Color.White;
-            btnSair.Location = new Point(12, 561);
+            btnSair.Location = new Point(10, 421);
+            btnSair.Margin = new Padding(3, 2, 3, 2);
             btnSair.Name = "btnSair";
-            btnSair.Size = new Size(94, 29);
+            btnSair.Size = new Size(82, 22);
             btnSair.TabIndex = 7;
             btnSair.Text = "Sair";
             btnSair.UseVisualStyleBackColor = false;
@@ -557,9 +596,10 @@
             btnSalvar.FlatStyle = FlatStyle.Flat;
             btnSalvar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnSalvar.ForeColor = Color.White;
-            btnSalvar.Location = new Point(528, 561);
+            btnSalvar.Location = new Point(462, 421);
+            btnSalvar.Margin = new Padding(3, 2, 3, 2);
             btnSalvar.Name = "btnSalvar";
-            btnSalvar.Size = new Size(94, 29);
+            btnSalvar.Size = new Size(82, 22);
             btnSalvar.TabIndex = 5;
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = false;
@@ -570,9 +610,10 @@
             btnLimpar.BackColor = Color.White;
             btnLimpar.FlatAppearance.BorderColor = Color.Silver;
             btnLimpar.FlatStyle = FlatStyle.Flat;
-            btnLimpar.Location = new Point(428, 561);
+            btnLimpar.Location = new Point(374, 421);
+            btnLimpar.Margin = new Padding(3, 2, 3, 2);
             btnLimpar.Name = "btnLimpar";
-            btnLimpar.Size = new Size(94, 29);
+            btnLimpar.Size = new Size(82, 22);
             btnLimpar.TabIndex = 6;
             btnLimpar.Text = "Limpar";
             btnLimpar.UseVisualStyleBackColor = false;
@@ -580,10 +621,10 @@
             // 
             // FrmCadastrarProduto
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(633, 600);
+            ClientSize = new Size(554, 450);
             Controls.Add(btnLimpar);
             Controls.Add(btnSalvar);
             Controls.Add(btnSair);

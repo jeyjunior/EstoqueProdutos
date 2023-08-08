@@ -9,6 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Telas-ProdutoCategoria\**" />
+    <EmbeddedResource Remove="Telas-ProdutoCategoria\**" />
+    <None Remove="Telas-ProdutoCategoria\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.143" />
     <PackageReference Include="SimpleInjector" Version="5.4.1" />
     <PackageReference Include="SqlData" Version="1.1.4" />
@@ -44,10 +50,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>App.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Telas-ProdutoCategoria\" />
   </ItemGroup>
 
 </Project>

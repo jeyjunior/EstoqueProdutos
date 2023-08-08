@@ -15,7 +15,7 @@ VALUES
 
 INSERT INTO Imagem (Nome, Formato, ImgBinary) 
 SELECT 'STANDARD', 'PNG', BulkColumn
-FROM OPENROWSET(BULK 'C:\Users\jeyjr\OneDrive\Imagens\Capturas de tela\std.png', SINGLE_BLOB) AS Imagem;
+FROM OPENROWSET(BULK 'C:\Users\jeyjr\OneDrive\Imagens\internet\standard.jpg', SINGLE_BLOB) AS Imagem;
 
 
 INSERT INTO Categoria (Nome, Descricao)

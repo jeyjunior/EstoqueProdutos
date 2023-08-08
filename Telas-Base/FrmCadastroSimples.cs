@@ -47,7 +47,7 @@ namespace EstoqueProdutos.Telas_Base
                     lblNome.Text = $"Nome do {nome}";
                     lblDescricao.Text = $"Descrição do {nome}";
                 }
-                else 
+                else
                 {
                     lblNome.Text = $"Nome da {nome}";
                     lblDescricao.Text = $"Descrição da {nome}";
@@ -101,14 +101,16 @@ namespace EstoqueProdutos.Telas_Base
                     {
                         pNome.SetValue(entidade, nome);
                     }
-                    else if (entidade.GetType().GetProperty("Descricao") is PropertyInfo pDesc &&
-                        pDesc.PropertyType == typeof(string))
+                }
+                else if (p.Name == "Descricao") 
+                {
+                    if (entidade.GetType().GetProperty("Descricao") is PropertyInfo pDesc &&
+                            pDesc.PropertyType == typeof(string))
                     {
                         pDesc.SetValue(entidade, descricao);
                     }
                 }
             });
-
 
             if (repositorio.GetType().GetMethod("InserirDadosNaTabela") is MethodInfo metodo)
             {
