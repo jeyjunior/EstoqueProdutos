@@ -1,5 +1,6 @@
 ﻿using EstoqueProdutos.Entidades;
 using EstoqueProdutos.Formatacao;
+using EstoqueProdutos.Gerenciamento;
 using EstoqueProdutos.Interfaces;
 using EstoqueProdutos.Repositorios;
 using EstoqueProdutos.Telas_Base;
@@ -19,25 +20,39 @@ namespace EstoqueProdutos.Telas_Produto
     public partial class FrmCadastrarProduto : Telas_Base.FrmGestor
     {
 
-        #region Classes
-        IRepositorio<Marca> marcaRepositorio = new MarcaRepositorio();
-        IRepositorio<Categoria> categoriaRepositorio = new CategoriaRepositorio();
-        IRepositorio<Formato> formatoRepositorio = new FormatoRepositorio();
-        IRepositorio<Embalagem> embalagemRepositorio = new EmbalagemRepositorio();
-        IRepositorio<UnidadeMedida> unidadeMedidaRepositorio = new UnidadeMedidaRepositorio();
-        IRepositorio<Produto> produtoRepositorio = new ProdutoRepositorio();
-        #endregion Classes
+        private readonly IRepositorio<Marca> marcaRepositorio;
+        private readonly IRepositorio<Categoria> categoriaRepositorio;
+        private readonly IRepositorio<Formato> formatoRepositorio;
+        private readonly IRepositorio<Embalagem> embalagemRepositorio;
+        private readonly IRepositorio<UnidadeMedida> unidadeMedidaRepositorio;
+        private readonly IRepositorio<Produto> produtoRepositorio;
+        private readonly IRepositorio<Imagem> imagemRepositorio;
 
-        #region Propriedades
-
-        #endregion Propriedades
-
-        #region Construtor
-        public FrmCadastrarProduto()
+        public FrmCadastrarProduto(
+            IRepositorio<Marca> marcaRepo, 
+            IRepositorio<Categoria> categoriaRepo, 
+            IRepositorio<Formato> formatoRepo,
+            IRepositorio<Embalagem> embalagemRepo,
+            IRepositorio<UnidadeMedida> unidadeMedidaRepo,
+            IRepositorio<Produto> produtoRepo,
+            IRepositorio<Imagem> imagemRepo
+            )
         {
             InitializeComponent();
+
+            marcaRepositorio = marcaRepo;
+            categoriaRepositorio = categoriaRepo;
+            formatoRepositorio = formatoRepo;
+            embalagemRepositorio = embalagemRepo;
+            unidadeMedidaRepositorio = unidadeMedidaRepo;
+            produtoRepositorio = produtoRepo;
+            imagemRepositorio = imagemRepo;
         }
-        #endregion Construtor
+
+        public static FrmCadastrarProduto CriarFormComDependencias()
+        {
+            return ContainerSingleton.ObterFormComDependencias<FrmCadastrarProduto>();
+        }
 
         #region Metodos
 
@@ -59,6 +74,7 @@ namespace EstoqueProdutos.Telas_Produto
                 this.Close();
             }
         }
+        
         private void BindCboMarca()
         {
             var result = marcaRepositorio.ObterTabela().ToList();
@@ -78,6 +94,7 @@ namespace EstoqueProdutos.Telas_Produto
                 cboMarca.SelectedIndex = 0;
             }
         }
+        
         private void BindCboCategoria()
         {
             var result = categoriaRepositorio.ObterTabela().ToList();

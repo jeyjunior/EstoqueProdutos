@@ -17,7 +17,7 @@ namespace EstoqueProdutos.Repositorios
     /// <typeparam name="T">Entidade Repositorio </typeparam>
     public partial class Repositorio<T> : IRepositorio<T>
     {
-        private readonly string conexao  = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        protected readonly string conexao  = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
         public IEnumerable<T> ObterTabela()
         {

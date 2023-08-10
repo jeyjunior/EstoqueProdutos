@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EstoqueProdutos.Gerenciamento;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,10 +13,19 @@ namespace EstoqueProdutos.Telas_Produto
 {
     public partial class FrmProdutos : Telas_Base.FrmGestor
     {
+
         public FrmProdutos()
         {
             InitializeComponent();
         }
+
+        #region Metodos
+
+
+        #endregion Metodos
+
+        #region Eventos
+
         protected override void AbrirFilho<T>(EventHandler? e = null)
         {
             base.AbrirFilho<T>();
@@ -23,7 +33,10 @@ namespace EstoqueProdutos.Telas_Produto
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            AbrirFilho<FrmCadastrarProduto>();
+            var produtoForm = FrmCadastrarProduto.CriarFormComDependencias();
+            produtoForm.Show();
         }
+
+        #endregion Eventos
     }
 }
