@@ -28,30 +28,17 @@ namespace EstoqueProdutos.Telas_Produto
         private readonly IRepositorio<Produto> produtoRepositorio;
         private readonly IRepositorio<Imagem> imagemRepositorio;
 
-        public FrmCadastrarProduto(
-            IRepositorio<Marca> marcaRepo, 
-            IRepositorio<Categoria> categoriaRepo, 
-            IRepositorio<Formato> formatoRepo,
-            IRepositorio<Embalagem> embalagemRepo,
-            IRepositorio<UnidadeMedida> unidadeMedidaRepo,
-            IRepositorio<Produto> produtoRepo,
-            IRepositorio<Imagem> imagemRepo
-            )
+        public FrmCadastrarProduto()
         {
             InitializeComponent();
 
-            marcaRepositorio = marcaRepo;
-            categoriaRepositorio = categoriaRepo;
-            formatoRepositorio = formatoRepo;
-            embalagemRepositorio = embalagemRepo;
-            unidadeMedidaRepositorio = unidadeMedidaRepo;
-            produtoRepositorio = produtoRepo;
-            imagemRepositorio = imagemRepo;
-        }
-
-        public static FrmCadastrarProduto CriarFormComDependencias()
-        {
-            return ContainerSingleton.ObterFormComDependencias<FrmCadastrarProduto>();
+            marcaRepositorio = ConfiguradorDI.Container.GetInstance<MarcaRepositorio>();
+            categoriaRepositorio = ConfiguradorDI.Container.GetInstance<CategoriaRepositorio>();
+            formatoRepositorio = ConfiguradorDI.Container.GetInstance<FormatoRepositorio>();
+            embalagemRepositorio = ConfiguradorDI.Container.GetInstance<EmbalagemRepositorio>();
+            unidadeMedidaRepositorio = ConfiguradorDI.Container.GetInstance<UnidadeMedidaRepositorio>();
+            produtoRepositorio = ConfiguradorDI.Container.GetInstance<ProdutoRepositorio>();
+            imagemRepositorio = ConfiguradorDI.Container.GetInstance<ImagemRepositorio>();
         }
 
         #region Metodos
@@ -229,7 +216,7 @@ namespace EstoqueProdutos.Telas_Produto
 
         private void btnCadastrarMarca_Click(object sender, EventArgs e)
         {
-            AbrirFilho<FrmCadastroSimples>(AtualizarCboMarca_Click);
+            AbrirFilho<FrmCadastroSimples>(AtualizarCboMarca_Click, true);
 
             if (ObterFilho<FrmCadastroSimples>() is FrmCadastroSimples cadastroSimples)
             {
@@ -240,7 +227,7 @@ namespace EstoqueProdutos.Telas_Produto
 
         private void btnCadastrarCategoria_Click(object sender, EventArgs e)
         {
-            AbrirFilho<FrmCadastroSimples>(AtualizarCboCategoria_Click);
+            AbrirFilho<FrmCadastroSimples>(AtualizarCboCategoria_Click, true);
 
             if (ObterFilho<FrmCadastroSimples>() is FrmCadastroSimples cadastroSimples)
             {
@@ -251,7 +238,7 @@ namespace EstoqueProdutos.Telas_Produto
 
         private void btnCadastrarFormato_Click(object sender, EventArgs e)
         {
-            AbrirFilho<FrmCadastroSimples>(AtualizarCboFormato_Click);
+            AbrirFilho<FrmCadastroSimples>(AtualizarCboFormato_Click, true);
 
             if (ObterFilho<FrmCadastroSimples>() is FrmCadastroSimples cadastroSimples)
             {
@@ -262,7 +249,7 @@ namespace EstoqueProdutos.Telas_Produto
 
         private void btnCadastrarEmbalagem_Click(object sender, EventArgs e)
         {
-            AbrirFilho<FrmCadastroSimples>(AtualizarCboEmbalagem_Click);
+            AbrirFilho<FrmCadastroSimples>(AtualizarCboEmbalagem_Click, true);
 
             if (ObterFilho<FrmCadastroSimples>() is FrmCadastroSimples cadastroSimples)
             {

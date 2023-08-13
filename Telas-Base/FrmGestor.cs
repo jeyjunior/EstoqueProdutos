@@ -36,12 +36,20 @@ namespace EstoqueProdutos.Telas_Base
             return filhosInstanciados.FirstOrDefault(f => f.GetType() == tipoT);
         }
 
-        protected virtual void AbrirFilho<T>(EventHandler? e = null) where T : FrmBase, IFrmBase, new()
+
+        protected virtual void AbrirFilho<T>(EventHandler? e = null, bool reabrir = false) where T : FrmBase, IFrmBase, new()
         {
             try
             {
                 Type tipoT = typeof(T);
                 FrmBase? filhoEncontrado = filhosInstanciados.FirstOrDefault(f => f.GetType() == tipoT);
+
+                if (reabrir && filhoEncontrado != null)
+                {
+                    filhoEncontrado.Close();
+                }
+
+                filhoEncontrado = filhosInstanciados.FirstOrDefault(f => f.GetType() == tipoT);
 
                 if (filhoEncontrado == null)
                 {
@@ -66,38 +74,6 @@ namespace EstoqueProdutos.Telas_Base
                 MessageBox.Show("Falha ao abrir telas!");
             }
         }
-
-        protected virtual void AbrirFilho<T>(Func<FrmBase> getInstance, EventHandler? e = null) where T : FrmBase, IFrmBase
-        {
-            try
-            {
-                Type tipoT = typeof(T);
-                FrmBase? filhoEncontrado = filhosInstanciados.FirstOrDefault(f => f.GetType() == tipoT);
-
-                if (filhoEncontrado == null)
-                {
-                    var novoFilho = getInstance();
-                    filhosInstanciados.Add(novoFilho);
-
-                    novoFilho.ObterFrmGestor(this);
-                    novoFilho.FormClosed += FrmBase_FormClosed;
-
-                    if (e != null)
-                        novoFilho.FormClosed += new FormClosedEventHandler(e);
-
-                    novoFilho.Show();
-                }
-                else
-                {
-                    filhoEncontrado.Focus();
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Falha ao abrir telas!");
-            }
-        }
-
 
         public void FecharFilho(Type tipoClasseHerdeira)
         {

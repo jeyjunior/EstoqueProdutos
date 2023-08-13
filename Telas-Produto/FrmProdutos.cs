@@ -26,15 +26,10 @@ namespace EstoqueProdutos.Telas_Produto
 
         #region Eventos
 
-        protected override void AbrirFilho<T>(EventHandler? e = null)
-        {
-            base.AbrirFilho<T>();
-        }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            var produtoForm = FrmCadastrarProduto.CriarFormComDependencias();
-            produtoForm.Show();
+            AbrirFilho<FrmCadastrarProduto>();
         }
 
         #endregion Eventos
