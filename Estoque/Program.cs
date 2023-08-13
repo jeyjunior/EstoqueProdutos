@@ -1,5 +1,6 @@
 
 
+using EstoqueProdutos.Telas_Principal;
 using EstoqueProdutos.Telas_Produto;
 
 namespace EstoqueProdutos
@@ -15,7 +16,7 @@ namespace EstoqueProdutos
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new FrmProdutos());
+            Application.Run(new FrmPrincipal());
         }
     }
 }

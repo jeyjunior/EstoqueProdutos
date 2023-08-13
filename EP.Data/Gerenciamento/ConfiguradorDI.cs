@@ -1,4 +1,5 @@
-﻿using EstoqueProdutos.Interfaces;
+﻿using EP.Data.Interfaces;
+using EstoqueProdutos.Interfaces;
 using EstoqueProdutos.Repositorios;
 using SimpleInjector;
 
@@ -18,7 +19,7 @@ namespace EstoqueProdutos.Gerenciamento
             _container.RegisterSingleton<CategoriaRepositorio>();
             _container.RegisterSingleton<EmbalagemRepositorio>();
             _container.RegisterSingleton<FormatoRepositorio>();
-            _container.RegisterSingleton<ImagemRepositorio>();
+            _container.RegisterSingleton<IImagemRepositorio ,ImagemRepositorio>();
             _container.RegisterSingleton<MarcaRepositorio>();
             _container.RegisterSingleton<ProdutoRepositorio>();
             _container.RegisterSingleton<UnidadeMedidaRepositorio>();

@@ -98,19 +98,19 @@
             txtDescricao.BorderStyle = BorderStyle.FixedSingle;
             txtDescricao.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
             txtDescricao.ForeColor = Color.FromArgb(64, 64, 64);
-            txtDescricao.Location = new Point(146, 94);
+            txtDescricao.Location = new Point(126, 94);
             txtDescricao.Margin = new Padding(3, 2, 3, 2);
             txtDescricao.Name = "txtDescricao";
-            txtDescricao.Size = new Size(373, 22);
+            txtDescricao.Size = new Size(393, 22);
             txtDescricao.TabIndex = 2;
             // 
             // lblDescricao
             // 
             lblDescricao.Font = new Font("Verdana", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             lblDescricao.ForeColor = Color.FromArgb(54, 54, 54);
-            lblDescricao.Location = new Point(146, 74);
+            lblDescricao.Location = new Point(126, 74);
             lblDescricao.Name = "lblDescricao";
-            lblDescricao.Size = new Size(288, 18);
+            lblDescricao.Size = new Size(308, 18);
             lblDescricao.TabIndex = 4;
             lblDescricao.Text = "Descrição:";
             lblDescricao.TextAlign = ContentAlignment.BottomLeft;
@@ -120,10 +120,10 @@
             txtNomeProduto.BorderStyle = BorderStyle.FixedSingle;
             txtNomeProduto.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
             txtNomeProduto.ForeColor = Color.FromArgb(64, 64, 64);
-            txtNomeProduto.Location = new Point(146, 45);
+            txtNomeProduto.Location = new Point(126, 45);
             txtNomeProduto.Margin = new Padding(3, 2, 3, 2);
             txtNomeProduto.Name = "txtNomeProduto";
-            txtNomeProduto.Size = new Size(373, 22);
+            txtNomeProduto.Size = new Size(393, 22);
             txtNomeProduto.TabIndex = 1;
             txtNomeProduto.TextChanged += txtNomeProduto_TextChanged;
             // 
@@ -131,9 +131,9 @@
             // 
             lblNomeProduto.Font = new Font("Verdana", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             lblNomeProduto.ForeColor = Color.FromArgb(54, 54, 54);
-            lblNomeProduto.Location = new Point(146, 25);
+            lblNomeProduto.Location = new Point(126, 25);
             lblNomeProduto.Name = "lblNomeProduto";
-            lblNomeProduto.Size = new Size(246, 18);
+            lblNomeProduto.Size = new Size(266, 18);
             lblNomeProduto.TabIndex = 2;
             lblNomeProduto.Text = "Nome do Produto:";
             lblNomeProduto.TextAlign = ContentAlignment.BottomLeft;
@@ -141,10 +141,12 @@
             // pcbImgProduto
             // 
             pcbImgProduto.BackColor = Color.FromArgb(224, 224, 224);
-            pcbImgProduto.Location = new Point(18, 24);
+            pcbImgProduto.Image = Estoque.Properties.Resources.erase_color;
+            pcbImgProduto.Location = new Point(18, 26);
             pcbImgProduto.Margin = new Padding(3, 2, 3, 2);
             pcbImgProduto.Name = "pcbImgProduto";
-            pcbImgProduto.Size = new Size(105, 90);
+            pcbImgProduto.Size = new Size(90, 90);
+            pcbImgProduto.SizeMode = PictureBoxSizeMode.StretchImage;
             pcbImgProduto.TabIndex = 1;
             pcbImgProduto.TabStop = false;
             pcbImgProduto.Click += pcbImgProduto_Click;

@@ -1,21 +1,61 @@
 ﻿using Dapper;
+using EP.Data.Interfaces;
 using EstoqueProdutos.Entidades;
 using Microsoft.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Drawing.Imaging;
+using System.Drawing;
 
 namespace EstoqueProdutos.Repositorios
 {
-    public class ImagemRepositorio : Repositorio<Imagem>
+    public class ImagemRepositorio : Repositorio<Imagem>, IImagemRepositorio
     {
-        public void ObterImagemPadrao() 
+        private readonly string tempCaminhoConfig = Path.GetTempPath();
+        private readonly string nomeArquivo = "imgStandard.json";
+
+        public Image ObterImagemPadrao()
+        {
+            Imagem imagem = ObterObjetoImagemPadrao();
+            Image img;
+
+            using (MemoryStream ms = new MemoryStream(imagem.ImgBinary))
+            {
+                img = Image.FromStream(ms);
+            }
+
+            return img;
+        }
+
+        public Imagem ObterObjetoImagemPadrao()
         {
             try
             {
-                string tempCaminhoConfig = "";
-                string caminhoCompleto = Environment.ExpandEnvironmentVariables(tempCaminhoConfig);
+                string caminhoCompleto = tempCaminhoConfig + nomeArquivo;
+
+                if (!File.Exists(caminhoCompleto))
+                {
+                    SalvarImagemPadraoLocalTemporario();
+                }
+
+                string jsonContent = File.ReadAllText(caminhoCompleto);
+                Imagem imagem = JsonSerializer.Deserialize<Imagem>(jsonContent);
+
+                return imagem;
+            }
+            catch (Exception)
+            {
+                throw new Exception("Falha ao carregar imagem padrão");
+            }
+        }
+
+        public void SalvarImagemPadraoLocalTemporario() 
+        {
+            try
+            {
+                string caminhoCompleto = tempCaminhoConfig + nomeArquivo;
 
                 if (File.Exists(caminhoCompleto))
                 {
@@ -38,8 +78,9 @@ namespace EstoqueProdutos.Repositorios
             }
             catch (Exception)
             {
-                throw;
+                throw new Exception("Falha ao carregar imagem padrão");
             }
         }
+
     }
 }

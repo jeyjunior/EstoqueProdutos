@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using EP.Data;
 using Microsoft.Data.SqlClient;
+using EP.Data.Interfaces;
 
 namespace EstoqueProdutos.Telas_Produto
 {
@@ -28,7 +29,7 @@ namespace EstoqueProdutos.Telas_Produto
         private readonly IRepositorio<Embalagem> embalagemRepositorio;
         private readonly IRepositorio<UnidadeMedida> unidadeMedidaRepositorio;
         private readonly IRepositorio<Produto> produtoRepositorio;
-        private readonly IRepositorio<Imagem> imagemRepositorio;
+        private readonly IImagemRepositorio imagemRepositorio;
 
         public FrmCadastrarProduto()
         {
@@ -55,6 +56,7 @@ namespace EstoqueProdutos.Telas_Produto
                 BindCboUnidadeDeMedida();
                 InicializarDatas();
                 InicializarTextBoxs();
+                InicializarImagem();
             }
             catch (SqlException ex)
             {
@@ -67,7 +69,7 @@ namespace EstoqueProdutos.Telas_Produto
                 this.Close();
             }
         }
-        
+
         private void BindCboMarca()
         {
             var result = marcaRepositorio.ObterTabela().ToList();
@@ -87,7 +89,7 @@ namespace EstoqueProdutos.Telas_Produto
                 cboMarca.SelectedIndex = 0;
             }
         }
-        
+
         private void BindCboCategoria()
         {
             var result = categoriaRepositorio.ObterTabela().ToList();
@@ -189,10 +191,13 @@ namespace EstoqueProdutos.Telas_Produto
             dtpValidade.MinDate = dtpFabricacao.Value;
         }
 
+        private void InicializarImagem()
+        {
+            pcbImgProduto.Image = imagemRepositorio.ObterImagemPadrao();
+        }
 
         //Update
-
-        private bool ValidarTextBoxDimensoes() 
+        private bool ValidarTextBoxDimensoes()
         {
             bool a = txtAltura.Text.Length > 0;
             bool l = txtLargura.Text.Length > 0;
@@ -315,14 +320,14 @@ namespace EstoqueProdutos.Telas_Produto
         {
             btnSalvar.Enabled = ((TextBox)sender).Text.Length > 0;
         }
-        
+
         private void btnSalvar_EnabledChanged(object sender, EventArgs e)
         {
             Formatacao
             .Eventos
             .AlterarCorButton_EnabledChanged((Button)sender, Color.Green, Color.LightGray, e);
         }
-        
+
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             try
@@ -371,7 +376,7 @@ namespace EstoqueProdutos.Telas_Produto
             {
                 MessageBox.Show("Ocorreu um erro ao tentar executar essa operação!");
             }
-        }   
+        }
 
         private void dtpFabricacao_ValueChanged(object sender, EventArgs e)
         {
