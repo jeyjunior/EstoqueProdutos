@@ -1,22 +1,12 @@
-﻿using EstoqueProdutos.Entidades;
+﻿using System.Reflection;
+using EP.Data;
 using EstoqueProdutos.Formatacao;
-using EstoqueProdutos.Interfaces;
-using EstoqueProdutos.Repositorios;
-using Polly.Timeout;
-using Sql;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace EstoqueProdutos.Telas_Base
 {
+    /// <summary>
+    /// Formulario que sera utilizado por qualquer tabela para inserir dados simples
+    /// </summary>
     public partial class FrmCadastroSimples : Telas_Base.FrmBase
     {
         private object repositorio;
@@ -28,6 +18,8 @@ namespace EstoqueProdutos.Telas_Base
         }
 
         #region Metodos
+
+
 
         public void ObterRepositorio<T>() where T : class
         {
@@ -82,8 +74,8 @@ namespace EstoqueProdutos.Telas_Base
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            string nome = txtNome.LimparTexto();
-            string descricao = txtDescricao.LimparTexto();
+            string? nome = txtNome.LimparTexto();
+            string? descricao = txtDescricao.LimparTexto();
 
             PropertyInfo[] prop = entidade.GetType().GetProperties();
 

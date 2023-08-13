@@ -1,5 +1,4 @@
 ﻿using EstoqueProdutos.Interfaces;
-using EstoqueProdutos.Interfaces.Telas;
 using EstoqueProdutos.Repositorios;
 using EstoqueProdutos.Telas_Base;
 using System;
@@ -16,6 +15,9 @@ using System.Windows.Forms;
 
 namespace EstoqueProdutos.Telas_Base
 {
+    /// <summary>
+    /// Responsavel pela gestao das telas filhas
+    /// </summary>
     public partial class FrmGestor : Telas_Base.FrmBase, IFrmGestor
     {
         protected List<FrmBase> filhosInstanciados = new List<FrmBase>();
@@ -27,7 +29,6 @@ namespace EstoqueProdutos.Telas_Base
             InitializeComponent();
         }
 
-
         #region Metodos
 
         protected virtual FrmBase? ObterFilho<T>() where T : FrmBase 
@@ -35,7 +36,6 @@ namespace EstoqueProdutos.Telas_Base
             Type tipoT = typeof(T);
             return filhosInstanciados.FirstOrDefault(f => f.GetType() == tipoT);
         }
-
 
         protected virtual void AbrirFilho<T>(EventHandler? e = null, bool reabrir = false) where T : FrmBase, IFrmBase, new()
         {

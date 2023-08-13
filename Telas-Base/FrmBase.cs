@@ -1,4 +1,4 @@
-﻿using EstoqueProdutos.Interfaces.Telas;
+﻿using EstoqueProdutos.Interfaces;
 using EstoqueProdutos.Telas_Produto;
 using System;
 using System.Collections.Generic;
@@ -13,6 +13,9 @@ using System.Windows.Forms;
 
 namespace EstoqueProdutos.Telas_Base
 {
+    /// <summary>
+    /// Fornece os recursos basico para todos os formularios do projeto
+    /// </summary>
     public partial class FrmBase : Form, IFrmBase
     {
         protected IFrmGestor FrmGestor { get; set; }

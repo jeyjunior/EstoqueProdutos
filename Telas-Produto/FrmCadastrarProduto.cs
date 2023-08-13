@@ -14,6 +14,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EP.Data;
+using Microsoft.Data.SqlClient;
 
 namespace EstoqueProdutos.Telas_Produto
 {
@@ -31,7 +33,6 @@ namespace EstoqueProdutos.Telas_Produto
         public FrmCadastrarProduto()
         {
             InitializeComponent();
-
             marcaRepositorio = ConfiguradorDI.Container.GetInstance<MarcaRepositorio>();
             categoriaRepositorio = ConfiguradorDI.Container.GetInstance<CategoriaRepositorio>();
             formatoRepositorio = ConfiguradorDI.Container.GetInstance<FormatoRepositorio>();
@@ -54,6 +55,11 @@ namespace EstoqueProdutos.Telas_Produto
                 BindCboUnidadeDeMedida();
                 InicializarDatas();
                 InicializarTextBoxs();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Falha sql\n\n" + ex.Message);
+                this.Close();
             }
             catch (Exception ex)
             {

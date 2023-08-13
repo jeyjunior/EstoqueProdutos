@@ -15,27 +15,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Dapper" Version="2.0.143" />
-    <PackageReference Include="SimpleInjector" Version="5.4.1" />
-    <PackageReference Include="SqlData" Version="1.1.4" />
-    <PackageReference Include="SqlData.Core" Version="2.0.37" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+    <ProjectReference Include="..\EP.Data\EP.Data.csproj" />
+    <ProjectReference Include="..\JJ.Helpers\JJ.Helpers.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="App.Designer.cs">
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>App.config</DependentUpon>
-    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Update="Telas-Base\FrmCadastroSimples.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="Telas-Base\FrmCadastroSimples.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,13 +33,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="App.config">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>App.Designer.cs</LastGenOutput>
-    </None>
   </ItemGroup>
 
 </Project>
