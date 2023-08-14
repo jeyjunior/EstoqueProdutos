@@ -1,14 +1,13 @@
 ﻿using Dapper;
 using EP.Data.Interfaces;
 using EstoqueProdutos.Entidades;
+using EstoqueProdutos.Formatacao;
 using Microsoft.Data.SqlClient;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Drawing;
-using System;
 using System.Windows.Forms;
+using JJ.Helpers.Formatacao;
+using static Dapper.SqlMapper;
 
 namespace EstoqueProdutos.Repositorios
 {
@@ -63,14 +62,42 @@ namespace EstoqueProdutos.Repositorios
             {
                 string caminhoImagemSelecionada = openFileDialog.FileName;
                 image = Image.FromFile(caminhoImagemSelecionada);
+                image.Tag = caminhoImagemSelecionada;
             }
 
             return image;
         }
 
-        public bool SalvarImagem()
+        
+        public int SalvarImagem(Image img)
         {
-            throw new NotImplementedException();
+            int PK_Imagem = 1;
+
+            if (img == null || img.Tag == null)
+                return PK_Imagem;
+
+            try
+            {
+                Imagem imagem = new Imagem()
+                {
+                    Nome = Path.GetFileNameWithoutExtension(img.Tag.ToString()),
+                    Formato = Path.GetExtension(img.Tag.ToString()),
+                    ImgBinary = img.ConvertImageToByteArray()
+                };
+
+                using (SqlConnection connection = new SqlConnection(conexao))
+                {
+                    connection.Open();
+                    string sql = "INSERT INTO Imagem (Nome, Formato, ImgBinary) VALUES (@Nome, @Formato, @ImgBinary); SELECT SCOPE_IDENTITY()";
+                    PK_Imagem = connection.QuerySingle<int>(sql, imagem);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao salvar imagem:\n" + ex.Message);
+            }
+
+            return PK_Imagem;
         }
 
         public void SalvarImagemPadraoLocalTemporario() 

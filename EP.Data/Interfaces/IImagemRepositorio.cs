@@ -13,7 +13,12 @@ namespace EP.Data.Interfaces
     {
         public void SalvarImagemPadraoLocalTemporario();
         public Image? ProcurarImagemLocal();
-        public bool SalvarImagem();
+        /// <summary>
+        /// Salvar a imagem na base de dados e retorna o ID da mesma
+        /// </summary>
+        /// <param name="img">imagem que o usuario selecionou</param>
+        /// <returns></returns>
+        public int SalvarImagem(Image img);
         public Imagem ObterObjetoImagemPadrao();
         public Image ObterImagemPadrao();
     }

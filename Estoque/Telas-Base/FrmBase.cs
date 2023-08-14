@@ -43,5 +43,26 @@ namespace EstoqueProdutos.Telas_Base
                 MessageBox.Show("Falha ao tentar fechar tela\nErro: " + ex.Message);
             }
         }
+
+        private void ConfiguracaoPadrao()
+        {
+            foreach (var control in this.Controls)
+            {
+                if (control is Button btn)
+                {
+                    btn.Cursor = Cursors.Hand;
+                }
+                
+                if (control is CheckBox chk) 
+                {
+                    chk.Cursor = Cursors.Hand;
+                }
+            }
+        }
+
+        private void FrmBase_Load(object sender, EventArgs e)
+        {
+            ConfiguracaoPadrao();
+        }
     }
 }

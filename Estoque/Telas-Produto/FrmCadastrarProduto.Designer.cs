@@ -30,12 +30,10 @@
         {
             gpProduto = new GroupBox();
             btnProcurarImg = new Button();
-            btnLimparImg = new Button();
             txtDescricao = new TextBox();
             lblDescricao = new Label();
             txtNomeProduto = new TextBox();
             lblNomeProduto = new Label();
-            pcbImgProduto = new PictureBox();
             lblVolume = new Label();
             txtVolume = new TextBox();
             cboUnidade = new ComboBox();
@@ -72,7 +70,6 @@
             btnSalvar = new Button();
             btnLimpar = new Button();
             gpProduto.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pcbImgProduto).BeginInit();
             gpDetalhesProduto.SuspendLayout();
             gpDimensoes.SuspendLayout();
             gpMarcaCategoria.SuspendLayout();
@@ -82,72 +79,56 @@
             // gpProduto
             // 
             gpProduto.Controls.Add(btnProcurarImg);
-            gpProduto.Controls.Add(btnLimparImg);
             gpProduto.Controls.Add(txtDescricao);
             gpProduto.Controls.Add(lblDescricao);
             gpProduto.Controls.Add(txtNomeProduto);
             gpProduto.Controls.Add(lblNomeProduto);
-            gpProduto.Controls.Add(pcbImgProduto);
             gpProduto.Location = new Point(10, 9);
             gpProduto.Margin = new Padding(3, 2, 3, 2);
             gpProduto.Name = "gpProduto";
             gpProduto.Padding = new Padding(3, 2, 3, 2);
-            gpProduto.Size = new Size(534, 153);
+            gpProduto.Size = new Size(534, 127);
             gpProduto.TabIndex = 0;
             gpProduto.TabStop = false;
             gpProduto.Text = "Produto";
             // 
             // btnProcurarImg
             // 
-            btnProcurarImg.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            btnProcurarImg.BackColor = Color.White;
+            btnProcurarImg.BackColor = Color.Transparent;
+            btnProcurarImg.BackgroundImage = Estoque.Properties.Resources.addIMG;
+            btnProcurarImg.BackgroundImageLayout = ImageLayout.Stretch;
+            btnProcurarImg.Cursor = Cursors.Hand;
             btnProcurarImg.FlatAppearance.BorderColor = Color.DarkGray;
             btnProcurarImg.FlatStyle = FlatStyle.Flat;
             btnProcurarImg.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
-            btnProcurarImg.ForeColor = Color.White;
-            btnProcurarImg.Location = new Point(65, 120);
+            btnProcurarImg.ForeColor = Color.Transparent;
+            btnProcurarImg.Location = new Point(18, 25);
             btnProcurarImg.Margin = new Padding(3, 2, 3, 2);
             btnProcurarImg.Name = "btnProcurarImg";
-            btnProcurarImg.Size = new Size(43, 22);
+            btnProcurarImg.Size = new Size(90, 90);
             btnProcurarImg.TabIndex = 13;
             btnProcurarImg.UseVisualStyleBackColor = false;
             btnProcurarImg.Click += btnProcurarImg_Click;
-            // 
-            // btnLimparImg
-            // 
-            btnLimparImg.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            btnLimparImg.BackColor = Color.White;
-            btnLimparImg.FlatAppearance.BorderColor = Color.Silver;
-            btnLimparImg.FlatStyle = FlatStyle.Flat;
-            btnLimparImg.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
-            btnLimparImg.ForeColor = Color.White;
-            btnLimparImg.Location = new Point(18, 120);
-            btnLimparImg.Margin = new Padding(3, 2, 3, 2);
-            btnLimparImg.Name = "btnLimparImg";
-            btnLimparImg.Size = new Size(41, 22);
-            btnLimparImg.TabIndex = 12;
-            btnLimparImg.UseVisualStyleBackColor = false;
-            btnLimparImg.Click += btnLimparImg_Click;
             // 
             // txtDescricao
             // 
             txtDescricao.BorderStyle = BorderStyle.FixedSingle;
             txtDescricao.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
             txtDescricao.ForeColor = Color.FromArgb(64, 64, 64);
-            txtDescricao.Location = new Point(128, 94);
+            txtDescricao.Location = new Point(125, 88);
             txtDescricao.Margin = new Padding(3, 2, 3, 2);
             txtDescricao.Multiline = true;
             txtDescricao.Name = "txtDescricao";
-            txtDescricao.Size = new Size(391, 48);
+            txtDescricao.Size = new Size(394, 27);
             txtDescricao.TabIndex = 2;
             // 
             // lblDescricao
             // 
             lblDescricao.Font = new Font("Verdana", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             lblDescricao.ForeColor = Color.FromArgb(54, 54, 54);
-            lblDescricao.Location = new Point(128, 74);
+            lblDescricao.Location = new Point(125, 68);
             lblDescricao.Name = "lblDescricao";
-            lblDescricao.Size = new Size(306, 18);
+            lblDescricao.Size = new Size(309, 18);
             lblDescricao.TabIndex = 4;
             lblDescricao.Text = "Descrição:";
             lblDescricao.TextAlign = ContentAlignment.BottomLeft;
@@ -157,10 +138,10 @@
             txtNomeProduto.BorderStyle = BorderStyle.FixedSingle;
             txtNomeProduto.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
             txtNomeProduto.ForeColor = Color.FromArgb(64, 64, 64);
-            txtNomeProduto.Location = new Point(128, 45);
+            txtNomeProduto.Location = new Point(125, 45);
             txtNomeProduto.Margin = new Padding(3, 2, 3, 2);
             txtNomeProduto.Name = "txtNomeProduto";
-            txtNomeProduto.Size = new Size(391, 22);
+            txtNomeProduto.Size = new Size(394, 22);
             txtNomeProduto.TabIndex = 1;
             txtNomeProduto.TextChanged += txtNomeProduto_TextChanged;
             // 
@@ -168,24 +149,12 @@
             // 
             lblNomeProduto.Font = new Font("Verdana", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
             lblNomeProduto.ForeColor = Color.FromArgb(54, 54, 54);
-            lblNomeProduto.Location = new Point(128, 25);
+            lblNomeProduto.Location = new Point(125, 25);
             lblNomeProduto.Name = "lblNomeProduto";
-            lblNomeProduto.Size = new Size(264, 18);
+            lblNomeProduto.Size = new Size(267, 18);
             lblNomeProduto.TabIndex = 2;
             lblNomeProduto.Text = "Nome do Produto:";
             lblNomeProduto.TextAlign = ContentAlignment.BottomLeft;
-            // 
-            // pcbImgProduto
-            // 
-            pcbImgProduto.BackColor = Color.FromArgb(224, 224, 224);
-            pcbImgProduto.Image = Estoque.Properties.Resources.erase_color;
-            pcbImgProduto.Location = new Point(18, 26);
-            pcbImgProduto.Margin = new Padding(3, 2, 3, 2);
-            pcbImgProduto.Name = "pcbImgProduto";
-            pcbImgProduto.Size = new Size(90, 90);
-            pcbImgProduto.SizeMode = PictureBoxSizeMode.StretchImage;
-            pcbImgProduto.TabIndex = 1;
-            pcbImgProduto.TabStop = false;
             // 
             // lblVolume
             // 
@@ -268,7 +237,7 @@
             gpDetalhesProduto.Controls.Add(cboUnidade);
             gpDetalhesProduto.Controls.Add(txtVolume);
             gpDetalhesProduto.Controls.Add(lblVolume);
-            gpDetalhesProduto.Location = new Point(10, 166);
+            gpDetalhesProduto.Location = new Point(10, 139);
             gpDetalhesProduto.Margin = new Padding(3, 2, 3, 2);
             gpDetalhesProduto.Name = "gpDetalhesProduto";
             gpDetalhesProduto.Padding = new Padding(3, 2, 3, 2);
@@ -403,7 +372,7 @@
             gpDimensoes.Controls.Add(lblLargura);
             gpDimensoes.Controls.Add(txtAltura);
             gpDimensoes.Controls.Add(lblAltura);
-            gpDimensoes.Location = new Point(10, 235);
+            gpDimensoes.Location = new Point(10, 208);
             gpDimensoes.Margin = new Padding(3, 2, 3, 2);
             gpDimensoes.Name = "gpDimensoes";
             gpDimensoes.Padding = new Padding(3, 2, 3, 2);
@@ -466,7 +435,7 @@
             gpMarcaCategoria.Controls.Add(cboCategoria);
             gpMarcaCategoria.Controls.Add(lblMarca);
             gpMarcaCategoria.Controls.Add(cboMarca);
-            gpMarcaCategoria.Location = new Point(10, 302);
+            gpMarcaCategoria.Location = new Point(10, 275);
             gpMarcaCategoria.Margin = new Padding(3, 2, 3, 2);
             gpMarcaCategoria.Name = "gpMarcaCategoria";
             gpMarcaCategoria.Padding = new Padding(3, 2, 3, 2);
@@ -479,6 +448,7 @@
             // 
             btnCadastrarCategoria.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             btnCadastrarCategoria.BackColor = Color.FromArgb(0, 192, 192);
+            btnCadastrarCategoria.Cursor = Cursors.Hand;
             btnCadastrarCategoria.FlatAppearance.BorderColor = Color.Silver;
             btnCadastrarCategoria.FlatAppearance.BorderSize = 0;
             btnCadastrarCategoria.FlatStyle = FlatStyle.Flat;
@@ -497,6 +467,7 @@
             // 
             btnCadastrarMarca.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             btnCadastrarMarca.BackColor = Color.FromArgb(0, 192, 192);
+            btnCadastrarMarca.Cursor = Cursors.Hand;
             btnCadastrarMarca.FlatAppearance.BorderColor = Color.Silver;
             btnCadastrarMarca.FlatAppearance.BorderSize = 0;
             btnCadastrarMarca.FlatStyle = FlatStyle.Flat;
@@ -519,7 +490,7 @@
             gpFormatoTipoEmbalagem.Controls.Add(cboEmbalagem);
             gpFormatoTipoEmbalagem.Controls.Add(lblFormato);
             gpFormatoTipoEmbalagem.Controls.Add(cboFormato);
-            gpFormatoTipoEmbalagem.Location = new Point(10, 370);
+            gpFormatoTipoEmbalagem.Location = new Point(10, 343);
             gpFormatoTipoEmbalagem.Margin = new Padding(3, 2, 3, 2);
             gpFormatoTipoEmbalagem.Name = "gpFormatoTipoEmbalagem";
             gpFormatoTipoEmbalagem.Padding = new Padding(3, 2, 3, 2);
@@ -532,6 +503,7 @@
             // 
             btnCadastrarEmbalagem.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             btnCadastrarEmbalagem.BackColor = Color.FromArgb(0, 192, 192);
+            btnCadastrarEmbalagem.Cursor = Cursors.Hand;
             btnCadastrarEmbalagem.FlatAppearance.BorderColor = Color.Silver;
             btnCadastrarEmbalagem.FlatAppearance.BorderSize = 0;
             btnCadastrarEmbalagem.FlatStyle = FlatStyle.Flat;
@@ -550,6 +522,7 @@
             // 
             btnCadastrarFormato.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             btnCadastrarFormato.BackColor = Color.FromArgb(0, 192, 192);
+            btnCadastrarFormato.Cursor = Cursors.Hand;
             btnCadastrarFormato.FlatAppearance.BorderColor = Color.Silver;
             btnCadastrarFormato.FlatAppearance.BorderSize = 0;
             btnCadastrarFormato.FlatStyle = FlatStyle.Flat;
@@ -614,11 +587,12 @@
             // 
             btnSair.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnSair.BackColor = Color.Red;
+            btnSair.Cursor = Cursors.Hand;
             btnSair.FlatAppearance.BorderColor = Color.DarkRed;
             btnSair.FlatStyle = FlatStyle.Flat;
             btnSair.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnSair.ForeColor = Color.White;
-            btnSair.Location = new Point(10, 450);
+            btnSair.Location = new Point(10, 419);
             btnSair.Margin = new Padding(3, 2, 3, 2);
             btnSair.Name = "btnSair";
             btnSair.Size = new Size(82, 37);
@@ -631,12 +605,13 @@
             // 
             btnSalvar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnSalvar.BackColor = Color.LightGray;
+            btnSalvar.Cursor = Cursors.Hand;
             btnSalvar.Enabled = false;
             btnSalvar.FlatAppearance.BorderColor = Color.LightGray;
             btnSalvar.FlatStyle = FlatStyle.Flat;
             btnSalvar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnSalvar.ForeColor = Color.White;
-            btnSalvar.Location = new Point(462, 450);
+            btnSalvar.Location = new Point(462, 419);
             btnSalvar.Margin = new Padding(3, 2, 3, 2);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(82, 37);
@@ -650,9 +625,10 @@
             // 
             btnLimpar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnLimpar.BackColor = Color.White;
+            btnLimpar.Cursor = Cursors.Hand;
             btnLimpar.FlatAppearance.BorderColor = Color.Silver;
             btnLimpar.FlatStyle = FlatStyle.Flat;
-            btnLimpar.Location = new Point(374, 450);
+            btnLimpar.Location = new Point(374, 419);
             btnLimpar.Margin = new Padding(3, 2, 3, 2);
             btnLimpar.Name = "btnLimpar";
             btnLimpar.Size = new Size(82, 37);
@@ -666,7 +642,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(554, 494);
+            ClientSize = new Size(554, 463);
             Controls.Add(btnLimpar);
             Controls.Add(btnSalvar);
             Controls.Add(btnSair);
@@ -680,7 +656,6 @@
             Load += FrmCadastrarProduto_Load;
             gpProduto.ResumeLayout(false);
             gpProduto.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pcbImgProduto).EndInit();
             gpDetalhesProduto.ResumeLayout(false);
             gpDetalhesProduto.PerformLayout();
             gpDimensoes.ResumeLayout(false);
@@ -695,7 +670,6 @@
         private GroupBox gpProduto;
         private TextBox txtNomeProduto;
         private Label lblNomeProduto;
-        private PictureBox pcbImgProduto;
         private TextBox txtDescricao;
         private Label lblDescricao;
         private Label lblVolume;
@@ -734,6 +708,5 @@
         private Button btnCadastrarEmbalagem;
         private Button btnCadastrarFormato;
         private Button btnProcurarImg;
-        private Button btnLimparImg;
     }
 }

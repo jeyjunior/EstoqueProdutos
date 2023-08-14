@@ -193,17 +193,7 @@ namespace EstoqueProdutos.Telas_Produto
 
         private void InicializarImagem()
         {
-            pcbImgProduto.Image = imagemRepositorio.ObterImagemPadrao();
-        }
-
-        //Update
-        private bool ValidarTextBoxDimensoes()
-        {
-            bool a = txtAltura.Text.Length > 0;
-            bool l = txtLargura.Text.Length > 0;
-            bool c = txtComprimento.Text.Length > 0;
-
-            return a && l && c;
+            btnProcurarImg.BackgroundImage = imagemRepositorio.ObterImagemPadrao();
         }
 
         #endregion Metodos
@@ -327,11 +317,7 @@ namespace EstoqueProdutos.Telas_Produto
         {
             try
             {
-                if (!ValidarTextBoxDimensoes())
-                {
-                    MessageBox.Show("Preencha corretamente as dimensões do produto");
-                    return;
-                }
+                int PK_Imagem = imagemRepositorio.SalvarImagem(btnProcurarImg.BackgroundImage);
 
                 var produto = new Produto()
                 {
@@ -352,7 +338,7 @@ namespace EstoqueProdutos.Telas_Produto
                     FK_Marca = cboMarca.ObterValorInt(),
                     FK_UnidadeMedida = cboUnidade.ObterValorInt(),
 
-                    FK_Imagem = 1
+                    FK_Imagem = PK_Imagem
                 };
 
                 var resultado = produtoRepositorio.InserirDadosNaTabela(produto);
@@ -382,15 +368,15 @@ namespace EstoqueProdutos.Telas_Produto
         {
             var img = imagemRepositorio.ProcurarImagemLocal();
 
-            if(img != null)
+            if (img != null)
             {
-                pcbImgProduto.Image = img;
+                btnProcurarImg.BackgroundImage = img;
             }
         }
 
         private void btnLimparImg_Click(object sender, EventArgs e)
         {
-            pcbImgProduto.Image = imagemRepositorio.ObterImagemPadrao();
+            btnProcurarImg.BackgroundImage = imagemRepositorio.ObterImagemPadrao();
         }
 
         #endregion Eventos
