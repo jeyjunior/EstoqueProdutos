@@ -6,8 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using System.Drawing.Imaging;
 using System.Drawing;
+using System;
+using System.Windows.Forms;
 
 namespace EstoqueProdutos.Repositorios
 {
@@ -49,6 +50,27 @@ namespace EstoqueProdutos.Repositorios
             {
                 throw new Exception("Falha ao carregar imagem padrão");
             }
+        }
+
+        public Image? ProcurarImagemLocal()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Imagens|*.jpg;*.png";
+            openFileDialog.Multiselect = false;
+
+            Image? image = null;
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string caminhoImagemSelecionada = openFileDialog.FileName;
+                image = Image.FromFile(caminhoImagemSelecionada);
+            }
+
+            return image;
+        }
+
+        public bool SalvarImagem()
+        {
+            throw new NotImplementedException();
         }
 
         public void SalvarImagemPadraoLocalTemporario() 

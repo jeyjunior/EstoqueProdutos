@@ -12,6 +12,8 @@ namespace EP.Data.Interfaces
     public interface IImagemRepositorio
     {
         public void SalvarImagemPadraoLocalTemporario();
+        public Image? ProcurarImagemLocal();
+        public bool SalvarImagem();
         public Imagem ObterObjetoImagemPadrao();
         public Image ObterImagemPadrao();
     }

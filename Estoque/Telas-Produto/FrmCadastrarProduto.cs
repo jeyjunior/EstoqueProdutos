@@ -220,11 +220,6 @@ namespace EstoqueProdutos.Telas_Produto
             this.Close();
         }
 
-        private void pcbImgProduto_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnCadastrarMarca_Click(object sender, EventArgs e)
         {
             AbrirFilho<FrmCadastroSimples>(AtualizarCboMarca_Click, true);
@@ -381,6 +376,21 @@ namespace EstoqueProdutos.Telas_Produto
         private void dtpFabricacao_ValueChanged(object sender, EventArgs e)
         {
             dtpValidade.MinDate = dtpFabricacao.Value;
+        }
+
+        private void btnProcurarImg_Click(object sender, EventArgs e)
+        {
+            var img = imagemRepositorio.ProcurarImagemLocal();
+
+            if(img != null)
+            {
+                pcbImgProduto.Image = img;
+            }
+        }
+
+        private void btnLimparImg_Click(object sender, EventArgs e)
+        {
+            pcbImgProduto.Image = imagemRepositorio.ObterImagemPadrao();
         }
 
         #endregion Eventos

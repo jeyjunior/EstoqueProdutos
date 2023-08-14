@@ -28,6 +28,5 @@ namespace EstoqueProdutos.Gerenciamento
         }
 
         public static Container Container => _container;
-
     }
 }
