@@ -21,7 +21,7 @@ namespace EstoqueProdutos.Gerenciamento
             _container.RegisterSingleton<FormatoRepositorio>();
             _container.RegisterSingleton<IImagemRepositorio ,ImagemRepositorio>();
             _container.RegisterSingleton<MarcaRepositorio>();
-            _container.RegisterSingleton<ProdutoRepositorio>();
+            _container.RegisterSingleton<IProdutoRepositorio, ProdutoRepositorio>();
             _container.RegisterSingleton<UnidadeMedidaRepositorio>();
             _container.Options.ResolveUnregisteredConcreteTypes = true;
             _container.Verify();

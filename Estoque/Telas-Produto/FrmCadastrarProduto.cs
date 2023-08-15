@@ -22,7 +22,6 @@ namespace EstoqueProdutos.Telas_Produto
 {
     public partial class FrmCadastrarProduto : Telas_Base.FrmGestor
     {
-
         private readonly IRepositorio<Marca> marcaRepositorio;
         private readonly IRepositorio<Categoria> categoriaRepositorio;
         private readonly IRepositorio<Formato> formatoRepositorio;

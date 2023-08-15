@@ -28,4 +28,10 @@ namespace EstoqueProdutos.Entidades
         public int? FK_Embalagem { get; set; }
         public int? FK_UnidadeMedida { get; set; }
     }
+
+    public class PesquisaProdutoSimples 
+    {
+        public string Nome { get; set; }
+        public int? FK_Categoria { get; set; }
+    }
 }

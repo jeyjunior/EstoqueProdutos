@@ -43,7 +43,7 @@ namespace EstoqueProdutos.Telas_Principal
 
         private void btnProtudos_Click(object sender, EventArgs e)
         {
-            AbrirFilho<FrmCadastrarProduto>();
+            AbrirFilho<FrmProdutos>();
         }
 
         private void FrmPrincipal_Load(object sender, EventArgs e)

@@ -20,10 +20,21 @@ namespace EstoqueProdutos.Formatacao
             }
             else 
             {
-                return null;
+                return "";
             }
         }
 
+        public static string? TextoFormatoLikeSQL(this TextBox textBox)
+        {
+            if (textBox.Text.Length > 0)
+            {
+                return $"%{textBox.LimparTexto().Replace("'","")}%";
+            }
+            else
+            {
+                return "";
+            }
+        }
 
         public static decimal? ParaDecimal(this TextBox? textBox) 
         {
