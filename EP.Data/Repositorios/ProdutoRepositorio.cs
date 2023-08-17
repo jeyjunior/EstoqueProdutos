@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using EP.Data.Interfaces;
+using EstoqueProdutos.Formatacao;
 using EstoqueProdutos.Entidades;
 using Microsoft.Data.SqlClient;
 using System;
@@ -17,20 +18,20 @@ namespace EstoqueProdutos.Repositorios
             string sql = "";
             string condicao = "";
 
-            if (pesquisarProduto.Nome != "") 
-            {
-                condicao += (condicao != "" ? " AND" : "") + " Nome Like @Nome";
-            }
+            condicao += (condicao != "" ? " AND" : "") + " Nome Like @Nome";
+            
+            pesquisarProduto.Nome = pesquisarProduto.Nome == "" ? $"%{pesquisarProduto.Nome}%" : pesquisarProduto.Nome;
 
             if (pesquisarProduto.FK_Categoria > 0) 
             {
                 condicao += (condicao != "" ? " AND" : "") + "  FK_Categoria = @FK_Categoria";
             }
 
+            sql = "SELECT * FROM Produto WHERE " + condicao;
+
             using (SqlConnection connection = new SqlConnection(conexao))
             {
                 connection.Open();
-                sql = "SELECT * FROM Produto WHERE " + condicao;
                 return connection.Query<Produto>(sql, pesquisarProduto);
             }
         }
