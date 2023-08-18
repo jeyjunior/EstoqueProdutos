@@ -16,18 +16,22 @@ namespace EstoqueProdutos.Repositorios
         public IEnumerable<Produto> ObterProduto(PesquisaProdutoSimples pesquisarProduto)
         {
             string sql = "";
+            string where = "WHERE "; 
+
             string condicao = "";
 
-            condicao += (condicao != "" ? " AND" : "") + " Nome Like @Nome";
-            
-            pesquisarProduto.Nome = pesquisarProduto.Nome == "" ? $"%{pesquisarProduto.Nome}%" : pesquisarProduto.Nome;
+            if (pesquisarProduto.Nome != "") 
+            { 
+                condicao += (condicao != "" ? " AND" : "") + " Nome Like @Nome";
+            }
+
 
             if (pesquisarProduto.FK_Categoria > 0) 
             {
                 condicao += (condicao != "" ? " AND" : "") + "  FK_Categoria = @FK_Categoria";
             }
 
-            sql = "SELECT * FROM Produto WHERE " + condicao;
+             sql = "SELECT * FROM Produto " + (condicao != "" ? where + condicao : "");
 
             using (SqlConnection connection = new SqlConnection(conexao))
             {

@@ -30,17 +30,11 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             dtgProdutos = new DataGridView();
-            btnCadastrar = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            btnPesquisar = new Button();
-            lblCategoria = new Label();
-            cboCategoria = new ComboBox();
-            txtNome = new TextBox();
-            lblNome = new Label();
             colPK_Produto = new DataGridViewTextBoxColumn();
             colNome = new DataGridViewTextBoxColumn();
             colVolume = new DataGridViewTextBoxColumn();
@@ -56,7 +50,17 @@
             colFK_Marca = new DataGridViewTextBoxColumn();
             colFK_Embalagem = new DataGridViewTextBoxColumn();
             colFK_UnidadeMedida = new DataGridViewTextBoxColumn();
+            btnCadastrar = new Button();
+            button2 = new Button();
+            button3 = new Button();
+            btnPesquisar = new Button();
+            lblCategoria = new Label();
+            cboCategoria = new ComboBox();
+            txtNome = new TextBox();
+            lblNome = new Label();
+            gpProdutos = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)dtgProdutos).BeginInit();
+            gpProdutos.SuspendLayout();
             SuspendLayout();
             // 
             // dtgProdutos
@@ -64,128 +68,58 @@
             dtgProdutos.AllowUserToDeleteRows = false;
             dtgProdutos.AllowUserToOrderColumns = true;
             dtgProdutos.AllowUserToResizeRows = false;
-            dtgProdutos.BackgroundColor = SystemColors.ActiveCaption;
-            dtgProdutos.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Verdana", 8F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dtgProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dtgProdutos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dtgProdutos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dtgProdutos.BackgroundColor = Color.White;
+            dtgProdutos.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.PapayaWhip;
+            dataGridViewCellStyle2.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dtgProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dtgProdutos.ColumnHeadersHeight = 40;
             dtgProdutos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dtgProdutos.Columns.AddRange(new DataGridViewColumn[] { colPK_Produto, colNome, colVolume, colDescricao, colDataFabricacao, colDataValidade, colAltura, colLargura, colComprimento, colFK_Formato, colFK_Imagem, colFK_Categoria, colFK_Marca, colFK_Embalagem, colFK_UnidadeMedida });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dtgProdutos.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.Moccasin;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = Color.Moccasin;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dtgProdutos.DefaultCellStyle = dataGridViewCellStyle4;
             dtgProdutos.GridColor = Color.WhiteSmoke;
-            dtgProdutos.Location = new Point(10, 75);
+            dtgProdutos.Location = new Point(10, 117);
             dtgProdutos.Margin = new Padding(3, 2, 3, 2);
             dtgProdutos.Name = "dtgProdutos";
             dtgProdutos.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.GradientInactiveCaption;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dtgProdutos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Control;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dtgProdutos.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dtgProdutos.RowHeadersVisible = false;
             dtgProdutos.RowHeadersWidth = 51;
             dtgProdutos.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle4.Font = new Font("Verdana", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dtgProdutos.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.BackColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle6.Font = new Font("Verdana", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dtgProdutos.RowsDefaultCellStyle = dataGridViewCellStyle6;
             dtgProdutos.RowTemplate.Height = 29;
-            dtgProdutos.Size = new Size(1158, 436);
+            dtgProdutos.Size = new Size(1158, 389);
             dtgProdutos.TabIndex = 0;
-            // 
-            // btnCadastrar
-            // 
-            btnCadastrar.Location = new Point(10, 12);
-            btnCadastrar.Margin = new Padding(3, 2, 3, 2);
-            btnCadastrar.Name = "btnCadastrar";
-            btnCadastrar.Size = new Size(57, 49);
-            btnCadastrar.TabIndex = 1;
-            btnCadastrar.UseVisualStyleBackColor = true;
-            btnCadastrar.Click += btnCadastrar_Click;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(73, 12);
-            button2.Margin = new Padding(3, 2, 3, 2);
-            button2.Name = "button2";
-            button2.Size = new Size(57, 49);
-            button2.TabIndex = 2;
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            button3.Location = new Point(135, 12);
-            button3.Margin = new Padding(3, 2, 3, 2);
-            button3.Name = "button3";
-            button3.Size = new Size(57, 49);
-            button3.TabIndex = 3;
-            button3.UseVisualStyleBackColor = true;
-            // 
-            // btnPesquisar
-            // 
-            btnPesquisar.Location = new Point(1111, 12);
-            btnPesquisar.Margin = new Padding(3, 2, 3, 2);
-            btnPesquisar.Name = "btnPesquisar";
-            btnPesquisar.Size = new Size(57, 49);
-            btnPesquisar.TabIndex = 4;
-            btnPesquisar.UseVisualStyleBackColor = true;
-            btnPesquisar.Click += btnPesquisar_Click;
-            // 
-            // lblCategoria
-            // 
-            lblCategoria.AutoSize = true;
-            lblCategoria.Location = new Point(876, 18);
-            lblCategoria.Name = "lblCategoria";
-            lblCategoria.Size = new Size(61, 15);
-            lblCategoria.TabIndex = 5;
-            lblCategoria.Text = "Categoria:";
-            // 
-            // cboCategoria
-            // 
-            cboCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboCategoria.FlatStyle = FlatStyle.Flat;
-            cboCategoria.FormattingEnabled = true;
-            cboCategoria.Location = new Point(876, 36);
-            cboCategoria.MaxDropDownItems = 100;
-            cboCategoria.Name = "cboCategoria";
-            cboCategoria.Size = new Size(216, 23);
-            cboCategoria.TabIndex = 7;
-            // 
-            // txtNome
-            // 
-            txtNome.BorderStyle = BorderStyle.FixedSingle;
-            txtNome.Location = new Point(584, 36);
-            txtNome.MaxLength = 100;
-            txtNome.Name = "txtNome";
-            txtNome.Size = new Size(286, 23);
-            txtNome.TabIndex = 8;
-            // 
-            // lblNome
-            // 
-            lblNome.AutoSize = true;
-            lblNome.Location = new Point(584, 18);
-            lblNome.Name = "lblNome";
-            lblNome.Size = new Size(106, 15);
-            lblNome.TabIndex = 10;
-            lblNome.Text = "Nome do produto:";
             // 
             // colPK_Produto
             // 
             colPK_Produto.DataPropertyName = "PK_Produto";
+            dataGridViewCellStyle3.BackColor = Color.IndianRed;
+            colPK_Produto.DefaultCellStyle = dataGridViewCellStyle3;
             colPK_Produto.HeaderText = "PK_Produto";
             colPK_Produto.MinimumWidth = 100;
             colPK_Produto.Name = "colPK_Produto";
@@ -311,26 +245,113 @@
             colFK_UnidadeMedida.ReadOnly = true;
             colFK_UnidadeMedida.Width = 120;
             // 
+            // btnCadastrar
+            // 
+            btnCadastrar.Location = new Point(894, 26);
+            btnCadastrar.Margin = new Padding(3, 2, 3, 2);
+            btnCadastrar.Name = "btnCadastrar";
+            btnCadastrar.Size = new Size(57, 49);
+            btnCadastrar.TabIndex = 1;
+            btnCadastrar.UseVisualStyleBackColor = true;
+            btnCadastrar.Click += btnCadastrar_Click;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(957, 26);
+            button2.Margin = new Padding(3, 2, 3, 2);
+            button2.Name = "button2";
+            button2.Size = new Size(57, 49);
+            button2.TabIndex = 2;
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(1019, 26);
+            button3.Margin = new Padding(3, 2, 3, 2);
+            button3.Name = "button3";
+            button3.Size = new Size(57, 49);
+            button3.TabIndex = 3;
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // btnPesquisar
+            // 
+            btnPesquisar.Location = new Point(1082, 26);
+            btnPesquisar.Margin = new Padding(3, 2, 3, 2);
+            btnPesquisar.Name = "btnPesquisar";
+            btnPesquisar.Size = new Size(57, 49);
+            btnPesquisar.TabIndex = 4;
+            btnPesquisar.UseVisualStyleBackColor = true;
+            btnPesquisar.Click += btnPesquisar_Click;
+            // 
+            // lblCategoria
+            // 
+            lblCategoria.AutoSize = true;
+            lblCategoria.Location = new Point(290, 26);
+            lblCategoria.Name = "lblCategoria";
+            lblCategoria.Size = new Size(61, 15);
+            lblCategoria.TabIndex = 5;
+            lblCategoria.Text = "Categoria:";
+            // 
+            // cboCategoria
+            // 
+            cboCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboCategoria.FlatStyle = FlatStyle.Flat;
+            cboCategoria.FormattingEnabled = true;
+            cboCategoria.Location = new Point(290, 44);
+            cboCategoria.MaxDropDownItems = 100;
+            cboCategoria.Name = "cboCategoria";
+            cboCategoria.Size = new Size(182, 23);
+            cboCategoria.TabIndex = 7;
+            // 
+            // txtNome
+            // 
+            txtNome.BorderStyle = BorderStyle.FixedSingle;
+            txtNome.Location = new Point(17, 44);
+            txtNome.MaxLength = 100;
+            txtNome.Name = "txtNome";
+            txtNome.Size = new Size(258, 23);
+            txtNome.TabIndex = 8;
+            // 
+            // lblNome
+            // 
+            lblNome.AutoSize = true;
+            lblNome.Location = new Point(17, 26);
+            lblNome.Name = "lblNome";
+            lblNome.Size = new Size(106, 15);
+            lblNome.TabIndex = 10;
+            lblNome.Text = "Nome do produto:";
+            // 
+            // gpProdutos
+            // 
+            gpProdutos.Controls.Add(btnPesquisar);
+            gpProdutos.Controls.Add(button3);
+            gpProdutos.Controls.Add(txtNome);
+            gpProdutos.Controls.Add(button2);
+            gpProdutos.Controls.Add(lblNome);
+            gpProdutos.Controls.Add(btnCadastrar);
+            gpProdutos.Controls.Add(cboCategoria);
+            gpProdutos.Controls.Add(lblCategoria);
+            gpProdutos.Location = new Point(10, 12);
+            gpProdutos.Name = "gpProdutos";
+            gpProdutos.Size = new Size(1158, 88);
+            gpProdutos.TabIndex = 11;
+            gpProdutos.TabStop = false;
+            gpProdutos.Text = "Produtos";
+            // 
             // FrmProdutos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1180, 541);
-            Controls.Add(lblNome);
-            Controls.Add(txtNome);
-            Controls.Add(cboCategoria);
-            Controls.Add(lblCategoria);
-            Controls.Add(btnPesquisar);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(btnCadastrar);
             Controls.Add(dtgProdutos);
+            Controls.Add(gpProdutos);
             Name = "FrmProdutos";
             Text = "Produtos";
             Load += FrmProdutos_Load;
             ((System.ComponentModel.ISupportInitialize)dtgProdutos).EndInit();
+            gpProdutos.ResumeLayout(false);
+            gpProdutos.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -344,6 +365,7 @@
         private ComboBox cboCategoria;
         private TextBox txtNome;
         private Label lblNome;
+        private GroupBox gpProdutos;
         private DataGridViewTextBoxColumn colPK_Produto;
         private DataGridViewTextBoxColumn colNome;
         private DataGridViewTextBoxColumn colVolume;
