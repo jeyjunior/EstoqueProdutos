@@ -30,10 +30,11 @@
         {
             btnProduto = new Button();
             tlpTop = new TableLayoutPanel();
-            pCentral = new Panel();
-            lblTela = new Label();
             lblUsuario = new Label();
+            lblTela = new Label();
+            pCentral = new Panel();
             tblDireita = new TableLayoutPanel();
+            btnTeste = new Button();
             tlpTop.SuspendLayout();
             tblDireita.SuspendLayout();
             SuspendLayout();
@@ -53,6 +54,7 @@
             btnProduto.TabIndex = 1;
             btnProduto.Text = "Produto";
             btnProduto.UseVisualStyleBackColor = true;
+            btnProduto.Click += btnProduto_Click;
             // 
             // tlpTop
             // 
@@ -73,24 +75,6 @@
             tlpTop.Size = new Size(784, 35);
             tlpTop.TabIndex = 2;
             // 
-            // pCentral
-            // 
-            pCentral.Location = new Point(129, 37);
-            pCentral.Name = "pCentral";
-            pCentral.Size = new Size(650, 520);
-            pCentral.TabIndex = 3;
-            // 
-            // lblTela
-            // 
-            lblTela.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblTela.ForeColor = Color.White;
-            lblTela.Location = new Point(13, 0);
-            lblTela.Name = "lblTela";
-            lblTela.Size = new Size(376, 35);
-            lblTela.TabIndex = 4;
-            lblTela.Text = "Tela aberta";
-            lblTela.TextAlign = ContentAlignment.MiddleLeft;
-            // 
             // lblUsuario
             // 
             lblUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -103,12 +87,34 @@
             lblUsuario.Text = "José Junior";
             lblUsuario.TextAlign = ContentAlignment.MiddleRight;
             // 
+            // lblTela
+            // 
+            lblTela.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTela.ForeColor = Color.White;
+            lblTela.Location = new Point(13, 0);
+            lblTela.Name = "lblTela";
+            lblTela.Size = new Size(376, 35);
+            lblTela.TabIndex = 4;
+            lblTela.Text = "Tela aberta";
+            lblTela.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // pCentral
+            // 
+            pCentral.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pCentral.BackColor = Color.FromArgb(255, 192, 192);
+            pCentral.Location = new Point(129, 37);
+            pCentral.Margin = new Padding(0);
+            pCentral.Name = "pCentral";
+            pCentral.Size = new Size(650, 520);
+            pCentral.TabIndex = 3;
+            // 
             // tblDireita
             // 
             tblDireita.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             tblDireita.BackColor = Color.FromArgb(60, 75, 85);
             tblDireita.ColumnCount = 1;
             tblDireita.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tblDireita.Controls.Add(btnTeste, 0, 2);
             tblDireita.Controls.Add(btnProduto, 0, 1);
             tblDireita.Location = new Point(0, 34);
             tblDireita.Margin = new Padding(0);
@@ -122,6 +128,23 @@
             tblDireita.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
             tblDireita.Size = new Size(125, 528);
             tblDireita.TabIndex = 4;
+            // 
+            // btnTeste
+            // 
+            btnTeste.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnTeste.Cursor = Cursors.Hand;
+            btnTeste.FlatAppearance.BorderSize = 0;
+            btnTeste.FlatStyle = FlatStyle.Flat;
+            btnTeste.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnTeste.ForeColor = Color.White;
+            btnTeste.Location = new Point(0, 60);
+            btnTeste.Margin = new Padding(0);
+            btnTeste.Name = "btnTeste";
+            btnTeste.Size = new Size(125, 30);
+            btnTeste.TabIndex = 2;
+            btnTeste.Text = "Teste";
+            btnTeste.UseVisualStyleBackColor = true;
+            btnTeste.Click += btnTeste_Click;
             // 
             // FrmPrincipal
             // 
@@ -149,5 +172,6 @@
         private Label lblUsuario;
         private Label lblTela;
         private TableLayoutPanel tblDireita;
+        private Button btnTeste;
     }
 }

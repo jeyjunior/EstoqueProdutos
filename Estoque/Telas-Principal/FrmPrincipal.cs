@@ -1,4 +1,6 @@
 ﻿using EP.Data.Interfaces;
+using Estoque.Telas_Base;
+using Estoque.Telas_Produto;
 using EstoqueProdutos.Entidades;
 using EstoqueProdutos.Gerenciamento;
 using EstoqueProdutos.Interfaces;
@@ -17,11 +19,12 @@ using System.Windows.Forms;
 
 namespace EstoqueProdutos.Telas_Principal
 {
-    public partial class FrmPrincipal : FrmGestor
+    public partial class FrmPrincipal : Estoque.Telas_Base.FrmGestorUC
     {
         public FrmPrincipal()
         {
             InitializeComponent();
+            ObterPanelCentral(pCentral);
         }
 
         #region Metodos
@@ -41,16 +44,21 @@ namespace EstoqueProdutos.Telas_Principal
 
         #region Eventos
 
-        private void btnProtudos_Click(object sender, EventArgs e)
-        {
-            AbrirFilho<FrmProdutos>();
-        }
-
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
             InicializarConfiguracoes();
         }
 
         #endregion Eventos
+
+        private void btnProduto_Click(object sender, EventArgs e)
+        {
+            AbrirTela<UCProdutos>();
+        }
+
+        private void btnTeste_Click(object sender, EventArgs e)
+        {
+            AbrirTela<UCBase>();
+        }
     }
 }
