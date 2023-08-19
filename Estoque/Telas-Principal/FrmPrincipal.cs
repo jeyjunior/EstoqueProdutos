@@ -26,12 +26,12 @@ namespace EstoqueProdutos.Telas_Principal
 
         #region Metodos
 
-        private void InicializarConfiguracoes() 
+        private void InicializarConfiguracoes()
         {
             CarregarImagemPadrao();
         }
 
-        private void CarregarImagemPadrao() 
+        private void CarregarImagemPadrao()
         {
             IImagemRepositorio imagemRepositorio = ConfiguradorDI.Container.GetInstance<ImagemRepositorio>();
             imagemRepositorio.SalvarImagemPadraoLocalTemporario();
