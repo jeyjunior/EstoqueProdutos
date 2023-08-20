@@ -3,6 +3,7 @@ using Estoque.Interfaces;
 using Estoque.Telas_Principal;
 using EstoqueProdutos.Interfaces;
 using EstoqueProdutos.Repositorios;
+using EstoqueProdutos.Telas_Principal;
 using SimpleInjector;
 
 namespace EstoqueProdutos.Gerenciamento
@@ -19,6 +20,8 @@ namespace EstoqueProdutos.Gerenciamento
             _container = new Container();
             _container.RegisterSingleton<IUCPrincipalBot, UCPrincipalBot>();
             _container.RegisterSingleton<IUCPrincipalTop, UCPrincipalTop>();
+            _container.RegisterSingleton<IUCPrincipalRight, UCPrincipalRight>();
+
             _container.Options.ResolveUnregisteredConcreteTypes = true;
             _container.Verify();
         }

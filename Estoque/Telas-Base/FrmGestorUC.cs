@@ -52,6 +52,7 @@ namespace Estoque.Telas_Base
                 {
                     var telaNova = new T();
                     telasInstanciadas.Add(telaNova);
+
                     panelCentral.Controls.Clear();
                     panelCentral.Controls.Add(telaNova);
                     telaNova.Show();

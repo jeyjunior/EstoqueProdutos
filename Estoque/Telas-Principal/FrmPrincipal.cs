@@ -21,16 +21,27 @@ using System.Windows.Forms;
 
 namespace EstoqueProdutos.Telas_Principal
 {
-    public partial class FrmPrincipal : Estoque.Telas_Base.FrmGestorUC
+    public partial class FrmPrincipal : Estoque.Telas_Base.FrmGestorUC, IFrmPrincipal
     {
+        #region Classes
         private readonly IUCPrincipalBot uCPrincipalBot;
         private readonly IUCPrincipalTop uCPrincipalTop;
+        private readonly IUCPrincipalRight uCPrincipalRight;
         private readonly IImagemRepositorio imagemRepositorio;
+        #endregion Classes
+
+        #region Propriedades Publicas
+        public Panel panelCentral { get; set; }
+        #endregion Propriedades Publicas
+
         public FrmPrincipal()
         {
             InitializeComponent();
             uCPrincipalBot = DITelas.Container.GetInstance<UCPrincipalBot>();
             uCPrincipalTop = DITelas.Container.GetInstance<UCPrincipalTop>();
+            uCPrincipalRight = DITelas.Container.GetInstance<UCPrincipalRight>();
+            uCPrincipalRight.ObterFrmPrincipal(this);
+
             imagemRepositorio = DIRepositorios.Container.GetInstance<ImagemRepositorio>();
         }
 
@@ -46,6 +57,7 @@ namespace EstoqueProdutos.Telas_Principal
         {
             pBot.Controls.Add((Control)uCPrincipalBot);
             pTop.Controls.Add((Control)uCPrincipalTop);
+            pRight.Controls.Add((Control)uCPrincipalRight);
         }
 
         private void CarregarImagemPadrao()
@@ -62,16 +74,12 @@ namespace EstoqueProdutos.Telas_Principal
             InicializarConfiguracoes();
         }
 
+        public void AbrirTelaPanelCentral<T>() where T : UserControl, new()
+        {
+            AbrirTela<T>(panelCentral: pCentral);
+        }
+
         #endregion Eventos
 
-        private void btnProduto_Click(object sender, EventArgs e)
-        {
-            AbrirTela<UCProdutos>(panelCentral: pCentral);
-        }
-
-        private void btnTeste_Click(object sender, EventArgs e)
-        {
-            AbrirTela<UCBase>(panelCentral: pCentral);
-        }
     }
 }
