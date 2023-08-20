@@ -28,8 +28,8 @@ namespace EstoqueProdutos.Telas_Produto
         {
             InitializeComponent();
 
-            categoriaRepositorio = ConfiguradorDI.Container.GetInstance<CategoriaRepositorio>();
-            produtoRepositorio = ConfiguradorDI.Container.GetInstance<IProdutoRepositorio>();
+            categoriaRepositorio = DITelas.Container.GetInstance<CategoriaRepositorio>();
+            produtoRepositorio = DITelas.Container.GetInstance<IProdutoRepositorio>();
         }
 
         #region Metodos

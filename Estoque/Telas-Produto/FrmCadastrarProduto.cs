@@ -33,13 +33,13 @@ namespace EstoqueProdutos.Telas_Produto
         public FrmCadastrarProduto()
         {
             InitializeComponent();
-            marcaRepositorio = ConfiguradorDI.Container.GetInstance<MarcaRepositorio>();
-            categoriaRepositorio = ConfiguradorDI.Container.GetInstance<CategoriaRepositorio>();
-            formatoRepositorio = ConfiguradorDI.Container.GetInstance<FormatoRepositorio>();
-            embalagemRepositorio = ConfiguradorDI.Container.GetInstance<EmbalagemRepositorio>();
-            unidadeMedidaRepositorio = ConfiguradorDI.Container.GetInstance<UnidadeMedidaRepositorio>();
-            produtoRepositorio = ConfiguradorDI.Container.GetInstance<ProdutoRepositorio>();
-            imagemRepositorio = ConfiguradorDI.Container.GetInstance<ImagemRepositorio>();
+            marcaRepositorio = DITelas.Container.GetInstance<MarcaRepositorio>();
+            categoriaRepositorio = DITelas.Container.GetInstance<CategoriaRepositorio>();
+            formatoRepositorio = DITelas.Container.GetInstance<FormatoRepositorio>();
+            embalagemRepositorio = DITelas.Container.GetInstance<EmbalagemRepositorio>();
+            unidadeMedidaRepositorio = DITelas.Container.GetInstance<UnidadeMedidaRepositorio>();
+            produtoRepositorio = DITelas.Container.GetInstance<ProdutoRepositorio>();
+            imagemRepositorio = DITelas.Container.GetInstance<ImagemRepositorio>();
         }
 
         #region Metodos

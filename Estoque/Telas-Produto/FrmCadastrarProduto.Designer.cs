@@ -95,7 +95,7 @@
             // btnProcurarImg
             // 
             btnProcurarImg.BackColor = Color.Transparent;
-            btnProcurarImg.BackgroundImage = Estoque.Properties.Resources.addIMG;
+            // btnProcurarImg.BackgroundImage = Estoque.Properties.Resources.addIMG;
             btnProcurarImg.BackgroundImageLayout = ImageLayout.Stretch;
             btnProcurarImg.Cursor = Cursors.Hand;
             btnProcurarImg.FlatAppearance.BorderColor = Color.DarkGray;

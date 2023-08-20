@@ -15,7 +15,12 @@ namespace Estoque.Telas_Base
         public UCBase()
         {
             InitializeComponent();
+        }
+
+        protected virtual void AtualizarPropriedades() 
+        {
             this.Dock = DockStyle.Fill;
+            this.MaximumSize = new System.Drawing.Size(0, 0);
         }
     }
 }

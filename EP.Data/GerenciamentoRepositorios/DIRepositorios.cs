@@ -8,11 +8,11 @@ namespace EstoqueProdutos.Gerenciamento
     /// <summary>
     /// Configuração da Injeção de Dependencia
     /// </summary>
-    public static class ConfiguradorDI
+    public static class DIRepositorios
     {
         private static readonly Container _container;
 
-        static ConfiguradorDI()
+        static DIRepositorios()
         {
             _container = new Container();
             _container.Register(typeof(IRepositorio<>), typeof(Repositorio<>));

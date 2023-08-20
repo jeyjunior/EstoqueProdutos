@@ -22,15 +22,20 @@ namespace Estoque.Telas_Base
             InitializeComponent();
         }
 
-        protected void ObterPanelCentral(Panel panelCentral) 
-        {
-            this.panelCentral = panelCentral;
-        }
-
-        protected virtual void AbrirTela<T>() where T : UserControl,  new()
+        protected virtual void AbrirTela<T>(Panel panelCentral = null) where T : UserControl,  new()
         {
             try
             {
+                if (panelCentral != null)
+                {
+                    this.panelCentral = panelCentral;
+                }
+                else
+                {
+                    throw new Exception();
+                }
+
+
                 Type tipoT = typeof(T);
                 UserControl? telaEncontrada = telasInstanciadas.FirstOrDefault(f => f.GetType() == tipoT);
 

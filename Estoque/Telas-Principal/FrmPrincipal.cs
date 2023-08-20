@@ -1,5 +1,7 @@
 ﻿using EP.Data.Interfaces;
+using Estoque.Interfaces;
 using Estoque.Telas_Base;
+using Estoque.Telas_Principal;
 using Estoque.Telas_Produto;
 using EstoqueProdutos.Entidades;
 using EstoqueProdutos.Gerenciamento;
@@ -21,10 +23,15 @@ namespace EstoqueProdutos.Telas_Principal
 {
     public partial class FrmPrincipal : Estoque.Telas_Base.FrmGestorUC
     {
+        private readonly IUCPrincipalBot uCPrincipalBot;
+        private readonly IUCPrincipalTop uCPrincipalTop;
+        private readonly IImagemRepositorio imagemRepositorio;
         public FrmPrincipal()
         {
             InitializeComponent();
-            ObterPanelCentral(pCentral);
+            uCPrincipalBot = DITelas.Container.GetInstance<UCPrincipalBot>();
+            uCPrincipalTop = DITelas.Container.GetInstance<UCPrincipalTop>();
+            imagemRepositorio = DIRepositorios.Container.GetInstance<ImagemRepositorio>();
         }
 
         #region Metodos
@@ -32,11 +39,17 @@ namespace EstoqueProdutos.Telas_Principal
         private void InicializarConfiguracoes()
         {
             CarregarImagemPadrao();
+            InicilizarModulosDaInterface();
+        }
+
+        private void InicilizarModulosDaInterface()
+        {
+            pBot.Controls.Add((Control)uCPrincipalBot);
+            pTop.Controls.Add((Control)uCPrincipalTop);
         }
 
         private void CarregarImagemPadrao()
         {
-            IImagemRepositorio imagemRepositorio = ConfiguradorDI.Container.GetInstance<ImagemRepositorio>();
             imagemRepositorio.SalvarImagemPadraoLocalTemporario();
         }
 
@@ -53,12 +66,12 @@ namespace EstoqueProdutos.Telas_Principal
 
         private void btnProduto_Click(object sender, EventArgs e)
         {
-            AbrirTela<UCProdutos>();
+            AbrirTela<UCProdutos>(panelCentral: pCentral);
         }
 
         private void btnTeste_Click(object sender, EventArgs e)
         {
-            AbrirTela<UCBase>();
+            AbrirTela<UCBase>(panelCentral: pCentral);
         }
     }
 }

@@ -71,5 +71,27 @@ namespace EstoqueProdutos.Formatacao
                 return null;
             }
         }
+
+        /// <summary>
+        /// Valida se a entidade(objeto) nao é nula e se existe a propriedade Nome
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="objeto"></param>
+        /// <returns></returns>
+        public static string ObterNome<T>(T objeto) where T : class
+        {
+            if (objeto == null)
+                return "";
+
+            var propriedade = typeof(T).GetProperty("Nome");
+            if (propriedade == null)
+                return "";
+
+            var valor = propriedade.GetValue(objeto);
+            if (valor == null)
+                return "";
+
+            return valor.ToString();
+        }
     }
 }
