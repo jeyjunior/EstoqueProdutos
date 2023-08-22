@@ -27,9 +27,9 @@ namespace EstoqueProdutos.Repositorios
                 condicao += (condicao != "" ? " AND" : "") + " Produto.Nome Like @Nome\n";
             }
 
-            if(pesquisarProduto.DataFabricacao != null && pesquisarProduto.DataValidade != null)
+            if (pesquisarProduto.Descricao != "")
             {
-                condicao += (condicao != "" ? " AND" : "") + "  (DataFabricacao >= @DataFabricacao AND  DataValidade <= @DataValidade)\n";
+                condicao += (condicao != "" ? " AND" : "") + " Produto.Descricao Like @Descricao\n";
             }
             
             if (pesquisarProduto.FK_Marca > 0)
@@ -51,22 +51,20 @@ namespace EstoqueProdutos.Repositorios
             {
                 condicao += (condicao != "" ? " AND" : "") + "  FK_Categoria = @FK_Categoria\n";
             }
-            // 
 
-
-             sql = "" +
-                "SELECT\n" +
-                "       Produto.*,\n" +
-                "       Categoria.*,\n" +
-                "       Formato.*,\n" +
-                "       Marca.*,\n" +
-                "       Embalagem.*\n" +
-                "FROM Produto\n" +
-                "       INNER JOIN Categoria ON Categoria.PK_Categoria = Produto.FK_Categoria\n" +
-                "       INNER JOIN Formato ON Formato.PK_Formato = Produto.FK_Formato\n" +
-                "       INNER JOIN Marca ON Marca.PK_Marca = Produto.FK_Marca\n" +
-                "       INNER JOIN Embalagem ON Embalagem.PK_Embalagem = Produto.FK_Embalagem\n" +
-                " " + (condicao != "" ? where + condicao : "");
+            sql = "" +
+               "SELECT\n" +
+               "       Produto.*,\n" +
+               "       Categoria.*,\n" +
+               "       Formato.*,\n" +
+               "       Marca.*,\n" +
+               "       Embalagem.*\n" +
+               "FROM Produto\n" +
+               "       INNER JOIN Categoria ON Categoria.PK_Categoria = Produto.FK_Categoria\n" +
+               "       INNER JOIN Formato ON Formato.PK_Formato = Produto.FK_Formato\n" +
+               "       INNER JOIN Marca ON Marca.PK_Marca = Produto.FK_Marca\n" +
+               "       INNER JOIN Embalagem ON Embalagem.PK_Embalagem = Produto.FK_Embalagem\n" +
+               " " + (condicao != "" ? where + condicao : "");
 
 
             using (SqlConnection connection = new SqlConnection(conexao))

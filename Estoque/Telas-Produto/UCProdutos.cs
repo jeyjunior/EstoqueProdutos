@@ -43,13 +43,10 @@ namespace Estoque.Telas_Produto
         {
             try
             {
-                BindCboCategoria();
-                BindCboMarca();
-                BindCboFormato();
-                BindCboEmbalagem();
-
-                InicializarDatas();
-                DefinirEstadoDasDatas();
+                BindComboBoxCategoria();
+                BindComboBoxMarca();
+                BindComboBoxFormato();
+                BindComboBoxEmbalagem();
             }
             catch (SqlException ex)
             {
@@ -61,7 +58,7 @@ namespace Estoque.Telas_Produto
             }
         }
 
-        private void BindCboMarca()
+        private void BindComboBoxMarca()
         {
             var result = marcaRepositorio.ObterTabela().ToList();
             result.Insert(0,
@@ -81,7 +78,7 @@ namespace Estoque.Telas_Produto
             }
         }
 
-        private void BindCboCategoria()
+        private void BindComboBoxCategoria()
         {
             var result = categoriaRepositorio.ObterTabela().ToList();
             result.Insert(0,
@@ -102,7 +99,7 @@ namespace Estoque.Telas_Produto
             }
         }
 
-        private void BindCboFormato()
+        private void BindComboBoxFormato()
         {
             var result = formatoRepositorio.ObterTabela().ToList();
             result.Insert(0,
@@ -122,7 +119,7 @@ namespace Estoque.Telas_Produto
             }
         }
 
-        private void BindCboEmbalagem()
+        private void BindComboBoxEmbalagem()
         {
             var result = embalagemRepositorio.ObterTabela().ToList();
             result.Insert(0,
@@ -142,22 +139,7 @@ namespace Estoque.Telas_Produto
             }
         }
 
-        private void InicializarDatas()
-        {
-            dtpFabricacao.MaxDate = DateTime.Today;
-            dtpFabricacao.Value = DateTime.Today;
-
-            dtpValidade.MinDate = dtpFabricacao.Value;
-            dtpValidade.Value = dtpFabricacao.Value;
-        }
-
-        private void DefinirEstadoDasDatas()
-        {
-            dtpFabricacao.Enabled = chkDatas.Checked;
-            dtpValidade.Enabled = chkDatas.Checked;
-        }
-
-        private void BindDataGrid()
+        private void BindDataGridView()
         {
             if (produtos != null)
             {
@@ -170,8 +152,6 @@ namespace Estoque.Telas_Produto
                         item.Nome,
                         item.Volume,
                         item.Descricao,
-                        item.DataFabricacao,
-                        item.DataValidade,
                         item.Altura,
                         item.Largura,
                         item.Comprimento,
@@ -186,28 +166,31 @@ namespace Estoque.Telas_Produto
             }
         }
 
+        private void LimparComponentes()
+        {
+            txtNomeProduto.Text = "";
+            txtDescricaoProduto.Text = "";
 
+            cboCategoria.SelectedValue = 0;
+            cboEmbalagem.SelectedValue = 0;
+            cboMarca.SelectedValue = 0;
+            cboFormato.SelectedValue = 0;
+
+            dtgProdutos.Rows.Clear();
+
+        }
 
         private void UCProdutos_Load(object sender, EventArgs e)
         {
             InicializarComponentes();
         }
 
-        private void dtpFabricacao_ValueChanged(object sender, EventArgs e)
-        {
-            dtpValidade.MinDate = dtpFabricacao.Value;
-        }
-
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            DateTime? dataFabricacao = chkDatas.Checked ? dtpFabricacao.Value : null;
-            DateTime? dataValidade = chkDatas.Checked ? dtpValidade.Value : null;
-
             var pesquisa = new PesquisaProdutoSimples()
             {
                 Nome = txtNomeProduto.TextoFormatoLikeSQL(),
-                DataFabricacao = dataFabricacao,
-                DataValidade = dataValidade,
+                Descricao = txtDescricaoProduto.TextoFormatoLikeSQL(),
                 FK_Categoria = cboCategoria.ObterValorInt(),
                 FK_Embalagem = cboEmbalagem.ObterValorInt(),
                 FK_Formato = cboFormato.ObterValorInt(),
@@ -215,12 +198,12 @@ namespace Estoque.Telas_Produto
             };
 
             produtos = produtoRepositorio.ObterProduto(pesquisa);
-            BindDataGrid();
+            BindDataGridView();
         }
 
-        private void chkDatas_CheckedChanged(object sender, EventArgs e)
+        private void UCProdutos_ParentChanged(object sender, EventArgs e)
         {
-            DefinirEstadoDasDatas();
+            LimparComponentes();
         }
     }
 }

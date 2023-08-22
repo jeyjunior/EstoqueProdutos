@@ -17,27 +17,20 @@ namespace Estoque.Telas_Principal
 {
     public partial class UCPrincipalRight : Estoque.Telas_Base.UCBase, IUCPrincipalRight
     {
-        private IFrmPrincipal frmPrincipal;
-
         public UCPrincipalRight()
         {
             InitializeComponent();
             AtualizarPropriedades();
         }
 
-        public void ObterFrmPrincipal(IFrmPrincipal frmPrincipal)
-        {
-            this.frmPrincipal = frmPrincipal;
-        }
-
         private void btnProduto_Click(object sender, EventArgs e)
         {
-            frmPrincipal.AbrirTelaPanelCentral<UCProdutos>();
+            FrmPrincipal.frmPrincipal.AbrirTelaPanelCentral<UCProdutos>();
         }
 
         private void btnTeste_Click(object sender, EventArgs e)
         {
-            frmPrincipal.AbrirTelaPanelCentral<UCBase>();
+            FrmPrincipal.frmPrincipal.AbrirTelaPanelCentral<UCBase>();
         }
     }
 }

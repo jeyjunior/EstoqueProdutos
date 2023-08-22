@@ -15,6 +15,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,6 +24,10 @@ namespace EstoqueProdutos.Telas_Principal
 {
     public partial class FrmPrincipal : Estoque.Telas_Base.FrmGestorUC, IFrmPrincipal
     {
+        #region Singleton
+        public static IFrmPrincipal frmPrincipal;
+        #endregion
+
         #region Classes
         private readonly IUCPrincipalBot uCPrincipalBot;
         private readonly IUCPrincipalTop uCPrincipalTop;
@@ -31,17 +36,16 @@ namespace EstoqueProdutos.Telas_Principal
         #endregion Classes
 
         #region Propriedades Publicas
-        public Panel panelCentral { get; set; }
+        
         #endregion Propriedades Publicas
 
         public FrmPrincipal()
         {
             InitializeComponent();
+            frmPrincipal = this;
             uCPrincipalBot = DITelas.Container.GetInstance<UCPrincipalBot>();
             uCPrincipalTop = DITelas.Container.GetInstance<UCPrincipalTop>();
             uCPrincipalRight = DITelas.Container.GetInstance<UCPrincipalRight>();
-            uCPrincipalRight.ObterFrmPrincipal(this);
-
             imagemRepositorio = DIRepositorios.Container.GetInstance<ImagemRepositorio>();
         }
 

@@ -14,9 +14,6 @@ namespace EstoqueProdutos.Entidades
         public decimal? Volume { get; set; }
         public string? Descricao { get; set;}
 
-        public DateTime? DataFabricacao { get; set; }
-        public DateTime? DataValidade { get; set; }
-
         public decimal? Altura { get; set; }
         public decimal? Largura { get; set; }
         public decimal? Comprimento { get; set; }
@@ -37,8 +34,7 @@ namespace EstoqueProdutos.Entidades
     public class PesquisaProdutoSimples 
     {
         public string Nome { get; set; }
-        public DateTime? DataFabricacao { get; set; }
-        public DateTime? DataValidade { get; set; }
+        public string Descricao { get; set; }
 
         public int? FK_Formato { get; set; }
         public int? FK_Categoria { get; set; }

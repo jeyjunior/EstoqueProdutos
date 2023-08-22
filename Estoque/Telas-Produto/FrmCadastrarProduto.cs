@@ -324,9 +324,6 @@ namespace EstoqueProdutos.Telas_Produto
                     Descricao = txtDescricao.LimparTexto(),
                     Volume = txtVolume.ParaDecimal(),
 
-                    DataFabricacao = dtpFabricacao.ParaDataPequena(),
-                    DataValidade = dtpValidade.ParaDataPequena(),
-
                     Altura = txtAltura.ParaDecimal(),
                     Largura = txtLargura.ParaDecimal(),
                     Comprimento = txtComprimento.ParaDecimal(),

@@ -65,3 +65,30 @@ CREATE TABLE Produto (
    FOREIGN KEY (FK_Embalagem) REFERENCES Embalagem (PK_Embalagem),
    FOREIGN KEY (FK_UnidadeMedida) REFERENCES UnidadeMedida (PK_UnidadeMedida)
 );
+
+CREATE TABLE Setor (
+    PK_Setor INT PRIMARY KEY IDENTITY(1, 1),
+    NomeSetor VARCHAR(255) NOT NULL,
+    Descricao VARCHAR(1000) NULL
+);
+
+CREATE TABLE Cargo (
+    PK_Cargo INT PRIMARY KEY IDENTITY(1, 1),
+    NomeCargo VARCHAR(255) NOT NULL,
+    FK_Setor INT FOREIGN KEY REFERENCES Setor(PK_Setor),
+    Descricao VARCHAR(1000) NULL
+);
+
+CREATE TABLE Usuario (
+    PK_Usuario INT PRIMARY KEY IDENTITY(1, 1),
+    ID_Usuario VARCHAR(20) NOT NULL,
+    NomeCompleto VARCHAR(255) NOT NULL,
+    Usuario VARCHAR(100) NOT NULL,
+    FK_Setor INT FOREIGN KEY REFERENCES Setor(PK_Setor),
+    Email VARCHAR(255) NOT NULL,
+    Senha VARCHAR(255) NOT NULL,
+    DataCadastro DATETIME NOT NULL,
+    FK_Cargo INT FOREIGN KEY REFERENCES Cargo(PK_Cargo),
+    Ativo BIT NOT NULL
+);
+
