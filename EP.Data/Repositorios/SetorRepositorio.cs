@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EstoqueProdutos.Repositorios
 {
-    public class SetorRepositorio : Repositorio<Setor>
+    public class CargoRepositorio : Repositorio<Cargo>
     {
 
     }

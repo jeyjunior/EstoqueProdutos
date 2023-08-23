@@ -1,8 +1,10 @@
 ﻿using Estoque.Interfaces;
+using Estoque.Telas;
 using Estoque.Telas_Base;
 using Estoque.Telas_Produto;
 using EstoqueProdutos.Gerenciamento;
 using EstoqueProdutos.Telas_Principal;
+using EstoqueProdutos.Telas_Produto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,12 +27,17 @@ namespace Estoque.Telas_Principal
 
         private void btnProduto_Click(object sender, EventArgs e)
         {
-            FrmPrincipal.frmPrincipal.AbrirTelaPanelCentral<UCProdutos>();
+            FrmPrincipal.frmPrincipal.AbrirTelaPanelCentral<UCProduto>();
         }
 
         private void btnTeste_Click(object sender, EventArgs e)
         {
             FrmPrincipal.frmPrincipal.AbrirTelaPanelCentral<UCBase>();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FrmPrincipal.frmPrincipal.AbrirTelaPanelCentral<UCUsuario>();
         }
     }
 }

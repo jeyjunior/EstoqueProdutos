@@ -1,4 +1,5 @@
-﻿using EP.Data.Entidades;
+﻿using EstoqueProdutos.Entidades;
+using EstoqueProdutos.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EstoqueProdutos.Repositorios
 {
-    public class SetorRepositorio : Repositorio<Setor>
+    public class CategoriaRepositorio : Repositorio<Categoria>
     {
 
     }

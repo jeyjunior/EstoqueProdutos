@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             tblDireita = new TableLayoutPanel();
+            button1 = new Button();
             btnTeste = new Button();
             btnProduto = new Button();
             tblDireita.SuspendLayout();
@@ -40,6 +41,7 @@
             tblDireita.BackColor = Color.FromArgb(60, 75, 85);
             tblDireita.ColumnCount = 1;
             tblDireita.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tblDireita.Controls.Add(button1, 0, 2);
             tblDireita.Controls.Add(btnTeste, 0, 2);
             tblDireita.Controls.Add(btnProduto, 0, 1);
             tblDireita.Location = new Point(0, 0);
@@ -65,6 +67,27 @@
             tblDireita.Size = new Size(125, 453);
             tblDireita.TabIndex = 5;
             // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            button1.Cursor = Cursors.Hand;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.ForeColor = Color.White;
+            button1.Image = Properties.Resources.produtoIcon1;
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.Location = new Point(0, 60);
+            button1.Margin = new Padding(0);
+            button1.Name = "button1";
+            button1.Padding = new Padding(5, 0, 0, 0);
+            button1.Size = new Size(125, 30);
+            button1.TabIndex = 3;
+            button1.Text = "Usuário";
+            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // btnTeste
             // 
             btnTeste.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -73,7 +96,7 @@
             btnTeste.FlatStyle = FlatStyle.Flat;
             btnTeste.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnTeste.ForeColor = Color.White;
-            btnTeste.Location = new Point(0, 60);
+            btnTeste.Location = new Point(0, 90);
             btnTeste.Margin = new Padding(0);
             btnTeste.Name = "btnTeste";
             btnTeste.Size = new Size(125, 30);
@@ -120,5 +143,6 @@
         private TableLayoutPanel tblDireita;
         private Button btnTeste;
         private Button btnProduto;
+        private Button button1;
     }
 }

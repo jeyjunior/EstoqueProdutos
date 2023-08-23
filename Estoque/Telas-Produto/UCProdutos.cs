@@ -17,7 +17,7 @@ using System.Windows.Forms;
 
 namespace Estoque.Telas_Produto
 {
-    public partial class UCProdutos : Estoque.Telas_Base.UCBase
+    public partial class UCProduto : Estoque.Telas_Base.UCBase
     {
         private readonly IProdutoRepositorio produtoRepositorio;
         private readonly IRepositorio<Marca> marcaRepositorio;
@@ -27,7 +27,7 @@ namespace Estoque.Telas_Produto
 
         private IEnumerable<Produto> produtos;
 
-        public UCProdutos()
+        public UCProduto()
         {
             InitializeComponent();
             AtualizarPropriedades();
