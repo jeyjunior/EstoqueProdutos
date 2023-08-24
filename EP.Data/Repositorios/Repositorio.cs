@@ -14,7 +14,7 @@ namespace EstoqueProdutos.Repositorios
     {
         protected readonly string conexao = Conexao.ConexaoBase;
 
-        public IEnumerable<T> ObterTabela()
+        public virtual IEnumerable<T> ObterTabela()
         {
             using (SqlConnection connection = new SqlConnection(conexao))
             {
@@ -25,7 +25,7 @@ namespace EstoqueProdutos.Repositorios
             }
         }
 
-        public bool InserirDadosNaTabela(T entity)
+        public virtual bool InserirDadosNaTabela(T entity)
         {
             using (SqlConnection connection = new SqlConnection(conexao))
             {

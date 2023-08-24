@@ -8,10 +8,11 @@ using System.Drawing;
 using System.Windows.Forms;
 using JJ.Helpers.Formatacao;
 using static Dapper.SqlMapper;
+using EP.Data.sql;
 
 namespace EstoqueProdutos.Repositorios
 {
-    public class ImagemRepositorio : Repositorio<Imagem>, IImagemRepositorio
+    public class ImagemRepositorio : IImagemRepositorio
     {
         private readonly string tempCaminhoConfig = Path.GetTempPath();
         private readonly string nomeArquivo = "imgStandard.json";
@@ -85,7 +86,7 @@ namespace EstoqueProdutos.Repositorios
                     ImgBinary = img.ConvertImageToByteArray()
                 };
 
-                using (SqlConnection connection = new SqlConnection(conexao))
+                using (SqlConnection connection = new SqlConnection(Conexao.ConexaoBase))
                 {
                     connection.Open();
                     string sql = "INSERT INTO Imagem (Nome, Formato, ImgBinary) VALUES (@Nome, @Formato, @ImgBinary); SELECT SCOPE_IDENTITY()";
@@ -111,7 +112,7 @@ namespace EstoqueProdutos.Repositorios
                     return;
                 }
 
-                using (SqlConnection connection = new SqlConnection(conexao))
+                using (SqlConnection connection = new SqlConnection(Conexao.ConexaoBase))
                 {
                     connection.Open();
 
@@ -131,5 +132,30 @@ namespace EstoqueProdutos.Repositorios
             }
         }
 
+        public IEnumerable<Imagem> ObterTabela()
+        {
+            using (SqlConnection connection = new SqlConnection(Conexao.ConexaoBase))
+            {
+                connection.Open();
+                string sql = $"SELECT * FROM Imagem";
+                IEnumerable<Imagem> resultado = connection.Query<Imagem>(sql);
+                return resultado;
+            }
+        }
+
+        public bool InserirDadosNaTabela(Imagem imagem)
+        {
+            using (SqlConnection connection = new SqlConnection(Conexao.ConexaoBase))
+            {
+                connection.Open();
+
+                string sql = "" +
+                    "INSERT INTO Imagem\n" +
+                    "VALUES (@Nome, @Formato, @ImgBinary)\n";
+
+                var resultado = connection.Execute(sql, imagem);
+                return Convert.ToBoolean(resultado);
+            }
+        }
     }
 }

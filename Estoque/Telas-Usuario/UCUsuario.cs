@@ -1,4 +1,6 @@
-﻿using EP.Data.Interfaces;
+﻿using EP.Data.Entidades;
+using EP.Data.Interfaces;
+using EP.Data.Repositorios;
 using EstoqueProdutos.Entidades;
 using EstoqueProdutos.Formatacao;
 using EstoqueProdutos.Gerenciamento;
@@ -11,6 +13,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,12 +22,17 @@ namespace Estoque.Telas
 {
     public partial class UCUsuario : Estoque.Telas_Base.UCBase
     {
+        private readonly IRepositorio<Setor> setorRepositorio;
+        private readonly IRepositorio<Cargo> cargoRepositorio;
 
         private IEnumerable<Produto> produtos;
 
         public UCUsuario()
         {
             InitializeComponent();
+
+            setorRepositorio = DIRepositorios.Container.GetInstance<SetorRepositorio>();
+            cargoRepositorio = DIRepositorios.Container.GetInstance<CargoRepositorio>();
             AtualizarPropriedades();
         }
 
@@ -32,8 +40,8 @@ namespace Estoque.Telas
         {
             try
             {
-                BindComboBoxFormato();
-                BindComboBoxEmbalagem();
+                BindComboBoxSetor();
+                BindComboBoxCargo();
             }
             catch (SqlException ex)
             {
@@ -45,44 +53,44 @@ namespace Estoque.Telas
             }
         }
 
-        private void BindComboBoxFormato()
+        private void BindComboBoxSetor()
         {
-            //var result = formatoRepositorio.ObterTabela().ToList();
-            //result.Insert(0,
-            //    new Formato
-            //    {
-            //        PK_Formato = 0,
-            //        Nome = "Nenhum",
-            //        Descricao = "Nenhum"
-            //    });
+            var result = setorRepositorio.ObterTabela().ToList();
+            result.Insert(0,
+                new Setor
+                {
+                    PK_Setor = 0,
+                    NomeSetor = "Nenhum",
+                    Descricao = "Nenhum"
+                });
 
-            //if (result != null)
-            //{
-            //    cboFormato.DataSource = result;
-            //    cboFormato.DisplayMember = "Nome";
-            //    cboFormato.ValueMember = "PK_Formato";
-            //    cboFormato.SelectedIndex = 0;
-            //}
+            if (result != null)
+            {
+                cboSetor.DataSource = result;
+                cboSetor.DisplayMember = "NomeSetor";
+                cboSetor.ValueMember = "PK_Setor";
+                cboSetor.SelectedIndex = 0;
+            }
         }
 
-        private void BindComboBoxEmbalagem()
+        private void BindComboBoxCargo()
         {
-            //var result = embalagemRepositorio.ObterTabela().ToList();
-            //result.Insert(0,
-            //    new Embalagem
-            //    {
-            //        PK_Embalagem = 0,
-            //        Nome = "Nenhuma",
-            //        Descricao = "Nenhuma"
-            //    });
+            var result = cargoRepositorio.ObterTabela().ToList();
+            result.Insert(0,
+                new Cargo
+                {
+                    PK_Cargo = 0,
+                    NomeCargo = "Nenhuma",
+                    Descricao = "Nenhuma"
+                });
 
-            //if (result != null)
-            //{
-            //    cboCargo.DataSource = result;
-            //    cboCargo.DisplayMember = "Nome";
-            //    cboCargo.ValueMember = "PK_Embalagem";
-            //    cboCargo.SelectedIndex = 0;
-            //}
+            if (result != null)
+            {
+                cboCargo.DataSource = result;
+                cboCargo.DisplayMember = "NomeCargo";
+                cboCargo.ValueMember = "PK_Cargo";
+                cboCargo.SelectedIndex = 0;
+            }
         }
 
         private void BindDataGridView()

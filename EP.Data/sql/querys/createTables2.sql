@@ -85,7 +85,7 @@ CREATE TABLE Usuario (
     PK_Usuario INT PRIMARY KEY IDENTITY(1, 1),
     ID_Usuario VARCHAR(20) NOT NULL,
     NomeCompleto VARCHAR(255) NOT NULL,
-    Usuario VARCHAR(100) NOT NULL,
+    NomeAbreviado VARCHAR(100) NOT NULL,
     FK_Setor INT FOREIGN KEY REFERENCES Setor(PK_Setor) NOT NULL,
     Email VARCHAR(255) NOT NULL,
     Senha VARCHAR(255) NOT NULL,
@@ -143,3 +143,4 @@ CREATE TABLE Estoque (
 	Observacoes VARCHAR(255),
 	FK_UsuarioResponsavel INT FOREIGN KEY REFERENCES Usuario(PK_Usuario) NOT NULL
 );
+

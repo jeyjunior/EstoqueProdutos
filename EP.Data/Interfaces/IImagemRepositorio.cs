@@ -21,5 +21,7 @@ namespace EP.Data.Interfaces
         public int SalvarImagem(Image img);
         public Imagem ObterObjetoImagemPadrao();
         public Image ObterImagemPadrao();
+        IEnumerable<Imagem> ObterTabela();
+        bool InserirDadosNaTabela(Imagem imagem);
     }
 }
