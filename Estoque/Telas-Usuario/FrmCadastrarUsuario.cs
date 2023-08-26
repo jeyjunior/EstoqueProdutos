@@ -1,30 +1,48 @@
-﻿using System;
+﻿using Estoque.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Estoque.Telas_Usuario
 {
-    public partial class FrmCadastrarUsuario : Form
+    public partial class FrmCadastrarUsuario : Estoque.Telas_Base.FrmBase
     {
         public FrmCadastrarUsuario()
         {
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
 
+
+        #region Eventos
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            txtNomeCompleto.Text = "";
+            txtNomeAbreviado.Text = "";
+
+            cboSetor.SelectedValue = 0;
+            cboSetor.SelectedValue = 0;
+
+            txtEmail.Text = "";
+            txtConfirmarEmail.Text = "";
+
+            txtSenha.Text = "";
+            txtConfirmarSenha.Text = "";
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
+        #endregion Eventos
 
+        private void FrmCadastrarUsuario_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Fechar();
         }
     }
 }

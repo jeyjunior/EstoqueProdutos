@@ -7,8 +7,6 @@ using EstoqueProdutos.Entidades;
 using EstoqueProdutos.Gerenciamento;
 using EstoqueProdutos.Interfaces;
 using EstoqueProdutos.Repositorios;
-using EstoqueProdutos.Telas_Base;
-using EstoqueProdutos.Telas_Produto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,12 +20,8 @@ using System.Windows.Forms;
 
 namespace EstoqueProdutos.Telas_Principal
 {
-    public partial class FrmPrincipal : Estoque.Telas_Base.FrmGestorUC, IFrmPrincipal
+    public partial class FrmPrincipal : Estoque.Telas_Base.FrmGerenciadorDeTelas, IFrmPrincipal
     {
-        #region Singleton
-        public static IFrmPrincipal frmPrincipal;
-        #endregion
-
         #region Classes
         private readonly IUCPrincipalBot uCPrincipalBot;
         private readonly IUCPrincipalTop uCPrincipalTop;
@@ -42,11 +36,12 @@ namespace EstoqueProdutos.Telas_Principal
         public FrmPrincipal()
         {
             InitializeComponent();
-            frmPrincipal = this;
             uCPrincipalBot = DITelas.Container.GetInstance<UCPrincipalBot>();
             uCPrincipalTop = DITelas.Container.GetInstance<UCPrincipalTop>();
             uCPrincipalRight = DITelas.Container.GetInstance<UCPrincipalRight>();
             imagemRepositorio = DIRepositorios.Container.GetInstance<ImagemRepositorio>();
+
+            uCPrincipalRight.ObterFrmPrincipal(this);
         }
 
         #region Metodos

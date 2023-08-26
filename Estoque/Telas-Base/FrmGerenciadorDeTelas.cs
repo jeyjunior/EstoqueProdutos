@@ -1,5 +1,4 @@
 ﻿using EstoqueProdutos.Interfaces;
-using EstoqueProdutos.Telas_Base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,12 +11,12 @@ using System.Windows.Forms;
 
 namespace Estoque.Telas_Base
 {
-    public partial class FrmGestorUC : Form
+    public partial class FrmGerenciadorDeTelas : Form
     {
         protected List<UserControl> telasInstanciadas = new List<UserControl>();
         protected Panel panelCentral;
 
-        public FrmGestorUC()
+        public FrmGerenciadorDeTelas()
         {
             InitializeComponent();
         }

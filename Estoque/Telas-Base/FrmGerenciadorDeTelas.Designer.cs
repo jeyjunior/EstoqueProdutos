@@ -1,6 +1,6 @@
 ﻿namespace Estoque.Telas_Base
 {
-    partial class FrmGestorUC
+    partial class FrmGerenciadorDeTelas
     {
         /// <summary>
         /// Required designer variable.

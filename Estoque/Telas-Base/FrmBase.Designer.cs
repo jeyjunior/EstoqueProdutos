@@ -1,4 +1,4 @@
-﻿namespace EstoqueProdutos.Telas_Base
+﻿namespace Estoque.Telas_Base
 {
     partial class FrmBase
     {
@@ -28,19 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            SuspendLayout();
-            // 
-            // FrmBase
-            // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(700, 338);
-            Margin = new Padding(3, 2, 3, 2);
-            Name = "FrmBase";
-            StartPosition = FormStartPosition.CenterParent;
-            Text = "FrmBase";
-            Load += FrmBase_Load;
-            ResumeLayout(false);
+            this.components = new System.ComponentModel.Container();
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Text = "FrmBase";
         }
 
         #endregion

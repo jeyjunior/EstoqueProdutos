@@ -1,11 +1,14 @@
 ﻿using EP.Data.Entidades;
 using EP.Data.Interfaces;
 using EP.Data.Repositorios;
+using Estoque.Telas_Base;
+using Estoque.Telas_Usuario;
 using EstoqueProdutos.Entidades;
 using EstoqueProdutos.Formatacao;
 using EstoqueProdutos.Gerenciamento;
 using EstoqueProdutos.Interfaces;
 using EstoqueProdutos.Repositorios;
+using EstoqueProdutos.Telas_Principal;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -20,7 +23,7 @@ using System.Windows.Forms;
 
 namespace Estoque.Telas
 {
-    public partial class UCUsuario : Estoque.Telas_Base.UCBase
+    public partial class UCUsuario : Estoque.Telas_Base.UCGerenciadorDeTelas
     {
         private readonly IRepositorio<Setor> setorRepositorio;
         private readonly IRepositorio<Cargo> cargoRepositorio;
@@ -152,6 +155,16 @@ namespace Estoque.Telas
         private void UCProdutos_ParentChanged(object sender, EventArgs e)
         {
             LimparComponentes();
+        }
+
+        private void btnCadastrarUsuario_Click(object sender, EventArgs e)
+        {
+            AbrirTela<FrmCadastrarUsuario>(this);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //AbrirTela<UCBase>(this);
         }
     }
 }

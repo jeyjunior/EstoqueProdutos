@@ -48,7 +48,7 @@
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
-            button4 = new Button();
+            btnCadastrarUsuario = new Button();
             dtgUsuarios = new DataGridView();
             colPK_Usuario = new DataGridViewTextBoxColumn();
             colID_Usuario = new DataGridViewTextBoxColumn();
@@ -187,6 +187,7 @@
             button2.Size = new Size(35, 35);
             button2.TabIndex = 3;
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button3
             // 
@@ -197,14 +198,15 @@
             button3.TabIndex = 4;
             button3.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnCadastrarUsuario
             // 
-            button4.Location = new Point(432, 0);
-            button4.Margin = new Padding(0);
-            button4.Name = "button4";
-            button4.Size = new Size(35, 35);
-            button4.TabIndex = 5;
-            button4.UseVisualStyleBackColor = true;
+            btnCadastrarUsuario.Location = new Point(432, 0);
+            btnCadastrarUsuario.Margin = new Padding(0);
+            btnCadastrarUsuario.Name = "btnCadastrarUsuario";
+            btnCadastrarUsuario.Size = new Size(35, 35);
+            btnCadastrarUsuario.TabIndex = 5;
+            btnCadastrarUsuario.UseVisualStyleBackColor = true;
+            btnCadastrarUsuario.Click += btnCadastrarUsuario_Click;
             // 
             // dtgUsuarios
             // 
@@ -362,7 +364,7 @@
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
             tblBotoes.Controls.Add(btnPesquisar, 0, 0);
             tblBotoes.Controls.Add(button3, 2, 0);
-            tblBotoes.Controls.Add(button4, 8, 0);
+            tblBotoes.Controls.Add(btnCadastrarUsuario, 8, 0);
             tblBotoes.Controls.Add(button1, 4, 0);
             tblBotoes.Controls.Add(button2, 6, 0);
             tblBotoes.Location = new Point(10, 81);
@@ -432,7 +434,7 @@
         private Button button1;
         private Button button2;
         private Button button3;
-        private Button button4;
+        private Button btnCadastrarUsuario;
         private DataGridView dtgUsuarios;
         private TableLayoutPanel tblBotoes;
         private TableLayoutPanel tlpComponentesRow1;

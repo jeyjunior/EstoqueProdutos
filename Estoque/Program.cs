@@ -1,7 +1,4 @@
-
-
 using EstoqueProdutos.Telas_Principal;
-using EstoqueProdutos.Telas_Produto;
 
 namespace EstoqueProdutos
 {

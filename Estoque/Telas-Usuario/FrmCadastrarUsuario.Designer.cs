@@ -35,8 +35,10 @@
             txtNomeAbreviado = new TextBox();
             pcbImagemUsuario = new PictureBox();
             tableLayoutPanel2 = new TableLayoutPanel();
+            cboCargo = new ComboBox();
             lblSetor = new Label();
             lblCargo = new Label();
+            cboSetor = new ComboBox();
             tableLayoutPanel3 = new TableLayoutPanel();
             lblEmail = new Label();
             txtEmail = new TextBox();
@@ -47,10 +49,8 @@
             txtConfirmarSenha = new TextBox();
             txtConfirmarEmail = new TextBox();
             tblBotoes = new TableLayoutPanel();
-            btnPesquisar = new Button();
-            button3 = new Button();
-            cboSetor = new ComboBox();
-            cboCargo = new ComboBox();
+            button1 = new Button();
+            btnLimpar = new Button();
             pn1 = new Panel();
             pn2 = new Panel();
             pn3 = new Panel();
@@ -163,6 +163,16 @@
             tableLayoutPanel2.Size = new Size(432, 90);
             tableLayoutPanel2.TabIndex = 11;
             // 
+            // cboCargo
+            // 
+            cboCargo.Dock = DockStyle.Fill;
+            cboCargo.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboCargo.FormattingEnabled = true;
+            cboCargo.Location = new Point(3, 66);
+            cboCargo.Name = "cboCargo";
+            cboCargo.Size = new Size(426, 23);
+            cboCargo.TabIndex = 21;
+            // 
             // lblSetor
             // 
             lblSetor.Dock = DockStyle.Fill;
@@ -186,6 +196,16 @@
             lblCargo.TabIndex = 19;
             lblCargo.Text = "Cargo:";
             lblCargo.TextAlign = ContentAlignment.BottomLeft;
+            // 
+            // cboSetor
+            // 
+            cboSetor.Dock = DockStyle.Fill;
+            cboSetor.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboSetor.FormattingEnabled = true;
+            cboSetor.Location = new Point(3, 23);
+            cboSetor.Name = "cboSetor";
+            cboSetor.Size = new Size(426, 23);
+            cboSetor.TabIndex = 20;
             // 
             // tableLayoutPanel3
             // 
@@ -300,19 +320,14 @@
             // tblBotoes
             // 
             tblBotoes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            tblBotoes.ColumnCount = 3;
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
+            tblBotoes.ColumnCount = 4;
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 90F));
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 5F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tblBotoes.Controls.Add(button3, 2, 0);
-            tblBotoes.Controls.Add(btnPesquisar, 0, 0);
-            tblBotoes.Location = new Point(12, 397);
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 90F));
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tblBotoes.Controls.Add(button1, 0, 0);
+            tblBotoes.Controls.Add(btnLimpar, 2, 0);
+            tblBotoes.Location = new Point(12, 400);
             tblBotoes.Margin = new Padding(0);
             tblBotoes.Name = "tblBotoes";
             tblBotoes.RightToLeft = RightToLeft.Yes;
@@ -321,44 +336,36 @@
             tblBotoes.Size = new Size(460, 37);
             tblBotoes.TabIndex = 9;
             // 
-            // btnPesquisar
+            // button1
             // 
-            btnPesquisar.Image = Properties.Resources.search_1;
-            btnPesquisar.Location = new Point(425, 0);
-            btnPesquisar.Margin = new Padding(0);
-            btnPesquisar.Name = "btnPesquisar";
-            btnPesquisar.Size = new Size(35, 35);
-            btnPesquisar.TabIndex = 1;
-            btnPesquisar.UseVisualStyleBackColor = true;
+            button1.Dock = DockStyle.Fill;
+            button1.ForeColor = Color.FromArgb(66, 142, 79);
+            button1.Image = Properties.Resources.save_outline_4;
+            button1.Location = new Point(370, 0);
+            button1.Margin = new Padding(0);
+            button1.Name = "button1";
+            button1.Padding = new Padding(10, 0, 0, 0);
+            button1.Size = new Size(90, 37);
+            button1.TabIndex = 5;
+            button1.Text = "Salvar";
+            button1.TextImageRelation = TextImageRelation.TextBeforeImage;
+            button1.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnLimpar
             // 
-            button3.Location = new Point(385, 0);
-            button3.Margin = new Padding(0);
-            button3.Name = "button3";
-            button3.Size = new Size(35, 35);
-            button3.TabIndex = 4;
-            button3.UseVisualStyleBackColor = true;
-            // 
-            // cboSetor
-            // 
-            cboSetor.Dock = DockStyle.Fill;
-            cboSetor.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboSetor.FormattingEnabled = true;
-            cboSetor.Location = new Point(3, 23);
-            cboSetor.Name = "cboSetor";
-            cboSetor.Size = new Size(426, 23);
-            cboSetor.TabIndex = 20;
-            // 
-            // cboCargo
-            // 
-            cboCargo.Dock = DockStyle.Fill;
-            cboCargo.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboCargo.FormattingEnabled = true;
-            cboCargo.Location = new Point(3, 66);
-            cboCargo.Name = "cboCargo";
-            cboCargo.Size = new Size(426, 23);
-            cboCargo.TabIndex = 21;
+            btnLimpar.Dock = DockStyle.Fill;
+            btnLimpar.ForeColor = Color.FromArgb(142, 66, 66);
+            btnLimpar.Image = Properties.Resources.erase_outline_4;
+            btnLimpar.Location = new Point(275, 0);
+            btnLimpar.Margin = new Padding(0);
+            btnLimpar.Name = "btnLimpar";
+            btnLimpar.Padding = new Padding(5, 0, 0, 0);
+            btnLimpar.Size = new Size(90, 37);
+            btnLimpar.TabIndex = 4;
+            btnLimpar.Text = "Limpar";
+            btnLimpar.TextImageRelation = TextImageRelation.TextBeforeImage;
+            btnLimpar.UseVisualStyleBackColor = true;
+            btnLimpar.Click += btnLimpar_Click;
             // 
             // pn1
             // 
@@ -369,7 +376,6 @@
             pn1.Name = "pn1";
             pn1.Size = new Size(460, 123);
             pn1.TabIndex = 10;
-            pn1.Paint += panel1_Paint;
             // 
             // pn2
             // 
@@ -407,6 +413,7 @@
             MinimumSize = new Size(500, 490);
             Name = "FrmCadastrarUsuario";
             Text = "Cadastrar Usuário";
+            FormClosed += FrmCadastrarUsuario_FormClosed;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pcbImagemUsuario).EndInit();
@@ -440,12 +447,12 @@
         private TextBox txtConfirmarSenha;
         private TextBox txtConfirmarEmail;
         private TableLayoutPanel tblBotoes;
-        private Button btnPesquisar;
-        private Button button3;
+        private Button btnLimpar;
         private ComboBox cboCargo;
         private ComboBox cboSetor;
         private Panel pn1;
         private Panel pn2;
         private Panel pn3;
+        private Button button1;
     }
 }
