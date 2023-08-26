@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Estoque.Interfaces
 {
-    public interface IUCPrincipalBot
+    public interface IUCTelaPrincipalDireita
     {
+        void ObterFrmPrincipal(IFrmPrincipal frmPrincipal);
     }
 }

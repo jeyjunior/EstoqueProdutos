@@ -23,9 +23,9 @@ namespace EstoqueProdutos.Telas_Principal
     public partial class FrmPrincipal : Estoque.Telas_Base.FrmGerenciadorDeTelas, IFrmPrincipal
     {
         #region Classes
-        private readonly IUCPrincipalBot uCPrincipalBot;
-        private readonly IUCPrincipalTop uCPrincipalTop;
-        private readonly IUCPrincipalRight uCPrincipalRight;
+        private readonly IUCTelaPrincipalBaixo uCPrincipalBot;
+        private readonly IUCTelaPrincipalCima uCPrincipalTop;
+        private readonly IUCTelaPrincipalDireita uCPrincipalRight;
         private readonly IImagemRepositorio imagemRepositorio;
         #endregion Classes
 
@@ -36,10 +36,10 @@ namespace EstoqueProdutos.Telas_Principal
         public FrmPrincipal()
         {
             InitializeComponent();
-            uCPrincipalBot = DITelas.Container.GetInstance<UCPrincipalBot>();
-            uCPrincipalTop = DITelas.Container.GetInstance<UCPrincipalTop>();
-            uCPrincipalRight = DITelas.Container.GetInstance<UCPrincipalRight>();
-            imagemRepositorio = DIRepositorios.Container.GetInstance<ImagemRepositorio>();
+            uCPrincipalBot = DITelas.Container.GetInstance<IUCTelaPrincipalBaixo>();
+            uCPrincipalTop = DITelas.Container.GetInstance<IUCTelaPrincipalCima>();
+            uCPrincipalRight = DITelas.Container.GetInstance<IUCTelaPrincipalDireita>();
+            imagemRepositorio = DIRepositorios.Container.GetInstance<IImagemRepositorio>();
 
             uCPrincipalRight.ObterFrmPrincipal(this);
         }

@@ -18,9 +18,9 @@ namespace EstoqueProdutos.Gerenciamento
         static DITelas()
         {
             _container = new Container();
-            _container.RegisterSingleton<IUCPrincipalBot, UCPrincipalBot>();
-            _container.RegisterSingleton<IUCPrincipalTop, UCPrincipalTop>();
-            _container.RegisterSingleton<IUCPrincipalRight, UCPrincipalRight>();
+            _container.RegisterSingleton<IUCTelaPrincipalBaixo, UCTelaPrincipalBaixo>();
+            _container.RegisterSingleton<IUCTelaPrincipalCima, UCTelaPrincipalCima>();
+            _container.RegisterSingleton<IUCTelaPrincipalDireita, UCTelaPrincipalDireita>();
 
             _container.Options.ResolveUnregisteredConcreteTypes = true;
             _container.Verify();

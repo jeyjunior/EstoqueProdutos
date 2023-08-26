@@ -25,8 +25,8 @@ namespace Estoque.Telas
 {
     public partial class UCUsuario : Estoque.Telas_Base.UCGerenciadorDeTelas
     {
-        private readonly IRepositorio<Setor> setorRepositorio;
-        private readonly IRepositorio<Cargo> cargoRepositorio;
+        private readonly ISetorRepositorio setorRepositorio;
+        private readonly ICargoRepositorio cargoRepositorio;
 
         private IEnumerable<Produto> produtos;
 
@@ -34,8 +34,8 @@ namespace Estoque.Telas
         {
             InitializeComponent();
 
-            setorRepositorio = DIRepositorios.Container.GetInstance<SetorRepositorio>();
-            cargoRepositorio = DIRepositorios.Container.GetInstance<CargoRepositorio>();
+            setorRepositorio = DIRepositorios.Container.GetInstance<ISetorRepositorio>();
+            cargoRepositorio = DIRepositorios.Container.GetInstance<ICargoRepositorio>();
             AtualizarPropriedades();
         }
 
@@ -159,7 +159,7 @@ namespace Estoque.Telas
 
         private void btnCadastrarUsuario_Click(object sender, EventArgs e)
         {
-            AbrirTela<FrmCadastrarUsuario>(this);
+            AbrirTela(typeof(FrmCadastrarUsuario), this);
         }
 
         private void button2_Click(object sender, EventArgs e)

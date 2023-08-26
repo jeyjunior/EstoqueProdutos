@@ -1,6 +1,6 @@
 ﻿namespace Estoque.Telas_Principal
 {
-    partial class UCPrincipalRight
+    partial class UCTelaPrincipalDireita
     {
         /// <summary> 
         /// Required designer variable.

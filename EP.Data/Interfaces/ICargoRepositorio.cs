@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace EP.Data.Interfaces
 {
-    public interface ISetorRepositorio
+    public interface ICargoRepositorio
     {
-        IEnumerable<Setor> ObterTabela();
-        bool InserirDadosNaTabela(Setor setor);
+        IEnumerable<Cargo> ObterTabela();
+        bool InserirDadosNaTabela(Cargo cargo);
     }
 }

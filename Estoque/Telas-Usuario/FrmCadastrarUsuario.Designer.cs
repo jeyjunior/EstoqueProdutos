@@ -137,6 +137,7 @@
             pcbImagemUsuario.Location = new Point(16, 14);
             pcbImagemUsuario.Name = "pcbImagemUsuario";
             pcbImagemUsuario.Size = new Size(90, 93);
+            pcbImagemUsuario.SizeMode = PictureBoxSizeMode.StretchImage;
             pcbImagemUsuario.TabIndex = 0;
             pcbImagemUsuario.TabStop = false;
             // 

@@ -20,10 +20,10 @@ namespace Estoque.Telas_Produto
     public partial class UCProduto : Estoque.Telas_Base.UCBase
     {
         private readonly IProdutoRepositorio produtoRepositorio;
-        private readonly IRepositorio<Marca> marcaRepositorio;
-        private readonly IRepositorio<Categoria> categoriaRepositorio;
-        private readonly IRepositorio<Formato> formatoRepositorio;
-        private readonly IRepositorio<Embalagem> embalagemRepositorio;
+        private readonly IMarcaRepositorio marcaRepositorio;
+        private readonly ICategoriaRepositorio categoriaRepositorio;
+        private readonly IFormatoRepositorio formatoRepositorio;
+        private readonly IEmbalagemRepositorio embalagemRepositorio;
 
         private IEnumerable<Produto> produtos;
 
@@ -33,10 +33,10 @@ namespace Estoque.Telas_Produto
             AtualizarPropriedades();
 
             produtoRepositorio = DIRepositorios.Container.GetInstance<IProdutoRepositorio>();
-            marcaRepositorio = DIRepositorios.Container.GetInstance<MarcaRepositorio>();
-            categoriaRepositorio = DIRepositorios.Container.GetInstance<CategoriaRepositorio>();
-            formatoRepositorio = DIRepositorios.Container.GetInstance<FormatoRepositorio>();
-            embalagemRepositorio = DIRepositorios.Container.GetInstance<EmbalagemRepositorio>();
+            marcaRepositorio = DIRepositorios.Container.GetInstance<IMarcaRepositorio>();
+            categoriaRepositorio = DIRepositorios.Container.GetInstance<ICategoriaRepositorio>();
+            formatoRepositorio = DIRepositorios.Container.GetInstance<IFormatoRepositorio>();
+            embalagemRepositorio = DIRepositorios.Container.GetInstance<IEmbalagemRepositorio>();
         }
 
         private void InicializarComponentes()

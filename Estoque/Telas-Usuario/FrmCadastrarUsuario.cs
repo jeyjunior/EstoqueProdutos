@@ -1,4 +1,6 @@
-﻿using Estoque.Interfaces;
+﻿using EP.Data.Interfaces;
+using Estoque.Interfaces;
+using EstoqueProdutos.Gerenciamento;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,12 +16,18 @@ namespace Estoque.Telas_Usuario
 {
     public partial class FrmCadastrarUsuario : Estoque.Telas_Base.FrmBase
     {
-        public FrmCadastrarUsuario()
+        private readonly IImagemRepositorio imagemRepositorio;
+
+        public FrmCadastrarUsuario(IUCGerenciadorDeTelas gerenciadorDeTelas)
         {
             InitializeComponent();
+
+            this.gerenciadorDeTelas = gerenciadorDeTelas;
+
+            imagemRepositorio = DIRepositorios.Container.GetInstance<IImagemRepositorio>();
+
+            pcbImagemUsuario.Image = imagemRepositorio.ObterImagemPadrao();
         }
-
-
 
         #region Eventos
 
@@ -38,11 +46,11 @@ namespace Estoque.Telas_Usuario
             txtConfirmarSenha.Text = "";
         }
 
-        #endregion Eventos
-
         private void FrmCadastrarUsuario_FormClosed(object sender, FormClosedEventArgs e)
         {
             Fechar();
         }
+
+        #endregion Eventos
     }
 }

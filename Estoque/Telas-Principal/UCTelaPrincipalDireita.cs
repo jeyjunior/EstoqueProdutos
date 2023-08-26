@@ -16,11 +16,11 @@ using System.Windows.Forms;
 
 namespace Estoque.Telas_Principal
 {
-    public partial class UCPrincipalRight : Estoque.Telas_Base.UCBase, IUCPrincipalRight
+    public partial class UCTelaPrincipalDireita : Estoque.Telas_Base.UCBase, IUCTelaPrincipalDireita
     {
         private IFrmPrincipal frmPrincipal;
 
-        public UCPrincipalRight()
+        public UCTelaPrincipalDireita()
         {
             InitializeComponent();
             AtualizarPropriedades();

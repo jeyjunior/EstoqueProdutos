@@ -12,22 +12,23 @@ using System.Windows.Forms;
 
 namespace Estoque.Telas_Base
 {
-    public partial class FrmBase : Form, IFecharFormularioBase
+    public partial class FrmBase : Form, IFrmBase
     {
+        protected IUCGerenciadorDeTelas gerenciadorDeTelas;
+
         public FrmBase()
         {
-            InitializeComponent();
         }
 
-        public IUCGerenciadorDeTelas GerenciadorDeTelas { get; set; }
-
-        public void ObterGerenciadorTelas(IUCGerenciadorDeTelas GerenciadorDeTelas)
-        {
-            this.GerenciadorDeTelas = GerenciadorDeTelas;
-        }
         public void Fechar()
         {
-            GerenciadorDeTelas.FecharTela(this.GetType());
+            gerenciadorDeTelas.FecharTela(this.GetType());
         }
     }
 }
+
+
+//public void ObterGerenciadorTelas(IUCGerenciadorDeTelas GerenciadorDeTelas)
+//{
+//    this.GerenciadorDeTelas = GerenciadorDeTelas;
+//}

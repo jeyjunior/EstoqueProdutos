@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Estoque.Interfaces
 {
-    public interface IFecharFormularioBase
+    public interface IFrmBase
     {
-        IUCGerenciadorDeTelas GerenciadorDeTelas { get; set; }
-        void ObterGerenciadorTelas(IUCGerenciadorDeTelas gerenciadorDeTelas);
         void Fechar();
     }
 }

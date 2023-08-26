@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace Estoque.Telas_Principal
 {
-    public partial class UCPrincipalBot : Estoque.Telas_Base.UCBase, IUCPrincipalBot
+    public partial class UCTelaPrincipalBaixo : Estoque.Telas_Base.UCBase, IUCTelaPrincipalBaixo
     {
-        public UCPrincipalBot()
+        public UCTelaPrincipalBaixo()
         {
             InitializeComponent();
             AtualizarPropriedades();

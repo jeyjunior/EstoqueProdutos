@@ -19,14 +19,14 @@ namespace EstoqueProdutos.Gerenciamento
             _container.Register(typeof(IRepositorio<>), typeof(Repositorio<>));
             _container.RegisterSingleton<IImagemRepositorio ,ImagemRepositorio>();
             _container.RegisterSingleton<IProdutoRepositorio, ProdutoRepositorio>();
-            _container.RegisterSingleton<CategoriaRepositorio>();
-            _container.RegisterSingleton<EmbalagemRepositorio>();
-            _container.RegisterSingleton<FormatoRepositorio>();
-            _container.RegisterSingleton<MarcaRepositorio>();
-            _container.RegisterSingleton<UnidadeMedidaRepositorio>();
-            _container.RegisterSingleton<SetorRepositorio>();
+            _container.RegisterSingleton<IMarcaRepositorio, MarcaRepositorio>();
+            _container.RegisterSingleton<ICategoriaRepositorio, CategoriaRepositorio>();
+            _container.RegisterSingleton<IFormatoRepositorio, FormatoRepositorio>();
+            _container.RegisterSingleton<IEmbalagemRepositorio, EmbalagemRepositorio>();
+            _container.RegisterSingleton<IUnidadeMedidaRepositorio, UnidadeMedidaRepositorio>();
+            _container.RegisterSingleton<ISetorRepositorio, SetorRepositorio>();
+            _container.RegisterSingleton<ICargoRepositorio, CargoRepositorio>();
             _container.RegisterSingleton<UsuarioRepositorio>();
-            _container.RegisterSingleton<CargoRepositorio>();
             _container.Options.ResolveUnregisteredConcreteTypes = true;
             _container.Verify();
         }

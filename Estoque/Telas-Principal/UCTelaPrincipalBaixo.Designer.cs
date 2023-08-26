@@ -1,6 +1,6 @@
 ﻿namespace Estoque.Telas_Principal
 {
-    partial class UCPrincipalBot
+    partial class UCTelaPrincipalBaixo
     {
         /// <summary> 
         /// Required designer variable.

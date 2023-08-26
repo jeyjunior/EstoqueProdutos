@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace Estoque.Telas_Principal
 {
-    public partial class UCPrincipalTop : Estoque.Telas_Base.UCBase, IUCPrincipalTop
+    public partial class UCTelaPrincipalCima : Estoque.Telas_Base.UCBase, IUCTelaPrincipalCima
     {
-        public UCPrincipalTop()
+        public UCTelaPrincipalCima()
         {
             InitializeComponent();
             AtualizarPropriedades();

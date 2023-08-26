@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Estoque.Interfaces
 {
-    public interface IUCPrincipalTop
+    public interface IUCTelaPrincipalCima
     {
     }
 }
