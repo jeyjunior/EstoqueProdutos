@@ -83,7 +83,6 @@ CREATE TABLE Cargo (
 
 CREATE TABLE Usuario (
     PK_Usuario INT PRIMARY KEY IDENTITY(1, 1),
-    ID_Usuario VARCHAR(20) NOT NULL,
     NomeCompleto VARCHAR(255) NOT NULL,
     NomeAbreviado VARCHAR(100) NOT NULL,
     FK_Setor INT FOREIGN KEY REFERENCES Setor(PK_Setor) NOT NULL,

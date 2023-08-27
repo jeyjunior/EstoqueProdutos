@@ -20,7 +20,7 @@ namespace Estoque.Telas_Base
 
         public List<Form> FormsInstanciados { get; } =new List<Form>();
 
-        public void AbrirTela(Type tela, IUCGerenciadorDeTelas ucGestor) 
+        public void AbrirTela(Type tela, IUCGerenciadorDeTelas ucGestor, bool travarTela = false) 
         {
             try
             {
@@ -34,7 +34,11 @@ namespace Estoque.Telas_Base
                 {
                     Form novaTela = (Form)Activator.CreateInstance(tela, ucGestor);
                     FormsInstanciados.Add(novaTela);
-                    novaTela.Show();
+
+                    if (travarTela)
+                        novaTela.ShowDialog();
+                    else
+                        novaTela.Show();
                 }
             }
             catch (Exception ex)

@@ -25,9 +25,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Update="Telas-Usuario\UCUsuario.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Update="Telas-Usuario\UCUsuario.cs" />
   </ItemGroup>
 
   <ItemGroup>

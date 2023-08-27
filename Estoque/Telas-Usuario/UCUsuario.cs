@@ -1,5 +1,6 @@
 ﻿using EP.Data.Entidades;
 using EP.Data.Interfaces;
+using Estoque.Telas_Usuario;
 using EstoqueProdutos.Entidades;
 using EstoqueProdutos.Formatacao;
 using EstoqueProdutos.Gerenciamento;
@@ -18,13 +19,16 @@ using System.Windows.Forms;
 
 namespace Estoque.Telas_Produto
 {
-    public partial class UCUsuario : Estoque.Telas_Base.UCBase
+    public partial class UCUsuario : Estoque.Telas_Base.UCGerenciadorDeTelas
     {
         private readonly ISetorRepositorio setorRepositorio;
         private readonly ICargoRepositorio cargoRepositorio;
+        private readonly IUsuarioRepositorio usuarioRepositorio;
 
         private BindingSource bindingSourceCargos = new BindingSource();
         private BindingSource bindingSourceSetor = new BindingSource();
+
+        private IEnumerable<Usuario> usuarios;
 
         public UCUsuario()
         {
@@ -33,6 +37,7 @@ namespace Estoque.Telas_Produto
 
             setorRepositorio = DIRepositorios.Container.GetInstance<ISetorRepositorio>();
             cargoRepositorio = DIRepositorios.Container.GetInstance<ICargoRepositorio>();
+            usuarioRepositorio = DIRepositorios.Container.GetInstance<IUsuarioRepositorio>();
         }
 
         private void InicializarComponentes()
@@ -59,8 +64,8 @@ namespace Estoque.Telas_Produto
                 new Setor
                 {
                     PK_Setor = 0,
-                    NomeSetor = "Nenhuma",
-                    Descricao = "Nenhuma"
+                    NomeSetor = "Nenhum",
+                    Descricao = "Nenhum"
                 });
 
             if (result != null)
@@ -81,8 +86,8 @@ namespace Estoque.Telas_Produto
                 {
                     PK_Cargo = 0,
                     FK_Setor = 0,
-                    NomeCargo = "Nenhuma",
-                    Descricao = "Nenhuma"
+                    NomeCargo = "Nenhum",
+                    Descricao = "Nenhum"
                 });
 
             if (result != null)
@@ -97,29 +102,22 @@ namespace Estoque.Telas_Produto
 
         private void BindDataGridView()
         {
-            //if (produtos != null)
-            //{
-            //    Cursor.Current = Cursors.WaitCursor;
-            //    dtgUsuarios.Rows.Clear();
-            //    produtos.ToList().ForEach(item =>
-            //    {
-            //        dtgUsuarios.Rows.Add(
-            //            item.PK_Produto,
-            //            item.Nome,
-            //            item.Volume,
-            //            item.Descricao,
-            //            item.Altura,
-            //            item.Largura,
-            //            item.Comprimento,
-            //            Formatacao.ObterNome(item.Formato),
-            //            item.FK_Imagem,
-            //            Formatacao.ObterNome(item.Categoria),
-            //            Formatacao.ObterNome(item.Marca),
-            //            Formatacao.ObterNome(item.Embalagem),
-            //            item.FK_UnidadeMedida
-            //            );
-            //    });
-            //}
+            if (usuarios != null)
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                dtgUsuarios.Rows.Clear();
+                usuarios.ToList().ForEach(usuario =>
+                {
+                    dtgUsuarios.Rows.Add(
+                        usuario.PK_Usuario,
+                        usuario.NomeCompleto,
+                        usuario.NomeAbreviado,
+                        usuario.Email,
+                        usuario.Setor.NomeSetor,
+                        usuario.Cargo.NomeCargo
+                        );
+                });
+            }
         }
 
         private void LimparComponentes()
@@ -140,17 +138,8 @@ namespace Estoque.Telas_Produto
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            //var pesquisa = new PesquisaProdutoSimples()
-            //{
-            //    Nome = txtNome.TextoFormatoLikeSQL(),
-            //    Descricao = txtDescricaoProduto.TextoFormatoLikeSQL(),
-            //    FK_Categoria = cboCategoria.ObterValorInt(),
-            //    FK_Embalagem = cboSetor.ObterValorInt(),
-            //    FK_Marca = cboCargo.ObterValorInt()
-            //};
-
-            //produtos = produtoRepositorio.ObterProduto(pesquisa);
-            //BindDataGridView();
+            usuarios = usuarioRepositorio.ObterTabelaComRelacionamentos();
+            BindDataGridView();
         }
 
         private void UCProdutos_ParentChanged(object sender, EventArgs e)
@@ -160,13 +149,13 @@ namespace Estoque.Telas_Produto
 
         private void btnCadastrarUsuario_Click(object sender, EventArgs e)
         {
-
+            AbrirTela(typeof(FrmCadastrarUsuario), this, true);
         }
 
         private void cboSetor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboSetor != null 
-                && cboSetor.Items.Count > 0 
+            if (cboSetor != null
+                && cboSetor.Items.Count > 0
                 && cboSetor.SelectedItem is Setor setorSelecionado)
             {
                 if (cboSetor.SelectedIndex <= 0)

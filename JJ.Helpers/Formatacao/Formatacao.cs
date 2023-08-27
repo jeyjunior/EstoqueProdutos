@@ -93,5 +93,6 @@ namespace EstoqueProdutos.Formatacao
 
             return valor.ToString();
         }
+
     }
 }

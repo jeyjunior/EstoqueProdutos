@@ -208,9 +208,11 @@
             // cboFormato
             // 
             cboFormato.Dock = DockStyle.Fill;
+            cboFormato.DropDownHeight = 200;
             cboFormato.DropDownStyle = ComboBoxStyle.DropDownList;
             cboFormato.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cboFormato.FormattingEnabled = true;
+            cboFormato.IntegralHeight = false;
             cboFormato.Location = new Point(420, 23);
             cboFormato.MaxDropDownItems = 50;
             cboFormato.Name = "cboFormato";
@@ -246,9 +248,11 @@
             // cboMarca
             // 
             cboMarca.Dock = DockStyle.Fill;
+            cboMarca.DropDownHeight = 200;
             cboMarca.DropDownStyle = ComboBoxStyle.DropDownList;
             cboMarca.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cboMarca.FormattingEnabled = true;
+            cboMarca.IntegralHeight = false;
             cboMarca.Location = new Point(281, 23);
             cboMarca.Name = "cboMarca";
             cboMarca.Size = new Size(118, 26);
@@ -283,9 +287,11 @@
             // cboEmbalagem
             // 
             cboEmbalagem.Dock = DockStyle.Fill;
+            cboEmbalagem.DropDownHeight = 200;
             cboEmbalagem.DropDownStyle = ComboBoxStyle.DropDownList;
             cboEmbalagem.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cboEmbalagem.FormattingEnabled = true;
+            cboEmbalagem.IntegralHeight = false;
             cboEmbalagem.Location = new Point(142, 23);
             cboEmbalagem.Name = "cboEmbalagem";
             cboEmbalagem.Size = new Size(118, 26);
@@ -294,9 +300,11 @@
             // cboCategoria
             // 
             cboCategoria.Dock = DockStyle.Fill;
+            cboCategoria.DropDownHeight = 200;
             cboCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCategoria.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cboCategoria.FormattingEnabled = true;
+            cboCategoria.IntegralHeight = false;
             cboCategoria.Location = new Point(3, 23);
             cboCategoria.Name = "cboCategoria";
             cboCategoria.Size = new Size(118, 26);
@@ -351,6 +359,7 @@
             // 
             // dtgProdutos
             // 
+            dtgProdutos.AllowUserToAddRows = false;
             dtgProdutos.AllowUserToDeleteRows = false;
             dtgProdutos.AllowUserToOrderColumns = true;
             dtgProdutos.AllowUserToResizeRows = false;
@@ -374,7 +383,7 @@
             dtgProdutos.Columns.AddRange(new DataGridViewColumn[] { colPK_Produto, colNome, colVolume, colDescricao, colAltura, colLargura, colComprimento, colFK_Formato, colFK_Imagem, colFK_Categoria, colFK_Marca, colFK_Embalagem, colFK_UnidadeMedida });
             dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle14.BackColor = Color.FromArgb(217, 217, 217);
-            dataGridViewCellStyle14.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle14.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle14.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle14.SelectionBackColor = Color.FromArgb(47, 59, 67);
             dataGridViewCellStyle14.SelectionForeColor = Color.White;
@@ -395,7 +404,7 @@
             dtgProdutos.RowHeadersVisible = false;
             dtgProdutos.RowHeadersWidth = 55;
             dtgProdutos.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dtgProdutos.RowTemplate.Height = 19;
+            dtgProdutos.RowTemplate.Height = 25;
             dtgProdutos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtgProdutos.Size = new Size(570, 201);
             dtgProdutos.TabIndex = 6;

@@ -63,6 +63,26 @@ namespace Estoque.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap alert {
+            get {
+                object obj = ResourceManager.GetObject("alert", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap circulo_verde {
+            get {
+                object obj = ResourceManager.GetObject("circulo_verde", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap erase_outline_1 {
             get {
                 object obj = ResourceManager.GetObject("erase_outline_1", resourceCulture);
@@ -96,6 +116,26 @@ namespace Estoque.Properties {
         internal static System.Drawing.Bitmap erase_outline_4 {
             get {
                 object obj = ResourceManager.GetObject("erase_outline_4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap eye_1 {
+            get {
+                object obj = ResourceManager.GetObject("eye_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap eye_2 {
+            get {
+                object obj = ResourceManager.GetObject("eye_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

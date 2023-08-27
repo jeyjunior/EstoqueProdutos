@@ -26,7 +26,7 @@ namespace EstoqueProdutos.Gerenciamento
             _container.RegisterSingleton<IUnidadeMedidaRepositorio, UnidadeMedidaRepositorio>();
             _container.RegisterSingleton<ISetorRepositorio, SetorRepositorio>();
             _container.RegisterSingleton<ICargoRepositorio, CargoRepositorio>();
-            _container.RegisterSingleton<UsuarioRepositorio>();
+            _container.RegisterSingleton<IUsuarioRepositorio, UsuarioRepositorio>();
             _container.Options.ResolveUnregisteredConcreteTypes = true;
             _container.Verify();
         }
