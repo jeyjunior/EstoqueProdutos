@@ -42,7 +42,11 @@ namespace Estoque.Telas_Usuario
             pcbImagemUsuario.Image = imagemRepositorio.ObterImagemPadrao();
         }
 
+        private bool emailValidado = false;
+        private bool confirmacaoEmailValidado = false;
+        private bool senhaValidada = false;
 
+        #region Metodos 
         private void InicializarComponentes()
         {
             try
@@ -101,15 +105,77 @@ namespace Estoque.Telas_Usuario
                     .Cast<Cargo>().Where(c => c.FK_Setor == PK_Setor).ToList();
             }
         }
-        #region Eventos
 
-        private void btnLimpar_Click(object sender, EventArgs e)
+        private void ValidarEmail()
         {
-            LimparComponetes();
+            emailValidado = false;
+
+            if (txtEmail.Text == "")
+            {
+                pcbValidacaoEmail.Visible = false;
+                return;
+            }
+
+            if (txtEmail.Text.ValidarEmail())
+            {
+                pcbValidacaoEmail.Visible = true;
+                pcbValidacaoEmail.Image = Properties.Resources.circulo_verde;
+
+                emailValidado = true;
+            }
+            else
+            {
+                pcbValidacaoEmail.Visible = true;
+                pcbValidacaoEmail.Image = Properties.Resources.alert;
+            }
+        }
+
+        private void ValidarConfirmacaoDeEmail()
+        {
+            confirmacaoEmailValidado = false;
+
+            if (txtConfirmarEmail.Text == "" && txtEmail.Text == "")
+            {
+                if (txtEmail.Text == "")
+                {
+                    pcbValidacaoConfirmarEmail.Visible = false;
+                    return;
+                }
+                else
+                {
+                    pcbValidacaoConfirmarEmail.Visible = true;
+                    pcbValidacaoConfirmarEmail.Image = Properties.Resources.alert;
+                    return;
+                }
+            }
+
+
+            if (!txtConfirmarEmail.Text.ValidarEmail())
+            {
+                pcbValidacaoConfirmarEmail.Visible = true;
+                pcbValidacaoConfirmarEmail.Image = Properties.Resources.alert;
+            }
+            else
+            {
+                if (txtConfirmarEmail.Text.Equals(txtEmail.Text))
+                {
+                    pcbValidacaoConfirmarEmail.Visible = true;
+                    pcbValidacaoConfirmarEmail.Image = Properties.Resources.circulo_verde;
+
+                    confirmacaoEmailValidado = true;
+                }
+                else
+                {
+                    pcbValidacaoConfirmarEmail.Visible = true;
+                    pcbValidacaoConfirmarEmail.Image = Properties.Resources.alert;
+                }
+            }
         }
 
         private void LimparComponetes()
         {
+            pcbImagemUsuario.Image = imagemRepositorio.ObterImagemPadrao();
+
             txtNomeCompleto.Text = "";
             txtNomeAbreviado.Text = "";
 
@@ -121,6 +187,65 @@ namespace Estoque.Telas_Usuario
 
             txtSenha.Text = "";
             txtConfirmarSenha.Text = "";
+        }
+
+        private int ObterSetorSelecionado()
+        {
+            if (cboSetor != null && cboSetor.Items.Count > 0)
+            {
+                var setorSelecionado = (Setor)cboSetor.SelectedItem;
+                return setorSelecionado.PK_Setor;
+            }
+
+            return 0;
+        }
+
+        private int ObterCargoSelecionado()
+        {
+            if (cboCargo != null && cboCargo.Items.Count > 0)
+            {
+                var cargoSelecionado = (Cargo)cboCargo.SelectedItem;
+                return cargoSelecionado.PK_Cargo;
+            }
+
+            return 0;
+        }
+
+        private void ValidarConfirmacaoSenha()
+        {
+            senhaValidada = false;
+            if (txtConfirmarSenha.Text == "" && txtSenha.Text == "")
+            {
+                pcbValidacaoConfirmacaoSenha.Visible = false;
+                pcbValidacaoConfirmacaoSenha.Image = Properties.Resources.circulo_verde;
+                return;
+            }
+            else
+            {
+                pcbValidacaoConfirmacaoSenha.Visible = true;
+                pcbValidacaoConfirmacaoSenha.Image = Properties.Resources.alert;
+            }
+
+            if (txtConfirmarSenha.Text.Equals(txtSenha.Text))
+            {
+                pcbValidacaoConfirmacaoSenha.Visible = true;
+                pcbValidacaoConfirmacaoSenha.Image = Properties.Resources.circulo_verde;
+                senhaValidada = true;
+            }
+            else
+            {
+                pcbValidacaoConfirmacaoSenha.Visible = true;
+                pcbValidacaoConfirmacaoSenha.Image = Properties.Resources.alert;
+            }
+        }
+
+        #endregion Metodos
+
+        #region Eventos
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            LimparComponetes();
         }
 
         private void FrmCadastrarUsuario_FormClosed(object sender, FormClosedEventArgs e)
@@ -158,10 +283,25 @@ namespace Estoque.Telas_Usuario
             txtConfirmarSenha.PasswordChar = '*';
         }
 
-        #endregion Eventos
-
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            var img = pcbImagemUsuario.Image;
+            int PK_Imagem = imagemRepositorio.SalvarImagem(img);
+
+            if (txtNomeCompleto.Text == "")
+            {
+                MessageBox.Show("Campo nome completo é obrigatorio");
+                txtNomeCompleto.Focus();
+                return;
+            }
+
+            if (txtNomeAbreviado.Text == "")
+            {
+                MessageBox.Show("Campo usuário é obrigatorio");
+                txtNomeAbreviado.Focus();
+                return;
+            }
+
             if (ObterSetorSelecionado() <= 0)
             {
                 MessageBox.Show("Campo setor é obrigatorio");
@@ -176,6 +316,20 @@ namespace Estoque.Telas_Usuario
                 return;
             }
 
+            if (!emailValidado || !confirmacaoEmailValidado)
+            {
+                MessageBox.Show("Email inválido!");
+                txtEmail.Focus();
+                return;
+            }
+
+            if (!senhaValidada)
+            {
+                MessageBox.Show("Senha inválida!");
+                txtSenha.Focus();
+                return;
+            }
+
             try
             {
                 var usuario = new Usuario()
@@ -186,7 +340,7 @@ namespace Estoque.Telas_Usuario
                     FK_Cargo = ObterCargoSelecionado(),
                     Ativo = true,
                     DataCadastro = DateTime.Today,
-                    FK_Imagem = 1,
+                    FK_Imagem = PK_Imagem,
                     Email = txtEmail.Text,
                     Senha = txtSenha.Text
                 };
@@ -203,30 +357,6 @@ namespace Estoque.Telas_Usuario
             {
                 MessageBox.Show("Erro ao cadastrar usuário.\nErro: " + ex.Message);
             }
-        }
-
-        private int ObterSetorSelecionado()
-        {
-            if (cboSetor != null
-                && cboSetor.Items.Count > 0
-                && cboSetor.SelectedItem is Setor setorSelecionado)
-            {
-                return cboSetor.SelectedIndex > 0 ? setorSelecionado.PK_Setor : 0;
-            }
-
-            return 0;
-        }
-
-        private int ObterCargoSelecionado()
-        {
-            if (cboCargo != null
-                && cboCargo.Items.Count > 0
-                && cboCargo.SelectedItem is Cargo cargoSelecionado)
-            {
-                return cboCargo.SelectedIndex > 0 ? cargoSelecionado.PK_Cargo : 0;
-            }
-
-            return 0;
         }
 
         private void txtEmail_TextChanged(object sender, EventArgs e)
@@ -248,65 +378,6 @@ namespace Estoque.Telas_Usuario
             ValidarEmail();
         }
 
-        private void ValidarEmail()
-        {
-            if (txtEmail.Text == "")
-            {
-                pcbValidacaoEmail.Visible = false;
-                return;
-            }
-
-            if (txtEmail.Text.ValidarEmail())
-            {
-                pcbValidacaoEmail.Visible = true;
-                if (pcbValidacaoEmail.Image != Properties.Resources.circulo_verde)
-                    pcbValidacaoEmail.Image = Properties.Resources.circulo_verde;
-            }
-            else
-            {
-                pcbValidacaoEmail.Visible = true;
-                pcbValidacaoEmail.Image = Properties.Resources.alert;
-            }
-        }
-
-        private void ValidarConfirmacaoDeEmail()
-        {
-            if (txtConfirmarEmail.Text == "" && txtEmail.Text == "")
-            {
-                pcbValidacaoConfirmarEmail.Visible = false;
-                return;
-            }
-
-            if (txtConfirmarEmail.Text == "" && txtEmail.Text != "")
-            {
-                pcbValidacaoConfirmarEmail.Visible = true;
-                if (pcbValidacaoConfirmarEmail.Image != Properties.Resources.alert)
-                    pcbValidacaoConfirmarEmail.Image = Properties.Resources.alert;
-                return;
-            }
-
-            if (!txtConfirmarEmail.Text.ValidarEmail())
-            {
-                pcbValidacaoConfirmarEmail.Visible = true;
-                if (pcbValidacaoConfirmarEmail.Image != Properties.Resources.alert)
-                    pcbValidacaoConfirmarEmail.Image = Properties.Resources.alert;
-                return;
-            }
-
-            if (txtConfirmarEmail.Text.Equals(txtEmail.Text))
-            {
-                pcbValidacaoConfirmarEmail.Visible = true;
-                if (pcbValidacaoConfirmarEmail.Image != Properties.Resources.circulo_verde)
-                    pcbValidacaoConfirmarEmail.Image = Properties.Resources.circulo_verde;
-            }
-            else
-            {
-                pcbValidacaoConfirmarEmail.Visible = true;
-                if (pcbValidacaoConfirmarEmail.Image != Properties.Resources.alert)
-                    pcbValidacaoConfirmarEmail.Image = Properties.Resources.alert;
-            }
-        }
-
         private void txtConfirmarEmail_Leave(object sender, EventArgs e)
         {
             ValidarConfirmacaoDeEmail();
@@ -321,5 +392,38 @@ namespace Estoque.Telas_Usuario
         {
             ValidarConfirmacaoDeEmail();
         }
+
+        private void txtSenha_Leave(object sender, EventArgs e)
+        {
+
+            ValidarConfirmacaoSenha();
+        }
+
+        private void txtConfirmarSenha_Leave(object sender, EventArgs e)
+        {
+            ValidarConfirmacaoSenha();
+        }
+
+        private void txtConfirmarSenha_Enter(object sender, EventArgs e)
+        {
+            ValidarConfirmacaoSenha();
+        }
+
+        private void txtConfirmarSenha_TextChanged(object sender, EventArgs e)
+        {
+            ValidarConfirmacaoSenha();
+        }
+        private void pcbImagemUsuario_Click(object sender, EventArgs e)
+        {
+            var img = imagemRepositorio.ProcurarImagemLocal();
+
+            if (img != null)
+            {
+                pcbImagemUsuario.Image = img;
+            }
+        }
+        #endregion Eventos
+
+
     }
 }
