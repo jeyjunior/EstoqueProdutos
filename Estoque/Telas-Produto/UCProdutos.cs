@@ -176,8 +176,8 @@ namespace Estoque.Telas_Produto
             cboMarca.SelectedValue = 0;
             cboFormato.SelectedValue = 0;
 
-            dtgProdutos.Rows.Clear();
-
+            if (dtgProdutos.Rows.Count > 0)
+                dtgProdutos.Rows.Clear();
         }
 
         private void UCProdutos_Load(object sender, EventArgs e)

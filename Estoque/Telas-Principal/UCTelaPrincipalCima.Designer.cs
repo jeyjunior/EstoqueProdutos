@@ -34,6 +34,7 @@
             // 
             // lblTela
             // 
+            lblTela.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             lblTela.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lblTela.ForeColor = Color.White;
             lblTela.Location = new Point(17, 0);
@@ -45,7 +46,7 @@
             // 
             // lblUsuario
             // 
-            lblUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             lblUsuario.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             lblUsuario.ForeColor = Color.White;
             lblUsuario.Location = new Point(255, 0);
@@ -55,14 +56,14 @@
             lblUsuario.Text = "José Junior";
             lblUsuario.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // UCPrincipalTop
+            // UCTelaPrincipalCima
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(16, 23, 28);
             Controls.Add(lblUsuario);
             Controls.Add(lblTela);
-            Name = "UCPrincipalTop";
+            Name = "UCTelaPrincipalCima";
             Size = new Size(600, 35);
             ResumeLayout(false);
         }

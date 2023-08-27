@@ -29,111 +29,110 @@
         private void InitializeComponent()
         {
             tblDireita = new TableLayoutPanel();
-            button1 = new Button();
-            btnTeste = new Button();
+            button12 = new Button();
+            btnUsuario = new Button();
             btnProduto = new Button();
             tblDireita.SuspendLayout();
             SuspendLayout();
             // 
             // tblDireita
             // 
-            tblDireita.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            tblDireita.BackColor = Color.FromArgb(60, 75, 85);
+            tblDireita.BackColor = Color.FromArgb(32, 46, 56);
             tblDireita.ColumnCount = 1;
             tblDireita.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tblDireita.Controls.Add(button1, 0, 2);
-            tblDireita.Controls.Add(btnTeste, 0, 2);
+            tblDireita.Controls.Add(button12, 0, 13);
+            tblDireita.Controls.Add(btnUsuario, 0, 2);
             tblDireita.Controls.Add(btnProduto, 0, 1);
+            tblDireita.Dock = DockStyle.Fill;
             tblDireita.Location = new Point(0, 0);
             tblDireita.Margin = new Padding(0);
             tblDireita.Name = "tblDireita";
-            tblDireita.RowCount = 16;
-            tblDireita.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tblDireita.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tblDireita.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tblDireita.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tblDireita.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tblDireita.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tblDireita.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tblDireita.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tblDireita.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tblDireita.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tblDireita.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tblDireita.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tblDireita.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tblDireita.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tblDireita.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tblDireita.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tblDireita.Size = new Size(125, 453);
+            tblDireita.RowCount = 14;
+            tblDireita.RowStyles.Add(new RowStyle(SizeType.Percent, 6.134874F));
+            tblDireita.RowStyles.Add(new RowStyle(SizeType.Percent, 6.13487434F));
+            tblDireita.RowStyles.Add(new RowStyle(SizeType.Percent, 6.13487434F));
+            tblDireita.RowStyles.Add(new RowStyle(SizeType.Percent, 6.13487434F));
+            tblDireita.RowStyles.Add(new RowStyle(SizeType.Percent, 6.13487434F));
+            tblDireita.RowStyles.Add(new RowStyle(SizeType.Percent, 6.13487434F));
+            tblDireita.RowStyles.Add(new RowStyle(SizeType.Percent, 6.13487434F));
+            tblDireita.RowStyles.Add(new RowStyle(SizeType.Percent, 6.13487434F));
+            tblDireita.RowStyles.Add(new RowStyle(SizeType.Percent, 6.13518238F));
+            tblDireita.RowStyles.Add(new RowStyle(SizeType.Percent, 6.13518238F));
+            tblDireita.RowStyles.Add(new RowStyle(SizeType.Percent, 6.13518238F));
+            tblDireita.RowStyles.Add(new RowStyle(SizeType.Percent, 6.13518238F));
+            tblDireita.RowStyles.Add(new RowStyle(SizeType.Percent, 6.13518238F));
+            tblDireita.RowStyles.Add(new RowStyle(SizeType.Percent, 20.2450867F));
+            tblDireita.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tblDireita.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tblDireita.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tblDireita.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tblDireita.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tblDireita.Size = new Size(125, 495);
             tblDireita.TabIndex = 5;
+            tblDireita.Resize += tblDireita_Resize;
             // 
-            // button1
+            // button12
             // 
-            button1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            button1.Cursor = Cursors.Hand;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.ForeColor = Color.White;
-            button1.Image = Properties.Resources.produtoIcon1;
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(0, 60);
-            button1.Margin = new Padding(0);
-            button1.Name = "button1";
-            button1.Padding = new Padding(5, 0, 0, 0);
-            button1.Size = new Size(125, 30);
-            button1.TabIndex = 3;
-            button1.Text = "Usuário";
-            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            button12.BackColor = Color.FromArgb(0, 64, 64);
+            button12.Dock = DockStyle.Fill;
+            button12.FlatStyle = FlatStyle.Flat;
+            button12.Location = new Point(3, 393);
+            button12.Name = "button12";
+            button12.Size = new Size(119, 99);
+            button12.TabIndex = 28;
+            button12.UseVisualStyleBackColor = false;
+            button12.Visible = false;
             // 
-            // btnTeste
+            // btnUsuario
             // 
-            btnTeste.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            btnTeste.Cursor = Cursors.Hand;
-            btnTeste.FlatAppearance.BorderSize = 0;
-            btnTeste.FlatStyle = FlatStyle.Flat;
-            btnTeste.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnTeste.ForeColor = Color.White;
-            btnTeste.Location = new Point(0, 90);
-            btnTeste.Margin = new Padding(0);
-            btnTeste.Name = "btnTeste";
-            btnTeste.Size = new Size(125, 30);
-            btnTeste.TabIndex = 2;
-            btnTeste.Text = "Teste";
-            btnTeste.UseVisualStyleBackColor = true;
-            btnTeste.Click += btnTeste_Click;
+            btnUsuario.Cursor = Cursors.Hand;
+            btnUsuario.Dock = DockStyle.Fill;
+            btnUsuario.FlatAppearance.BorderSize = 0;
+            btnUsuario.FlatStyle = FlatStyle.Flat;
+            btnUsuario.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnUsuario.ForeColor = Color.White;
+            btnUsuario.Location = new Point(0, 60);
+            btnUsuario.Margin = new Padding(0);
+            btnUsuario.Name = "btnUsuario";
+            btnUsuario.Size = new Size(125, 30);
+            btnUsuario.TabIndex = 3;
+            btnUsuario.Text = "Usuário";
+            btnUsuario.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnUsuario.UseVisualStyleBackColor = true;
+            btnUsuario.Click += btnUsuario_Click;
             // 
             // btnProduto
             // 
-            btnProduto.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             btnProduto.Cursor = Cursors.Hand;
+            btnProduto.Dock = DockStyle.Fill;
             btnProduto.FlatAppearance.BorderSize = 0;
             btnProduto.FlatStyle = FlatStyle.Flat;
-            btnProduto.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnProduto.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnProduto.ForeColor = Color.White;
-            btnProduto.Image = Properties.Resources.produtoIcon1;
+            btnProduto.Image = Properties.Resources.produto_18x;
             btnProduto.ImageAlign = ContentAlignment.MiddleLeft;
             btnProduto.Location = new Point(0, 30);
             btnProduto.Margin = new Padding(0);
             btnProduto.Name = "btnProduto";
-            btnProduto.Padding = new Padding(5, 0, 0, 0);
+            btnProduto.Padding = new Padding(15, 0, 0, 0);
+            btnProduto.RightToLeft = RightToLeft.No;
             btnProduto.Size = new Size(125, 30);
             btnProduto.TabIndex = 1;
-            btnProduto.Text = "Produto";
+            btnProduto.Text = " Produto";
+            btnProduto.TextAlign = ContentAlignment.MiddleRight;
             btnProduto.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnProduto.UseVisualStyleBackColor = true;
             btnProduto.Click += btnProduto_Click;
             // 
-            // UCPrincipalRight
+            // UCTelaPrincipalDireita
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(60, 75, 85);
             Controls.Add(tblDireita);
-            Name = "UCPrincipalRight";
+            Name = "UCTelaPrincipalDireita";
             Size = new Size(125, 495);
+            Load += UCTelaPrincipalDireita_Load;
             tblDireita.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -141,8 +140,8 @@
         #endregion
 
         private TableLayoutPanel tblDireita;
-        private Button btnTeste;
         private Button btnProduto;
-        private Button button1;
+        private Button btnUsuario;
+        private Button button12;
     }
 }

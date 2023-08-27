@@ -16,7 +16,7 @@ namespace EstoqueProdutos.Gerenciamento
         static DIRepositorios()
         {
             _container = new Container();
-            _container.Register(typeof(IRepositorio<>), typeof(Repositorio<>));
+            _container.Register(typeof(IRepositorio<>), typeof(RepositorioGenerico<>));
             _container.RegisterSingleton<IImagemRepositorio ,ImagemRepositorio>();
             _container.RegisterSingleton<IProdutoRepositorio, ProdutoRepositorio>();
             _container.RegisterSingleton<IMarcaRepositorio, MarcaRepositorio>();

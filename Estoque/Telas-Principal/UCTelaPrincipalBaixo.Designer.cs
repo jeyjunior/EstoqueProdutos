@@ -33,7 +33,7 @@
             // 
             // lblBarraStatus
             // 
-            lblBarraStatus.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblBarraStatus.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblBarraStatus.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             lblBarraStatus.ForeColor = Color.White;
             lblBarraStatus.Location = new Point(413, 1);
@@ -43,13 +43,13 @@
             lblBarraStatus.Text = "Barra de status";
             lblBarraStatus.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // UCPrincipalBot
+            // UCTelaPrincipalBaixo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(16, 23, 28);
             Controls.Add(lblBarraStatus);
-            Name = "UCPrincipalBot";
+            Name = "UCTelaPrincipalBaixo";
             Size = new Size(784, 36);
             ResumeLayout(false);
         }

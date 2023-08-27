@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace EstoqueProdutos.Repositorios
 {
-    public class ProdutoRepositorio : Repositorio<Produto>, IProdutoRepositorio
+    public class ProdutoRepositorio : RepositorioGenerico<Produto>, IProdutoRepositorio
     {
         public IEnumerable<Produto> ObterProduto(PesquisaProdutoSimples pesquisarProduto)
         {

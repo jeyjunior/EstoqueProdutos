@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EP.Data.Repositorios
 {
-    public class UsuarioRepositorio : Repositorio<Usuario>
+    public class UsuarioRepositorio : RepositorioGenerico<Usuario>
     {
 
     }

@@ -30,7 +30,7 @@ namespace EstoqueProdutos.Telas_Principal
         #endregion Classes
 
         #region Propriedades Publicas
-        
+
         #endregion Propriedades Publicas
 
         public FrmPrincipal()
@@ -56,7 +56,7 @@ namespace EstoqueProdutos.Telas_Principal
         {
             pBot.Controls.Add((Control)uCPrincipalBot);
             pTop.Controls.Add((Control)uCPrincipalTop);
-            pRight.Controls.Add((Control)uCPrincipalRight);
+            pDireita.Controls.Add((Control)uCPrincipalRight);
         }
 
         private void CarregarImagemPadrao()
@@ -71,6 +71,17 @@ namespace EstoqueProdutos.Telas_Principal
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
             InicializarConfiguracoes();
+        }
+
+        private void FrmPrincipal_Resize(object sender, EventArgs e)
+        {
+            //if (this.ClientSize.Width > 1600)
+            //    pDireita.Size = new Size(300, pDireita.Size.Height);
+            //else if (this.ClientSize.Width > 1000)
+            //    pDireita.Size = new Size(200, pDireita.Size.Height);
+            //else
+            //    pDireita.Size = new Size(125, pDireita.Size.Height);
+
         }
 
         public void AbrirTelaPanelCentral<T>() where T : UserControl, new()

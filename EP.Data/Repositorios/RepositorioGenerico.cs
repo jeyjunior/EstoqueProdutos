@@ -10,7 +10,7 @@ namespace EstoqueProdutos.Repositorios
     /// Fornecer os metodos base para consultas na base de dados
     /// </summary>
     /// <typeparam name="T">Entidade Repositorio </typeparam>
-    public partial class Repositorio<T> : IRepositorio<T>
+    public partial class RepositorioGenerico<T> : IRepositorio<T>
     {
         protected readonly string conexao = Conexao.ConexaoBase;
 
