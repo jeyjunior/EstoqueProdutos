@@ -37,6 +37,6 @@ namespace EstoqueProdutos.Repositorios
                 var resultado = connection.Execute(sql, setor);
                 return Convert.ToBoolean(resultado);
             }
-        }
+        } 
     }
 }

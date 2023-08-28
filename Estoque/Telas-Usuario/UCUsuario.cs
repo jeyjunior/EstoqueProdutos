@@ -130,6 +130,27 @@ namespace Estoque.Telas_Produto
             if (dtgUsuarios.Rows.Count > 0)
                 dtgUsuarios.Rows.Clear();
         }
+        private int ObterSetorSelecionado()
+        {
+            if (cboSetor != null && cboSetor.Items.Count > 0)
+            {
+                var setorSelecionado = (Setor)cboSetor.SelectedItem;
+                return setorSelecionado.PK_Setor;
+            }
+
+            return 0;
+        }
+
+        private int ObterCargoSelecionado()
+        {
+            if (cboCargo != null && cboCargo.Items.Count > 0)
+            {
+                var cargoSelecionado = (Cargo)cboCargo.SelectedItem;
+                return cargoSelecionado.PK_Cargo;
+            }
+
+            return 0;
+        }
 
         private void UCProdutos_Load(object sender, EventArgs e)
         {
@@ -138,7 +159,16 @@ namespace Estoque.Telas_Produto
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            usuarios = usuarioRepositorio.ObterTabelaComRelacionamentos();
+            string nome = txtNome.TextoFormatoLikeSQL();
+
+            var usuarioParametros = new Usuario()
+            {
+                NomeCompleto = nome,
+                FK_Setor = ObterSetorSelecionado(),
+                FK_Cargo = ObterCargoSelecionado()
+            };
+
+            usuarios = usuarioRepositorio.ObterTabelaFiltroTelaUsuarios(usuarioParametros);
             BindDataGridView();
         }
 
@@ -154,38 +184,37 @@ namespace Estoque.Telas_Produto
 
         private void cboSetor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboSetor != null
-                && cboSetor.Items.Count > 0
-                && cboSetor.SelectedItem is Setor setorSelecionado)
+            int PK_SetorSelecionado = ObterSetorSelecionado();
+
+            if (PK_SetorSelecionado <= 0)
             {
-                if (cboSetor.SelectedIndex <= 0)
-                {
-                    cboCargo.DataSource = bindingSourceCargos;
-                }
-                else
-                {
-                    cboCargo.DataSource = bindingSourceCargos
-                        .Cast<Cargo>().Where(c => c.FK_Setor == setorSelecionado.PK_Setor).ToList();
-                }
+                cboCargo.DataSource = bindingSourceCargos;
+            }
+            else
+            {
+                cboCargo.DataSource = bindingSourceCargos
+                    .Cast<Cargo>()
+                    .Where(c => (c.FK_Setor == PK_SetorSelecionado) || (c.FK_Setor == 0))
+                    .ToList();
             }
         }
 
         private void cboCargo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboCargo != null
-                && cboCargo.Items.Count > 0
-                && cboCargo.SelectedItem is Cargo cargoSelecionado)
-            {
-                if (cboCargo.SelectedIndex <= 0)
-                {
-                    cboSetor.DataSource = bindingSourceSetor;
-                }
-                else
-                {
-                    cboSetor.DataSource = bindingSourceSetor.
-                        Cast<Setor>().Where(s => s.PK_Setor == cargoSelecionado.FK_Setor).ToList();
-                }
-            }
+            //if (cboCargo != null
+            //    && cboCargo.Items.Count > 0
+            //    && cboCargo.SelectedItem is Cargo cargoSelecionado)
+            //{
+            //    if (cboCargo.SelectedIndex <= 0)
+            //    {
+            //        cboSetor.DataSource = bindingSourceSetor;
+            //    }
+            //    else
+            //    {
+            //        cboSetor.DataSource = bindingSourceSetor.
+            //            Cast<Setor>().Where(s => s.PK_Setor == cargoSelecionado.FK_Setor).ToList();
+            //    }
+            //}
         }
     }
 }

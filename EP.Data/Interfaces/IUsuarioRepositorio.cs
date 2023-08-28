@@ -12,7 +12,7 @@ namespace EP.Data.Interfaces
     public interface IUsuarioRepositorio
     {
         IEnumerable<Usuario> ObterTabela();
-        IEnumerable<Usuario> ObterTabelaComRelacionamentos();
+        IEnumerable<Usuario> ObterTabelaFiltroTelaUsuarios(Usuario usuarioParametros);
         bool InserirDadosNaTabela(Usuario usuario);
     }
 }

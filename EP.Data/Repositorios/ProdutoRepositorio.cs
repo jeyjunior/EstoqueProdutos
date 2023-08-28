@@ -19,7 +19,6 @@ namespace EstoqueProdutos.Repositorios
         {
             string sql = "";
             string where = "WHERE "; 
-
             string condicao = "";
 
             if (pesquisarProduto.Nome != "") 
