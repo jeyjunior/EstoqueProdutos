@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             tlpComponenteDaPesquisa = new TableLayoutPanel();
             tlpComponentesRow1 = new TableLayoutPanel();
             txtNome = new TextBox();
@@ -43,7 +43,7 @@
             btnPesquisar = new Button();
             button1 = new Button();
             button2 = new Button();
-            button3 = new Button();
+            btnSetorCargo = new Button();
             btnCadastrarUsuario = new Button();
             dtgUsuarios = new DataGridView();
             colPK_Usuario = new DataGridViewTextBoxColumn();
@@ -212,14 +212,15 @@
             button2.TabIndex = 3;
             button2.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnSetorCargo
             // 
-            button3.Location = new Point(495, 0);
-            button3.Margin = new Padding(0);
-            button3.Name = "button3";
-            button3.Size = new Size(35, 35);
-            button3.TabIndex = 4;
-            button3.UseVisualStyleBackColor = true;
+            btnSetorCargo.Location = new Point(495, 0);
+            btnSetorCargo.Margin = new Padding(0);
+            btnSetorCargo.Name = "btnSetorCargo";
+            btnSetorCargo.Size = new Size(35, 35);
+            btnSetorCargo.TabIndex = 4;
+            btnSetorCargo.UseVisualStyleBackColor = true;
+            btnSetorCargo.Click += btnSetorCargo_Click;
             // 
             // btnCadastrarUsuario
             // 
@@ -233,48 +234,47 @@
             // 
             // dtgUsuarios
             // 
-            dtgUsuarios.AllowUserToAddRows = false;
             dtgUsuarios.AllowUserToDeleteRows = false;
             dtgUsuarios.AllowUserToOrderColumns = true;
             dtgUsuarios.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(241, 241, 241);
-            dtgUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(241, 241, 241);
+            dtgUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             dtgUsuarios.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dtgUsuarios.BackgroundColor = Color.FromArgb(80, 90, 100);
             dtgUsuarios.BorderStyle = BorderStyle.None;
             dtgUsuarios.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
             dtgUsuarios.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(60, 74, 84);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(47, 59, 67);
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dtgUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(60, 74, 84);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(47, 59, 67);
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dtgUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dtgUsuarios.ColumnHeadersHeight = 35;
             dtgUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dtgUsuarios.Columns.AddRange(new DataGridViewColumn[] { colPK_Usuario, colNomeCompleto, colNomeAbreviado, colEmail, colFK_Setor, colFK_Cargo });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(217, 217, 217);
-            dataGridViewCellStyle3.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(47, 59, 67);
-            dataGridViewCellStyle3.SelectionForeColor = Color.White;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dtgUsuarios.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = Color.FromArgb(217, 217, 217);
+            dataGridViewCellStyle7.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = Color.Gray;
+            dataGridViewCellStyle7.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
+            dtgUsuarios.DefaultCellStyle = dataGridViewCellStyle7;
             dtgUsuarios.EnableHeadersVisualStyles = false;
             dtgUsuarios.GridColor = Color.White;
             dtgUsuarios.Location = new Point(25, 165);
             dtgUsuarios.Name = "dtgUsuarios";
             dtgUsuarios.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(217, 217, 217);
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dtgUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.FromArgb(217, 217, 217);
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dtgUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dtgUsuarios.RowHeadersVisible = false;
             dtgUsuarios.RowHeadersWidth = 55;
             dtgUsuarios.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -351,7 +351,7 @@
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 5F));
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
             tblBotoes.Controls.Add(btnPesquisar, 0, 0);
-            tblBotoes.Controls.Add(button3, 2, 0);
+            tblBotoes.Controls.Add(btnSetorCargo, 2, 0);
             tblBotoes.Controls.Add(btnCadastrarUsuario, 8, 0);
             tblBotoes.Controls.Add(button1, 4, 0);
             tblBotoes.Controls.Add(button2, 6, 0);
@@ -424,7 +424,7 @@
         private Button btnPesquisar;
         private Button button1;
         private Button button2;
-        private Button button3;
+        private Button btnSetorCargo;
         private Button btnCadastrarUsuario;
         private DataGridView dtgUsuarios;
         private TableLayoutPanel tblBotoes;

@@ -33,7 +33,7 @@ namespace EstoqueProdutos.Repositorios
 
                 string sql = "" +
                     "INSERT INTO Cargo\n" +
-                    "VALUES (@NomeCargo, @FK_Setor, @Descricao)\n";
+                    "VALUES (@NomeCargo, @FK_Setor)\n";
 
                 var resultado = connection.Execute(sql, cargo);
                 return Convert.ToBoolean(resultado);

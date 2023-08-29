@@ -12,7 +12,5 @@ namespace EP.Data.Entidades
         public string NomeCargo { get; set; }
 
         public int FK_Setor { get; set; }
-
-        public string? Descricao { get; set; }
     }
 }

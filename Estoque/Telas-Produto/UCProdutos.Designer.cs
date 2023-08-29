@@ -385,8 +385,8 @@
             dataGridViewCellStyle14.BackColor = Color.FromArgb(217, 217, 217);
             dataGridViewCellStyle14.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle14.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle14.SelectionBackColor = Color.FromArgb(47, 59, 67);
-            dataGridViewCellStyle14.SelectionForeColor = Color.White;
+            dataGridViewCellStyle14.SelectionBackColor = Color.Gray;
+            dataGridViewCellStyle14.SelectionForeColor = Color.Black;
             dataGridViewCellStyle14.WrapMode = DataGridViewTriState.False;
             dtgProdutos.DefaultCellStyle = dataGridViewCellStyle14;
             dtgProdutos.EnableHeadersVisualStyles = false;

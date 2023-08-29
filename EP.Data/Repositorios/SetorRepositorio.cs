@@ -32,7 +32,7 @@ namespace EstoqueProdutos.Repositorios
 
                 string sql = "" +
                     "INSERT INTO Setor\n" +
-                    "VALUES (@NomeSetor, @Descricao)\n";
+                    "VALUES (@NomeSetor)\n";
 
                 var resultado = connection.Execute(sql, setor);
                 return Convert.ToBoolean(resultado);

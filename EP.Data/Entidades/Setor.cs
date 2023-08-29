@@ -10,6 +10,5 @@ namespace EP.Data.Entidades
     {
         public int PK_Setor { get; set; }
         public string NomeSetor { get; set; }
-        public string? Descricao { get; set; }
     }
 }

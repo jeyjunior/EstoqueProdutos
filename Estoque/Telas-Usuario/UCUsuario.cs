@@ -1,21 +1,10 @@
 ﻿using EP.Data.Entidades;
 using EP.Data.Interfaces;
 using Estoque.Telas_Usuario;
-using EstoqueProdutos.Entidades;
 using EstoqueProdutos.Formatacao;
 using EstoqueProdutos.Gerenciamento;
-using EstoqueProdutos.Interfaces;
-using EstoqueProdutos.Repositorios;
 using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Estoque.Telas_Produto
 {
@@ -64,8 +53,7 @@ namespace Estoque.Telas_Produto
                 new Setor
                 {
                     PK_Setor = 0,
-                    NomeSetor = "Nenhum",
-                    Descricao = "Nenhum"
+                    NomeSetor = "Nenhum"
                 });
 
             if (result != null)
@@ -86,8 +74,7 @@ namespace Estoque.Telas_Produto
                 {
                     PK_Cargo = 0,
                     FK_Setor = 0,
-                    NomeCargo = "Nenhum",
-                    Descricao = "Nenhum"
+                    NomeCargo = "Nenhum"
                 });
 
             if (result != null)
@@ -130,6 +117,7 @@ namespace Estoque.Telas_Produto
             if (dtgUsuarios.Rows.Count > 0)
                 dtgUsuarios.Rows.Clear();
         }
+
         private int ObterSetorSelecionado()
         {
             if (cboSetor != null && cboSetor.Items.Count > 0)
@@ -215,6 +203,11 @@ namespace Estoque.Telas_Produto
             //            Cast<Setor>().Where(s => s.PK_Setor == cargoSelecionado.FK_Setor).ToList();
             //    }
             //}
+        }
+
+        private void btnSetorCargo_Click(object sender, EventArgs e)
+        {
+            AbrirTela(typeof(FrmCadastrarSetorCargo), this, true);
         }
     }
 }
