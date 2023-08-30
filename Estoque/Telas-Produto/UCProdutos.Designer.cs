@@ -80,6 +80,7 @@
             tblBotoes = new TableLayoutPanel();
             tlpComponentesRow0 = new TableLayoutPanel();
             lblDescricao = new Label();
+            pnRegua = new Panel();
             tlpComponenteDaPesquisa.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tlpComponentesRow1.SuspendLayout();
@@ -96,17 +97,16 @@
             tlpComponenteDaPesquisa.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tlpComponenteDaPesquisa.Controls.Add(tableLayoutPanel1, 0, 0);
             tlpComponenteDaPesquisa.Controls.Add(tlpComponentesRow1, 0, 2);
-            tlpComponenteDaPesquisa.Location = new Point(25, 26);
+            tlpComponenteDaPesquisa.Location = new Point(18, 16);
             tlpComponenteDaPesquisa.Margin = new Padding(5);
             tlpComponenteDaPesquisa.Name = "tlpComponenteDaPesquisa";
             tlpComponenteDaPesquisa.Padding = new Padding(5);
-            tlpComponenteDaPesquisa.RowCount = 4;
+            tlpComponenteDaPesquisa.RowCount = 3;
             tlpComponenteDaPesquisa.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tlpComponenteDaPesquisa.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
             tlpComponenteDaPesquisa.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tlpComponenteDaPesquisa.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
             tlpComponenteDaPesquisa.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tlpComponenteDaPesquisa.Size = new Size(570, 156);
+            tlpComponenteDaPesquisa.Size = new Size(588, 140);
             tlpComponenteDaPesquisa.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -126,7 +126,7 @@
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(542, 54);
+            tableLayoutPanel1.Size = new Size(560, 51);
             tableLayoutPanel1.TabIndex = 11;
             // 
             // lblDescricaoProduto
@@ -134,10 +134,10 @@
             lblDescricaoProduto.Dock = DockStyle.Fill;
             lblDescricaoProduto.Font = new Font("Verdana", 10F, FontStyle.Bold, GraphicsUnit.Point);
             lblDescricaoProduto.ForeColor = SystemColors.ControlLightLight;
-            lblDescricaoProduto.Location = new Point(234, 0);
+            lblDescricaoProduto.Location = new Point(241, 0);
             lblDescricaoProduto.Margin = new Padding(0);
             lblDescricaoProduto.Name = "lblDescricaoProduto";
-            lblDescricaoProduto.Size = new Size(308, 20);
+            lblDescricaoProduto.Size = new Size(319, 20);
             lblDescricaoProduto.TabIndex = 19;
             lblDescricaoProduto.Text = "Descrição do Produto:";
             lblDescricaoProduto.TextAlign = ContentAlignment.BottomLeft;
@@ -147,10 +147,10 @@
             txtDescricaoProduto.BorderStyle = BorderStyle.FixedSingle;
             txtDescricaoProduto.Dock = DockStyle.Fill;
             txtDescricaoProduto.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtDescricaoProduto.Location = new Point(237, 23);
+            txtDescricaoProduto.Location = new Point(244, 23);
             txtDescricaoProduto.MaxLength = 120;
             txtDescricaoProduto.Name = "txtDescricaoProduto";
-            txtDescricaoProduto.Size = new Size(302, 27);
+            txtDescricaoProduto.Size = new Size(313, 27);
             txtDescricaoProduto.TabIndex = 18;
             // 
             // lblNomeProduto
@@ -161,7 +161,7 @@
             lblNomeProduto.Location = new Point(0, 0);
             lblNomeProduto.Margin = new Padding(0);
             lblNomeProduto.Name = "lblNomeProduto";
-            lblNomeProduto.Size = new Size(219, 20);
+            lblNomeProduto.Size = new Size(226, 20);
             lblNomeProduto.TabIndex = 2;
             lblNomeProduto.Text = "Nome do Produto:";
             lblNomeProduto.TextAlign = ContentAlignment.BottomLeft;
@@ -174,7 +174,7 @@
             txtNomeProduto.Location = new Point(3, 23);
             txtNomeProduto.MaxLength = 120;
             txtNomeProduto.Name = "txtNomeProduto";
-            txtNomeProduto.Size = new Size(213, 27);
+            txtNomeProduto.Size = new Size(220, 27);
             txtNomeProduto.TabIndex = 2;
             // 
             // tlpComponentesRow1
@@ -196,13 +196,13 @@
             tlpComponentesRow1.Controls.Add(cboEmbalagem, 2, 1);
             tlpComponentesRow1.Controls.Add(cboCategoria, 0, 1);
             tlpComponentesRow1.Dock = DockStyle.Fill;
-            tlpComponentesRow1.Location = new Point(14, 78);
+            tlpComponentesRow1.Location = new Point(14, 75);
             tlpComponentesRow1.Margin = new Padding(9, 0, 9, 9);
             tlpComponentesRow1.Name = "tlpComponentesRow1";
             tlpComponentesRow1.RowCount = 2;
             tlpComponentesRow1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tlpComponentesRow1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tlpComponentesRow1.Size = new Size(542, 54);
+            tlpComponentesRow1.Size = new Size(560, 51);
             tlpComponentesRow1.TabIndex = 10;
             // 
             // cboFormato
@@ -213,10 +213,10 @@
             cboFormato.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cboFormato.FormattingEnabled = true;
             cboFormato.IntegralHeight = false;
-            cboFormato.Location = new Point(420, 23);
+            cboFormato.Location = new Point(432, 23);
             cboFormato.MaxDropDownItems = 50;
             cboFormato.Name = "cboFormato";
-            cboFormato.Size = new Size(119, 26);
+            cboFormato.Size = new Size(125, 26);
             cboFormato.TabIndex = 12;
             // 
             // lblFormato
@@ -224,10 +224,10 @@
             lblFormato.Dock = DockStyle.Fill;
             lblFormato.Font = new Font("Verdana", 10F, FontStyle.Bold, GraphicsUnit.Point);
             lblFormato.ForeColor = SystemColors.ControlLightLight;
-            lblFormato.Location = new Point(417, 0);
+            lblFormato.Location = new Point(429, 0);
             lblFormato.Margin = new Padding(0);
             lblFormato.Name = "lblFormato";
-            lblFormato.Size = new Size(125, 20);
+            lblFormato.Size = new Size(131, 20);
             lblFormato.TabIndex = 14;
             lblFormato.Text = "Formato:";
             lblFormato.TextAlign = ContentAlignment.BottomLeft;
@@ -237,10 +237,10 @@
             lblMarca.Dock = DockStyle.Fill;
             lblMarca.Font = new Font("Verdana", 10F, FontStyle.Bold, GraphicsUnit.Point);
             lblMarca.ForeColor = SystemColors.ControlLightLight;
-            lblMarca.Location = new Point(278, 0);
+            lblMarca.Location = new Point(286, 0);
             lblMarca.Margin = new Padding(0);
             lblMarca.Name = "lblMarca";
-            lblMarca.Size = new Size(124, 20);
+            lblMarca.Size = new Size(128, 20);
             lblMarca.TabIndex = 12;
             lblMarca.Text = "Marca:";
             lblMarca.TextAlign = ContentAlignment.BottomLeft;
@@ -253,9 +253,9 @@
             cboMarca.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cboMarca.FormattingEnabled = true;
             cboMarca.IntegralHeight = false;
-            cboMarca.Location = new Point(281, 23);
+            cboMarca.Location = new Point(289, 23);
             cboMarca.Name = "cboMarca";
-            cboMarca.Size = new Size(118, 26);
+            cboMarca.Size = new Size(122, 26);
             cboMarca.TabIndex = 10;
             // 
             // lblEmbalagem
@@ -263,10 +263,10 @@
             lblEmbalagem.Dock = DockStyle.Fill;
             lblEmbalagem.Font = new Font("Verdana", 10F, FontStyle.Bold, GraphicsUnit.Point);
             lblEmbalagem.ForeColor = SystemColors.ControlLightLight;
-            lblEmbalagem.Location = new Point(139, 0);
+            lblEmbalagem.Location = new Point(143, 0);
             lblEmbalagem.Margin = new Padding(0);
             lblEmbalagem.Name = "lblEmbalagem";
-            lblEmbalagem.Size = new Size(124, 20);
+            lblEmbalagem.Size = new Size(128, 20);
             lblEmbalagem.TabIndex = 11;
             lblEmbalagem.Text = "Embalagem:";
             lblEmbalagem.TextAlign = ContentAlignment.BottomLeft;
@@ -279,7 +279,7 @@
             lblCategoria.Location = new Point(0, 0);
             lblCategoria.Margin = new Padding(0);
             lblCategoria.Name = "lblCategoria";
-            lblCategoria.Size = new Size(124, 20);
+            lblCategoria.Size = new Size(128, 20);
             lblCategoria.TabIndex = 11;
             lblCategoria.Text = "Categoria:";
             lblCategoria.TextAlign = ContentAlignment.BottomLeft;
@@ -292,9 +292,9 @@
             cboEmbalagem.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cboEmbalagem.FormattingEnabled = true;
             cboEmbalagem.IntegralHeight = false;
-            cboEmbalagem.Location = new Point(142, 23);
+            cboEmbalagem.Location = new Point(146, 23);
             cboEmbalagem.Name = "cboEmbalagem";
-            cboEmbalagem.Size = new Size(118, 26);
+            cboEmbalagem.Size = new Size(122, 26);
             cboEmbalagem.TabIndex = 8;
             // 
             // cboCategoria
@@ -307,13 +307,13 @@
             cboCategoria.IntegralHeight = false;
             cboCategoria.Location = new Point(3, 23);
             cboCategoria.Name = "cboCategoria";
-            cboCategoria.Size = new Size(118, 26);
+            cboCategoria.Size = new Size(122, 26);
             cboCategoria.TabIndex = 4;
             // 
             // btnPesquisar
             // 
             btnPesquisar.Image = Properties.Resources.search_1;
-            btnPesquisar.Location = new Point(535, 0);
+            btnPesquisar.Location = new Point(553, 0);
             btnPesquisar.Margin = new Padding(0);
             btnPesquisar.Name = "btnPesquisar";
             btnPesquisar.Size = new Size(35, 35);
@@ -323,7 +323,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(455, 0);
+            button1.Location = new Point(473, 0);
             button1.Margin = new Padding(0);
             button1.Name = "button1";
             button1.Size = new Size(35, 35);
@@ -332,7 +332,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(415, 0);
+            button2.Location = new Point(433, 0);
             button2.Margin = new Padding(0);
             button2.Name = "button2";
             button2.Size = new Size(35, 35);
@@ -341,7 +341,7 @@
             // 
             // button3
             // 
-            button3.Location = new Point(495, 0);
+            button3.Location = new Point(513, 0);
             button3.Margin = new Padding(0);
             button3.Name = "button3";
             button3.Size = new Size(35, 35);
@@ -350,7 +350,7 @@
             // 
             // button4
             // 
-            button4.Location = new Point(375, 0);
+            button4.Location = new Point(393, 0);
             button4.Margin = new Padding(0);
             button4.Name = "button4";
             button4.Size = new Size(35, 35);
@@ -363,10 +363,10 @@
             dtgProdutos.AllowUserToDeleteRows = false;
             dtgProdutos.AllowUserToOrderColumns = true;
             dtgProdutos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(241, 241, 241);
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(235, 235, 235);
             dtgProdutos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dtgProdutos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dtgProdutos.BackgroundColor = Color.FromArgb(80, 90, 100);
+            dtgProdutos.BackgroundColor = Color.FromArgb(235, 235, 235);
             dtgProdutos.BorderStyle = BorderStyle.None;
             dtgProdutos.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
             dtgProdutos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -382,16 +382,16 @@
             dtgProdutos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dtgProdutos.Columns.AddRange(new DataGridViewColumn[] { colPK_Produto, colNome, colVolume, colDescricao, colAltura, colLargura, colComprimento, colFK_Formato, colFK_Imagem, colFK_Categoria, colFK_Marca, colFK_Embalagem, colFK_UnidadeMedida });
             dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = Color.FromArgb(217, 217, 217);
+            dataGridViewCellStyle14.BackColor = Color.FromArgb(246, 246, 246);
             dataGridViewCellStyle14.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle14.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle14.SelectionBackColor = Color.Gray;
+            dataGridViewCellStyle14.SelectionBackColor = Color.FromArgb(140, 200, 120);
             dataGridViewCellStyle14.SelectionForeColor = Color.Black;
             dataGridViewCellStyle14.WrapMode = DataGridViewTriState.False;
             dtgProdutos.DefaultCellStyle = dataGridViewCellStyle14;
             dtgProdutos.EnableHeadersVisualStyles = false;
             dtgProdutos.GridColor = Color.White;
-            dtgProdutos.Location = new Point(25, 239);
+            dtgProdutos.Location = new Point(16, 219);
             dtgProdutos.Name = "dtgProdutos";
             dtgProdutos.ReadOnly = true;
             dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -406,7 +406,7 @@
             dtgProdutos.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dtgProdutos.RowTemplate.Height = 25;
             dtgProdutos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgProdutos.Size = new Size(570, 201);
+            dtgProdutos.Size = new Size(590, 234);
             dtgProdutos.TabIndex = 6;
             // 
             // colPK_Produto
@@ -584,13 +584,13 @@
             tblBotoes.Controls.Add(button4, 8, 0);
             tblBotoes.Controls.Add(button1, 4, 0);
             tblBotoes.Controls.Add(button2, 6, 0);
-            tblBotoes.Location = new Point(25, 192);
+            tblBotoes.Location = new Point(16, 169);
             tblBotoes.Margin = new Padding(0);
             tblBotoes.Name = "tblBotoes";
             tblBotoes.RightToLeft = RightToLeft.Yes;
             tblBotoes.RowCount = 1;
             tblBotoes.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tblBotoes.Size = new Size(570, 35);
+            tblBotoes.Size = new Size(588, 35);
             tblBotoes.TabIndex = 8;
             // 
             // tlpComponentesRow0
@@ -623,11 +623,21 @@
             lblDescricao.Text = "Descrição do Produto:";
             lblDescricao.TextAlign = ContentAlignment.BottomLeft;
             // 
+            // pnRegua
+            // 
+            pnRegua.BackColor = Color.Brown;
+            pnRegua.Location = new Point(607, 0);
+            pnRegua.Name = "pnRegua";
+            pnRegua.Size = new Size(15, 14);
+            pnRegua.TabIndex = 10;
+            pnRegua.Visible = false;
+            // 
             // UCProduto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(80, 90, 100);
+            Controls.Add(pnRegua);
             Controls.Add(tlpComponenteDaPesquisa);
             Controls.Add(tblBotoes);
             Controls.Add(dtgProdutos);
@@ -686,5 +696,6 @@
         private DataGridViewTextBoxColumn colFK_Marca;
         private DataGridViewTextBoxColumn colFK_Embalagem;
         private DataGridViewTextBoxColumn colFK_UnidadeMedida;
+        private Panel pnRegua;
     }
 }

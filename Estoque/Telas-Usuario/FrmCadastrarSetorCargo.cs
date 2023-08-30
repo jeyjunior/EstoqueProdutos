@@ -19,10 +19,8 @@ using System.Windows.Forms;
 
 namespace Estoque.Telas_Usuario
 {
-    public partial class FrmCadastrarSetorCargo : Estoque.Telas_Base.FrmBase
+    public partial class FrmCadastrarSetorCargo : Estoque.Telas_Base.FrmGerenciadorDeTelas
     {
-        private List<UserControl> telasInstanciadas = new List<UserControl>();
-
         public FrmCadastrarSetorCargo(IUCGerenciadorDeTelas gerenciadorDeTelas)
         {
             InitializeComponent();
@@ -49,15 +47,17 @@ namespace Estoque.Telas_Usuario
 
         private void btnSetor_Click(object sender, EventArgs e)
         {
-            ExibirTela(null, (Button)sender);
+            AlterarCorDoBotaoSelecionado((Button)sender);
+            AbrirTela(typeof(UCSetor), pnCentral);
         }
 
         private void btnCargo_Click(object sender, EventArgs e)
         {
-            ExibirTela(null, (Button)sender);
+            AlterarCorDoBotaoSelecionado((Button)sender);
+            AbrirTela(typeof(UCCargo), pnCentral);
         }
 
-        private void ExibirTela(UserControl tela, Button botaoAtivo)
+        private void AlterarCorDoBotaoSelecionado(Button botaoAtivo)
         {
             foreach (Button button in tab.Controls.OfType<Button>())
             {

@@ -12,6 +12,8 @@ namespace EP.Data.Interfaces
     public interface ISetorRepositorio
     {
         IEnumerable<Setor> ObterTabela();
+        IEnumerable<Setor> ObterTabela(Setor setor);
+        int ObterTotalSetoresRegistrados();
         bool InserirDadosNaTabela(Setor setor);
     }
 }

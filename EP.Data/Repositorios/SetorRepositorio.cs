@@ -24,6 +24,45 @@ namespace EstoqueProdutos.Repositorios
             }
         }
 
+        public virtual IEnumerable<Setor> ObterTabela(Setor setor)
+        {
+            string sql = "";
+            string where = "";
+            string condicao = "";
+
+            if (setor != null && setor.NomeSetor != "")
+            {
+                condicao += (condicao != "" ? " AND" : "") + " Setor.NomeSetor Like @NomeSetor\n";
+            }
+
+            sql = "" +
+                "SELECT * \n" +
+                "FROM Setor\n";
+
+            where = condicao != "" ? "WHERE " : "";
+
+            using (var connection = new SqlConnection(Conexao.ConexaoBase))
+            {
+                connection.Open();
+                sql = sql + where + condicao;
+                return connection.Query<Setor>(sql, setor);
+            }
+        }
+
+        public virtual int ObterTotalSetoresRegistrados()
+        {
+            string sql = "";
+            sql = "" +
+                "SELECT COUNT(*) AS Total \n" +
+                "FROM Setor\n";
+
+            using (var connection = new SqlConnection(Conexao.ConexaoBase))
+            {
+                connection.Open();
+                return connection.QueryFirstOrDefault<int>(sql);
+            }
+        }
+
         public virtual bool InserirDadosNaTabela(Setor setor)
         {
             using (SqlConnection connection = new SqlConnection(Conexao.ConexaoBase))

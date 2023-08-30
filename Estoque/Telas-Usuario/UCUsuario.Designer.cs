@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             tlpComponenteDaPesquisa = new TableLayoutPanel();
             tlpComponentesRow1 = new TableLayoutPanel();
             txtNome = new TextBox();
@@ -55,6 +55,7 @@
             tblBotoes = new TableLayoutPanel();
             tlpComponentesRow0 = new TableLayoutPanel();
             lblDescricao = new Label();
+            pnRegua = new Panel();
             tlpComponenteDaPesquisa.SuspendLayout();
             tlpComponentesRow1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgUsuarios).BeginInit();
@@ -69,16 +70,14 @@
             tlpComponenteDaPesquisa.ColumnCount = 1;
             tlpComponenteDaPesquisa.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tlpComponenteDaPesquisa.Controls.Add(tlpComponentesRow1, 0, 0);
-            tlpComponenteDaPesquisa.Location = new Point(25, 26);
+            tlpComponenteDaPesquisa.Location = new Point(14, 15);
             tlpComponenteDaPesquisa.Margin = new Padding(5);
             tlpComponenteDaPesquisa.Name = "tlpComponenteDaPesquisa";
             tlpComponenteDaPesquisa.Padding = new Padding(5);
-            tlpComponenteDaPesquisa.RowCount = 2;
+            tlpComponenteDaPesquisa.RowCount = 1;
             tlpComponenteDaPesquisa.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tlpComponenteDaPesquisa.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
             tlpComponenteDaPesquisa.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tlpComponenteDaPesquisa.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tlpComponenteDaPesquisa.Size = new Size(570, 82);
+            tlpComponenteDaPesquisa.Size = new Size(594, 71);
             tlpComponenteDaPesquisa.TabIndex = 0;
             // 
             // tlpComponentesRow1
@@ -102,7 +101,7 @@
             tlpComponentesRow1.RowCount = 2;
             tlpComponentesRow1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tlpComponentesRow1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tlpComponentesRow1.Size = new Size(542, 53);
+            tlpComponentesRow1.Size = new Size(566, 52);
             tlpComponentesRow1.TabIndex = 10;
             // 
             // txtNome
@@ -113,7 +112,7 @@
             txtNome.Location = new Point(3, 23);
             txtNome.MaxLength = 120;
             txtNome.Name = "txtNome";
-            txtNome.Size = new Size(164, 27);
+            txtNome.Size = new Size(172, 27);
             txtNome.TabIndex = 15;
             // 
             // lblCargo
@@ -121,10 +120,10 @@
             lblCargo.Dock = DockStyle.Fill;
             lblCargo.Font = new Font("Verdana", 10F, FontStyle.Bold, GraphicsUnit.Point);
             lblCargo.ForeColor = SystemColors.ControlLightLight;
-            lblCargo.Location = new Point(370, 0);
+            lblCargo.Location = new Point(386, 0);
             lblCargo.Margin = new Padding(0);
             lblCargo.Name = "lblCargo";
-            lblCargo.Size = new Size(172, 20);
+            lblCargo.Size = new Size(180, 20);
             lblCargo.TabIndex = 12;
             lblCargo.Text = "Cargo:";
             lblCargo.TextAlign = ContentAlignment.BottomLeft;
@@ -137,9 +136,9 @@
             cboCargo.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cboCargo.FormattingEnabled = true;
             cboCargo.IntegralHeight = false;
-            cboCargo.Location = new Point(373, 23);
+            cboCargo.Location = new Point(389, 23);
             cboCargo.Name = "cboCargo";
-            cboCargo.Size = new Size(166, 26);
+            cboCargo.Size = new Size(174, 26);
             cboCargo.TabIndex = 10;
             cboCargo.SelectedIndexChanged += cboCargo_SelectedIndexChanged;
             // 
@@ -148,10 +147,10 @@
             lblSetor.Dock = DockStyle.Fill;
             lblSetor.Font = new Font("Verdana", 10F, FontStyle.Bold, GraphicsUnit.Point);
             lblSetor.ForeColor = SystemColors.ControlLightLight;
-            lblSetor.Location = new Point(185, 0);
+            lblSetor.Location = new Point(193, 0);
             lblSetor.Margin = new Padding(0);
             lblSetor.Name = "lblSetor";
-            lblSetor.Size = new Size(170, 20);
+            lblSetor.Size = new Size(178, 20);
             lblSetor.TabIndex = 11;
             lblSetor.Text = "Setor:";
             lblSetor.TextAlign = ContentAlignment.BottomLeft;
@@ -164,9 +163,9 @@
             lblNomeUsuario.Location = new Point(0, 0);
             lblNomeUsuario.Margin = new Padding(0);
             lblNomeUsuario.Name = "lblNomeUsuario";
-            lblNomeUsuario.Size = new Size(170, 20);
+            lblNomeUsuario.Size = new Size(178, 20);
             lblNomeUsuario.TabIndex = 11;
-            lblNomeUsuario.Text = "Nome:";
+            lblNomeUsuario.Text = "Nome do usuário:";
             lblNomeUsuario.TextAlign = ContentAlignment.BottomLeft;
             // 
             // cboSetor
@@ -177,16 +176,16 @@
             cboSetor.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cboSetor.FormattingEnabled = true;
             cboSetor.IntegralHeight = false;
-            cboSetor.Location = new Point(188, 23);
+            cboSetor.Location = new Point(196, 23);
             cboSetor.Name = "cboSetor";
-            cboSetor.Size = new Size(164, 26);
+            cboSetor.Size = new Size(172, 26);
             cboSetor.TabIndex = 8;
             cboSetor.SelectedIndexChanged += cboSetor_SelectedIndexChanged;
             // 
             // btnPesquisar
             // 
             btnPesquisar.Image = Properties.Resources.search_1;
-            btnPesquisar.Location = new Point(535, 0);
+            btnPesquisar.Location = new Point(553, 0);
             btnPesquisar.Margin = new Padding(0);
             btnPesquisar.Name = "btnPesquisar";
             btnPesquisar.Size = new Size(35, 35);
@@ -196,7 +195,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(455, 0);
+            button1.Location = new Point(473, 0);
             button1.Margin = new Padding(0);
             button1.Name = "button1";
             button1.Size = new Size(35, 35);
@@ -205,7 +204,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(415, 0);
+            button2.Location = new Point(433, 0);
             button2.Margin = new Padding(0);
             button2.Name = "button2";
             button2.Size = new Size(35, 35);
@@ -214,7 +213,7 @@
             // 
             // btnSetorCargo
             // 
-            btnSetorCargo.Location = new Point(495, 0);
+            btnSetorCargo.Location = new Point(513, 0);
             btnSetorCargo.Margin = new Padding(0);
             btnSetorCargo.Name = "btnSetorCargo";
             btnSetorCargo.Size = new Size(35, 35);
@@ -224,7 +223,7 @@
             // 
             // btnCadastrarUsuario
             // 
-            btnCadastrarUsuario.Location = new Point(375, 0);
+            btnCadastrarUsuario.Location = new Point(393, 0);
             btnCadastrarUsuario.Margin = new Padding(0);
             btnCadastrarUsuario.Name = "btnCadastrarUsuario";
             btnCadastrarUsuario.Size = new Size(35, 35);
@@ -237,50 +236,50 @@
             dtgUsuarios.AllowUserToDeleteRows = false;
             dtgUsuarios.AllowUserToOrderColumns = true;
             dtgUsuarios.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(241, 241, 241);
-            dtgUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(235, 235, 235);
+            dtgUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dtgUsuarios.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dtgUsuarios.BackgroundColor = Color.FromArgb(80, 90, 100);
+            dtgUsuarios.BackgroundColor = Color.FromArgb(235, 235, 235);
             dtgUsuarios.BorderStyle = BorderStyle.None;
             dtgUsuarios.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
             dtgUsuarios.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = Color.FromArgb(60, 74, 84);
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(47, 59, 67);
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dtgUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(60, 74, 84);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(47, 59, 67);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dtgUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dtgUsuarios.ColumnHeadersHeight = 35;
             dtgUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dtgUsuarios.Columns.AddRange(new DataGridViewColumn[] { colPK_Usuario, colNomeCompleto, colNomeAbreviado, colEmail, colFK_Setor, colFK_Cargo });
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = Color.FromArgb(217, 217, 217);
-            dataGridViewCellStyle7.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = Color.Gray;
-            dataGridViewCellStyle7.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
-            dtgUsuarios.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(246, 246, 246);
+            dataGridViewCellStyle3.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(140, 200, 120);
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dtgUsuarios.DefaultCellStyle = dataGridViewCellStyle3;
             dtgUsuarios.EnableHeadersVisualStyles = false;
             dtgUsuarios.GridColor = Color.White;
-            dtgUsuarios.Location = new Point(25, 165);
+            dtgUsuarios.Location = new Point(15, 149);
             dtgUsuarios.Name = "dtgUsuarios";
             dtgUsuarios.ReadOnly = true;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.FromArgb(217, 217, 217);
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            dtgUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(217, 217, 217);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dtgUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dtgUsuarios.RowHeadersVisible = false;
             dtgUsuarios.RowHeadersWidth = 55;
             dtgUsuarios.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dtgUsuarios.RowTemplate.Height = 25;
             dtgUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgUsuarios.Size = new Size(570, 285);
+            dtgUsuarios.Size = new Size(592, 304);
             dtgUsuarios.TabIndex = 6;
             // 
             // colPK_Usuario
@@ -355,13 +354,13 @@
             tblBotoes.Controls.Add(btnCadastrarUsuario, 8, 0);
             tblBotoes.Controls.Add(button1, 4, 0);
             tblBotoes.Controls.Add(button2, 6, 0);
-            tblBotoes.Location = new Point(25, 118);
+            tblBotoes.Location = new Point(16, 100);
             tblBotoes.Margin = new Padding(0);
             tblBotoes.Name = "tblBotoes";
             tblBotoes.RightToLeft = RightToLeft.Yes;
             tblBotoes.RowCount = 1;
             tblBotoes.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tblBotoes.Size = new Size(570, 35);
+            tblBotoes.Size = new Size(588, 35);
             tblBotoes.TabIndex = 8;
             // 
             // tlpComponentesRow0
@@ -394,11 +393,21 @@
             lblDescricao.Text = "Descrição do Produto:";
             lblDescricao.TextAlign = ContentAlignment.BottomLeft;
             // 
+            // pnRegua
+            // 
+            pnRegua.BackColor = Color.Brown;
+            pnRegua.Location = new Point(607, 0);
+            pnRegua.Name = "pnRegua";
+            pnRegua.Size = new Size(15, 15);
+            pnRegua.TabIndex = 9;
+            pnRegua.Visible = false;
+            // 
             // UCUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(80, 90, 100);
+            Controls.Add(pnRegua);
             Controls.Add(tlpComponenteDaPesquisa);
             Controls.Add(tblBotoes);
             Controls.Add(dtgUsuarios);
@@ -442,5 +451,6 @@
         private DataGridViewTextBoxColumn colEmail;
         private DataGridViewTextBoxColumn colFK_Setor;
         private DataGridViewTextBoxColumn colFK_Cargo;
+        private Panel pnRegua;
     }
 }
