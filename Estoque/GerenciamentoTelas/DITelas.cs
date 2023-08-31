@@ -1,4 +1,5 @@
 ﻿using EP.Data.Interfaces;
+using Estoque.Componentes_Base;
 using Estoque.Interfaces;
 using Estoque.Telas_Principal;
 using EstoqueProdutos.Interfaces;
@@ -21,7 +22,7 @@ namespace EstoqueProdutos.Gerenciamento
             _container.RegisterSingleton<IUCTelaPrincipalBaixo, UCTelaPrincipalBaixo>();
             _container.RegisterSingleton<IUCTelaPrincipalCima, UCTelaPrincipalCima>();
             _container.RegisterSingleton<IUCTelaPrincipalDireita, UCTelaPrincipalDireita>();
-
+            _container.Register<IBotoes, Botoes>(Lifestyle.Transient);
             _container.Options.ResolveUnregisteredConcreteTypes = true;
             _container.Verify();
         }

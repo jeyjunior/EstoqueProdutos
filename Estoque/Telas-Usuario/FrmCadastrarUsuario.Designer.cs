@@ -374,7 +374,7 @@
             // 
             btnSalvar.Dock = DockStyle.Fill;
             btnSalvar.ForeColor = Color.FromArgb(66, 142, 79);
-            btnSalvar.Image = Properties.Resources.save_outline_4;
+            btnSalvar.Image = Properties.Resources.save_outline_1;
             btnSalvar.Location = new Point(367, 0);
             btnSalvar.Margin = new Padding(0);
             btnSalvar.Name = "btnSalvar";
@@ -389,8 +389,8 @@
             // btnLimpar
             // 
             btnLimpar.Dock = DockStyle.Fill;
-            btnLimpar.ForeColor = Color.FromArgb(142, 66, 66);
-            btnLimpar.Image = Properties.Resources.erase_outline_4;
+            btnLimpar.ForeColor = Color.FromArgb(66, 159, 159);
+            btnLimpar.Image = Properties.Resources.erase_outline_1;
             btnLimpar.Location = new Point(272, 0);
             btnLimpar.Margin = new Padding(0);
             btnLimpar.Name = "btnLimpar";

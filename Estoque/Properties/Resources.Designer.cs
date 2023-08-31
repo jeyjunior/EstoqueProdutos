@@ -73,6 +73,16 @@ namespace Estoque.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cancel_outline_1 {
+            get {
+                object obj = ResourceManager.GetObject("cancel_outline_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap circulo_verde {
             get {
                 object obj = ResourceManager.GetObject("circulo_verde", resourceCulture);
@@ -83,39 +93,29 @@ namespace Estoque.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap delete_outline_1 {
+            get {
+                object obj = ResourceManager.GetObject("delete_outline_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap edit_outline_1 {
+            get {
+                object obj = ResourceManager.GetObject("edit_outline_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap erase_outline_1 {
             get {
                 object obj = ResourceManager.GetObject("erase_outline_1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap erase_outline_2 {
-            get {
-                object obj = ResourceManager.GetObject("erase_outline_2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap erase_outline_3 {
-            get {
-                object obj = ResourceManager.GetObject("erase_outline_3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap erase_outline_4 {
-            get {
-                object obj = ResourceManager.GetObject("erase_outline_4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -136,6 +136,16 @@ namespace Estoque.Properties {
         internal static System.Drawing.Bitmap eye_2 {
             get {
                 object obj = ResourceManager.GetObject("eye_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap new_outline_1 {
+            get {
+                object obj = ResourceManager.GetObject("new_outline_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -186,36 +196,6 @@ namespace Estoque.Properties {
         internal static System.Drawing.Bitmap save_outline_1 {
             get {
                 object obj = ResourceManager.GetObject("save_outline_1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap save_outline_2 {
-            get {
-                object obj = ResourceManager.GetObject("save_outline_2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap save_outline_3 {
-            get {
-                object obj = ResourceManager.GetObject("save_outline_3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap save_outline_4 {
-            get {
-                object obj = ResourceManager.GetObject("save_outline_4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

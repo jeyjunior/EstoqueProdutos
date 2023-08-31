@@ -30,20 +30,24 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             tlpComponenteDaPesquisa = new TableLayoutPanel();
             tlpComponentesRow1 = new TableLayoutPanel();
             txtSetor = new TextBox();
             lblSetor = new Label();
             tblBotoes = new TableLayoutPanel();
             btnPesquisar = new Button();
-            btnCadastrar = new Button();
             btnExcluir = new Button();
             btnAlterar = new Button();
+            btnCadastrar = new Button();
+            btnLimpar = new Button();
+            btnCancelar = new Button();
+            btnSalvar = new Button();
             dtgSetor = new DataGridView();
-            colPK_Usuario = new DataGridViewTextBoxColumn();
-            colSetor = new DataGridViewTextBoxColumn();
+            colPK_Setor = new DataGridViewTextBoxColumn();
+            colNomeSetor = new DataGridViewTextBoxColumn();
             pnRegua = new Panel();
             pbBarraStatus = new Panel();
             lblTotalPesquisado = new Label();
@@ -120,20 +124,19 @@
             // tblBotoes
             // 
             tblBotoes.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            tblBotoes.ColumnCount = 9;
+            tblBotoes.ColumnCount = 5;
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 5F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 5F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 5F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 5F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tblBotoes.Controls.Add(btnPesquisar, 0, 0);
-            tblBotoes.Controls.Add(btnCadastrar, 6, 0);
-            tblBotoes.Controls.Add(btnExcluir, 2, 0);
-            tblBotoes.Controls.Add(btnAlterar, 4, 0);
+            tblBotoes.Controls.Add(btnExcluir, 1, 0);
+            tblBotoes.Controls.Add(btnAlterar, 2, 0);
+            tblBotoes.Controls.Add(btnCadastrar, 3, 0);
             tblBotoes.Location = new Point(15, 110);
             tblBotoes.Margin = new Padding(0);
             tblBotoes.Name = "tblBotoes";
@@ -154,32 +157,70 @@
             btnPesquisar.UseVisualStyleBackColor = true;
             btnPesquisar.Click += btnPesquisar_Click;
             // 
-            // btnCadastrar
-            // 
-            btnCadastrar.Location = new Point(309, 0);
-            btnCadastrar.Margin = new Padding(0);
-            btnCadastrar.Name = "btnCadastrar";
-            btnCadastrar.Size = new Size(35, 35);
-            btnCadastrar.TabIndex = 3;
-            btnCadastrar.UseVisualStyleBackColor = true;
-            // 
             // btnExcluir
             // 
-            btnExcluir.Location = new Point(389, 0);
+            btnExcluir.Image = Properties.Resources.delete_outline_1;
+            btnExcluir.Location = new Point(394, 0);
             btnExcluir.Margin = new Padding(0);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(35, 35);
             btnExcluir.TabIndex = 5;
             btnExcluir.UseVisualStyleBackColor = true;
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // btnAlterar
             // 
-            btnAlterar.Location = new Point(349, 0);
+            btnAlterar.Image = Properties.Resources.edit_outline_1;
+            btnAlterar.Location = new Point(359, 0);
             btnAlterar.Margin = new Padding(0);
             btnAlterar.Name = "btnAlterar";
             btnAlterar.Size = new Size(35, 35);
             btnAlterar.TabIndex = 4;
             btnAlterar.UseVisualStyleBackColor = true;
+            btnAlterar.Click += btnAlterar_Click;
+            // 
+            // btnCadastrar
+            // 
+            btnCadastrar.Image = Properties.Resources.new_outline_1;
+            btnCadastrar.Location = new Point(324, 0);
+            btnCadastrar.Margin = new Padding(0);
+            btnCadastrar.Name = "btnCadastrar";
+            btnCadastrar.Size = new Size(35, 35);
+            btnCadastrar.TabIndex = 3;
+            btnCadastrar.UseVisualStyleBackColor = true;
+            btnCadastrar.Click += btnCadastrar_Click;
+            // 
+            // btnLimpar
+            // 
+            btnLimpar.Image = Properties.Resources.erase_outline_1;
+            btnLimpar.Location = new Point(374, 209);
+            btnLimpar.Margin = new Padding(0);
+            btnLimpar.Name = "btnLimpar";
+            btnLimpar.Size = new Size(35, 35);
+            btnLimpar.TabIndex = 7;
+            btnLimpar.UseVisualStyleBackColor = true;
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.Image = Properties.Resources.cancel_outline_1;
+            btnCancelar.Location = new Point(409, 209);
+            btnCancelar.Margin = new Padding(0);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(35, 35);
+            btnCancelar.TabIndex = 6;
+            btnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
+            // 
+            // btnSalvar
+            // 
+            btnSalvar.Image = Properties.Resources.save_outline_1;
+            btnSalvar.Location = new Point(339, 209);
+            btnSalvar.Margin = new Padding(0);
+            btnSalvar.Name = "btnSalvar";
+            btnSalvar.Size = new Size(35, 35);
+            btnSalvar.TabIndex = 8;
+            btnSalvar.UseVisualStyleBackColor = true;
             // 
             // dtgSetor
             // 
@@ -203,27 +244,28 @@
             dtgSetor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dtgSetor.ColumnHeadersHeight = 35;
             dtgSetor.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dtgSetor.Columns.AddRange(new DataGridViewColumn[] { colPK_Usuario, colSetor });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(246, 246, 246);
-            dataGridViewCellStyle3.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(140, 200, 120);
-            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dtgSetor.DefaultCellStyle = dataGridViewCellStyle3;
+            dtgSetor.Columns.AddRange(new DataGridViewColumn[] { colPK_Setor, colNomeSetor });
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(246, 246, 246);
+            dataGridViewCellStyle4.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(140, 200, 120);
+            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dtgSetor.DefaultCellStyle = dataGridViewCellStyle4;
             dtgSetor.EnableHeadersVisualStyles = false;
             dtgSetor.GridColor = Color.White;
             dtgSetor.Location = new Point(15, 159);
+            dtgSetor.MultiSelect = false;
             dtgSetor.Name = "dtgSetor";
             dtgSetor.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(217, 217, 217);
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dtgSetor.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(217, 217, 217);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dtgSetor.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dtgSetor.RowHeadersVisible = false;
             dtgSetor.RowHeadersWidth = 55;
             dtgSetor.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -232,23 +274,26 @@
             dtgSetor.Size = new Size(465, 239);
             dtgSetor.TabIndex = 10;
             // 
-            // colPK_Usuario
+            // colPK_Setor
             // 
-            colPK_Usuario.DataPropertyName = "PK_Setor";
-            colPK_Usuario.HeaderText = "PK_Usuario";
-            colPK_Usuario.MinimumWidth = 100;
-            colPK_Usuario.Name = "colPK_Usuario";
-            colPK_Usuario.ReadOnly = true;
-            colPK_Usuario.Visible = false;
+            colPK_Setor.DataPropertyName = "PK_Setor";
+            colPK_Setor.HeaderText = "PK_Usuario";
+            colPK_Setor.MinimumWidth = 100;
+            colPK_Setor.Name = "colPK_Setor";
+            colPK_Setor.ReadOnly = true;
+            colPK_Setor.Visible = false;
             // 
-            // colSetor
+            // colNomeSetor
             // 
-            colSetor.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colSetor.DataPropertyName = "NomeSetor";
-            colSetor.HeaderText = "Setor";
-            colSetor.MinimumWidth = 200;
-            colSetor.Name = "colSetor";
-            colSetor.ReadOnly = true;
+            colNomeSetor.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            colNomeSetor.DataPropertyName = "NomeSetor";
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Padding = new Padding(10, 0, 0, 0);
+            colNomeSetor.DefaultCellStyle = dataGridViewCellStyle3;
+            colNomeSetor.HeaderText = "Setor";
+            colNomeSetor.MinimumWidth = 200;
+            colNomeSetor.Name = "colNomeSetor";
+            colNomeSetor.ReadOnly = true;
             // 
             // pnRegua
             // 
@@ -301,7 +346,10 @@
             BackColor = Color.FromArgb(80, 90, 100);
             Controls.Add(pnRegua);
             Controls.Add(tlpComponenteDaPesquisa);
+            Controls.Add(btnLimpar);
             Controls.Add(tblBotoes);
+            Controls.Add(btnSalvar);
+            Controls.Add(btnCancelar);
             Controls.Add(dtgSetor);
             Controls.Add(pbBarraStatus);
             Name = "UCSetor";
@@ -330,12 +378,15 @@
         private Button btnAlterar;
         private Button btnCadastrar;
         private DataGridView dtgSetor;
-        private DataGridViewTextBoxColumn colPK_Usuario;
-        private DataGridViewTextBoxColumn colSetor;
         private Button btnExcluir;
         private Panel pnRegua;
         private Panel pbBarraStatus;
         private Label lblTotalRegistrado;
         private Label lblTotalPesquisado;
+        private DataGridViewTextBoxColumn colPK_Setor;
+        private DataGridViewTextBoxColumn colNomeSetor;
+        private Button btnLimpar;
+        private Button btnSalvar;
+        private Button btnCancelar;
     }
 }
