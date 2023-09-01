@@ -15,5 +15,7 @@ namespace EP.Data.Interfaces
         IEnumerable<Setor> ObterTabela(Setor setor);
         int ObterTotalSetoresRegistrados();
         bool InserirDadosNaTabela(Setor setor);
+        bool AtualizarSetor(Setor setor);
+        bool ExcluirSetor(Setor setor);
     }
 }

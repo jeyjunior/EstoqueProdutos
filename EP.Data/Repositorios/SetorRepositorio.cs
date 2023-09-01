@@ -76,6 +76,39 @@ namespace EstoqueProdutos.Repositorios
                 var resultado = connection.Execute(sql, setor);
                 return Convert.ToBoolean(resultado);
             }
-        } 
+        }
+
+        public bool AtualizarSetor(Setor setor)
+        {
+            using (SqlConnection connection = new SqlConnection(Conexao.ConexaoBase))
+            {
+                connection.Open();
+
+                string sql = "" +
+                    "UPDATE Setor\n" +
+                    "SET NomeSetor = @NomeSetor\n" +
+                    "WHERE PK_Setor = @PK_Setor\n";
+
+                var resultado = connection.Execute(sql, setor);
+                return Convert.ToBoolean(resultado);
+            }
+        }
+
+        public bool ExcluirSetor(Setor setor)
+        {
+            using (SqlConnection connection = new SqlConnection(Conexao.ConexaoBase))
+            {
+                connection.Open();
+
+                string sql = "" +
+                    "DELETE FROM Cargo\n" +
+                    "WHERE FK_Setor = @PK_Setor \n" +
+                    "DELETE FROM Setor\n" +
+                    "WHERE PK_Setor = @PK_Setor\n";
+
+                var resultado = connection.Execute(sql, setor);
+                return Convert.ToBoolean(resultado);
+            }
+        }
     }
 }

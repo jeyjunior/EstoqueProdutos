@@ -17,4 +17,12 @@ namespace Estoque.Enums
         Edicao,
         Exclusao,
     }
+
+    public enum ModoCRUD
+    {
+        select,
+        insert,
+        update,
+        delete
+    }
 }

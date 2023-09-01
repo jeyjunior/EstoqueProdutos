@@ -10,6 +10,7 @@ using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Text;
@@ -22,10 +23,19 @@ namespace Estoque.Telas_Usuario
 {
     public partial class UCSetor : Telas_Base.UCBase
     {
+        #region Interfaces 
         private readonly ISetorRepositorio setorRepositorio;
         private readonly IBotoes botoes;
+        #endregion Interfaces
 
+        #region Objetos
         private Setor setorSelecionado;
+        #endregion Objetos
+
+        #region Propriedades
+        private ModoCRUD modoCRUD = ModoCRUD.select;
+        #endregion Propriedades
+
         public UCSetor()
         {
             InitializeComponent();
@@ -50,7 +60,6 @@ namespace Estoque.Telas_Usuario
                 MessageBox.Show("Falha ao executar essa operação\n\n" + ex.Message);
             }
         }
-
         private void InicializarBotoes()
         {
             botoes.Mapear(new Botoes()
@@ -65,70 +74,46 @@ namespace Estoque.Telas_Usuario
             },
             tblBotoes);
         }
-
-        private void Limpar()
+        private void SelecionarSetor()
         {
-            txtSetor.Text = "";
-            btnPesquisar.PerformClick();
+            if (dtgSetor.Rows.Count <= 0)
+            {
+                MessageBox.Show("Para realizar essa operação, é necessário selecionar um setor");
+                return;
+            }
+
+            setorSelecionado = new Setor()
+            {
+                PK_Setor = Convert.ToInt32(dtgSetor.SelectedRows[0].Cells["colPK_Setor"].Value),
+                NomeSetor = dtgSetor.SelectedRows[0].Cells["colNomeSetor"].Value.ToString()
+            };
+
+            if (setorSelecionado != null)
+            {
+                txtSetor.Text = setorSelecionado.NomeSetor;
+            }
         }
 
+        private void Reiniciar()
+        {
+            txtSetor.Text = "";
+            txtSetor.Enabled = true;
+
+            modoCRUD = ModoCRUD.select;
+            botoes.Layout(ModoBotoes.Inicial);
+            btnPesquisar.PerformClick();
+        }
         private void AtualizarTotalRegistrado()
         {
             int total = setorRepositorio.ObterTotalSetoresRegistrados();
             lblTotalRegistrado.Text = "Registrados: " + total;
         }
-
         private void AtualizarTotalPesquisado()
         {
             lblTotalPesquisado.Text = "Pesquisado: " + dtgSetor.Rows.Count;
         }
-
-        #endregion Metodos
-
-        #region Eventos
-
-        private void UCSetor_Load(object sender, EventArgs e)
+        private void CadastrarNovoSetor()
         {
-            InicializarGrid();
-            AtualizarTotalRegistrado();
-            AtualizarTotalPesquisado();
-            InicializarBotoes();
-            botoes.Layout(ModoBotoes.Inicial);
-        }
-
-        private void UCSetor_VisibleChanged(object sender, EventArgs e)
-        {
-            if (this.Visible)
-            {
-                Limpar();
-            }
-        }
-
-        private void btnPesquisar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string setor = txtSetor.TextoFormatoLikeSQL();
-                var tabela = setorRepositorio.ObterTabela(new Setor() { NomeSetor = setor });
-
-                if (tabela != null)
-                {
-                    dtgSetor.DataSource = tabela.ToList();
-                }
-
-                AtualizarTotalPesquisado();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocorreu um erro na pesquisa.\nErro:" + ex.Message);
-            }
-        }
-
-        private void btnCadastrar_Click(object sender, EventArgs e)
-        {
-            botoes.Layout(ModoBotoes.Edicao);
-            return;
-
             if (txtSetor.Text == "")
             {
                 txtSetor.Focus();
@@ -152,7 +137,7 @@ namespace Estoque.Telas_Usuario
                     if (resultadoInsert)
                     {
                         MessageBox.Show("Setor registrado com sucesso!");
-                        Limpar();
+                        Reiniciar();
                         AtualizarTotalRegistrado();
                     }
                 }
@@ -166,40 +151,169 @@ namespace Estoque.Telas_Usuario
                 MessageBox.Show("Falha ao executar essa operação\n.Erro: " + ex.Message);
             }
         }
+        private void AlterarSetorSelecionado()
+        {
+            try
+            {
+                string mensagem = "Tem certeza que deseja alterar esse setor?\n";
+                string antigoSetor = "\nAntigo: " + setorSelecionado.NomeSetor;
+                string novoSetor = "\nNovo: " + txtSetor.Text.Trim();
 
+                var resultado = MessageBox.Show(mensagem + antigoSetor + novoSetor,
+                                            "Alterar",
+                                            MessageBoxButtons.YesNo,
+                                            MessageBoxIcon.Question);
+
+                if (resultado == DialogResult.Yes)
+                {
+                    var resultadoInsert = setorRepositorio.AtualizarSetor(new Setor() { PK_Setor = setorSelecionado.PK_Setor, NomeSetor = txtSetor.TextoFormatoLikeSQL().Replace("%", "").Trim() });
+
+                    if (resultadoInsert)
+                    {
+                        MessageBox.Show("Setor atualizado com sucesso!");
+                        Reiniciar();
+                        AtualizarTotalRegistrado();
+                    }
+                }
+                else
+                {
+                    txtSetor.Focus();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Falha ao executar essa operação\n.Erro: " + ex.Message);
+            }
+        }
+        private void ExcluirSetorSelecionado()
+        {
+            try
+            {
+                string mensagem = "Tem certeza que excluir esse setor e os cargos relacionados?\n";
+                string excluirSetor = "\nDeletar: " + txtSetor.Text.Trim();
+
+                var resultado = MessageBox.Show(mensagem + excluirSetor,
+                                            "Deletar",
+                                            MessageBoxButtons.YesNo,
+                                            MessageBoxIcon.Question);
+
+                if (resultado == DialogResult.Yes)
+                {
+                    var resultadoInsert = setorRepositorio.ExcluirSetor(new Setor() { PK_Setor = setorSelecionado.PK_Setor });
+
+                    if (resultadoInsert)
+                    {
+                        MessageBox.Show("Setor excluído com sucesso!");
+                        Reiniciar();
+                        AtualizarTotalRegistrado();
+                    }
+                }
+                else
+                {
+                    txtSetor.Focus();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Falha ao executar essa operação\n.Erro: " + ex.Message);
+            }
+        }
+        private void PesquisarSetores()
+        {
+            try
+            {
+                string setor = txtSetor.TextoFormatoLikeSQL();
+                var tabela = setorRepositorio.ObterTabela(new Setor() { NomeSetor = setor });
+
+                if (tabela != null)
+                {
+                    dtgSetor.DataSource = tabela.ToList();
+                }
+
+                AtualizarTotalPesquisado();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro na pesquisa.\nErro:" + ex.Message);
+            }
+        }
+        #endregion Metodos
+
+        #region Eventos
+        private void UCSetor_Load(object sender, EventArgs e)
+        {
+            InicializarGrid();
+            AtualizarTotalRegistrado();
+            AtualizarTotalPesquisado();
+            InicializarBotoes();
+            botoes.Layout(ModoBotoes.Inicial);
+        }
+        private void UCSetor_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible)
+            {
+                Reiniciar();
+            }
+        }
+
+        /* Botoes */
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            if (modoCRUD == ModoCRUD.select)
+            {
+                PesquisarSetores();
+            }
+        }
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            botoes.Layout(ModoBotoes.Edicao);
+            modoCRUD = ModoCRUD.insert;
+        }
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             botoes.Layout(ModoBotoes.Edicao);
-            return;
+            modoCRUD = ModoCRUD.update;
 
-            if (dtgSetor.Rows.Count <= 0)
+            SelecionarSetor();
+        }
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            //botoes.Layout(ModoBotoes.Exclusao);
+            //modoCRUD = ModoCRUD.delete;
+
+            SelecionarSetor();
+            ExcluirSetorSelecionado();
+        }
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Reiniciar();
+        }
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            if (txtSetor.Text == "")
             {
-                MessageBox.Show("Para realizar essa operação, é necessário selecionar um setor");
+                MessageBox.Show("Digite um valor válido!");
                 return;
             }
 
-            setorSelecionado = new Setor()
+            switch (modoCRUD)
             {
-                PK_Setor = Convert.ToInt32(dtgSetor.SelectedRows[0].Cells["colPK_Setor"].Value),
-                NomeSetor = dtgSetor.SelectedRows[0].Cells["colNomeSetor"].Value.ToString()
-            };
-
-            if (setorSelecionado != null)
-            {
-                txtSetor.Text = setorSelecionado.NomeSetor;
+                case ModoCRUD.insert:
+                    CadastrarNovoSetor();
+                    break;
+                case ModoCRUD.update:
+                    AlterarSetorSelecionado();
+                    break;
+                case ModoCRUD.delete:
+                    ExcluirSetorSelecionado();
+                    break;
             }
         }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void btnLimpar_Click(object sender, EventArgs e)
         {
-            botoes.Layout(ModoBotoes.Inicial);
-        }
-
-        private void btnExcluir_Click(object sender, EventArgs e)
-        {
-            botoes.Layout(ModoBotoes.Exclusao);
+            txtSetor.Text = "";
+            txtSetor.Focus();
         }
         #endregion Eventos
-
     }
 }

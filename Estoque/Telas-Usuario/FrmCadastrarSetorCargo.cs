@@ -39,7 +39,7 @@ namespace Estoque.Telas_Usuario
 
         private void FrmCadastrarUsuario_Load(object sender, EventArgs e)
         {
-
+            btnSetor.PerformClick();
         }
 
         #endregion Eventos

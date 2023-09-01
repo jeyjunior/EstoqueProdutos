@@ -199,6 +199,7 @@
             btnLimpar.Size = new Size(35, 35);
             btnLimpar.TabIndex = 7;
             btnLimpar.UseVisualStyleBackColor = true;
+            btnLimpar.Click += btnLimpar_Click;
             // 
             // btnCancelar
             // 
@@ -221,6 +222,7 @@
             btnSalvar.Size = new Size(35, 35);
             btnSalvar.TabIndex = 8;
             btnSalvar.UseVisualStyleBackColor = true;
+            btnSalvar.Click += btnSalvar_Click;
             // 
             // dtgSetor
             // 
