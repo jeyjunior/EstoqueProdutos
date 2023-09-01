@@ -12,6 +12,10 @@ namespace EP.Data.Interfaces
     public interface ICargoRepositorio
     {
         IEnumerable<Cargo> ObterTabela();
+        IEnumerable<Cargo> ObterTabela(Cargo setor);
         bool InserirDadosNaTabela(Cargo cargo);
+        int ObterTotalCargosRegistrados();
+        bool AtualizarCargo(Cargo cargo);
+        bool ExcluirCargo(Cargo cargo);
     }
 }
