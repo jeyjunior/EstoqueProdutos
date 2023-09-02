@@ -37,14 +37,6 @@
             tlpComponentesRow1 = new TableLayoutPanel();
             txtSetor = new TextBox();
             lblSetor = new Label();
-            tblBotoes = new TableLayoutPanel();
-            btnPesquisar = new Button();
-            btnExcluir = new Button();
-            btnAlterar = new Button();
-            btnCadastrar = new Button();
-            btnLimpar = new Button();
-            btnCancelar = new Button();
-            btnSalvar = new Button();
             dtgSetor = new DataGridView();
             colPK_Setor = new DataGridViewTextBoxColumn();
             colNomeSetor = new DataGridViewTextBoxColumn();
@@ -52,9 +44,9 @@
             pbBarraStatus = new Panel();
             lblTotalPesquisado = new Label();
             lblTotalRegistrado = new Label();
+            pBotoes = new Panel();
             tlpComponenteDaPesquisa.SuspendLayout();
             tlpComponentesRow1.SuspendLayout();
-            tblBotoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgSetor).BeginInit();
             pbBarraStatus.SuspendLayout();
             SuspendLayout();
@@ -65,16 +57,15 @@
             tlpComponenteDaPesquisa.BackColor = Color.FromArgb(60, 75, 85);
             tlpComponenteDaPesquisa.ColumnCount = 1;
             tlpComponenteDaPesquisa.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tlpComponenteDaPesquisa.Controls.Add(tlpComponentesRow1, 0, 1);
+            tlpComponenteDaPesquisa.Controls.Add(tlpComponentesRow1, 0, 0);
             tlpComponenteDaPesquisa.Location = new Point(15, 15);
             tlpComponenteDaPesquisa.Margin = new Padding(5);
             tlpComponenteDaPesquisa.Name = "tlpComponenteDaPesquisa";
             tlpComponenteDaPesquisa.Padding = new Padding(5);
-            tlpComponenteDaPesquisa.RowCount = 3;
-            tlpComponenteDaPesquisa.RowStyles.Add(new RowStyle(SizeType.Absolute, 5F));
+            tlpComponenteDaPesquisa.RowCount = 1;
             tlpComponenteDaPesquisa.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tlpComponenteDaPesquisa.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
-            tlpComponenteDaPesquisa.Size = new Size(465, 82);
+            tlpComponenteDaPesquisa.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tlpComponenteDaPesquisa.Size = new Size(465, 71);
             tlpComponenteDaPesquisa.TabIndex = 9;
             // 
             // tlpComponentesRow1
@@ -88,13 +79,13 @@
             tlpComponentesRow1.Controls.Add(txtSetor, 0, 1);
             tlpComponentesRow1.Controls.Add(lblSetor, 0, 0);
             tlpComponentesRow1.Dock = DockStyle.Fill;
-            tlpComponentesRow1.Location = new Point(14, 10);
+            tlpComponentesRow1.Location = new Point(14, 5);
             tlpComponentesRow1.Margin = new Padding(9, 0, 9, 9);
             tlpComponentesRow1.Name = "tlpComponentesRow1";
             tlpComponentesRow1.RowCount = 2;
             tlpComponentesRow1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tlpComponentesRow1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tlpComponentesRow1.Size = new Size(437, 48);
+            tlpComponentesRow1.Size = new Size(437, 52);
             tlpComponentesRow1.TabIndex = 10;
             // 
             // txtSetor
@@ -120,109 +111,6 @@
             lblSetor.TabIndex = 11;
             lblSetor.Text = "Setor:";
             lblSetor.TextAlign = ContentAlignment.BottomLeft;
-            // 
-            // tblBotoes
-            // 
-            tblBotoes.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            tblBotoes.ColumnCount = 5;
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 5F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tblBotoes.Controls.Add(btnPesquisar, 0, 0);
-            tblBotoes.Controls.Add(btnExcluir, 1, 0);
-            tblBotoes.Controls.Add(btnAlterar, 2, 0);
-            tblBotoes.Controls.Add(btnCadastrar, 3, 0);
-            tblBotoes.Location = new Point(15, 110);
-            tblBotoes.Margin = new Padding(0);
-            tblBotoes.Name = "tblBotoes";
-            tblBotoes.RightToLeft = RightToLeft.Yes;
-            tblBotoes.RowCount = 1;
-            tblBotoes.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tblBotoes.Size = new Size(464, 35);
-            tblBotoes.TabIndex = 11;
-            // 
-            // btnPesquisar
-            // 
-            btnPesquisar.Image = Properties.Resources.search_1;
-            btnPesquisar.Location = new Point(429, 0);
-            btnPesquisar.Margin = new Padding(0);
-            btnPesquisar.Name = "btnPesquisar";
-            btnPesquisar.Size = new Size(35, 35);
-            btnPesquisar.TabIndex = 1;
-            btnPesquisar.UseVisualStyleBackColor = true;
-            btnPesquisar.Click += btnPesquisar_Click;
-            // 
-            // btnExcluir
-            // 
-            btnExcluir.Image = Properties.Resources.delete_outline_1;
-            btnExcluir.Location = new Point(394, 0);
-            btnExcluir.Margin = new Padding(0);
-            btnExcluir.Name = "btnExcluir";
-            btnExcluir.Size = new Size(35, 35);
-            btnExcluir.TabIndex = 5;
-            btnExcluir.UseVisualStyleBackColor = true;
-            btnExcluir.Click += btnExcluir_Click;
-            // 
-            // btnAlterar
-            // 
-            btnAlterar.Image = Properties.Resources.edit_outline_1;
-            btnAlterar.Location = new Point(359, 0);
-            btnAlterar.Margin = new Padding(0);
-            btnAlterar.Name = "btnAlterar";
-            btnAlterar.Size = new Size(35, 35);
-            btnAlterar.TabIndex = 4;
-            btnAlterar.UseVisualStyleBackColor = true;
-            btnAlterar.Click += btnAlterar_Click;
-            // 
-            // btnCadastrar
-            // 
-            btnCadastrar.Image = Properties.Resources.new_outline_1;
-            btnCadastrar.Location = new Point(324, 0);
-            btnCadastrar.Margin = new Padding(0);
-            btnCadastrar.Name = "btnCadastrar";
-            btnCadastrar.Size = new Size(35, 35);
-            btnCadastrar.TabIndex = 3;
-            btnCadastrar.UseVisualStyleBackColor = true;
-            btnCadastrar.Click += btnCadastrar_Click;
-            // 
-            // btnLimpar
-            // 
-            btnLimpar.Image = Properties.Resources.erase_outline_1;
-            btnLimpar.Location = new Point(374, 209);
-            btnLimpar.Margin = new Padding(0);
-            btnLimpar.Name = "btnLimpar";
-            btnLimpar.Size = new Size(35, 35);
-            btnLimpar.TabIndex = 7;
-            btnLimpar.UseVisualStyleBackColor = true;
-            btnLimpar.Click += btnLimpar_Click;
-            // 
-            // btnCancelar
-            // 
-            btnCancelar.Image = Properties.Resources.cancel_outline_1;
-            btnCancelar.Location = new Point(409, 209);
-            btnCancelar.Margin = new Padding(0);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(35, 35);
-            btnCancelar.TabIndex = 6;
-            btnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnCancelar.UseVisualStyleBackColor = true;
-            btnCancelar.Click += btnCancelar_Click;
-            // 
-            // btnSalvar
-            // 
-            btnSalvar.Image = Properties.Resources.save_outline_1;
-            btnSalvar.Location = new Point(339, 209);
-            btnSalvar.Margin = new Padding(0);
-            btnSalvar.Name = "btnSalvar";
-            btnSalvar.Size = new Size(35, 35);
-            btnSalvar.TabIndex = 8;
-            btnSalvar.UseVisualStyleBackColor = true;
-            btnSalvar.Click += btnSalvar_Click;
             // 
             // dtgSetor
             // 
@@ -257,7 +145,7 @@
             dtgSetor.DefaultCellStyle = dataGridViewCellStyle4;
             dtgSetor.EnableHeadersVisualStyles = false;
             dtgSetor.GridColor = Color.White;
-            dtgSetor.Location = new Point(15, 159);
+            dtgSetor.Location = new Point(15, 154);
             dtgSetor.MultiSelect = false;
             dtgSetor.Name = "dtgSetor";
             dtgSetor.ReadOnly = true;
@@ -273,7 +161,7 @@
             dtgSetor.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dtgSetor.RowTemplate.Height = 25;
             dtgSetor.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgSetor.Size = new Size(465, 239);
+            dtgSetor.Size = new Size(465, 243);
             dtgSetor.TabIndex = 10;
             // 
             // colPK_Setor
@@ -300,7 +188,7 @@
             // pnRegua
             // 
             pnRegua.BackColor = Color.Brown;
-            pnRegua.Location = new Point(481, -1);
+            pnRegua.Location = new Point(481, 0);
             pnRegua.Name = "pnRegua";
             pnRegua.Size = new Size(15, 15);
             pnRegua.TabIndex = 12;
@@ -341,17 +229,23 @@
             lblTotalRegistrado.Text = "Registrado: 100000";
             lblTotalRegistrado.TextAlign = ContentAlignment.TopRight;
             // 
+            // pBotoes
+            // 
+            pBotoes.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            pBotoes.Location = new Point(16, 100);
+            pBotoes.Margin = new Padding(0);
+            pBotoes.Name = "pBotoes";
+            pBotoes.Size = new Size(465, 37);
+            pBotoes.TabIndex = 15;
+            // 
             // UCSetor
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(80, 90, 100);
+            Controls.Add(pBotoes);
             Controls.Add(pnRegua);
             Controls.Add(tlpComponenteDaPesquisa);
-            Controls.Add(btnLimpar);
-            Controls.Add(tblBotoes);
-            Controls.Add(btnSalvar);
-            Controls.Add(btnCancelar);
             Controls.Add(dtgSetor);
             Controls.Add(pbBarraStatus);
             Name = "UCSetor";
@@ -361,7 +255,6 @@
             tlpComponenteDaPesquisa.ResumeLayout(false);
             tlpComponentesRow1.ResumeLayout(false);
             tlpComponentesRow1.PerformLayout();
-            tblBotoes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dtgSetor).EndInit();
             pbBarraStatus.ResumeLayout(false);
             ResumeLayout(false);
@@ -373,22 +266,15 @@
         private TableLayoutPanel tlpComponentesRow1;
         private TextBox txtSetor;
         private Label lblSetor;
-        private TableLayoutPanel tblBotoes;
-        private Button btnPesquisar;
         private Button btnSetorCargo;
         private Button btnCadastrarUsuario;
-        private Button btnAlterar;
-        private Button btnCadastrar;
         private DataGridView dtgSetor;
-        private Button btnExcluir;
         private Panel pnRegua;
         private Panel pbBarraStatus;
         private Label lblTotalRegistrado;
         private Label lblTotalPesquisado;
         private DataGridViewTextBoxColumn colPK_Setor;
         private DataGridViewTextBoxColumn colNomeSetor;
-        private Button btnLimpar;
-        private Button btnSalvar;
-        private Button btnCancelar;
+        private Panel pBotoes;
     }
 }

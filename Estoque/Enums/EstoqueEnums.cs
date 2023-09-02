@@ -18,6 +18,17 @@ namespace Estoque.Enums
         Exclusao,
     }
 
+    public enum NomeBotoes
+    {
+        Alterar,
+        Excluir,
+        Cadastrar,
+        Pesquisar,
+        Cancelar,
+        Limpar,
+        Salvar
+    }
+
     public enum ModoCRUD
     {
         select,

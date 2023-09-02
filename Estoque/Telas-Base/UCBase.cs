@@ -14,7 +14,6 @@ namespace Estoque.Telas_Base
     {
         public UCBase()
         {
-            InitializeComponent();
         }
 
         protected virtual void AtualizarPropriedades() 

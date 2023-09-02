@@ -1,6 +1,5 @@
 ﻿using EP.Data.Entidades;
 using EP.Data.Interfaces;
-using Estoque.Componentes_Base;
 using Estoque.Enums;
 using Estoque.Interfaces;
 using EstoqueProdutos.Formatacao;
@@ -26,7 +25,7 @@ namespace Estoque.Telas_Usuario
         #region Interfaces 
         private readonly ICargoRepositorio cargoRepositorio;
         private readonly ISetorRepositorio setorRepositorio;
-        private readonly IBotoes botoes;
+        private readonly IBotoesEdicaoSimples botoesEdicaoSimples;
         #endregion Interfaces
 
         #region Objetos
@@ -43,7 +42,7 @@ namespace Estoque.Telas_Usuario
             AtualizarPropriedades();
             cargoRepositorio = DIRepositorios.Container.GetInstance<ICargoRepositorio>();
             setorRepositorio = DIRepositorios.Container.GetInstance<ISetorRepositorio>();
-            botoes = DITelas.Container.GetInstance<IBotoes>();
+            botoesEdicaoSimples = new Telas_Base.UC_Componentes.BotoesEdicaoSimples();
         }
 
         #region Metodos
@@ -52,7 +51,9 @@ namespace Estoque.Telas_Usuario
             try
             {
                 BindComboBoxSetor();
-                dtgCargo.DataSource = cargoRepositorio.ObterTabela().ToList();
+                BindDataGridView(null);
+                InicializarEventoDoSBotoes();
+                pBotoes.Controls.Add((Control)botoesEdicaoSimples);
             }
             catch (SqlException ex)
             {
@@ -62,6 +63,29 @@ namespace Estoque.Telas_Usuario
             {
                 MessageBox.Show("Falha ao executar essa operação\n\n" + ex.Message);
             }
+        }
+        private void InicializarEventoDoSBotoes()
+        {
+            botoesEdicaoSimples.AtribuirEventoClick(btnAlterar_Click, NomeBotoes.Alterar);
+            botoesEdicaoSimples.AtribuirEventoClick(btnCadastrar_Click, NomeBotoes.Cadastrar);
+            botoesEdicaoSimples.AtribuirEventoClick(btnCancelar_Click, NomeBotoes.Cancelar);
+            botoesEdicaoSimples.AtribuirEventoClick(btnExcluir_Click, NomeBotoes.Excluir);
+            botoesEdicaoSimples.AtribuirEventoClick(btnLimpar_Click, NomeBotoes.Limpar);
+            botoesEdicaoSimples.AtribuirEventoClick(btnPesquisar_Click, NomeBotoes.Pesquisar);
+            botoesEdicaoSimples.AtribuirEventoClick(btnSalvar_Click, NomeBotoes.Salvar);
+        }
+        private void BindDataGridView(Cargo cargo)
+        {
+            var resultado = cargoRepositorio.ObterTabela(cargo).Select(s => new
+            {
+                PK_Cargo = s.PK_Cargo,
+                NomeCargo = s.NomeCargo,
+                FK_Setor = s.Setor.PK_Setor,
+                NomeSetor = s.Setor.NomeSetor
+            })
+            .ToList();
+
+            dtgCargo.DataSource = resultado;
         }
         private void BindComboBoxSetor()
         {
@@ -81,20 +105,6 @@ namespace Estoque.Telas_Usuario
                 cboSetor.SelectedIndex = 0;
             }
         }
-        private void InicializarBotoes()
-        {
-            botoes.Mapear(new Botoes()
-            {
-                BtnCadastrar = btnCadastrar,
-                BtnAlterar = btnAlterar,
-                BtnExcluir = btnExcluir,
-                BtnCancelar = btnCancelar,
-                BtnLimpar = btnLimpar,
-                BtnPesquisar = btnPesquisar,
-                BtnSalvar = btnSalvar
-            },
-            tblBotoes);
-        }
         private void SelecionarCargo()
         {
             if (dtgCargo.Rows.Count <= 0)
@@ -103,27 +113,30 @@ namespace Estoque.Telas_Usuario
                 return;
             }
 
+            DataGridViewRow linha = dtgCargo.SelectedRows[0];
+
             cargoSelecionado = new Cargo()
             {
-                PK_Cargo = Convert.ToInt32(dtgCargo.SelectedRows[0].Cells["colPK_Cargo"].Value),
-                NomeCargo = dtgCargo.SelectedRows[0].Cells["colNomeCargo"].Value.ToString(),
-                FK_Setor = Convert.ToInt32(dtgCargo.SelectedRows[0].Cells["colFK_Setor"].Value)
+                PK_Cargo = Convert.ToInt32(linha.Cells["colPK_Cargo"].Value),
+                NomeCargo = linha.Cells["colNomeCargo"].Value.ToString(),
+                FK_Setor = Convert.ToInt32(linha.Cells["colFK_Setor"].Value)
             };
 
             if (cargoSelecionado != null)
             {
                 txtCargo.Text = cargoSelecionado.NomeCargo;
+                cboSetor.SelectedValue = cargoSelecionado.FK_Setor;
             }
         }
-
         private void Reiniciar()
         {
             txtCargo.Text = "";
             txtCargo.Enabled = true;
+            cboSetor.SelectedValue = 0;
 
             modoCRUD = ModoCRUD.select;
-            botoes.Layout(ModoBotoes.Inicial);
-            btnPesquisar.PerformClick();
+            botoesEdicaoSimples.Layout(ModoBotoes.Inicial);
+            PesquisarCargos();
         }
         private void AtualizarTotalRegistrado()
         {
@@ -139,6 +152,14 @@ namespace Estoque.Telas_Usuario
             if (txtCargo.Text == "")
             {
                 txtCargo.Focus();
+                MessageBox.Show("Preencha o campo cargo corretamente.");
+                return;
+            }
+
+            if ((int)cboSetor.SelectedValue == 0)
+            {
+                cboSetor.Focus();
+                MessageBox.Show("Selecione um setor.");
                 return;
             }
 
@@ -193,7 +214,7 @@ namespace Estoque.Telas_Usuario
                         {
                             PK_Cargo = cargoSelecionado.PK_Cargo,
                             NomeCargo = txtCargo.TextoFormatoLikeSQL().Replace("%", "").Trim(),
-                            FK_Setor = ((Setor)cboSetor.SelectedItem).PK_Setor
+                            FK_Setor = (int)cboSetor.SelectedValue
                         });
 
                     if (resultadoInsert)
@@ -242,9 +263,13 @@ namespace Estoque.Telas_Usuario
                     txtCargo.Focus();
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("Falha ao executar essa operação\n.Erro: " + ex.Message);
+                string mensagem = "Falha ao executar essa operação\n" +
+                    "Se existir Usuários cadastrado no cargo\n" +
+                    "o mesmo não poderá ser excluído.";
+
+                MessageBox.Show(mensagem);
             }
         }
         private void PesquisarCargos()
@@ -252,14 +277,12 @@ namespace Estoque.Telas_Usuario
             try
             {
                 string cargo = txtCargo.TextoFormatoLikeSQL();
-                int fK_Setor = ((Setor)cboSetor.SelectedItem).PK_Setor;
-
-                var tabela = cargoRepositorio.ObterTabela(new Cargo() { NomeCargo = cargo, FK_Setor = fK_Setor });
-
-                if (tabela != null)
+                int setor = (int)cboSetor.SelectedIndex;
+                BindDataGridView(new Cargo
                 {
-                    dtgCargo.DataSource = tabela.ToList();
-                }
+                    NomeCargo = cargo,
+                    FK_Setor = setor
+                });
 
                 AtualizarTotalPesquisado();
             }
@@ -276,8 +299,7 @@ namespace Estoque.Telas_Usuario
             InicializarComponentes();
             AtualizarTotalRegistrado();
             AtualizarTotalPesquisado();
-            InicializarBotoes();
-            botoes.Layout(ModoBotoes.Inicial);
+            botoesEdicaoSimples.Layout(ModoBotoes.Inicial);
         }
         private void UCCargo_VisibleChanged(object sender, EventArgs e)
         {
@@ -288,24 +310,21 @@ namespace Estoque.Telas_Usuario
         }
 
         /* Botoes */
-        private void btnPesquisar_Click(object sender, EventArgs e)
-        {
-            if (modoCRUD == ModoCRUD.select)
-            {
-                PesquisarCargos();
-            }
-        }
-        private void btnCadastrar_Click(object sender, EventArgs e)
-        {
-            botoes.Layout(ModoBotoes.Edicao);
-            modoCRUD = ModoCRUD.insert;
-        }
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            botoes.Layout(ModoBotoes.Edicao);
+            botoesEdicaoSimples.Layout(ModoBotoes.Edicao);
             modoCRUD = ModoCRUD.update;
 
             SelecionarCargo();
+        }
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            botoesEdicaoSimples.Layout(ModoBotoes.Edicao);
+            modoCRUD = ModoCRUD.insert;
+        }
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Reiniciar();
         }
         private void btnExcluir_Click(object sender, EventArgs e)
         {
@@ -315,9 +334,18 @@ namespace Estoque.Telas_Usuario
             SelecionarCargo();
             ExcluirCargoSelecionado();
         }
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void btnLimpar_Click(object sender, EventArgs e)
         {
-            Reiniciar();
+            txtCargo.Text = "";
+            txtCargo.Focus();
+            cboSetor.SelectedValue = 0;
+        }
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            if (modoCRUD == ModoCRUD.select)
+            {
+                PesquisarCargos();
+            }
         }
         private void btnSalvar_Click(object sender, EventArgs e)
         {
@@ -340,13 +368,6 @@ namespace Estoque.Telas_Usuario
                     break;
             }
         }
-        private void btnLimpar_Click(object sender, EventArgs e)
-        {
-            txtCargo.Text = "";
-            txtCargo.Focus();
-        }
         #endregion Eventos
-
-
     }
 }

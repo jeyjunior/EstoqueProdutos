@@ -1,6 +1,5 @@
 ﻿using EP.Data.Entidades;
 using EP.Data.Interfaces;
-using Estoque.Componentes_Base;
 using Estoque.Enums;
 using Estoque.Interfaces;
 using EstoqueProdutos.Formatacao;
@@ -25,7 +24,7 @@ namespace Estoque.Telas_Usuario
     {
         #region Interfaces 
         private readonly ISetorRepositorio setorRepositorio;
-        private readonly IBotoes botoes;
+        private readonly IBotoesEdicaoSimples botoesEdicaoSimples;
         #endregion Interfaces
 
         #region Objetos
@@ -41,10 +40,20 @@ namespace Estoque.Telas_Usuario
             InitializeComponent();
             AtualizarPropriedades();
             setorRepositorio = DIRepositorios.Container.GetInstance<ISetorRepositorio>();
-            botoes = DITelas.Container.GetInstance<IBotoes>();
+            botoesEdicaoSimples = new Telas_Base.UC_Componentes.BotoesEdicaoSimples();
         }
 
         #region Metodos
+        private void InicializarEventoDoSBotoes()
+        {
+            botoesEdicaoSimples.AtribuirEventoClick(btnAlterar_Click, NomeBotoes.Alterar);
+            botoesEdicaoSimples.AtribuirEventoClick(btnCadastrar_Click, NomeBotoes.Cadastrar);
+            botoesEdicaoSimples.AtribuirEventoClick(btnCancelar_Click, NomeBotoes.Cancelar);
+            botoesEdicaoSimples.AtribuirEventoClick(btnExcluir_Click, NomeBotoes.Excluir);
+            botoesEdicaoSimples.AtribuirEventoClick(btnLimpar_Click, NomeBotoes.Limpar);
+            botoesEdicaoSimples.AtribuirEventoClick(btnPesquisar_Click, NomeBotoes.Pesquisar);
+            botoesEdicaoSimples.AtribuirEventoClick(btnSalvar_Click, NomeBotoes.Salvar);
+        }
         private void InicializarGrid()
         {
             try
@@ -59,20 +68,6 @@ namespace Estoque.Telas_Usuario
             {
                 MessageBox.Show("Falha ao executar essa operação\n\n" + ex.Message);
             }
-        }
-        private void InicializarBotoes()
-        {
-            botoes.Mapear(new Botoes()
-            {
-                BtnCadastrar = btnCadastrar,
-                BtnAlterar = btnAlterar,
-                BtnExcluir = btnExcluir,
-                BtnCancelar = btnCancelar,
-                BtnLimpar = btnLimpar,
-                BtnPesquisar = btnPesquisar,
-                BtnSalvar = btnSalvar
-            },
-            tblBotoes);
         }
         private void SelecionarSetor()
         {
@@ -93,15 +88,15 @@ namespace Estoque.Telas_Usuario
                 txtSetor.Text = setorSelecionado.NomeSetor;
             }
         }
-
         private void Reiniciar()
         {
             txtSetor.Text = "";
             txtSetor.Enabled = true;
 
             modoCRUD = ModoCRUD.select;
-            botoes.Layout(ModoBotoes.Inicial);
-            btnPesquisar.PerformClick();
+            botoesEdicaoSimples.Layout(ModoBotoes.Inicial);
+
+            PesquisarSetores();
         }
         private void AtualizarTotalRegistrado()
         {
@@ -245,8 +240,10 @@ namespace Estoque.Telas_Usuario
             InicializarGrid();
             AtualizarTotalRegistrado();
             AtualizarTotalPesquisado();
-            InicializarBotoes();
-            botoes.Layout(ModoBotoes.Inicial);
+            botoesEdicaoSimples.Layout(ModoBotoes.Inicial);
+
+            pBotoes.Controls.Add((Control)botoesEdicaoSimples);
+            InicializarEventoDoSBotoes();
         }
         private void UCSetor_VisibleChanged(object sender, EventArgs e)
         {
@@ -257,36 +254,38 @@ namespace Estoque.Telas_Usuario
         }
 
         /* Botoes */
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            botoesEdicaoSimples.Layout(ModoBotoes.Edicao);
+            modoCRUD = ModoCRUD.update;
+
+            SelecionarSetor();
+        }
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            botoesEdicaoSimples.Layout(ModoBotoes.Edicao);
+            modoCRUD = ModoCRUD.insert;
+        }
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Reiniciar();
+        }
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            SelecionarSetor();
+            ExcluirSetorSelecionado();
+        }
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            txtSetor.Text = "";
+            txtSetor.Focus();
+        }
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
             if (modoCRUD == ModoCRUD.select)
             {
                 PesquisarSetores();
             }
-        }
-        private void btnCadastrar_Click(object sender, EventArgs e)
-        {
-            botoes.Layout(ModoBotoes.Edicao);
-            modoCRUD = ModoCRUD.insert;
-        }
-        private void btnAlterar_Click(object sender, EventArgs e)
-        {
-            botoes.Layout(ModoBotoes.Edicao);
-            modoCRUD = ModoCRUD.update;
-
-            SelecionarSetor();
-        }
-        private void btnExcluir_Click(object sender, EventArgs e)
-        {
-            //botoes.Layout(ModoBotoes.Exclusao);
-            //modoCRUD = ModoCRUD.delete;
-
-            SelecionarSetor();
-            ExcluirSetorSelecionado();
-        }
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            Reiniciar();
         }
         private void btnSalvar_Click(object sender, EventArgs e)
         {
@@ -308,11 +307,6 @@ namespace Estoque.Telas_Usuario
                     ExcluirSetorSelecionado();
                     break;
             }
-        }
-        private void btnLimpar_Click(object sender, EventArgs e)
-        {
-            txtSetor.Text = "";
-            txtSetor.Focus();
         }
         #endregion Eventos
     }

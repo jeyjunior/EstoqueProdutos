@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EstoqueProdutos.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,5 +13,7 @@ namespace EP.Data.Entidades
         public string NomeCargo { get; set; }
 
         public int FK_Setor { get; set; }
+
+        public virtual Setor Setor { get; set; }
     }
 }
