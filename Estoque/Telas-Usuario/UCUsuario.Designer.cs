@@ -41,8 +41,8 @@
             lblNomeUsuario = new Label();
             cboSetor = new ComboBox();
             btnPesquisar = new Button();
-            button1 = new Button();
-            button2 = new Button();
+            btnAlterar = new Button();
+            btnExcluir = new Button();
             btnSetorCargo = new Button();
             btnCadastrarUsuario = new Button();
             dtgUsuarios = new DataGridView();
@@ -51,8 +51,11 @@
             colNomeAbreviado = new DataGridViewTextBoxColumn();
             colEmail = new DataGridViewTextBoxColumn();
             colFK_Setor = new DataGridViewTextBoxColumn();
+            colNomeSetor = new DataGridViewTextBoxColumn();
             colFK_Cargo = new DataGridViewTextBoxColumn();
+            colNomeCargo = new DataGridViewTextBoxColumn();
             tblBotoes = new TableLayoutPanel();
+            btnLimpar = new Button();
             tlpComponentesRow0 = new TableLayoutPanel();
             lblDescricao = new Label();
             pnRegua = new Panel();
@@ -130,6 +133,7 @@
             // 
             // cboCargo
             // 
+            cboCargo.BackColor = SystemColors.Window;
             cboCargo.Dock = DockStyle.Fill;
             cboCargo.DropDownHeight = 200;
             cboCargo.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -193,27 +197,32 @@
             btnPesquisar.UseVisualStyleBackColor = true;
             btnPesquisar.Click += btnPesquisar_Click;
             // 
-            // button1
+            // btnAlterar
             // 
-            button1.Location = new Point(473, 0);
-            button1.Margin = new Padding(0);
-            button1.Name = "button1";
-            button1.Size = new Size(35, 35);
-            button1.TabIndex = 2;
-            button1.UseVisualStyleBackColor = true;
+            btnAlterar.Image = Properties.Resources.edit_outline_1;
+            btnAlterar.Location = new Point(433, 0);
+            btnAlterar.Margin = new Padding(0);
+            btnAlterar.Name = "btnAlterar";
+            btnAlterar.Size = new Size(35, 35);
+            btnAlterar.TabIndex = 2;
+            btnAlterar.UseVisualStyleBackColor = true;
+            btnAlterar.Click += btnAlterar_Click;
             // 
-            // button2
+            // btnExcluir
             // 
-            button2.Location = new Point(433, 0);
-            button2.Margin = new Padding(0);
-            button2.Name = "button2";
-            button2.Size = new Size(35, 35);
-            button2.TabIndex = 3;
-            button2.UseVisualStyleBackColor = true;
+            btnExcluir.Image = Properties.Resources.delete_outline_1;
+            btnExcluir.Location = new Point(0, 0);
+            btnExcluir.Margin = new Padding(0);
+            btnExcluir.Name = "btnExcluir";
+            btnExcluir.Size = new Size(35, 35);
+            btnExcluir.TabIndex = 3;
+            btnExcluir.UseVisualStyleBackColor = true;
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // btnSetorCargo
             // 
-            btnSetorCargo.Location = new Point(513, 0);
+            btnSetorCargo.Image = Properties.Resources.new_outline_2;
+            btnSetorCargo.Location = new Point(473, 0);
             btnSetorCargo.Margin = new Padding(0);
             btnSetorCargo.Name = "btnSetorCargo";
             btnSetorCargo.Size = new Size(35, 35);
@@ -223,6 +232,7 @@
             // 
             // btnCadastrarUsuario
             // 
+            btnCadastrarUsuario.Image = Properties.Resources.new_outline_1;
             btnCadastrarUsuario.Location = new Point(393, 0);
             btnCadastrarUsuario.Margin = new Padding(0);
             btnCadastrarUsuario.Name = "btnCadastrarUsuario";
@@ -233,6 +243,7 @@
             // 
             // dtgUsuarios
             // 
+            dtgUsuarios.AllowUserToAddRows = false;
             dtgUsuarios.AllowUserToDeleteRows = false;
             dtgUsuarios.AllowUserToOrderColumns = true;
             dtgUsuarios.AllowUserToResizeRows = false;
@@ -253,7 +264,7 @@
             dtgUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dtgUsuarios.ColumnHeadersHeight = 35;
             dtgUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dtgUsuarios.Columns.AddRange(new DataGridViewColumn[] { colPK_Usuario, colNomeCompleto, colNomeAbreviado, colEmail, colFK_Setor, colFK_Cargo });
+            dtgUsuarios.Columns.AddRange(new DataGridViewColumn[] { colPK_Usuario, colNomeCompleto, colNomeAbreviado, colEmail, colFK_Setor, colNomeSetor, colFK_Cargo, colNomeCargo });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.FromArgb(246, 246, 246);
             dataGridViewCellStyle3.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
@@ -321,25 +332,41 @@
             // colFK_Setor
             // 
             colFK_Setor.DataPropertyName = "FK_Setor";
-            colFK_Setor.HeaderText = "Setor";
-            colFK_Setor.MinimumWidth = 200;
+            colFK_Setor.HeaderText = "FK_Setor";
             colFK_Setor.Name = "colFK_Setor";
             colFK_Setor.ReadOnly = true;
-            colFK_Setor.Width = 200;
+            colFK_Setor.Visible = false;
+            // 
+            // colNomeSetor
+            // 
+            colNomeSetor.DataPropertyName = "NomeSetor";
+            colNomeSetor.HeaderText = "Setor";
+            colNomeSetor.MinimumWidth = 200;
+            colNomeSetor.Name = "colNomeSetor";
+            colNomeSetor.ReadOnly = true;
+            colNomeSetor.Width = 200;
             // 
             // colFK_Cargo
             // 
             colFK_Cargo.DataPropertyName = "FK_Cargo";
-            colFK_Cargo.HeaderText = "Cargo";
-            colFK_Cargo.MinimumWidth = 200;
+            colFK_Cargo.HeaderText = "FK_Cargo";
             colFK_Cargo.Name = "colFK_Cargo";
             colFK_Cargo.ReadOnly = true;
-            colFK_Cargo.Width = 200;
+            colFK_Cargo.Visible = false;
+            // 
+            // colNomeCargo
+            // 
+            colNomeCargo.DataPropertyName = "NomeCargo";
+            colNomeCargo.HeaderText = "Cargo";
+            colNomeCargo.MinimumWidth = 200;
+            colNomeCargo.Name = "colNomeCargo";
+            colNomeCargo.ReadOnly = true;
+            colNomeCargo.Width = 200;
             // 
             // tblBotoes
             // 
             tblBotoes.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            tblBotoes.ColumnCount = 9;
+            tblBotoes.ColumnCount = 11;
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 5F));
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
@@ -348,12 +375,15 @@
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 5F));
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 5F));
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
             tblBotoes.Controls.Add(btnPesquisar, 0, 0);
-            tblBotoes.Controls.Add(btnSetorCargo, 2, 0);
+            tblBotoes.Controls.Add(btnExcluir, 10, 0);
             tblBotoes.Controls.Add(btnCadastrarUsuario, 8, 0);
-            tblBotoes.Controls.Add(button1, 4, 0);
-            tblBotoes.Controls.Add(button2, 6, 0);
+            tblBotoes.Controls.Add(btnAlterar, 6, 0);
+            tblBotoes.Controls.Add(btnSetorCargo, 4, 0);
+            tblBotoes.Controls.Add(btnLimpar, 2, 0);
             tblBotoes.Location = new Point(16, 100);
             tblBotoes.Margin = new Padding(0);
             tblBotoes.Name = "tblBotoes";
@@ -362,6 +392,17 @@
             tblBotoes.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tblBotoes.Size = new Size(588, 35);
             tblBotoes.TabIndex = 8;
+            // 
+            // btnLimpar
+            // 
+            btnLimpar.Image = Properties.Resources.erase_outline_1;
+            btnLimpar.Location = new Point(513, 0);
+            btnLimpar.Margin = new Padding(0);
+            btnLimpar.Name = "btnLimpar";
+            btnLimpar.Size = new Size(35, 35);
+            btnLimpar.TabIndex = 6;
+            btnLimpar.UseVisualStyleBackColor = true;
+            btnLimpar.Click += btnLimpar_Click;
             // 
             // tlpComponentesRow0
             // 
@@ -431,8 +472,8 @@
         private ComboBox cboCargo;
         private ComboBox cboSetor;
         private Button btnPesquisar;
-        private Button button1;
-        private Button button2;
+        private Button btnAlterar;
+        private Button btnExcluir;
         private Button btnSetorCargo;
         private Button btnCadastrarUsuario;
         private DataGridView dtgUsuarios;
@@ -445,12 +486,15 @@
         private TableLayoutPanel tlpComponentesRow0;
         private Label lblDescricao;
         private TextBox txtNome;
+        private Panel pnRegua;
+        private Button btnLimpar;
         private DataGridViewTextBoxColumn colPK_Usuario;
         private DataGridViewTextBoxColumn colNomeCompleto;
         private DataGridViewTextBoxColumn colNomeAbreviado;
         private DataGridViewTextBoxColumn colEmail;
         private DataGridViewTextBoxColumn colFK_Setor;
+        private DataGridViewTextBoxColumn colNomeSetor;
         private DataGridViewTextBoxColumn colFK_Cargo;
-        private Panel pnRegua;
+        private DataGridViewTextBoxColumn colNomeCargo;
     }
 }

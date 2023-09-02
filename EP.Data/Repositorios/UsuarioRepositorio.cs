@@ -92,5 +92,20 @@ namespace EP.Data.Repositorios
                 return Convert.ToBoolean(resultado);
             }
         }
+
+        public bool ExcluirUsuario(Usuario usuario)
+        {
+            using (SqlConnection connection = new SqlConnection(Conexao.ConexaoBase))
+            {
+                connection.Open();
+
+                string sql = "" +
+                    "DELETE FROM Usuario\n" +
+                    "WHERE PK_Usuario = @PK_Usuario \n";
+
+                var resultado = connection.Execute(sql, usuario);
+                return Convert.ToBoolean(resultado);
+            }
+        }
     }
 }

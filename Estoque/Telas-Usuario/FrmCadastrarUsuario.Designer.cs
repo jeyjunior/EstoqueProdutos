@@ -124,7 +124,7 @@
             txtNomeCompleto.MaxLength = 1000;
             txtNomeCompleto.Name = "txtNomeCompleto";
             txtNomeCompleto.Size = new Size(314, 22);
-            txtNomeCompleto.TabIndex = 2;
+            txtNomeCompleto.TabIndex = 0;
             // 
             // lblNomeAbreviado
             // 
@@ -148,7 +148,7 @@
             txtNomeAbreviado.MaxLength = 120;
             txtNomeAbreviado.Name = "txtNomeAbreviado";
             txtNomeAbreviado.Size = new Size(314, 22);
-            txtNomeAbreviado.TabIndex = 18;
+            txtNomeAbreviado.TabIndex = 1;
             // 
             // pcbImagemUsuario
             // 
@@ -193,7 +193,7 @@
             cboCargo.Location = new Point(3, 66);
             cboCargo.Name = "cboCargo";
             cboCargo.Size = new Size(426, 22);
-            cboCargo.TabIndex = 21;
+            cboCargo.TabIndex = 2;
             // 
             // lblCargo
             // 
@@ -217,7 +217,7 @@
             cboSetor.Location = new Point(3, 23);
             cboSetor.Name = "cboSetor";
             cboSetor.Size = new Size(426, 22);
-            cboSetor.TabIndex = 20;
+            cboSetor.TabIndex = 1;
             cboSetor.SelectedIndexChanged += cboSetor_SelectedIndexChanged;
             // 
             // lblSetor
@@ -242,7 +242,7 @@
             txtEmail.MaxLength = 120;
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(188, 22);
-            txtEmail.TabIndex = 2;
+            txtEmail.TabIndex = 0;
             txtEmail.TextChanged += txtEmail_TextChanged;
             txtEmail.Enter += txtEmail_Enter;
             txtEmail.Leave += txtEmail_Leave;
@@ -256,7 +256,7 @@
             txtConfirmarEmail.MaxLength = 120;
             txtConfirmarEmail.Name = "txtConfirmarEmail";
             txtConfirmarEmail.Size = new Size(188, 22);
-            txtConfirmarEmail.TabIndex = 23;
+            txtConfirmarEmail.TabIndex = 1;
             txtConfirmarEmail.TextChanged += txtConfirmarEmail_TextChanged;
             txtConfirmarEmail.Enter += txtConfirmarEmail_Enter;
             txtConfirmarEmail.Leave += txtConfirmarEmail_Leave;
@@ -284,7 +284,7 @@
             txtSenha.Name = "txtSenha";
             txtSenha.PasswordChar = '*';
             txtSenha.Size = new Size(188, 22);
-            txtSenha.TabIndex = 18;
+            txtSenha.TabIndex = 2;
             txtSenha.Leave += txtSenha_Leave;
             // 
             // lblEmail
@@ -322,7 +322,7 @@
             txtConfirmarSenha.Name = "txtConfirmarSenha";
             txtConfirmarSenha.PasswordChar = '*';
             txtConfirmarSenha.Size = new Size(188, 22);
-            txtConfirmarSenha.TabIndex = 22;
+            txtConfirmarSenha.TabIndex = 3;
             txtConfirmarSenha.TextChanged += txtConfirmarSenha_TextChanged;
             txtConfirmarSenha.Enter += txtConfirmarSenha_Enter;
             txtConfirmarSenha.Leave += txtConfirmarSenha_Leave;
@@ -368,7 +368,7 @@
             tblBotoes.RowCount = 1;
             tblBotoes.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tblBotoes.Size = new Size(457, 37);
-            tblBotoes.TabIndex = 9;
+            tblBotoes.TabIndex = 3;
             // 
             // btnSalvar
             // 
@@ -380,7 +380,7 @@
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Padding = new Padding(10, 0, 0, 0);
             btnSalvar.Size = new Size(90, 37);
-            btnSalvar.TabIndex = 5;
+            btnSalvar.TabIndex = 0;
             btnSalvar.Text = "Salvar";
             btnSalvar.TextImageRelation = TextImageRelation.TextBeforeImage;
             btnSalvar.UseVisualStyleBackColor = true;
@@ -396,7 +396,7 @@
             btnLimpar.Name = "btnLimpar";
             btnLimpar.Padding = new Padding(5, 0, 0, 0);
             btnLimpar.Size = new Size(90, 37);
-            btnLimpar.TabIndex = 4;
+            btnLimpar.TabIndex = 1;
             btnLimpar.Text = "Limpar";
             btnLimpar.TextImageRelation = TextImageRelation.TextBeforeImage;
             btnLimpar.UseVisualStyleBackColor = true;
@@ -410,7 +410,7 @@
             pn1.Location = new Point(12, 12);
             pn1.Name = "pn1";
             pn1.Size = new Size(460, 123);
-            pn1.TabIndex = 10;
+            pn1.TabIndex = 0;
             // 
             // pn3
             // 
@@ -419,7 +419,7 @@
             pn3.Location = new Point(12, 265);
             pn3.Name = "pn3";
             pn3.Size = new Size(460, 140);
-            pn3.TabIndex = 12;
+            pn3.TabIndex = 2;
             // 
             // tableLayoutPanel5
             // 
@@ -554,7 +554,7 @@
             pn2.Location = new Point(12, 141);
             pn2.Name = "pn2";
             pn2.Size = new Size(460, 118);
-            pn2.TabIndex = 13;
+            pn2.TabIndex = 1;
             // 
             // FrmCadastrarUsuario
             // 

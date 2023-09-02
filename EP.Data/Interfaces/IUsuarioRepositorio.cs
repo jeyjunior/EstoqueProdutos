@@ -14,5 +14,6 @@ namespace EP.Data.Interfaces
         IEnumerable<Usuario> ObterTabela();
         IEnumerable<Usuario> ObterTabelaFiltroTelaUsuarios(Usuario usuarioParametros);
         bool InserirDadosNaTabela(Usuario usuario);
+        bool ExcluirUsuario(Usuario usuario);
     }
 }

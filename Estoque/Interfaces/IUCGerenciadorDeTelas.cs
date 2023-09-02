@@ -10,7 +10,7 @@ namespace Estoque.Interfaces
     public interface IUCGerenciadorDeTelas
     {
         List<Form> FormsInstanciados { get; }
-        void AbrirTela(Type tela, IUCGerenciadorDeTelas ucGestor, bool travarTela = false);
+        void AbrirTela(Type tela, IUCGerenciadorDeTelas ucGestor, bool travarTela = false, FormClosedEventHandler eFecharFilho = null);
         void FecharTela(Type tipoTela);
     }
 }

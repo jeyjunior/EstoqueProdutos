@@ -20,7 +20,7 @@ namespace Estoque.Telas_Base
 
         public List<Form> FormsInstanciados { get; } =new List<Form>();
 
-        public void AbrirTela(Type tela, IUCGerenciadorDeTelas ucGestor, bool travarTela = false) 
+        public void AbrirTela(Type tela, IUCGerenciadorDeTelas ucGestor, bool travarTela = false, FormClosedEventHandler eFecharFilho = null) 
         {
             try
             {
@@ -32,13 +32,18 @@ namespace Estoque.Telas_Base
                 }
                 else
                 {
-                    Form novaTela = (Form)Activator.CreateInstance(tela, ucGestor);
-                    FormsInstanciados.Add(novaTela);
+                    Form telaNova = (Form)Activator.CreateInstance(tela, ucGestor);
+
+                    FormsInstanciados.Add(telaNova);
+
+                    telaNova.StartPosition = FormStartPosition.CenterScreen;
+                    if(eFecharFilho != null)
+                        telaNova.FormClosed += eFecharFilho;
 
                     if (travarTela)
-                        novaTela.ShowDialog();
+                        telaNova.ShowDialog();
                     else
-                        novaTela.Show();
+                        telaNova.Show();
                 }
             }
             catch (Exception ex)
@@ -59,26 +64,3 @@ namespace Estoque.Telas_Base
         }
     }
 }
-
-//public void AbrirTela<T>(IUCGerenciadorDeTelas ucGestor) where T : Form, new()
-        //{
-        //    var tela = typeof(T);
-        //    var telaEncontrada = FormsInstanciados.FirstOrDefault(f => f.GetType() == tela);
-
-        //    if (telaEncontrada != null)
-        //    {
-        //        telaEncontrada.Focus();
-        //    }
-        //    else 
-        //    {
-        //        var telaNova = new T();
-
-        //        if(telaNova is IFecharFormularioBase fecharFormulario) 
-        //        {
-        //            fecharFormulario.ObterGerenciadorTelas(this);
-        //        }
-
-        //        FormsInstanciados.Add(telaNova);
-        //        telaNova.Show();
-        //    }
-        //}

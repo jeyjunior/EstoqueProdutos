@@ -14,11 +14,10 @@ namespace Estoque.Telas_Produto
         private readonly ICargoRepositorio cargoRepositorio;
         private readonly IUsuarioRepositorio usuarioRepositorio;
 
-        private BindingSource bindingSourceCargos = new BindingSource();
-        private BindingSource bindingSourceSetor = new BindingSource();
+        private BindingSource bsCargo = new BindingSource();
 
         private IEnumerable<Usuario> usuarios;
-
+        private Usuario usuarioSelecionado;
         public UCUsuario()
         {
             InitializeComponent();
@@ -29,12 +28,15 @@ namespace Estoque.Telas_Produto
             usuarioRepositorio = DIRepositorios.Container.GetInstance<IUsuarioRepositorio>();
         }
 
+        #region Metodos
         private void InicializarComponentes()
         {
             try
             {
                 BindComboBoxSetor();
                 BindComboBoxCargo();
+                txtNome.Text = "";
+                txtNome.Focus();
             }
             catch (SqlException ex)
             {
@@ -45,27 +47,24 @@ namespace Estoque.Telas_Produto
                 MessageBox.Show("Falha ao executar essa operação\n\n" + ex.Message);
             }
         }
-
         private void BindComboBoxSetor()
         {
-            var result = setorRepositorio.ObterTabela().ToList();
-            result.Insert(0,
+            var resultado = setorRepositorio.ObterTabela().ToList();
+            resultado.Insert(0,
                 new Setor
                 {
                     PK_Setor = 0,
                     NomeSetor = "Nenhum"
                 });
 
-            if (result != null)
+            if (resultado != null)
             {
-                bindingSourceSetor.DataSource = result;
-                cboSetor.DataSource = bindingSourceSetor;
+                cboSetor.DataSource = resultado;
                 cboSetor.DisplayMember = "NomeSetor";
                 cboSetor.ValueMember = "PK_Setor";
                 cboSetor.SelectedIndex = 0;
             }
         }
-
         private void BindComboBoxCargo()
         {
             var result = cargoRepositorio.ObterTabela().ToList();
@@ -79,14 +78,12 @@ namespace Estoque.Telas_Produto
 
             if (result != null)
             {
-                bindingSourceCargos.DataSource = result;
-                cboCargo.DataSource = bindingSourceCargos;
+                bsCargo.DataSource = result;
+                cboCargo.DataSource = FiltrarCargos();
                 cboCargo.DisplayMember = "NomeCargo";
                 cboCargo.ValueMember = "PK_Cargo";
-                cboCargo.SelectedIndex = 0;
             }
         }
-
         private void BindDataGridView()
         {
             if (usuarios != null)
@@ -100,13 +97,14 @@ namespace Estoque.Telas_Produto
                         usuario.NomeCompleto,
                         usuario.NomeAbreviado,
                         usuario.Email,
+                        usuario.Setor.PK_Setor,
                         usuario.Setor.NomeSetor,
+                        usuario.Cargo.PK_Cargo,
                         usuario.Cargo.NomeCargo
                         );
                 });
             }
         }
-
         private void LimparComponentes()
         {
             txtNome.Text = "";
@@ -117,76 +115,132 @@ namespace Estoque.Telas_Produto
             if (dtgUsuarios.Rows.Count > 0)
                 dtgUsuarios.Rows.Clear();
         }
-
-        private int ObterSetorSelecionado()
+        private void ObterUsuarioDaLinhaSelecionar()
         {
-            if (cboSetor != null && cboSetor.Items.Count > 0)
+            try
             {
-                var setorSelecionado = (Setor)cboSetor.SelectedItem;
-                return setorSelecionado.PK_Setor;
-            }
+                if (dtgUsuarios.Rows.Count <= 0)
+                {
+                    MessageBox.Show("Selecione um usuário");
+                    return;
+                }
 
-            return 0;
+                DataGridViewRow linhaSelecionada = dtgUsuarios.SelectedRows[0];
+
+                var pkUsuario = Convert.ToInt32(linhaSelecionada.Cells["colPK_Usuario"].Value);
+                var nomeCompleto = linhaSelecionada.Cells["colNomeCompleto"].Value.ToString();
+                var nomeAbreviado = linhaSelecionada.Cells["colNomeAbreviado"].Value.ToString();
+                var email = linhaSelecionada.Cells["colEmail"].Value.ToString();
+                var fkSetor = Convert.ToInt32(linhaSelecionada.Cells["colFK_Setor"].Value);
+                var fkCargo = Convert.ToInt32(linhaSelecionada.Cells["colFK_Cargo"].Value);
+
+                usuarioSelecionado = new Usuario
+                {
+                    PK_Usuario = pkUsuario,
+                    NomeCompleto = nomeCompleto,
+                    NomeAbreviado = nomeAbreviado,
+                    Email = email,
+                    FK_Setor = fkSetor,
+                    FK_Cargo = fkCargo
+                };
+
+                if (usuarioRepositorio != null)
+                {
+                    txtNome.Text = usuarioSelecionado.NomeCompleto;
+                    cboSetor.SelectedValue = usuarioSelecionado.FK_Setor;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ocorreu uma falha ao tentar obter linha selecionada");
+            }
         }
 
-        private int ObterCargoSelecionado()
+        private int ObterCboSetorSelecionado()
         {
-            if (cboCargo != null && cboCargo.Items.Count > 0)
+            return cboSetor.SelectedValue != null ? (int)cboSetor.SelectedValue : 0;
+        }
+        private int ObterCboCargoSelecionado()
+        {
+            return cboCargo.SelectedValue != null ? (int)cboCargo.SelectedValue : 0;
+        }
+        private IEnumerable<Cargo> FiltrarCargos()
+        {
+            if (cboSetor != null && bsCargo != null && cboSetor.SelectedItem is Setor setor)
             {
-                var cargoSelecionado = (Cargo)cboCargo.SelectedItem;
-                return cargoSelecionado.PK_Cargo;
+                return bsCargo.OfType<Cargo>().Where(c =>
+                {
+                    if (c.Setor != null)
+                    {
+                        return c.Setor.PK_Setor == setor.PK_Setor;
+                    };
+
+                    return false;
+                }).ToList();
             }
 
-            return 0;
+            return null;
         }
 
+
+        private void ExcluirUsuarioSelecionado()
+        {
+            try
+            {
+                string mensagem = "Tem certeza que excluir esse usuário?\n";
+                string usuario = "\nDeletar: " + txtNome.Text.Trim();
+
+                var resultado = MessageBox.Show(mensagem + usuario,
+                                            "Deletar",
+                                            MessageBoxButtons.YesNo,
+                                            MessageBoxIcon.Question);
+
+                if (resultado == DialogResult.Yes)
+                {
+                    var resultadoInsert = usuarioRepositorio.ExcluirUsuario(new Usuario()
+                    { PK_Usuario = usuarioSelecionado.PK_Usuario });
+
+                    if (resultadoInsert)
+                    {
+                        MessageBox.Show("Cargo excluído com sucesso!");
+                        LimparComponentes();
+                        btnPesquisar.PerformClick();
+                    }
+                }
+                else
+                {
+                    txtNome.Focus();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        #endregion Metodos
+
+        #region Eventos
+        /* Form */
         private void UCProdutos_Load(object sender, EventArgs e)
         {
             InicializarComponentes();
+            btnPesquisar.PerformClick();
         }
-
-        private void btnPesquisar_Click(object sender, EventArgs e)
-        {
-            string nome = txtNome.TextoFormatoLikeSQL();
-
-            var usuarioParametros = new Usuario()
-            {
-                NomeCompleto = nome,
-                FK_Setor = ObterSetorSelecionado(),
-                FK_Cargo = ObterCargoSelecionado()
-            };
-
-            usuarios = usuarioRepositorio.ObterTabelaFiltroTelaUsuarios(usuarioParametros);
-            BindDataGridView();
-        }
-
         private void UCProdutos_ParentChanged(object sender, EventArgs e)
         {
             LimparComponentes();
         }
 
-        private void btnCadastrarUsuario_Click(object sender, EventArgs e)
-        {
-            AbrirTela(typeof(FrmCadastrarUsuario), this, true);
-        }
-
+        /* Cbos */
         private void cboSetor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int PK_SetorSelecionado = ObterSetorSelecionado();
-
-            if (PK_SetorSelecionado <= 0)
+            if (cboSetor != null)
             {
-                cboCargo.DataSource = bindingSourceCargos;
-            }
-            else
-            {
-                cboCargo.DataSource = bindingSourceCargos
-                    .Cast<Cargo>()
-                    .Where(c => (c.FK_Setor == PK_SetorSelecionado) || (c.FK_Setor == 0))
-                    .ToList();
+                cboCargo.DataSource = FiltrarCargos();
+                cboCargo.Enabled = ObterCboCargoSelecionado() > 0;
             }
         }
-
         private void cboCargo_SelectedIndexChanged(object sender, EventArgs e)
         {
             //if (cboCargo != null
@@ -205,9 +259,51 @@ namespace Estoque.Telas_Produto
             //}
         }
 
+
+        /*  Botoes */
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            usuarios = usuarioRepositorio.ObterTabelaFiltroTelaUsuarios(new Usuario
+            {
+                NomeCompleto = txtNome.TextoFormatoLikeSQL(),
+                FK_Setor = ObterCboSetorSelecionado(),
+                FK_Cargo = ObterCboCargoSelecionado()
+            });
+
+            BindDataGridView();
+        }
+        private void btnCadastrarUsuario_Click(object sender, EventArgs e)
+        {
+            AbrirTela(typeof(FrmCadastrarUsuario), this, true, FilhoFechado);
+        }
         private void btnSetorCargo_Click(object sender, EventArgs e)
         {
-            AbrirTela(typeof(FrmCadastrarSetorCargo), this, true);
+            AbrirTela(typeof(FrmCadastrarSetorCargo), this, true, FilhoFechado);
         }
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            ObterUsuarioDaLinhaSelecionar();
+            ExcluirUsuarioSelecionado();
+        }
+
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            ObterUsuarioDaLinhaSelecionar();
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            LimparComponentes();
+        }
+
+        /* Filhos */
+        private void FilhoFechado(object? sender, FormClosedEventArgs e)
+        {
+            InicializarComponentes();
+        }
+
+        #endregion Eventos
+
     }
 }
