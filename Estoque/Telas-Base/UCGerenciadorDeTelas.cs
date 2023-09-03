@@ -13,12 +13,18 @@ namespace Estoque.Telas_Base
 {
     public partial class UCGerenciadorDeTelas : UCBase, IUCGerenciadorDeTelas
     {
+        public List<Form> FormsInstanciados { get; } =new List<Form>();
+        
+        /// <summary>
+        /// Passar algum tipo de objeto para os filhos instanciados
+        /// Ex.: Passar usuario selecionado de um form pai para form filho
+        /// </summary>
+        public object ObjetoGenerico;
         public UCGerenciadorDeTelas()
         {
             InitializeComponent();
         }
 
-        public List<Form> FormsInstanciados { get; } =new List<Form>();
 
         public void AbrirTela(Type tela, IUCGerenciadorDeTelas ucGestor, bool travarTela = false, FormClosedEventHandler eFecharFilho = null) 
         {
@@ -51,7 +57,6 @@ namespace Estoque.Telas_Base
                 MessageBox.Show("Ocorreu uma falha ao tentar abrir tela.\nErro: " + ex.Message);
             }
         }
-
         public void FecharTela(Type tipoTela)
         {
             var telaEncontrada = FormsInstanciados.FirstOrDefault(f => f.GetType() == tipoTela);
@@ -62,5 +67,10 @@ namespace Estoque.Telas_Base
                 telaEncontrada.Close();
             }
         }
+        public object ObterObjetoGenerico()
+        {
+            return ObjetoGenerico;
+        }
+
     }
 }

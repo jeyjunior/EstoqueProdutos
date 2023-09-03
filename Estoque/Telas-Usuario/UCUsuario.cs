@@ -290,6 +290,12 @@ namespace Estoque.Telas_Produto
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             ObterUsuarioDaLinhaSelecionar();
+
+            if (usuarioSelecionado != null)
+            {
+                ObjetoGenerico = usuarioSelecionado;
+                AbrirTela(typeof(FrmAlterarUsuario), this, true, FilhoFechado);
+            }
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)

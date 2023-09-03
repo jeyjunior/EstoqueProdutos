@@ -12,6 +12,7 @@ namespace Estoque.Interfaces
         List<Form> FormsInstanciados { get; }
         void AbrirTela(Type tela, IUCGerenciadorDeTelas ucGestor, bool travarTela = false, FormClosedEventHandler eFecharFilho = null);
         void FecharTela(Type tipoTela);
+        object ObterObjetoGenerico();
     }
 }
 
