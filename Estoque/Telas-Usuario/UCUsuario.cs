@@ -152,14 +152,6 @@ namespace Estoque.Telas_Produto
             }
         }
 
-        private int ObterCboSetorSelecionado()
-        {
-            return cboSetor.SelectedValue != null ? (int)cboSetor.SelectedValue : 0;
-        }
-        private int ObterCboCargoSelecionado()
-        {
-            return cboCargo != null ? ((Cargo)cboCargo.SelectedItem).PK_Cargo : 0;
-        }
         private IEnumerable<Cargo> FiltrarCargos()
         {
             if (cboSetor != null && bsCargo != null && cboSetor.SelectedItem is Setor setor)
@@ -189,8 +181,6 @@ namespace Estoque.Telas_Produto
 
             return null;
         }
-
-
 
         private void ExcluirUsuarioSelecionado()
         {
@@ -247,7 +237,7 @@ namespace Estoque.Telas_Produto
             if (cboSetor != null)
             {
                 cboCargo.DataSource = FiltrarCargos();
-                cboCargo.Enabled = ObterCboCargoSelecionado() > 0;
+                cboCargo.Enabled = ((Setor)cboSetor.SelectedItem).PK_Setor > 0;
             }
         }
         private void cboCargo_SelectedIndexChanged(object sender, EventArgs e)
@@ -275,8 +265,8 @@ namespace Estoque.Telas_Produto
             usuarios = usuarioRepositorio.ObterTabelaFiltroTelaUsuarios(new Usuario
             {
                 NomeCompleto = txtNome.TextoFormatoLikeSQL(),
-                FK_Setor = ObterCboSetorSelecionado(),
-                FK_Cargo = ObterCboCargoSelecionado()
+                FK_Setor = ((Setor)cboSetor.SelectedItem).PK_Setor,
+                FK_Cargo = ((Cargo)cboCargo.SelectedItem).PK_Cargo
             });
 
             BindDataGridView();
@@ -306,10 +296,10 @@ namespace Estoque.Telas_Produto
                 AbrirTela(typeof(FrmAlterarUsuario), this, true, FilhoFechado);
             }
         }
-
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             LimparComponentes();
+            btnPesquisar.PerformClick();
         }
 
         /* Filhos */

@@ -52,6 +52,7 @@
             btnSalvar = new Button();
             btnLimpar = new Button();
             pn1 = new Panel();
+            pictureBox1 = new PictureBox();
             pn3 = new Panel();
             tableLayoutPanel5 = new TableLayoutPanel();
             tableLayoutPanel3 = new TableLayoutPanel();
@@ -69,6 +70,7 @@
             ((System.ComponentModel.ISupportInitialize)pcbConfirmarSenha).BeginInit();
             tblBotoes.SuspendLayout();
             pn1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             pn3.SuspendLayout();
             tableLayoutPanel5.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
@@ -153,10 +155,12 @@
             // pcbImagemUsuario
             // 
             pcbImagemUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            pcbImagemUsuario.BackColor = Color.Gray;
+            pcbImagemUsuario.BorderStyle = BorderStyle.FixedSingle;
             pcbImagemUsuario.Cursor = Cursors.Hand;
-            pcbImagemUsuario.Location = new Point(16, 14);
+            pcbImagemUsuario.Location = new Point(16, 15);
             pcbImagemUsuario.Name = "pcbImagemUsuario";
-            pcbImagemUsuario.Size = new Size(90, 93);
+            pcbImagemUsuario.Size = new Size(90, 92);
             pcbImagemUsuario.SizeMode = PictureBoxSizeMode.StretchImage;
             pcbImagemUsuario.TabIndex = 0;
             pcbImagemUsuario.TabStop = false;
@@ -407,10 +411,20 @@
             pn1.BackColor = Color.FromArgb(60, 75, 85);
             pn1.Controls.Add(tlpUsuario);
             pn1.Controls.Add(pcbImagemUsuario);
+            pn1.Controls.Add(pictureBox1);
             pn1.Location = new Point(12, 12);
             pn1.Name = "pn1";
             pn1.Size = new Size(460, 123);
             pn1.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.White;
+            pictureBox1.Location = new Point(11, 11);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(100, 100);
+            pictureBox1.TabIndex = 12;
+            pictureBox1.TabStop = false;
             // 
             // pn3
             // 
@@ -583,6 +597,7 @@
             ((System.ComponentModel.ISupportInitialize)pcbConfirmarSenha).EndInit();
             tblBotoes.ResumeLayout(false);
             pn1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             pn3.ResumeLayout(false);
             tableLayoutPanel5.ResumeLayout(false);
             tableLayoutPanel5.PerformLayout();
@@ -631,5 +646,6 @@
         private PictureBox pcbValidacaoConfirmacaoSenha;
         private TableLayoutPanel tableLayoutPanel1;
         private TableLayoutPanel tableLayoutPanel3;
+        private PictureBox pictureBox1;
     }
 }
