@@ -54,6 +54,7 @@
             colNomeSetor = new DataGridViewTextBoxColumn();
             colFK_Cargo = new DataGridViewTextBoxColumn();
             colNomeCargo = new DataGridViewTextBoxColumn();
+            colFK_Imagem = new DataGridViewTextBoxColumn();
             tblBotoes = new TableLayoutPanel();
             btnLimpar = new Button();
             tlpComponentesRow0 = new TableLayoutPanel();
@@ -264,7 +265,7 @@
             dtgUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dtgUsuarios.ColumnHeadersHeight = 35;
             dtgUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dtgUsuarios.Columns.AddRange(new DataGridViewColumn[] { colPK_Usuario, colNomeCompleto, colNomeAbreviado, colEmail, colFK_Setor, colNomeSetor, colFK_Cargo, colNomeCargo });
+            dtgUsuarios.Columns.AddRange(new DataGridViewColumn[] { colPK_Usuario, colNomeCompleto, colNomeAbreviado, colEmail, colFK_Setor, colNomeSetor, colFK_Cargo, colNomeCargo, colFK_Imagem });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.FromArgb(246, 246, 246);
             dataGridViewCellStyle3.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
@@ -362,6 +363,14 @@
             colNomeCargo.Name = "colNomeCargo";
             colNomeCargo.ReadOnly = true;
             colNomeCargo.Width = 200;
+            // 
+            // colFK_Imagem
+            // 
+            colFK_Imagem.DataPropertyName = "FK_Imagem";
+            colFK_Imagem.HeaderText = "FK_Imagem";
+            colFK_Imagem.Name = "colFK_Imagem";
+            colFK_Imagem.ReadOnly = true;
+            colFK_Imagem.Visible = false;
             // 
             // tblBotoes
             // 
@@ -496,5 +505,6 @@
         private DataGridViewTextBoxColumn colNomeSetor;
         private DataGridViewTextBoxColumn colFK_Cargo;
         private DataGridViewTextBoxColumn colNomeCargo;
+        private DataGridViewTextBoxColumn colFK_Imagem;
     }
 }

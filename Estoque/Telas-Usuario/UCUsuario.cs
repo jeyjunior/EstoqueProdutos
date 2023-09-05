@@ -37,6 +37,7 @@ namespace Estoque.Telas_Produto
                 BindComboBoxCargo();
                 txtNome.Text = "";
                 txtNome.Focus();
+                btnPesquisar.PerformClick();
             }
             catch (SqlException ex)
             {
@@ -68,13 +69,6 @@ namespace Estoque.Telas_Produto
         private void BindComboBoxCargo()
         {
             var result = cargoRepositorio.ObterTabela().ToList();
-            result.Insert(0,
-                new Cargo
-                {
-                    PK_Cargo = 0,
-                    FK_Setor = 0,
-                    NomeCargo = "Nenhum"
-                });
 
             if (result != null)
             {
@@ -100,7 +94,8 @@ namespace Estoque.Telas_Produto
                         usuario.Setor.PK_Setor,
                         usuario.Setor.NomeSetor,
                         usuario.Cargo.PK_Cargo,
-                        usuario.Cargo.NomeCargo
+                        usuario.Cargo.NomeCargo,
+                        usuario.FK_Imagem
                         );
                 });
             }
@@ -133,7 +128,7 @@ namespace Estoque.Telas_Produto
                 var email = linhaSelecionada.Cells["colEmail"].Value.ToString();
                 var fkSetor = Convert.ToInt32(linhaSelecionada.Cells["colFK_Setor"].Value);
                 var fkCargo = Convert.ToInt32(linhaSelecionada.Cells["colFK_Cargo"].Value);
-
+                var fkImagem = Convert.ToInt32(linhaSelecionada.Cells["colFK_Imagem"].Value);
                 usuarioSelecionado = new Usuario
                 {
                     PK_Usuario = pkUsuario,
@@ -141,7 +136,8 @@ namespace Estoque.Telas_Produto
                     NomeAbreviado = nomeAbreviado,
                     Email = email,
                     FK_Setor = fkSetor,
-                    FK_Cargo = fkCargo
+                    FK_Cargo = fkCargo,
+                    FK_Imagem = fkImagem
                 };
 
                 if (usuarioRepositorio != null)
@@ -162,13 +158,13 @@ namespace Estoque.Telas_Produto
         }
         private int ObterCboCargoSelecionado()
         {
-            return cboCargo.SelectedValue != null ? (int)cboCargo.SelectedValue : 0;
+            return cboCargo != null ? ((Cargo)cboCargo.SelectedItem).PK_Cargo : 0;
         }
         private IEnumerable<Cargo> FiltrarCargos()
         {
             if (cboSetor != null && bsCargo != null && cboSetor.SelectedItem is Setor setor)
             {
-                return bsCargo.OfType<Cargo>().Where(c =>
+                var resultado = bsCargo.OfType<Cargo>().Where(c =>
                 {
                     if (c.Setor != null)
                     {
@@ -176,11 +172,24 @@ namespace Estoque.Telas_Produto
                     };
 
                     return false;
-                }).ToList();
+                })
+                .OrderBy(c => c.PK_Cargo)
+                .ToList();
+
+                resultado.Insert(0,
+                    new Cargo
+                    {
+                        PK_Cargo = 0,
+                        FK_Setor = 0,
+                        NomeCargo = "Nenhum"
+                    });
+
+                return resultado;
             }
 
             return null;
         }
+
 
 
         private void ExcluirUsuarioSelecionado()
@@ -202,7 +211,7 @@ namespace Estoque.Telas_Produto
 
                     if (resultadoInsert)
                     {
-                        MessageBox.Show("Cargo excluído com sucesso!");
+                        MessageBox.Show("Usuário excluído com sucesso!");
                         LimparComponentes();
                         btnPesquisar.PerformClick();
                     }

@@ -7,8 +7,8 @@ using System.Text.Json;
 using System.Drawing;
 using System.Windows.Forms;
 using JJ.Helpers.Formatacao;
-using static Dapper.SqlMapper;
 using EP.Data.sql;
+using EP.Data.Entidades;
 
 namespace EstoqueProdutos.Repositorios
 {
@@ -70,7 +70,7 @@ namespace EstoqueProdutos.Repositorios
         }
 
         
-        public int SalvarImagem(Image img)
+        public int SalvarImagemNaBase(Image img)
         {
             int PK_Imagem = 1;
 
@@ -86,10 +86,29 @@ namespace EstoqueProdutos.Repositorios
                     ImgBinary = img.ConvertImageToByteArray()
                 };
 
+                string sql = "";
+
+                sql = " \n" +
+                    "DECLARE @Contagem int \n" +
+
+                    "SELECT @Contagem = COUNT(*)  \n" +
+                    "FROM Imagem \n" +
+                    "WHERE Imagem.Nome = @Nome \n" +
+
+                    "IF @Contagem = 0 \n" +
+                    "   BEGIN  \n" +
+                    "       INSERT INTO Imagem (Nome, Formato, ImgBinary) \n" +
+                    "       VALUES (@Nome, @Formato, @ImgBinary); \n" +
+                    "       SELECT SCOPE_IDENTITY() \n" +
+                    "   END \n" +
+                    "ELSE \n" +
+                    "   BEGIN \n" +
+                    "       SELECT * FROM Imagem WHERE PK_Imagem = 1 \n" +
+                    "   END \n";
+
                 using (SqlConnection connection = new SqlConnection(Conexao.ConexaoBase))
                 {
                     connection.Open();
-                    string sql = "INSERT INTO Imagem (Nome, Formato, ImgBinary) VALUES (@Nome, @Formato, @ImgBinary); SELECT SCOPE_IDENTITY()";
                     PK_Imagem = connection.QuerySingle<int>(sql, imagem);
                 }
             }
@@ -141,6 +160,48 @@ namespace EstoqueProdutos.Repositorios
                 IEnumerable<Imagem> resultado = connection.Query<Imagem>(sql);
                 return resultado;
             }
+        }
+
+        public IEnumerable<Imagem> ObterObjetoImagem(Imagem imagem)
+        {
+            string sql = "";
+            string where = "";
+            string condicao = "";
+
+            sql = "SELECT *\n" +
+                  "FROM Imagem\n";
+
+            if (imagem.PK_Imagem > 1)
+            {
+                condicao += (condicao != "" ? " AND" : "") + " Imagem.PK_Imagem = @PK_Imagem\n";
+            }
+
+            where = condicao != "" ? "WHERE " : "";
+            sql = sql + where + condicao;
+
+            using (SqlConnection connection = new SqlConnection(Conexao.ConexaoBase))
+            {
+                connection.Open();
+                return connection.Query<Imagem>(sql, imagem);
+            }
+        }
+
+        public Image ObterApenasImagem(int FK_Imagem)
+        {
+            var imagem = ObterObjetoImagem(new Imagem { PK_Imagem = FK_Imagem });
+            Image image = null;
+
+            if(imagem != null && imagem.Count() > 0)
+            {
+                Imagem img = imagem.FirstOrDefault();
+
+                using (MemoryStream ms = new MemoryStream(img.ImgBinary))
+                {
+                    image = Image.FromStream(ms);
+                }
+            }
+
+            return image;
         }
 
         public bool InserirDadosNaTabela(Imagem imagem)

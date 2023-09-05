@@ -3,6 +3,7 @@ using EP.Data.Entidades;
 using EP.Data.Interfaces;
 using EP.Data.Repositorios;
 using Estoque.Interfaces;
+using EstoqueProdutos.Entidades;
 using EstoqueProdutos.Gerenciamento;
 using JJ.Helpers.Formatacao;
 using Microsoft.Data.SqlClient;
@@ -56,13 +57,14 @@ namespace Estoque.Telas_Usuario
                 UsuarioSelecionado = gerenciadorDeTelas.ObterObjetoGenerico() as Usuario;
                 if (UsuarioSelecionado != null)
                 {
-                    //obter foto
                     txtNomeCompleto.Text = UsuarioSelecionado.NomeCompleto;
                     txtNomeAbreviado.Text = UsuarioSelecionado.NomeAbreviado;
                     cboSetor.SelectedValue = UsuarioSelecionado.FK_Setor;
                     cboCargo.SelectedValue = UsuarioSelecionado.FK_Cargo;
                     txtEmail.Text = UsuarioSelecionado.Email;
                     txtConfirmarEmail.Text = UsuarioSelecionado.Email;
+
+                    pcbImagemUsuario.Image = ObterImagemDoUsuario(UsuarioSelecionado.FK_Imagem);
                 }
             }
             catch (Exception ex)
@@ -71,6 +73,19 @@ namespace Estoque.Telas_Usuario
                 this.Close();
             }
         }
+
+        private Image ObterImagemDoUsuario(int FK_Imagem)
+        {
+            //verificar se imagem ja existe em cache
+
+            var img = imagemRepositorio.ObterApenasImagem(FK_Imagem);
+
+            if (img != null)
+                return img;
+
+            return imagemRepositorio.ObterImagemPadrao();
+        }
+
         private void InicializarComponentes()
         {
             try
@@ -231,6 +246,19 @@ namespace Estoque.Telas_Usuario
                 pcbValidacaoConfirmacaoSenha.Image = Properties.Resources.alert;
             }
         }
+
+
+        private bool ValidarSenhaNovaRegistrada()
+        {
+            if ((txtConfirmarSenha.Text == "" && txtSenha.Text == "") ||
+                txtConfirmarSenha.Text.Equals(txtSenha.Text.Trim())
+                )
+            {
+                return true;
+            }
+
+            return false;
+        }
         private bool ValidarCamposPreenchidos()
         {
             if (txtNomeCompleto.Text == "")
@@ -268,7 +296,7 @@ namespace Estoque.Telas_Usuario
                 return false;
             }
 
-            if (!senhaValidada)
+            if (!ValidarSenhaNovaRegistrada())
             {
                 MessageBox.Show("Senha inválida!");
                 txtSenha.Focus();
@@ -299,37 +327,52 @@ namespace Estoque.Telas_Usuario
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             var img = pcbImagemUsuario.Image;
-            int PK_Imagem = imagemRepositorio.SalvarImagem(img);
+            int PK_Imagem = imagemRepositorio.SalvarImagemNaBase(img);
 
             try
             {
                 if (!ValidarCamposPreenchidos())
                     return;
 
-                var usuario = new Usuario()
-                {
-                    NomeCompleto = txtNomeCompleto.Text.Trim(),
-                    NomeAbreviado = txtNomeAbreviado.Text.Trim(),
-                    FK_Setor = (int)cboSetor.SelectedValue,
-                    FK_Cargo = (int)cboCargo.SelectedValue,
-                    Ativo = true,
-                    DataCadastro = DateTime.Today,
-                    FK_Imagem = PK_Imagem,
-                    Email = txtEmail.Text,
-                    Senha = txtSenha.Text
-                };
+                if (UsuarioSelecionado.NomeCompleto != txtNomeCompleto.Text.Trim())
+                    UsuarioSelecionado.NomeCompleto = txtNomeCompleto.Text.Trim();
 
-                var resultado = usuarioRepositorio.InserirDadosNaTabela(usuario);
+                if (UsuarioSelecionado.NomeAbreviado != txtNomeAbreviado.Text.Trim())
+                    UsuarioSelecionado.NomeAbreviado = txtNomeAbreviado.Text.Trim();
+
+                if (UsuarioSelecionado.FK_Setor != (int)cboSetor.SelectedValue)
+                    UsuarioSelecionado.FK_Setor = (int)cboSetor.SelectedValue;
+
+                if (UsuarioSelecionado.FK_Cargo != (int)cboCargo.SelectedValue)
+                    UsuarioSelecionado.FK_Cargo = (int)cboCargo.SelectedValue;
+
+                if (UsuarioSelecionado.Email != txtEmail.Text.Trim())
+                    UsuarioSelecionado.Email = txtEmail.Text.Trim();
+
+                if (txtSenha.Text != "")
+                    UsuarioSelecionado.Senha = txtSenha.Text.Trim();
+
+                if (PK_Imagem > 1)
+                    UsuarioSelecionado.FK_Imagem = PK_Imagem;
+
+                var resultado = usuarioRepositorio.AtualizarDadosNaTabela(UsuarioSelecionado);
 
                 if (resultado)
                 {
-                    MessageBox.Show("Usuário cadastrado com sucesso!");
+                    MessageBox.Show("Usuário atualizado com sucesso!");
+
+                    //if (PK_Imagem == 1)
+                    //{
+                    //    MessageBox.Show("Imagem já existe em nossa base de dados e esta sendo utilizada por outro usuário.\n");
+                    //}
+
                     LimparComponetes();
+                    ObterUsuarioSelecionado();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao cadastrar usuário.\nErro: " + ex.Message);
+                MessageBox.Show("Erro ao atualizar dados do usuário.\nErro: " + ex.Message);
             }
         }
 

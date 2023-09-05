@@ -18,10 +18,12 @@ namespace EP.Data.Interfaces
         /// </summary>
         /// <param name="img">imagem que o usuario selecionou</param>
         /// <returns></returns>
-        public int SalvarImagem(Image img);
+        public int SalvarImagemNaBase(Image img);
         public Imagem ObterObjetoImagemPadrao();
         public Image ObterImagemPadrao();
         IEnumerable<Imagem> ObterTabela();
+        IEnumerable<Imagem> ObterObjetoImagem(Imagem imagem);
+        Image ObterApenasImagem(int FK_Imagem);
         bool InserirDadosNaTabela(Imagem imagem);
     }
 }

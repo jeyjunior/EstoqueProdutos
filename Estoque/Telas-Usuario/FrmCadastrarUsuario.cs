@@ -273,7 +273,7 @@ namespace Estoque.Telas_Usuario
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             var img = pcbImagemUsuario.Image;
-            int PK_Imagem = imagemRepositorio.SalvarImagem(img);
+            int PK_Imagem = imagemRepositorio.SalvarImagemNaBase(img);
 
             try
             {

@@ -54,6 +54,7 @@ namespace EP.Data.Repositorios
                 "   U.Email,\n" +
                 "   U.FK_Setor,\n" +
                 "   U.FK_Cargo,\n" +
+                "   U.FK_Imagem,\n" +
                 "   S.*,\n" +
                 "   C.*\n" +
                 "FROM Usuario U\n" +
@@ -93,6 +94,30 @@ namespace EP.Data.Repositorios
             }
         }
 
+        public virtual bool AtualizarDadosNaTabela(Usuario usuario)
+        {
+            using (SqlConnection connection = new SqlConnection(Conexao.ConexaoBase))
+            {
+                connection.Open();
+
+                string sql = "" +
+                    "UPDATE Usuario \n" +
+                    "SET NomeCompleto = @NomeCompleto, \n" +
+                    "    NomeAbreviado = @NomeAbreviado, \n" +
+                    "    FK_Setor = @FK_Setor, \n" +
+                    "    FK_Cargo = @FK_Cargo, \n" +
+                    "    Email = @Email, \n" +
+                    "    Senha = CASE WHEN @Senha IS NOT NULL AND @Senha <> 0 THEN @Senha ELSE Senha END, \n" +
+                    "    FK_Imagem = @FK_Imagem \n" +
+                    "WHERE PK_Usuario = @PK_Usuario\n"; // Supondo que PK_Usuario seja a chave primária
+
+                var resultado = connection.Execute(sql, usuario);
+                return Convert.ToBoolean(resultado);
+            }
+
+        }
+
+
         public bool ExcluirUsuario(Usuario usuario)
         {
             using (SqlConnection connection = new SqlConnection(Conexao.ConexaoBase))
@@ -100,8 +125,20 @@ namespace EP.Data.Repositorios
                 connection.Open();
 
                 string sql = "" +
+                    "DECLARE @ImagemID INT \n" +
+                    "SELECT @ImagemID = FK_Imagem \n" +
+                    "FROM Usuario \n" +
+                    "WHERE PK_Usuario = @PK_Usuario \n" +
+
+
                     "DELETE FROM Usuario\n" +
-                    "WHERE PK_Usuario = @PK_Usuario \n";
+                    "WHERE PK_Usuario = @PK_Usuario; \n" +
+
+                    "IF @ImagemID > 1 \n" +
+                    "BEGIN \n" +
+                    "   DELETE FROM Imagem  \n" +
+                    "   WHERE PK_Imagem = @ImagemID \n" +
+                    "END \n";
 
                 var resultado = connection.Execute(sql, usuario);
                 return Convert.ToBoolean(resultado);

@@ -336,7 +336,7 @@
             lblSenha.Name = "lblSenha";
             lblSenha.Size = new Size(191, 20);
             lblSenha.TabIndex = 19;
-            lblSenha.Text = "Senha:";
+            lblSenha.Text = "Nova Senha:";
             lblSenha.TextAlign = ContentAlignment.BottomLeft;
             // 
             // lblConfirmarEmail
@@ -504,7 +504,7 @@
             label1.Name = "label1";
             label1.Size = new Size(165, 22);
             label1.TabIndex = 25;
-            label1.Text = "Confirmar senha:";
+            label1.Text = "Confirmar nova senha:";
             label1.TextAlign = ContentAlignment.BottomLeft;
             // 
             // pcbValidacaoConfirmacaoSenha
