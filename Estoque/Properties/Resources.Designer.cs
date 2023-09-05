@@ -143,6 +143,16 @@ namespace Estoque.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap frameLogin {
+            get {
+                object obj = ResourceManager.GetObject("frameLogin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap new_outline_1 {
             get {
                 object obj = ResourceManager.GetObject("new_outline_1", resourceCulture);

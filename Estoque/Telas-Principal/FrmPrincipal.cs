@@ -70,6 +70,13 @@ namespace EstoqueProdutos.Telas_Principal
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
+            var telaSenha = new UCLogin();
+            this.Controls.Add(telaSenha);   
+
+            telaSenha.Show();
+            telaSenha.BringToFront();
+            telaSenha.Dock = DockStyle.Fill;
+
             InicializarConfiguracoes();
         }
 
@@ -81,7 +88,6 @@ namespace EstoqueProdutos.Telas_Principal
             //    pDireita.Size = new Size(200, pDireita.Size.Height);
             //else
             //    pDireita.Size = new Size(125, pDireita.Size.Height);
-
         }
 
         public void AbrirTelaPanelCentral<T>() where T : UserControl, new()
