@@ -17,32 +17,41 @@ namespace Estoque.Telas_Principal
             InitializeComponent();
         }
 
+        private bool salvarEmail;
+
         private void UCLogin_SizeChanged(object sender, EventArgs e)
         {
-            pCentral.Size = ObterTamanhoPanelCentral();
-
             int locX = Convert.ToInt32((this.Size.Width - pCentral.Width) / 2);
             int locY = Convert.ToInt32((this.Size.Height - pCentral.Height) / 2);
             pCentral.Location = new Point(locX, locY);
         }
 
-        private Size ObterTamanhoPanelCentral()
+        private void pcbCheckBoxEmail_Click(object sender, EventArgs e)
         {
-            int sizeX = 0;
-            int sizeY = 0;
-
-            if (this.Size.Width >= 1680)
+            if (salvarEmail)
             {
-                sizeX = 460;
-                sizeY = 660;
+                pcbCheckBoxEmail.Image = Properties.Resources.chk_uncheck_32x32;
             }
             else
             {
-                sizeX = 320;
-                sizeY = 460;
+                pcbCheckBoxEmail.Image = Properties.Resources.chk_checked_32x32;
             }
 
-            return new Size(sizeX, sizeY);
+            salvarEmail = !salvarEmail;
+        }
+
+        private void pcbCheckBoxSenha_Click(object sender, EventArgs e)
+        {
+            if (txtSenha.PasswordChar == 0)
+            {
+                txtSenha.PasswordChar = '*';
+                pcbCheckBoxSenha.Image = Properties.Resources.eyeBG_1;
+            }
+            else
+            {
+                pcbCheckBoxSenha.Image = Properties.Resources.eyeBG_2;
+                txtSenha.PasswordChar = '\0';
+            }
         }
     }
 }

@@ -121,8 +121,17 @@
   <data name="alert" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\alert.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="bgRetangularBranco_300x50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bgRetangularBranco_300x50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="cancel_outline_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cancel_outline_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="chk_checked_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\chk_checked_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="chk_uncheck_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\chk_uncheck_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="circulo_verde" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\circulo_verde.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,6 +145,12 @@
   <data name="erase_outline_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\erase_outline_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="eyeBG_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eyeBG_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="eyeBG_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eyeBG_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="eye_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\eye_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -144,6 +159,9 @@
   </data>
   <data name="frameLogin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\frameLogin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logoUCLogin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logoUCLogin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="new_outline_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\new_outline_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
