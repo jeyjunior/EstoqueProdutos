@@ -73,9 +73,69 @@ namespace Estoque.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AlertaBGAviso {
+            get {
+                object obj = ResourceManager.GetObject("AlertaBGAviso", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AlertaBGConfirmacao {
+            get {
+                object obj = ResourceManager.GetObject("AlertaBGConfirmacao", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AlertaBGErro {
+            get {
+                object obj = ResourceManager.GetObject("AlertaBGErro", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AlertaBGInformacao {
+            get {
+                object obj = ResourceManager.GetObject("AlertaBGInformacao", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bgMensagem {
+            get {
+                object obj = ResourceManager.GetObject("bgMensagem", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bgRetangularBranco_300x50 {
             get {
                 object obj = ResourceManager.GetObject("bgRetangularBranco_300x50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bgRetangularVermelho_300x50 {
+            get {
+                object obj = ResourceManager.GetObject("bgRetangularVermelho_300x50", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

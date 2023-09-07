@@ -1,4 +1,7 @@
-﻿using System;
+﻿using EP.Data.Interfaces;
+using Estoque.GerenciamentoTelas;
+using EstoqueProdutos.Gerenciamento;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +15,12 @@ namespace Estoque.Telas_Principal
 {
     public partial class UCLogin : UserControl
     {
+        private readonly IUsuarioRepositorio usuarioRepositorio;
         public UCLogin()
         {
             InitializeComponent();
+
+            usuarioRepositorio = DIRepositorios.Container.GetInstance<IUsuarioRepositorio>();
         }
 
         private bool salvarEmail;
@@ -51,6 +57,44 @@ namespace Estoque.Telas_Principal
             {
                 pcbCheckBoxSenha.Image = Properties.Resources.eyeBG_2;
                 txtSenha.PasswordChar = '\0';
+            }
+        }
+
+        private void btnEntrar_Click(object sender, EventArgs e)
+        {
+            if (txtEmail.Text.Length == 0 || txtSenha.Text.Length == 0)
+            {
+                Alerta.Erro("Email ou senha inválido!");
+                return;
+            }
+
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+
+                var resultado = usuarioRepositorio.ObterUsuario(new EP.Data.Entidades.Usuario
+                {
+                    Email = txtEmail.Text.Trim(),
+                });
+
+                if (resultado != null)
+                {
+                    if (txtSenha.Text.Equals(resultado.Select(s => s.Senha).FirstOrDefault()))
+                    {
+                        Alerta.Confirmacao("Bem vindo!");
+                        this.Dispose();
+                    }
+                    else
+                    {
+                        Alerta.Erro("Senha inválida!");
+                    }
+                }
+
+                Cursor.Current = Cursors.Default;
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
     }

@@ -28,27 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             pcbBGLogin = new PictureBox();
             pCentral = new Panel();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            pictureBox1 = new PictureBox();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            button1 = new Button();
-            tableLayoutPanel2 = new TableLayoutPanel();
+            tlpPrincipal = new TableLayoutPanel();
+            pcbLogo = new PictureBox();
+            lblNomeEmpresa = new Label();
+            lblEmail = new Label();
+            lblSenha = new Label();
+            btnEntrar = new Button();
+            tblSenha = new TableLayoutPanel();
             pcbCheckBoxSenha = new PictureBox();
             txtSenha = new TextBox();
-            tableLayoutPanel3 = new TableLayoutPanel();
+            tblEmail = new TableLayoutPanel();
             pcbCheckBoxEmail = new PictureBox();
             txtEmail = new TextBox();
+            timer1 = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)pcbBGLogin).BeginInit();
             pCentral.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            tableLayoutPanel2.SuspendLayout();
+            tlpPrincipal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pcbLogo).BeginInit();
+            tblSenha.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pcbCheckBoxSenha).BeginInit();
-            tableLayoutPanel3.SuspendLayout();
+            tblEmail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pcbCheckBoxEmail).BeginInit();
             SuspendLayout();
             // 
@@ -65,140 +67,141 @@
             // 
             // pCentral
             // 
-            pCentral.Controls.Add(tableLayoutPanel1);
+            pCentral.Controls.Add(tlpPrincipal);
             pCentral.Controls.Add(pcbBGLogin);
             pCentral.Location = new Point(277, 105);
             pCentral.Name = "pCentral";
             pCentral.Size = new Size(410, 566);
             pCentral.TabIndex = 1;
             // 
-            // tableLayoutPanel1
+            // tlpPrincipal
             // 
-            tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel1.BackColor = Color.FromArgb(80, 90, 100);
-            tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 9.090908F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 81.81818F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 9.090908F));
-            tableLayoutPanel1.Controls.Add(pictureBox1, 1, 0);
-            tableLayoutPanel1.Controls.Add(label1, 1, 1);
-            tableLayoutPanel1.Controls.Add(label2, 1, 3);
-            tableLayoutPanel1.Controls.Add(label3, 1, 6);
-            tableLayoutPanel1.Controls.Add(button1, 1, 9);
-            tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 1, 7);
-            tableLayoutPanel1.Controls.Add(tableLayoutPanel3, 1, 4);
-            tableLayoutPanel1.Location = new Point(16, 43);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 10;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 32.6727753F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 13.043478F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 5F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10.3864737F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 9.931004F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 6.95170259F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 9.931004F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 16.8827057F));
-            tableLayoutPanel1.Size = new Size(378, 454);
-            tableLayoutPanel1.TabIndex = 1;
+            tlpPrincipal.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tlpPrincipal.BackColor = Color.FromArgb(80, 90, 100);
+            tlpPrincipal.ColumnCount = 3;
+            tlpPrincipal.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 9.090908F));
+            tlpPrincipal.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 81.81818F));
+            tlpPrincipal.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 9.090908F));
+            tlpPrincipal.Controls.Add(pcbLogo, 1, 0);
+            tlpPrincipal.Controls.Add(lblNomeEmpresa, 1, 1);
+            tlpPrincipal.Controls.Add(lblEmail, 1, 3);
+            tlpPrincipal.Controls.Add(lblSenha, 1, 6);
+            tlpPrincipal.Controls.Add(btnEntrar, 1, 9);
+            tlpPrincipal.Controls.Add(tblSenha, 1, 7);
+            tlpPrincipal.Controls.Add(tblEmail, 1, 4);
+            tlpPrincipal.Location = new Point(16, 43);
+            tlpPrincipal.Name = "tlpPrincipal";
+            tlpPrincipal.RowCount = 10;
+            tlpPrincipal.RowStyles.Add(new RowStyle(SizeType.Percent, 32.6727753F));
+            tlpPrincipal.RowStyles.Add(new RowStyle(SizeType.Percent, 13.043478F));
+            tlpPrincipal.RowStyles.Add(new RowStyle(SizeType.Absolute, 5F));
+            tlpPrincipal.RowStyles.Add(new RowStyle(SizeType.Percent, 10.3864737F));
+            tlpPrincipal.RowStyles.Add(new RowStyle(SizeType.Percent, 9.931004F));
+            tlpPrincipal.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
+            tlpPrincipal.RowStyles.Add(new RowStyle(SizeType.Percent, 6.95170259F));
+            tlpPrincipal.RowStyles.Add(new RowStyle(SizeType.Percent, 9.931004F));
+            tlpPrincipal.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
+            tlpPrincipal.RowStyles.Add(new RowStyle(SizeType.Percent, 16.8827057F));
+            tlpPrincipal.Size = new Size(378, 454);
+            tlpPrincipal.TabIndex = 1;
             // 
-            // pictureBox1
+            // pcbLogo
             // 
-            pictureBox1.Dock = DockStyle.Fill;
-            pictureBox1.Image = Properties.Resources.logoUCLogin;
-            pictureBox1.Location = new Point(37, 3);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(303, 129);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
+            pcbLogo.Dock = DockStyle.Fill;
+            pcbLogo.Image = Properties.Resources.logoUCLogin;
+            pcbLogo.Location = new Point(37, 3);
+            pcbLogo.Name = "pcbLogo";
+            pcbLogo.Size = new Size(303, 125);
+            pcbLogo.SizeMode = PictureBoxSizeMode.StretchImage;
+            pcbLogo.TabIndex = 1;
+            pcbLogo.TabStop = false;
             // 
-            // label1
+            // lblNomeEmpresa
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Dock = DockStyle.Fill;
-            label1.Font = new Font("Verdana", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = SystemColors.Control;
-            label1.Location = new Point(34, 135);
-            label1.Margin = new Padding(0);
-            label1.Name = "label1";
-            label1.Size = new Size(309, 54);
-            label1.TabIndex = 2;
-            label1.Text = "JeyJr Tech";
-            label1.TextAlign = ContentAlignment.TopCenter;
+            lblNomeEmpresa.AutoSize = true;
+            lblNomeEmpresa.BackColor = Color.Transparent;
+            lblNomeEmpresa.Dock = DockStyle.Fill;
+            lblNomeEmpresa.Font = new Font("Verdana", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            lblNomeEmpresa.ForeColor = SystemColors.Control;
+            lblNomeEmpresa.Location = new Point(34, 131);
+            lblNomeEmpresa.Margin = new Padding(0);
+            lblNomeEmpresa.Name = "lblNomeEmpresa";
+            lblNomeEmpresa.Size = new Size(309, 52);
+            lblNomeEmpresa.TabIndex = 2;
+            lblNomeEmpresa.Text = "JeyJr Tech";
+            lblNomeEmpresa.TextAlign = ContentAlignment.TopCenter;
             // 
-            // label2
+            // lblEmail
             // 
-            label2.BackColor = Color.FromArgb(80, 90, 100);
-            label2.Dock = DockStyle.Fill;
-            label2.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.ForeColor = SystemColors.Control;
-            label2.Location = new Point(37, 194);
-            label2.Name = "label2";
-            label2.Padding = new Padding(0, 0, 0, 5);
-            label2.Size = new Size(303, 43);
-            label2.TabIndex = 3;
-            label2.Text = "Email";
-            label2.TextAlign = ContentAlignment.BottomCenter;
+            lblEmail.BackColor = Color.FromArgb(80, 90, 100);
+            lblEmail.Dock = DockStyle.Fill;
+            lblEmail.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblEmail.ForeColor = SystemColors.Control;
+            lblEmail.Location = new Point(37, 188);
+            lblEmail.Name = "lblEmail";
+            lblEmail.Padding = new Padding(0, 0, 0, 5);
+            lblEmail.Size = new Size(303, 41);
+            lblEmail.TabIndex = 3;
+            lblEmail.Text = "Email";
+            lblEmail.TextAlign = ContentAlignment.BottomCenter;
             // 
-            // label3
+            // lblSenha
             // 
-            label3.BackColor = Color.FromArgb(80, 90, 100);
-            label3.Dock = DockStyle.Fill;
-            label3.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.ForeColor = SystemColors.Control;
-            label3.Location = new Point(37, 288);
-            label3.Name = "label3";
-            label3.Padding = new Padding(0, 0, 0, 5);
-            label3.Size = new Size(303, 28);
-            label3.TabIndex = 4;
-            label3.Text = "Senha";
-            label3.TextAlign = ContentAlignment.BottomCenter;
+            lblSenha.BackColor = Color.FromArgb(80, 90, 100);
+            lblSenha.Dock = DockStyle.Fill;
+            lblSenha.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblSenha.ForeColor = SystemColors.Control;
+            lblSenha.Location = new Point(37, 278);
+            lblSenha.Name = "lblSenha";
+            lblSenha.Padding = new Padding(0, 0, 0, 5);
+            lblSenha.Size = new Size(303, 27);
+            lblSenha.TabIndex = 4;
+            lblSenha.Text = "Senha";
+            lblSenha.TextAlign = ContentAlignment.BottomCenter;
             // 
-            // button1
+            // btnEntrar
             // 
-            button1.BackColor = SystemColors.Control;
-            button1.BackgroundImageLayout = ImageLayout.Stretch;
-            button1.Dock = DockStyle.Fill;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.Font = new Font("Verdana", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.ForeColor = Color.FromArgb(80, 90, 100);
-            button1.Location = new Point(37, 385);
-            button1.Name = "button1";
-            button1.Size = new Size(303, 66);
-            button1.TabIndex = 7;
-            button1.Text = "ENTRAR";
-            button1.UseVisualStyleBackColor = false;
+            btnEntrar.BackColor = SystemColors.Control;
+            btnEntrar.BackgroundImageLayout = ImageLayout.Stretch;
+            btnEntrar.Dock = DockStyle.Fill;
+            btnEntrar.FlatAppearance.BorderSize = 0;
+            btnEntrar.Font = new Font("Verdana", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnEntrar.ForeColor = Color.FromArgb(80, 90, 100);
+            btnEntrar.Location = new Point(37, 385);
+            btnEntrar.Name = "btnEntrar";
+            btnEntrar.Size = new Size(303, 66);
+            btnEntrar.TabIndex = 7;
+            btnEntrar.Text = "ENTRAR";
+            btnEntrar.UseVisualStyleBackColor = false;
+            btnEntrar.Click += btnEntrar_Click;
             // 
-            // tableLayoutPanel2
+            // tblSenha
             // 
-            tableLayoutPanel2.BackColor = Color.Transparent;
-            tableLayoutPanel2.BackgroundImage = Properties.Resources.bgRetangularBranco_300x50;
-            tableLayoutPanel2.BackgroundImageLayout = ImageLayout.Stretch;
-            tableLayoutPanel2.ColumnCount = 2;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 90F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
-            tableLayoutPanel2.Controls.Add(pcbCheckBoxSenha, 1, 0);
-            tableLayoutPanel2.Controls.Add(txtSenha, 0, 0);
-            tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(34, 316);
-            tableLayoutPanel2.Margin = new Padding(0);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.Padding = new Padding(5);
-            tableLayoutPanel2.RowCount = 1;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(309, 41);
-            tableLayoutPanel2.TabIndex = 8;
+            tblSenha.BackColor = Color.Transparent;
+            tblSenha.BackgroundImage = Properties.Resources.bgRetangularBranco_300x50;
+            tblSenha.BackgroundImageLayout = ImageLayout.Stretch;
+            tblSenha.ColumnCount = 2;
+            tblSenha.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 90F));
+            tblSenha.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tblSenha.Controls.Add(pcbCheckBoxSenha, 1, 0);
+            tblSenha.Controls.Add(txtSenha, 0, 0);
+            tblSenha.Dock = DockStyle.Fill;
+            tblSenha.Location = new Point(34, 305);
+            tblSenha.Margin = new Padding(0);
+            tblSenha.Name = "tblSenha";
+            tblSenha.Padding = new Padding(5);
+            tblSenha.RowCount = 1;
+            tblSenha.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tblSenha.Size = new Size(309, 39);
+            tblSenha.TabIndex = 8;
             // 
             // pcbCheckBoxSenha
             // 
             pcbCheckBoxSenha.BackColor = Color.Transparent;
             pcbCheckBoxSenha.Cursor = Cursors.Hand;
             pcbCheckBoxSenha.Image = Properties.Resources.eyeBG_1;
-            pcbCheckBoxSenha.Location = new Point(279, 15);
-            pcbCheckBoxSenha.Margin = new Padding(5, 10, 0, 0);
+            pcbCheckBoxSenha.Location = new Point(279, 12);
+            pcbCheckBoxSenha.Margin = new Padding(5, 7, 0, 0);
             pcbCheckBoxSenha.Name = "pcbCheckBoxSenha";
             pcbCheckBoxSenha.Size = new Size(22, 14);
             pcbCheckBoxSenha.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -217,25 +220,25 @@
             txtSenha.Size = new Size(263, 25);
             txtSenha.TabIndex = 6;
             // 
-            // tableLayoutPanel3
+            // tblEmail
             // 
-            tableLayoutPanel3.BackColor = Color.Transparent;
-            tableLayoutPanel3.BackgroundImage = Properties.Resources.bgRetangularBranco_300x50;
-            tableLayoutPanel3.BackgroundImageLayout = ImageLayout.Stretch;
-            tableLayoutPanel3.ColumnCount = 2;
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 90F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
-            tableLayoutPanel3.Controls.Add(pcbCheckBoxEmail, 1, 0);
-            tableLayoutPanel3.Controls.Add(txtEmail, 0, 0);
-            tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(34, 237);
-            tableLayoutPanel3.Margin = new Padding(0);
-            tableLayoutPanel3.Name = "tableLayoutPanel3";
-            tableLayoutPanel3.Padding = new Padding(5);
-            tableLayoutPanel3.RowCount = 1;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel3.Size = new Size(309, 41);
-            tableLayoutPanel3.TabIndex = 9;
+            tblEmail.BackColor = Color.Transparent;
+            tblEmail.BackgroundImage = Properties.Resources.bgRetangularBranco_300x50;
+            tblEmail.BackgroundImageLayout = ImageLayout.Stretch;
+            tblEmail.ColumnCount = 2;
+            tblEmail.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 90F));
+            tblEmail.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tblEmail.Controls.Add(pcbCheckBoxEmail, 1, 0);
+            tblEmail.Controls.Add(txtEmail, 0, 0);
+            tblEmail.Dock = DockStyle.Fill;
+            tblEmail.Location = new Point(34, 229);
+            tblEmail.Margin = new Padding(0);
+            tblEmail.Name = "tblEmail";
+            tblEmail.Padding = new Padding(5);
+            tblEmail.RowCount = 1;
+            tblEmail.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tblEmail.Size = new Size(309, 39);
+            tblEmail.TabIndex = 9;
             // 
             // pcbCheckBoxEmail
             // 
@@ -272,14 +275,14 @@
             SizeChanged += UCLogin_SizeChanged;
             ((System.ComponentModel.ISupportInitialize)pcbBGLogin).EndInit();
             pCentral.ResumeLayout(false);
-            tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            tableLayoutPanel2.ResumeLayout(false);
-            tableLayoutPanel2.PerformLayout();
+            tlpPrincipal.ResumeLayout(false);
+            tlpPrincipal.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pcbLogo).EndInit();
+            tblSenha.ResumeLayout(false);
+            tblSenha.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pcbCheckBoxSenha).EndInit();
-            tableLayoutPanel3.ResumeLayout(false);
-            tableLayoutPanel3.PerformLayout();
+            tblEmail.ResumeLayout(false);
+            tblEmail.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pcbCheckBoxEmail).EndInit();
             ResumeLayout(false);
         }
@@ -288,17 +291,18 @@
 
         private PictureBox pcbBGLogin;
         private Panel pCentral;
-        private Label label1;
-        private PictureBox pictureBox1;
+        private Label lblNomeEmpresa;
+        private PictureBox pcbLogo;
         private TextBox txtSenha;
-        private Label label3;
-        private Label label2;
-        private TableLayoutPanel tableLayoutPanel1;
-        private Button button1;
-        private TableLayoutPanel tableLayoutPanel2;
-        private TableLayoutPanel tableLayoutPanel3;
+        private Label lblSenha;
+        private Label lblEmail;
+        private TableLayoutPanel tlpPrincipal;
+        private Button btnEntrar;
+        private TableLayoutPanel tblSenha;
+        private TableLayoutPanel tblEmail;
         private TextBox txtEmail;
         private PictureBox pcbCheckBoxEmail;
         private PictureBox pcbCheckBoxSenha;
+        private System.Windows.Forms.Timer timer1;
     }
 }

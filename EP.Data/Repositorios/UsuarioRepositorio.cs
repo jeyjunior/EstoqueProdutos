@@ -26,6 +26,39 @@ namespace EP.Data.Repositorios
             }
         }
 
+        public virtual IEnumerable<Usuario> ObterUsuario(Usuario usuarioParametros)
+        {
+            string sql = "";
+            string where = "WHERE ";
+            string condicao = "";
+
+            sql = "SELECT TOP 1\n" +
+                "   U.*,\n" +
+                "   S.*,\n" +
+                "   C.*\n" +
+                "FROM Usuario U\n" +
+                "INNER JOIN Setor S ON S.PK_Setor = U.FK_Setor\n" +
+                "INNER JOIN Cargo C ON C.PK_Cargo = U.FK_Cargo\n" +
+
+                "WHERE U.Email = @Email ";
+
+            using (SqlConnection connection = new SqlConnection(Conexao.ConexaoBase))
+            {
+                connection.Open();
+                return connection.Query<Usuario, Setor, Cargo, Usuario>(
+                    sql: sql,
+                    map: (usuario, setor, cargo) =>
+                    {
+                        usuario.Setor = setor;
+                        usuario.Cargo = cargo;
+
+                        return usuario;
+                    },
+                    usuarioParametros,
+                    splitOn: "PK_Usuario, PK_Setor, PK_Cargo");
+            }
+        }
+
         public virtual IEnumerable<Usuario> ObterTabelaFiltroTelaUsuarios(Usuario usuarioParametros) 
         {
             string sql = "";
@@ -46,6 +79,8 @@ namespace EP.Data.Repositorios
             {
                 condicao += (condicao != "" ? " AND" : "") + " U.FK_Cargo = @FK_Cargo\n";
             }
+
+
 
             sql = "SELECT\n" +
                 "   U.PK_Usuario,\n" +

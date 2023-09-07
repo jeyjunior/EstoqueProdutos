@@ -31,9 +31,17 @@ namespace Estoque.Enums
 
     public enum ModoCRUD
     {
-        select,
-        insert,
-        update,
-        delete
+        Select,
+        Insert,
+        Update,
+        Delete
+    }
+
+    public enum Alertas
+    {
+        Erro,
+        Aviso,
+        Confirmacao,
+        Informacao
     }
 }

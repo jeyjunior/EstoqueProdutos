@@ -32,7 +32,7 @@ namespace Estoque.Telas_Usuario
         #endregion Objetos
 
         #region Propriedades
-        private ModoCRUD modoCRUD = ModoCRUD.select;
+        private ModoCRUD modoCRUD = ModoCRUD.Select;
         #endregion Propriedades
 
         public UCSetor()
@@ -93,7 +93,7 @@ namespace Estoque.Telas_Usuario
             txtSetor.Text = "";
             txtSetor.Enabled = true;
 
-            modoCRUD = ModoCRUD.select;
+            modoCRUD = ModoCRUD.Select;
             botoesEdicaoSimples.Layout(ModoBotoes.Inicial);
 
             PesquisarSetores();
@@ -257,14 +257,14 @@ namespace Estoque.Telas_Usuario
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             botoesEdicaoSimples.Layout(ModoBotoes.Edicao);
-            modoCRUD = ModoCRUD.update;
+            modoCRUD = ModoCRUD.Update;
 
             SelecionarSetor();
         }
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             botoesEdicaoSimples.Layout(ModoBotoes.Edicao);
-            modoCRUD = ModoCRUD.insert;
+            modoCRUD = ModoCRUD.Insert;
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -282,7 +282,7 @@ namespace Estoque.Telas_Usuario
         }
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            if (modoCRUD == ModoCRUD.select)
+            if (modoCRUD == ModoCRUD.Select)
             {
                 PesquisarSetores();
             }
@@ -297,13 +297,13 @@ namespace Estoque.Telas_Usuario
 
             switch (modoCRUD)
             {
-                case ModoCRUD.insert:
+                case ModoCRUD.Insert:
                     CadastrarNovoSetor();
                     break;
-                case ModoCRUD.update:
+                case ModoCRUD.Update:
                     AlterarSetorSelecionado();
                     break;
-                case ModoCRUD.delete:
+                case ModoCRUD.Delete:
                     ExcluirSetorSelecionado();
                     break;
             }
