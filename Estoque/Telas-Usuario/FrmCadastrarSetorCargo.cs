@@ -48,13 +48,13 @@ namespace Estoque.Telas_Usuario
         private void btnSetor_Click(object sender, EventArgs e)
         {
             AlterarCorDoBotaoSelecionado((Button)sender);
-            AbrirTela(typeof(UCSetor), pnCentral);
+            AbrirTela(typeof(UCSetor), pnCentral ,true);
         }
 
         private void btnCargo_Click(object sender, EventArgs e)
         {
             AlterarCorDoBotaoSelecionado((Button)sender);
-            AbrirTela(typeof(UCCargo), pnCentral);
+            AbrirTela(typeof(UCCargo), pnCentral, true);
         }
 
         private void AlterarCorDoBotaoSelecionado(Button botaoAtivo)

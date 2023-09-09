@@ -272,6 +272,7 @@
             Controls.Add(pCentral);
             Name = "UCLogin";
             Size = new Size(1366, 768);
+            Load += UCLogin_Load;
             SizeChanged += UCLogin_SizeChanged;
             ((System.ComponentModel.ISupportInitialize)pcbBGLogin).EndInit();
             pCentral.ResumeLayout(false);

@@ -263,6 +263,46 @@ namespace Estoque.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icone_Produto_24x {
+            get {
+                object obj = ResourceManager.GetObject("icone-Produto-24x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icone_Produto_line_24x {
+            get {
+                object obj = ResourceManager.GetObject("icone-Produto-line-24x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icone_Usuario_24x {
+            get {
+                object obj = ResourceManager.GetObject("icone-Usuario-24x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icone_Usuario_line_24x {
+            get {
+                object obj = ResourceManager.GetObject("icone-Usuario-line-24x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logoUCLogin {
             get {
                 object obj = ResourceManager.GetObject("logoUCLogin", resourceCulture);
@@ -286,46 +326,6 @@ namespace Estoque.Properties {
         internal static System.Drawing.Bitmap new_outline_2 {
             get {
                 object obj = ResourceManager.GetObject("new_outline_2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap produto_18x {
-            get {
-                object obj = ResourceManager.GetObject("produto_18x", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap produto_24x {
-            get {
-                object obj = ResourceManager.GetObject("produto_24x", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap produto_32x {
-            get {
-                object obj = ResourceManager.GetObject("produto_32x", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap produto_38x {
-            get {
-                object obj = ResourceManager.GetObject("produto_38x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

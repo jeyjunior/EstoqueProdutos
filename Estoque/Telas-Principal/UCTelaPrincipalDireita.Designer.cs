@@ -67,9 +67,8 @@
             tblDireita.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tblDireita.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tblDireita.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tblDireita.Size = new Size(125, 495);
+            tblDireita.Size = new Size(160, 495);
             tblDireita.TabIndex = 5;
-            tblDireita.Resize += tblDireita_Resize;
             // 
             // button12
             // 
@@ -78,7 +77,7 @@
             button12.FlatStyle = FlatStyle.Flat;
             button12.Location = new Point(3, 393);
             button12.Name = "button12";
-            button12.Size = new Size(119, 99);
+            button12.Size = new Size(154, 99);
             button12.TabIndex = 28;
             button12.UseVisualStyleBackColor = false;
             button12.Visible = false;
@@ -89,14 +88,18 @@
             btnUsuario.Dock = DockStyle.Fill;
             btnUsuario.FlatAppearance.BorderSize = 0;
             btnUsuario.FlatStyle = FlatStyle.Flat;
-            btnUsuario.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnUsuario.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnUsuario.ForeColor = Color.White;
+            btnUsuario.Image = Properties.Resources.icone_Usuario_line_24x;
+            btnUsuario.ImageAlign = ContentAlignment.MiddleLeft;
             btnUsuario.Location = new Point(0, 60);
             btnUsuario.Margin = new Padding(0);
             btnUsuario.Name = "btnUsuario";
-            btnUsuario.Size = new Size(125, 30);
+            btnUsuario.Padding = new Padding(5, 0, 0, 0);
+            btnUsuario.Size = new Size(160, 30);
             btnUsuario.TabIndex = 3;
             btnUsuario.Text = "Usuário";
+            btnUsuario.TextAlign = ContentAlignment.MiddleLeft;
             btnUsuario.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnUsuario.UseVisualStyleBackColor = true;
             btnUsuario.Click += btnUsuario_Click;
@@ -107,19 +110,19 @@
             btnProduto.Dock = DockStyle.Fill;
             btnProduto.FlatAppearance.BorderSize = 0;
             btnProduto.FlatStyle = FlatStyle.Flat;
-            btnProduto.Font = new Font("Verdana", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnProduto.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnProduto.ForeColor = Color.White;
-            btnProduto.Image = Properties.Resources.produto_18x;
+            btnProduto.Image = Properties.Resources.icone_Produto_line_24x;
             btnProduto.ImageAlign = ContentAlignment.MiddleLeft;
             btnProduto.Location = new Point(0, 30);
             btnProduto.Margin = new Padding(0);
             btnProduto.Name = "btnProduto";
-            btnProduto.Padding = new Padding(15, 0, 0, 0);
+            btnProduto.Padding = new Padding(5, 0, 0, 0);
             btnProduto.RightToLeft = RightToLeft.No;
-            btnProduto.Size = new Size(125, 30);
+            btnProduto.Size = new Size(160, 30);
             btnProduto.TabIndex = 1;
-            btnProduto.Text = " Produto";
-            btnProduto.TextAlign = ContentAlignment.MiddleRight;
+            btnProduto.Text = "Produto";
+            btnProduto.TextAlign = ContentAlignment.MiddleLeft;
             btnProduto.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnProduto.UseVisualStyleBackColor = true;
             btnProduto.Click += btnProduto_Click;
@@ -131,7 +134,7 @@
             BackColor = Color.FromArgb(60, 75, 85);
             Controls.Add(tblDireita);
             Name = "UCTelaPrincipalDireita";
-            Size = new Size(125, 495);
+            Size = new Size(160, 495);
             Load += UCTelaPrincipalDireita_Load;
             tblDireita.ResumeLayout(false);
             ResumeLayout(false);

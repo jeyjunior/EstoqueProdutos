@@ -178,6 +178,18 @@
   <data name="frameLogin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\frameLogin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icone-Produto-24x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone-Produto-24x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone-Produto-line-24x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone-Produto-line-24x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone-Usuario-24x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone-Usuario-24x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icone-Usuario-line-24x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icone-Usuario-line-24x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="logoUCLogin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logoUCLogin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -186,18 +198,6 @@
   </data>
   <data name="new_outline_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\new_outline_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="produto_18x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\produto_18x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="produto_24x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\produto_24x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="produto_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\produto_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="produto_38x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\produto_38x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="save_outline_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\save_outline_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

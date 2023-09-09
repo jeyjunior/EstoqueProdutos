@@ -14,33 +14,26 @@ namespace Estoque.Telas_Base
     public partial class FrmGerenciadorDeTelas : FrmBase
     {
         protected List<UserControl> telasInstanciadas = new List<UserControl>();
-        protected Panel panelCentralGerenciador;
+        //protected Control panelCentralGerenciador;
 
         public FrmGerenciadorDeTelas()
         {
             InitializeComponent();
         }
 
-        protected virtual void AbrirTela<T>(Panel panelCentral = null) where T : UserControl,  new()
+        protected virtual void AbrirTela<T>(Control control) where T : UserControl,  new()
         {
             try
             {
-                this.panelCentralGerenciador = panelCentral;
-
-                if (this.panelCentralGerenciador == null)
-                {
-                    throw new Exception("O painel central não foi fornecido.");
-                }
-
                 Type tipoT = typeof(T);
                 UserControl? telaEncontrada = telasInstanciadas.FirstOrDefault(f => f.GetType() == tipoT);
 
                 if (telaEncontrada != null)
                 {
-                    if (!this.panelCentralGerenciador.Controls.Contains(telaEncontrada))
+                    if (!control.Controls.Contains(telaEncontrada))
                     {
-                        this.panelCentralGerenciador.Controls.Clear();
-                        this.panelCentralGerenciador.Controls.Add(telaEncontrada);
+                        control.Controls.Clear();
+                        control.Controls.Add(telaEncontrada);
                         return;
                     }
                 }
@@ -49,8 +42,8 @@ namespace Estoque.Telas_Base
                     var telaNova = new T();
                     telasInstanciadas.Add(telaNova);
 
-                    this.panelCentralGerenciador.Controls.Clear();
-                    this.panelCentralGerenciador.Controls.Add(telaNova);
+                    control.Controls.Clear();
+                    control.Controls.Add(telaNova);
                     telaNova.Show();
                 }
             }
@@ -60,25 +53,20 @@ namespace Estoque.Telas_Base
             }
         }
 
-        protected virtual void AbrirTela(Type userControlType, Panel panelCentral = null)
+        protected virtual void AbrirTela(Type userControlType, Control control, bool clearControl = false)
         {
             try
             {
-                this.panelCentralGerenciador = panelCentral;
-
-                if (this.panelCentralGerenciador == null)
-                {
-                    throw new Exception("O painel central não foi fornecido.");
-                }
-
                 UserControl? telaEncontrada = telasInstanciadas.FirstOrDefault(f => f.GetType() == userControlType);
-
                 telasInstanciadas.ForEach(f => f.Visible = false);
+                
+                if(clearControl)
+                    control.Controls.Clear();
+
 
                 if (telaEncontrada != null)
                 {
-                    this.panelCentralGerenciador.Controls.Clear();
-                    this.panelCentralGerenciador.Controls.Add(telaEncontrada);
+                    control.Controls.Add(telaEncontrada);
                     telaEncontrada.Visible = true;
                 }
                 else
@@ -86,8 +74,7 @@ namespace Estoque.Telas_Base
                     UserControl newUserControl = (UserControl)Activator.CreateInstance(userControlType);
                     telasInstanciadas.Add(newUserControl);
 
-                    this.panelCentralGerenciador.Controls.Clear();
-                    this.panelCentralGerenciador.Controls.Add(newUserControl);
+                    control.Controls.Add(newUserControl);
                     newUserControl.Show();
                     newUserControl.Visible = true;
                 }
@@ -98,5 +85,19 @@ namespace Estoque.Telas_Base
             }
         }
 
+        protected virtual void AbrirTela(Type userControlType, Control control, bool bringToFront = false, EventHandler eDisposed = null)
+        {
+            AbrirTela(userControlType, control, false);
+
+            if(eDisposed != null)
+            {
+                UserControl? telaEncontrada = telasInstanciadas.FirstOrDefault(f => f.GetType() == userControlType);
+
+                if (bringToFront)
+                    telaEncontrada.BringToFront();
+
+                telaEncontrada.Disposed += eDisposed;
+            }
+        }
     }
 }

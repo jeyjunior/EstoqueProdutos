@@ -1,5 +1,6 @@
 ﻿using EP.Data.Interfaces;
 using Estoque.GerenciamentoTelas;
+using Estoque.Interfaces;
 using EstoqueProdutos.Gerenciamento;
 using System;
 using System.Collections.Generic;
@@ -13,14 +14,16 @@ using System.Windows.Forms;
 
 namespace Estoque.Telas_Principal
 {
-    public partial class UCLogin : UserControl
+    public partial class UCLogin : Estoque.Telas_Base.UCBase
     {
         private readonly IUsuarioRepositorio usuarioRepositorio;
+        private readonly IUsuarioLogado usuarioLogado;
         public UCLogin()
         {
             InitializeComponent();
-
+            AtualizarPropriedades();
             usuarioRepositorio = DIRepositorios.Container.GetInstance<IUsuarioRepositorio>();
+            usuarioLogado = DITelas.Container.GetInstance<IUsuarioLogado>();
         }
 
         private bool salvarEmail;
@@ -62,9 +65,17 @@ namespace Estoque.Telas_Principal
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            if (txtEmail.Text.Length == 0 || txtSenha.Text.Length == 0)
+            if (txtEmail.Text.Length == 0)
             {
-                Alerta.Erro("Email ou senha inválido!");
+                Alerta.Erro("Campo email é obrigatório!");
+                txtEmail.Focus();
+                return;
+            }
+
+            if (txtSenha.Text.Length == 0)
+            {
+                Alerta.Erro("Campo senha é obrigatório!");
+                txtSenha.Focus();
                 return;
             }
 
@@ -72,16 +83,18 @@ namespace Estoque.Telas_Principal
             {
                 Cursor.Current = Cursors.WaitCursor;
 
-                var resultado = usuarioRepositorio.ObterUsuario(new EP.Data.Entidades.Usuario
+                var usuario = usuarioRepositorio.ObterUsuario(new EP.Data.Entidades.Usuario
                 {
                     Email = txtEmail.Text.Trim(),
-                });
+                })
+                .FirstOrDefault();
 
-                if (resultado != null)
+                if (usuario != null)
                 {
-                    if (txtSenha.Text.Equals(resultado.Select(s => s.Senha).FirstOrDefault()))
+                    if (txtSenha.Text.Equals(usuario.Senha))
                     {
                         Alerta.Confirmacao("Bem vindo!");
+                        usuarioLogado.AtribuirUsuario(usuario);
                         this.Dispose();
                     }
                     else
@@ -96,6 +109,12 @@ namespace Estoque.Telas_Principal
             {
                 throw;
             }
+        }
+
+        private void UCLogin_Load(object sender, EventArgs e)
+        {
+            txtEmail.Text = "josejunior@teste.com";
+            txtSenha.Text = "adm123";
         }
     }
 }

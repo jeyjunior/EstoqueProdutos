@@ -22,12 +22,12 @@ namespace EstoqueProdutos.Telas_Principal
 {
     public partial class FrmPrincipal : Estoque.Telas_Base.FrmGerenciadorDeTelas, IFrmPrincipal
     {
-        #region Classes
-        private readonly IUCTelaPrincipalBaixo uCPrincipalBot;
-        private readonly IUCTelaPrincipalCima uCPrincipalTop;
-        private readonly IUCTelaPrincipalDireita uCPrincipalRight;
+        #region Interfaces
+        private readonly IUCTelaPrincipalBaixo uCPrincipalBaixo;
+        private readonly IUCTelaPrincipalCima uCPrincipalCima;
+        private readonly IUCTelaPrincipalDireita uCPrincipalDireita;
         private readonly IImagemRepositorio imagemRepositorio;
-        #endregion Classes
+        #endregion Interfaces
 
         #region Propriedades Publicas
 
@@ -36,12 +36,12 @@ namespace EstoqueProdutos.Telas_Principal
         public FrmPrincipal()
         {
             InitializeComponent();
-            uCPrincipalBot = DITelas.Container.GetInstance<IUCTelaPrincipalBaixo>();
-            uCPrincipalTop = DITelas.Container.GetInstance<IUCTelaPrincipalCima>();
-            uCPrincipalRight = DITelas.Container.GetInstance<IUCTelaPrincipalDireita>();
+            uCPrincipalBaixo = DITelas.Container.GetInstance<IUCTelaPrincipalBaixo>();
+            uCPrincipalCima = DITelas.Container.GetInstance<IUCTelaPrincipalCima>();
+            uCPrincipalDireita = DITelas.Container.GetInstance<IUCTelaPrincipalDireita>();
             imagemRepositorio = DIRepositorios.Container.GetInstance<IImagemRepositorio>();
 
-            uCPrincipalRight.ObterFrmPrincipal(this);
+            uCPrincipalDireita.ObterFrmPrincipal(this);
         }
 
         #region Metodos
@@ -54,14 +54,20 @@ namespace EstoqueProdutos.Telas_Principal
 
         private void InicilizarModulosDaInterface()
         {
-            pBot.Controls.Add((Control)uCPrincipalBot);
-            pTop.Controls.Add((Control)uCPrincipalTop);
-            pDireita.Controls.Add((Control)uCPrincipalRight);
+            AbrirTela(typeof(UCLogin), this, true, TelaLogin_Disposed);
+
+            pBot.Controls.Add((Control)uCPrincipalBaixo);
+            pTop.Controls.Add((Control)uCPrincipalCima);
+            pDireita.Controls.Add((Control)uCPrincipalDireita);
         }
 
         private void CarregarImagemPadrao()
         {
             imagemRepositorio.SalvarImagemPadraoLocalTemporario();
+        }
+        public void AbrirTelaPanelCentral<T>() where T : UserControl, new()
+        {
+            AbrirTela<T>(control: pCentral);
         }
 
         #endregion Metodos
@@ -70,12 +76,12 @@ namespace EstoqueProdutos.Telas_Principal
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            var telaSenha = new UCLogin();
-            this.Controls.Add(telaSenha);   
+            //var telaSenha = new UCLogin();
+            //this.Controls.Add(telaSenha);   
 
-            telaSenha.Show();
-            telaSenha.BringToFront();
-            telaSenha.Dock = DockStyle.Fill;
+            //telaSenha.Show();
+            //telaSenha.BringToFront();
+            //telaSenha.Dock = DockStyle.Fill;
 
             InicializarConfiguracoes();
         }
@@ -90,9 +96,9 @@ namespace EstoqueProdutos.Telas_Principal
             //    pDireita.Size = new Size(125, pDireita.Size.Height);
         }
 
-        public void AbrirTelaPanelCentral<T>() where T : UserControl, new()
+        private void TelaLogin_Disposed(object sender, EventArgs e)
         {
-            AbrirTela<T>(panelCentral: pCentral);
+            uCPrincipalCima.AtualizarInfoUsuarioLogado();
         }
 
         #endregion Eventos
