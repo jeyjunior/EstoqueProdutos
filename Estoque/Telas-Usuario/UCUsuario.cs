@@ -273,11 +273,11 @@ namespace Estoque.Telas_Produto
         }
         private void btnCadastrarUsuario_Click(object sender, EventArgs e)
         {
-            AbrirTela(typeof(FrmCadastrarUsuario), this, true, FilhoFechado);
+            AbrirTela(typeof(FrmCadastrarProduto), this, true, FilhoFechado);
         }
         private void btnSetorCargo_Click(object sender, EventArgs e)
         {
-            AbrirTela(typeof(FrmCadastrarSetorCargo), this, true, FilhoFechado);
+            AbrirTela(typeof(FrmCadastrarProduto), this, true, FilhoFechado);
         }
         private void btnExcluir_Click(object sender, EventArgs e)
         {

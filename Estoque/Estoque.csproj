@@ -25,6 +25,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Telas-Produto\FrmCadastrarProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Telas-Usuario\FrmCadastrarSetorCargo.cs" />
     <Compile Update="Telas-Usuario\FrmAlterarUsuario.cs">
       <SubType>Form</SubType>

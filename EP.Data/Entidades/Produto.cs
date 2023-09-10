@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EP.Data.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,10 +10,10 @@ namespace EstoqueProdutos.Entidades
     public class Produto
     {
         public int PK_Produto { get; set; }
-        public string Nome { get; set;}
+        public string Nome { get; set; }
 
         public decimal? Volume { get; set; }
-        public string? Descricao { get; set;}
+        public string? Descricao { get; set; }
 
         public decimal? Altura { get; set; }
         public decimal? Largura { get; set; }
@@ -24,11 +25,13 @@ namespace EstoqueProdutos.Entidades
         public int? FK_Marca { get; set; }
         public int? FK_Embalagem { get; set; }
         public int? FK_UnidadeMedida { get; set; }
+        public int FK_Usuario { get; set; }
 
         public virtual Categoria Categoria { get; set; }
         public virtual Formato Formato { get; set; }
         public virtual Marca Marca { get; set; }
         public virtual Embalagem Embalagem { get; set; }
+        public virtual Usuario Usuario { get; set; }
     }
 
     public class PesquisaProdutoSimples 

@@ -19,9 +19,9 @@ using System.Windows.Forms;
 
 namespace Estoque.Telas_Usuario
 {
-    public partial class FrmCadastrarSetorCargo : Estoque.Telas_Base.FrmGerenciadorDeTelas
+    public partial class FrmCadastrarProduto : Estoque.Telas_Base.FrmGerenciadorDeTelas
     {
-        public FrmCadastrarSetorCargo(IUCGerenciadorDeTelas gerenciadorDeTelas)
+        public FrmCadastrarProduto(IUCGerenciadorDeTelas gerenciadorDeTelas)
         {
             InitializeComponent();
 
@@ -48,7 +48,7 @@ namespace Estoque.Telas_Usuario
         private void btnSetor_Click(object sender, EventArgs e)
         {
             AlterarCorDoBotaoSelecionado((Button)sender);
-            AbrirTela(typeof(UCSetor), pnCentral ,true);
+            AbrirTela(typeof(UCInformacoesBase), pnCentral ,true);
         }
 
         private void btnCargo_Click(object sender, EventArgs e)

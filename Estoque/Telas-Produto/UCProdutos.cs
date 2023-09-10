@@ -17,7 +17,7 @@ using System.Windows.Forms;
 
 namespace Estoque.Telas_Produto
 {
-    public partial class UCProduto : Estoque.Telas_Base.UCBase
+    public partial class UCProduto : Estoque.Telas_Base.UCGerenciadorDeTelas
     {
         private readonly IProdutoRepositorio produtoRepositorio;
         private readonly IMarcaRepositorio marcaRepositorio;
@@ -39,6 +39,7 @@ namespace Estoque.Telas_Produto
             embalagemRepositorio = DIRepositorios.Container.GetInstance<IEmbalagemRepositorio>();
         }
 
+        #region Metodos
         private void InicializarComponentes()
         {
             try
@@ -57,7 +58,6 @@ namespace Estoque.Telas_Produto
                 MessageBox.Show("Falha ao executar essa operação\n\n" + ex.Message);
             }
         }
-
         private void BindComboBoxMarca()
         {
             var result = marcaRepositorio.ObterTabela().ToList();
@@ -77,7 +77,6 @@ namespace Estoque.Telas_Produto
                 cboMarca.SelectedIndex = 0;
             }
         }
-
         private void BindComboBoxCategoria()
         {
             var result = categoriaRepositorio.ObterTabela().ToList();
@@ -98,7 +97,6 @@ namespace Estoque.Telas_Produto
                 cboCategoria.SelectedIndex = 0;
             }
         }
-
         private void BindComboBoxFormato()
         {
             var result = formatoRepositorio.ObterTabela().ToList();
@@ -118,7 +116,6 @@ namespace Estoque.Telas_Produto
                 cboFormato.SelectedIndex = 0;
             }
         }
-
         private void BindComboBoxEmbalagem()
         {
             var result = embalagemRepositorio.ObterTabela().ToList();
@@ -138,7 +135,6 @@ namespace Estoque.Telas_Produto
                 cboEmbalagem.SelectedIndex = 0;
             }
         }
-
         private void BindDataGridView()
         {
             if (produtos != null)
@@ -165,7 +161,6 @@ namespace Estoque.Telas_Produto
                 });
             }
         }
-
         private void LimparComponentes()
         {
             txtNomeProduto.Text = "";
@@ -178,13 +173,27 @@ namespace Estoque.Telas_Produto
 
             if (dtgProdutos.Rows.Count > 0)
                 dtgProdutos.Rows.Clear();
-        }
 
+            txtNomeProduto.Focus();
+        }
+        #endregion Metodos
+
+        #region Eventos
         private void UCProdutos_Load(object sender, EventArgs e)
         {
             InicializarComponentes();
         }
+        private void UCProdutos_ParentChanged(object sender, EventArgs e)
+        {
+            LimparComponentes();
+        }
+        private void FilhosFechado_Closed(object sender, EventArgs e)
+        {
+            LimparComponentes();
+            btnPesquisar.PerformClick();
+        }
 
+        /* Btns */
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
             var pesquisa = new PesquisaProdutoSimples()
@@ -200,10 +209,14 @@ namespace Estoque.Telas_Produto
             produtos = produtoRepositorio.ObterProduto(pesquisa);
             BindDataGridView();
         }
-
-        private void UCProdutos_ParentChanged(object sender, EventArgs e)
+        private void btnLimpar_Click(object sender, EventArgs e)
         {
             LimparComponentes();
         }
+        private void btnCadastrarProduto_Click(object sender, EventArgs e)
+        {
+            AbrirTela(typeof(FrmCadastrarProduto), this, true, FilhosFechado_Closed);
+        }
+        #endregion Metodos
     }
 }

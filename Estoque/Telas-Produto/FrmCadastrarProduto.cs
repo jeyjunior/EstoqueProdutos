@@ -17,7 +17,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Estoque.Telas_Usuario
+namespace Estoque.Telas_Produto
 {
     public partial class FrmCadastrarProduto : Estoque.Telas_Base.FrmBase
     {

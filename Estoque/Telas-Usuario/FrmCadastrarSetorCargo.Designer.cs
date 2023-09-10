@@ -1,6 +1,6 @@
 ﻿namespace Estoque.Telas_Usuario
 {
-    partial class FrmCadastrarSetorCargo
+    partial class FrmCadastrarProduto
     {
         /// <summary>
         /// Required designer variable.
