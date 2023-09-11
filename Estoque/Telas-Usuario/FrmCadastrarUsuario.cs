@@ -19,7 +19,7 @@ using System.Windows.Forms;
 
 namespace Estoque.Telas_Usuario
 {
-    public partial class FrmCadastrarProduto : Estoque.Telas_Base.FrmBase
+    public partial class FrmCadastrarUsuario : Estoque.Telas_Base.FrmBase
     {
         private readonly IImagemRepositorio imagemRepositorio;
         private readonly ISetorRepositorio setorRepositorio;
@@ -31,7 +31,7 @@ namespace Estoque.Telas_Usuario
         private bool emailValidado = false;
         private bool confirmacaoEmailValidado = false;
         private bool senhaValidada = false;
-        public FrmCadastrarProduto(IUCGerenciadorDeTelas gerenciadorDeTelas)
+        public FrmCadastrarUsuario(IUCGerenciadorDeTelas gerenciadorDeTelas)
         {
             InitializeComponent();
 

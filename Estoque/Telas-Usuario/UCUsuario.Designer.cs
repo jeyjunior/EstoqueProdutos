@@ -307,7 +307,7 @@
             // 
             colNomeCompleto.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             colNomeCompleto.DataPropertyName = "NomeCompleto";
-            colNomeCompleto.HeaderText = "Nome";
+            colNomeCompleto.HeaderText = "Nome Completo";
             colNomeCompleto.MinimumWidth = 100;
             colNomeCompleto.Name = "colNomeCompleto";
             colNomeCompleto.ReadOnly = true;
@@ -316,10 +316,10 @@
             // 
             colNomeAbreviado.DataPropertyName = "NomeAbreviado";
             colNomeAbreviado.HeaderText = "Usuário";
-            colNomeAbreviado.MinimumWidth = 300;
+            colNomeAbreviado.MinimumWidth = 200;
             colNomeAbreviado.Name = "colNomeAbreviado";
             colNomeAbreviado.ReadOnly = true;
-            colNomeAbreviado.Width = 300;
+            colNomeAbreviado.Width = 200;
             // 
             // colEmail
             // 

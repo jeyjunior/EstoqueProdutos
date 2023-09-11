@@ -1,6 +1,6 @@
 ﻿namespace Estoque.Telas_Usuario
 {
-    partial class UCInformacoesBase
+    partial class UCSetor
     {
         /// <summary> 
         /// Required designer variable.

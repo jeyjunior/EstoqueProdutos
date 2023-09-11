@@ -20,7 +20,7 @@ using System.Windows.Forms;
 
 namespace Estoque.Telas_Usuario
 {
-    public partial class UCInformacoesBase : Telas_Base.UCBase
+    public partial class UCSetor : Telas_Base.UCBase
     {
         #region Interfaces 
         private readonly ISetorRepositorio setorRepositorio;
@@ -35,7 +35,7 @@ namespace Estoque.Telas_Usuario
         private ModoCRUD modoCRUD = ModoCRUD.Select;
         #endregion Propriedades
 
-        public UCInformacoesBase()
+        public UCSetor()
         {
             InitializeComponent();
             AtualizarPropriedades();

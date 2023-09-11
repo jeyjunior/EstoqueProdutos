@@ -23,35 +23,34 @@ namespace Estoque.Telas_Base
 
         protected virtual void AbrirTela<T>(Control control) where T : UserControl,  new()
         {
-            AbrirTela(typeof(T), control, true);
-            //try
-            //{
-            //    Type tipoT = typeof(T);
-            //    UserControl? telaEncontrada = telasInstanciadas.FirstOrDefault(f => f.GetType() == tipoT);
+            try
+            {
+                Type tipoT = typeof(T);
+                UserControl? telaEncontrada = telasInstanciadas.FirstOrDefault(f => f.GetType() == tipoT);
 
-            //    if (telaEncontrada != null)
-            //    {
-            //        if (!control.Controls.Contains(telaEncontrada))
-            //        {
-            //            control.Controls.Clear();
-            //            control.Controls.Add(telaEncontrada);
-            //            return;
-            //        }
-            //    }
-            //    else 
-            //    {
-            //        var telaNova = new T();
-            //        telasInstanciadas.Add(telaNova);
+                if (telaEncontrada != null)
+                {
+                    if (!control.Controls.Contains(telaEncontrada))
+                    {
+                        control.Controls.Clear();
+                        control.Controls.Add(telaEncontrada);
+                        return;
+                    }
+                }
+                else 
+                {
+                    var telaNova = new T();
+                    telasInstanciadas.Add(telaNova);
 
-            //        control.Controls.Clear();
-            //        control.Controls.Add(telaNova);
-            //        telaNova.Show();
-            //    }
-            //}
-            //catch (Exception)
-            //{
-            //    MessageBox.Show("Falha ao abrir telas!");
-            //}
+                    control.Controls.Clear();
+                    control.Controls.Add(telaNova);
+                    telaNova.Show();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Falha ao abrir telas!");
+            }
         }
 
         protected virtual void AbrirTela(Type userControlType, Control control, bool clearControl = false)
@@ -60,9 +59,10 @@ namespace Estoque.Telas_Base
             {
                 UserControl? telaEncontrada = telasInstanciadas.FirstOrDefault(f => f.GetType() == userControlType);
                 telasInstanciadas.ForEach(f => f.Visible = false);
-
-                if (clearControl)
+                
+                if(clearControl)
                     control.Controls.Clear();
+
 
                 if (telaEncontrada != null)
                 {
@@ -84,6 +84,7 @@ namespace Estoque.Telas_Base
                 MessageBox.Show("Falha ao abrir telas!");
             }
         }
+
         protected virtual void AbrirTela(Type userControlType, Control control, bool bringToFront = false, EventHandler eDisposed = null)
         {
             AbrirTela(userControlType, control, false);

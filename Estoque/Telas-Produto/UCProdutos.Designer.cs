@@ -58,6 +58,11 @@
             lblCategoria = new Label();
             cboEmbalagem = new ComboBox();
             cboCategoria = new ComboBox();
+            btnPesquisar = new Button();
+            button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
+            button4 = new Button();
             dtgProdutos = new DataGridView();
             colPK_Produto = new DataGridViewTextBoxColumn();
             colNome = new DataGridViewTextBoxColumn();
@@ -72,22 +77,16 @@
             colFK_Marca = new DataGridViewTextBoxColumn();
             colFK_Embalagem = new DataGridViewTextBoxColumn();
             colFK_UnidadeMedida = new DataGridViewTextBoxColumn();
+            tblBotoes = new TableLayoutPanel();
             tlpComponentesRow0 = new TableLayoutPanel();
             lblDescricao = new Label();
             pnRegua = new Panel();
-            tblBotoes = new TableLayoutPanel();
-            btnPesquisar = new Button();
-            btnExcluir = new Button();
-            btnCadastrarProduto = new Button();
-            btnAlterar = new Button();
-            btnSetorCargo = new Button();
-            btnLimpar = new Button();
             tlpComponenteDaPesquisa.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tlpComponentesRow1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgProdutos).BeginInit();
-            tlpComponentesRow0.SuspendLayout();
             tblBotoes.SuspendLayout();
+            tlpComponentesRow0.SuspendLayout();
             SuspendLayout();
             // 
             // tlpComponenteDaPesquisa
@@ -152,7 +151,7 @@
             txtDescricaoProduto.MaxLength = 120;
             txtDescricaoProduto.Name = "txtDescricaoProduto";
             txtDescricaoProduto.Size = new Size(313, 27);
-            txtDescricaoProduto.TabIndex = 2;
+            txtDescricaoProduto.TabIndex = 18;
             // 
             // lblNomeProduto
             // 
@@ -176,7 +175,7 @@
             txtNomeProduto.MaxLength = 120;
             txtNomeProduto.Name = "txtNomeProduto";
             txtNomeProduto.Size = new Size(220, 27);
-            txtNomeProduto.TabIndex = 1;
+            txtNomeProduto.TabIndex = 2;
             // 
             // tlpComponentesRow1
             // 
@@ -218,7 +217,7 @@
             cboFormato.MaxDropDownItems = 50;
             cboFormato.Name = "cboFormato";
             cboFormato.Size = new Size(125, 26);
-            cboFormato.TabIndex = 6;
+            cboFormato.TabIndex = 12;
             // 
             // lblFormato
             // 
@@ -257,7 +256,7 @@
             cboMarca.Location = new Point(289, 23);
             cboMarca.Name = "cboMarca";
             cboMarca.Size = new Size(122, 26);
-            cboMarca.TabIndex = 5;
+            cboMarca.TabIndex = 10;
             // 
             // lblEmbalagem
             // 
@@ -296,7 +295,7 @@
             cboEmbalagem.Location = new Point(146, 23);
             cboEmbalagem.Name = "cboEmbalagem";
             cboEmbalagem.Size = new Size(122, 26);
-            cboEmbalagem.TabIndex = 4;
+            cboEmbalagem.TabIndex = 8;
             // 
             // cboCategoria
             // 
@@ -309,7 +308,54 @@
             cboCategoria.Location = new Point(3, 23);
             cboCategoria.Name = "cboCategoria";
             cboCategoria.Size = new Size(122, 26);
-            cboCategoria.TabIndex = 3;
+            cboCategoria.TabIndex = 4;
+            // 
+            // btnPesquisar
+            // 
+            btnPesquisar.Image = Properties.Resources.search_1;
+            btnPesquisar.Location = new Point(553, 0);
+            btnPesquisar.Margin = new Padding(0);
+            btnPesquisar.Name = "btnPesquisar";
+            btnPesquisar.Size = new Size(35, 35);
+            btnPesquisar.TabIndex = 1;
+            btnPesquisar.UseVisualStyleBackColor = true;
+            btnPesquisar.Click += btnPesquisar_Click;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(473, 0);
+            button1.Margin = new Padding(0);
+            button1.Name = "button1";
+            button1.Size = new Size(35, 35);
+            button1.TabIndex = 2;
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(433, 0);
+            button2.Margin = new Padding(0);
+            button2.Name = "button2";
+            button2.Size = new Size(35, 35);
+            button2.TabIndex = 3;
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(513, 0);
+            button3.Margin = new Padding(0);
+            button3.Name = "button3";
+            button3.Size = new Size(35, 35);
+            button3.TabIndex = 4;
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(393, 0);
+            button4.Margin = new Padding(0);
+            button4.Name = "button4";
+            button4.Size = new Size(35, 35);
+            button4.TabIndex = 5;
+            button4.UseVisualStyleBackColor = true;
             // 
             // dtgProdutos
             // 
@@ -361,7 +407,7 @@
             dtgProdutos.RowTemplate.Height = 25;
             dtgProdutos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtgProdutos.Size = new Size(590, 234);
-            dtgProdutos.TabIndex = 2;
+            dtgProdutos.TabIndex = 6;
             // 
             // colPK_Produto
             // 
@@ -520,6 +566,33 @@
             colFK_UnidadeMedida.ReadOnly = true;
             colFK_UnidadeMedida.Visible = false;
             // 
+            // tblBotoes
+            // 
+            tblBotoes.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            tblBotoes.ColumnCount = 9;
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 5F));
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 5F));
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 5F));
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 5F));
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
+            tblBotoes.Controls.Add(btnPesquisar, 0, 0);
+            tblBotoes.Controls.Add(button3, 2, 0);
+            tblBotoes.Controls.Add(button4, 8, 0);
+            tblBotoes.Controls.Add(button1, 4, 0);
+            tblBotoes.Controls.Add(button2, 6, 0);
+            tblBotoes.Location = new Point(16, 169);
+            tblBotoes.Margin = new Padding(0);
+            tblBotoes.Name = "tblBotoes";
+            tblBotoes.RightToLeft = RightToLeft.Yes;
+            tblBotoes.RowCount = 1;
+            tblBotoes.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tblBotoes.Size = new Size(588, 35);
+            tblBotoes.TabIndex = 8;
+            // 
             // tlpComponentesRow0
             // 
             tlpComponentesRow0.ColumnCount = 8;
@@ -553,113 +626,20 @@
             // pnRegua
             // 
             pnRegua.BackColor = Color.Brown;
-            pnRegua.Location = new Point(607, 1);
+            pnRegua.Location = new Point(607, 0);
             pnRegua.Name = "pnRegua";
             pnRegua.Size = new Size(15, 14);
             pnRegua.TabIndex = 10;
             pnRegua.Visible = false;
-            // 
-            // tblBotoes
-            // 
-            tblBotoes.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            tblBotoes.ColumnCount = 11;
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 5F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 5F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 5F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 5F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
-            tblBotoes.Controls.Add(btnPesquisar, 0, 0);
-            tblBotoes.Controls.Add(btnExcluir, 10, 0);
-            tblBotoes.Controls.Add(btnCadastrarProduto, 8, 0);
-            tblBotoes.Controls.Add(btnAlterar, 6, 0);
-            tblBotoes.Controls.Add(btnSetorCargo, 4, 0);
-            tblBotoes.Controls.Add(btnLimpar, 2, 0);
-            tblBotoes.Location = new Point(16, 169);
-            tblBotoes.Margin = new Padding(0);
-            tblBotoes.Name = "tblBotoes";
-            tblBotoes.RightToLeft = RightToLeft.Yes;
-            tblBotoes.RowCount = 1;
-            tblBotoes.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tblBotoes.Size = new Size(588, 35);
-            tblBotoes.TabIndex = 1;
-            // 
-            // btnPesquisar
-            // 
-            btnPesquisar.Image = Properties.Resources.search_1;
-            btnPesquisar.Location = new Point(553, 0);
-            btnPesquisar.Margin = new Padding(0);
-            btnPesquisar.Name = "btnPesquisar";
-            btnPesquisar.Size = new Size(35, 35);
-            btnPesquisar.TabIndex = 1;
-            btnPesquisar.UseVisualStyleBackColor = true;
-            btnPesquisar.Click += btnPesquisar_Click;
-            // 
-            // btnExcluir
-            // 
-            btnExcluir.Image = Properties.Resources.delete_outline_1;
-            btnExcluir.Location = new Point(0, 0);
-            btnExcluir.Margin = new Padding(0);
-            btnExcluir.Name = "btnExcluir";
-            btnExcluir.Size = new Size(35, 35);
-            btnExcluir.TabIndex = 6;
-            btnExcluir.UseVisualStyleBackColor = true;
-            // 
-            // btnCadastrarProduto
-            // 
-            btnCadastrarProduto.Image = Properties.Resources.new_outline_1;
-            btnCadastrarProduto.Location = new Point(393, 0);
-            btnCadastrarProduto.Margin = new Padding(0);
-            btnCadastrarProduto.Name = "btnCadastrarProduto";
-            btnCadastrarProduto.Size = new Size(35, 35);
-            btnCadastrarProduto.TabIndex = 5;
-            btnCadastrarProduto.UseVisualStyleBackColor = true;
-            btnCadastrarProduto.Click += btnCadastrarProduto_Click;
-            // 
-            // btnAlterar
-            // 
-            btnAlterar.Image = Properties.Resources.edit_outline_1;
-            btnAlterar.Location = new Point(433, 0);
-            btnAlterar.Margin = new Padding(0);
-            btnAlterar.Name = "btnAlterar";
-            btnAlterar.Size = new Size(35, 35);
-            btnAlterar.TabIndex = 4;
-            btnAlterar.UseVisualStyleBackColor = true;
-            // 
-            // btnSetorCargo
-            // 
-            btnSetorCargo.Image = Properties.Resources.new_outline_2;
-            btnSetorCargo.Location = new Point(473, 0);
-            btnSetorCargo.Margin = new Padding(0);
-            btnSetorCargo.Name = "btnSetorCargo";
-            btnSetorCargo.Size = new Size(35, 35);
-            btnSetorCargo.TabIndex = 3;
-            btnSetorCargo.UseVisualStyleBackColor = true;
-            // 
-            // btnLimpar
-            // 
-            btnLimpar.Image = Properties.Resources.erase_outline_1;
-            btnLimpar.Location = new Point(513, 0);
-            btnLimpar.Margin = new Padding(0);
-            btnLimpar.Name = "btnLimpar";
-            btnLimpar.Size = new Size(35, 35);
-            btnLimpar.TabIndex = 2;
-            btnLimpar.UseVisualStyleBackColor = true;
-            btnLimpar.Click += btnLimpar_Click;
             // 
             // UCProduto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(80, 90, 100);
-            Controls.Add(tblBotoes);
             Controls.Add(pnRegua);
             Controls.Add(tlpComponenteDaPesquisa);
+            Controls.Add(tblBotoes);
             Controls.Add(dtgProdutos);
             Margin = new Padding(15);
             MinimumSize = new Size(623, 468);
@@ -673,8 +653,8 @@
             tableLayoutPanel1.PerformLayout();
             tlpComponentesRow1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dtgProdutos).EndInit();
-            tlpComponentesRow0.ResumeLayout(false);
             tblBotoes.ResumeLayout(false);
+            tlpComponentesRow0.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -682,7 +662,13 @@
         private ComboBox cboCategoria;
         private ComboBox cboMarca;
         private ComboBox cboEmbalagem;
+        private Button btnPesquisar;
+        private Button button1;
+        private Button button2;
+        private Button button3;
+        private Button button4;
         private DataGridView dtgProdutos;
+        private TableLayoutPanel tblBotoes;
         private ComboBox cboFormato;
         private TableLayoutPanel tlpComponentesRow1;
         private Label lblFormato;
@@ -711,12 +697,5 @@
         private DataGridViewTextBoxColumn colFK_Embalagem;
         private DataGridViewTextBoxColumn colFK_UnidadeMedida;
         private Panel pnRegua;
-        private TableLayoutPanel tblBotoes;
-        private Button btnPesquisar;
-        private Button btnExcluir;
-        private Button btnCadastrarProduto;
-        private Button btnAlterar;
-        private Button btnSetorCargo;
-        private Button btnLimpar;
     }
 }

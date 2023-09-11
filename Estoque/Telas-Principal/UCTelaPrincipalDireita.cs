@@ -69,6 +69,6 @@ namespace Estoque.Telas_Principal
         }
 
         #endregion Eventos
-         
+
     }
 }
