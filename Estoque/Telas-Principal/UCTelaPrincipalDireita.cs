@@ -1,6 +1,7 @@
 ﻿using Estoque.Interfaces;
 using Estoque.Telas_Base;
 using Estoque.Telas_Produto;
+using Estoque.Telas_Usuario;
 using EstoqueProdutos.Entidades;
 using EstoqueProdutos.Gerenciamento;
 using EstoqueProdutos.Telas_Principal;
@@ -58,7 +59,7 @@ namespace Estoque.Telas_Principal
         }
         private void btnUsuario_Click(object sender, EventArgs e)
         {
-            frmPrincipal.AbrirTelaPanelCentral<UCUsuario>();
+            frmPrincipal.AbrirTelaPanelCentral<UCUsuarios>();
             ModificarCorBotaoParaPadrao((Button)sender);
 
             uCPrincipalCima.AtualizarInfoTelaAberta(Properties.Resources.icone_Usuario_24x, "Usuário");

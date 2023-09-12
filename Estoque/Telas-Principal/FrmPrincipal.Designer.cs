@@ -33,8 +33,10 @@
             pBot = new Panel();
             pDireita = new Panel();
             tlpCentral = new TableLayoutPanel();
+            tableLayoutPanel1 = new TableLayoutPanel();
             tblPrincipal = new TableLayoutPanel();
             tlpCentral.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
             tblPrincipal.SuspendLayout();
             SuspendLayout();
             // 
@@ -42,10 +44,10 @@
             // 
             pCentral.BackColor = Color.MediumSeaGreen;
             pCentral.Dock = DockStyle.Fill;
-            pCentral.Location = new Point(160, 0);
+            pCentral.Location = new Point(15, 15);
             pCentral.Margin = new Padding(0);
             pCentral.Name = "pCentral";
-            pCentral.Size = new Size(624, 498);
+            pCentral.Size = new Size(594, 468);
             pCentral.TabIndex = 3;
             // 
             // pTop
@@ -83,8 +85,8 @@
             tlpCentral.ColumnCount = 2;
             tlpCentral.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 160F));
             tlpCentral.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tlpCentral.Controls.Add(pCentral, 1, 0);
             tlpCentral.Controls.Add(pDireita, 0, 0);
+            tlpCentral.Controls.Add(tableLayoutPanel1, 1, 0);
             tlpCentral.Dock = DockStyle.Fill;
             tlpCentral.Location = new Point(0, 36);
             tlpCentral.Margin = new Padding(0);
@@ -93,6 +95,25 @@
             tlpCentral.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tlpCentral.Size = new Size(784, 498);
             tlpCentral.TabIndex = 9;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.BackColor = Color.Transparent;
+            tableLayoutPanel1.ColumnCount = 3;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 15F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 15F));
+            tableLayoutPanel1.Controls.Add(pCentral, 1, 1);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(160, 0);
+            tableLayoutPanel1.Margin = new Padding(0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 3;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
+            tableLayoutPanel1.Size = new Size(624, 498);
+            tableLayoutPanel1.TabIndex = 9;
             // 
             // tblPrincipal
             // 
@@ -127,6 +148,7 @@
             Load += FrmPrincipal_Load;
             Resize += FrmPrincipal_Resize;
             tlpCentral.ResumeLayout(false);
+            tableLayoutPanel1.ResumeLayout(false);
             tblPrincipal.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -138,5 +160,6 @@
         private Panel pDireita;
         private TableLayoutPanel tlpCentral;
         private TableLayoutPanel tblPrincipal;
+        private TableLayoutPanel tableLayoutPanel1;
     }
 }

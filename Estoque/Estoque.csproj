@@ -43,13 +43,12 @@
     <Compile Update="Telas-Usuario\UCCadastrarCargo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Telas-Usuario\UCCargo.cs">
+    <Compile Update="Telas-Usuario\UCUsuarios.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Telas-Usuario\UCCadastrarSetor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Telas-Usuario\UCUsuario.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,24 +1,39 @@
 ﻿using EP.Data.Entidades;
 using EP.Data.Interfaces;
-using Estoque.Telas_Usuario;
+using Estoque.Enums;
+using Estoque.Interfaces;
 using EstoqueProdutos.Formatacao;
 using EstoqueProdutos.Gerenciamento;
+using EstoqueProdutos.Repositorios;
 using Microsoft.Data.SqlClient;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Configuration;
 using System.Data;
+using System.Drawing;
+using System.Drawing.Text;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace Estoque.Telas_Produto
+namespace Estoque.Telas_Usuario
 {
-    public partial class UCUsuario : Estoque.Telas_Base.UCGerenciadorDeTelas
+    public partial class UCUsuarios : Estoque.Telas_Base.UCGerenciadorDeTelas
     {
+        #region Interfaces 
         private readonly ISetorRepositorio setorRepositorio;
         private readonly ICargoRepositorio cargoRepositorio;
         private readonly IUsuarioRepositorio usuarioRepositorio;
+        #endregion Interfaces
 
+        #region Propriedades
         private BindingSource bsCargo = new BindingSource();
-
         private IEnumerable<Usuario> usuarios;
         private Usuario usuarioSelecionado;
-        public UCUsuario()
+        #endregion Propriedades
+        public UCUsuarios()
         {
             InitializeComponent();
             AtualizarPropriedades();
@@ -27,6 +42,7 @@ namespace Estoque.Telas_Produto
             cargoRepositorio = DIRepositorios.Container.GetInstance<ICargoRepositorio>();
             usuarioRepositorio = DIRepositorios.Container.GetInstance<IUsuarioRepositorio>();
         }
+
 
         #region Metodos
         private void InicializarComponentes()
@@ -151,7 +167,6 @@ namespace Estoque.Telas_Produto
                 MessageBox.Show("Ocorreu uma falha ao tentar obter linha selecionada");
             }
         }
-
         private IEnumerable<Cargo> FiltrarCargos()
         {
             if (cboSetor != null && bsCargo != null && cboSetor.SelectedItem is Setor setor)
@@ -181,7 +196,6 @@ namespace Estoque.Telas_Produto
 
             return null;
         }
-
         private void ExcluirUsuarioSelecionado()
         {
             try
@@ -216,22 +230,31 @@ namespace Estoque.Telas_Produto
                 MessageBox.Show(ex.Message);
             }
         }
-
+        private void AtualizarTotalRegistrado()
+        {
+            int total = setorRepositorio.ObterTotalSetoresRegistrados();
+            lblTotalRegistrado.Text = "Registrados: " + total;
+        }
+        private void AtualizarTotalPesquisado()
+        {
+            //lblTotalPesquisado.Text = "Pesquisado: " + dtgSetor.Rows.Count;
+        }
         #endregion Metodos
 
         #region Eventos
-        /* Form */
-        private void UCProdutos_Load(object sender, EventArgs e)
+        private void UCUsuarios_Load(object sender, EventArgs e)
         {
             InicializarComponentes();
             btnPesquisar.PerformClick();
+
+            AtualizarTotalRegistrado();
+            AtualizarTotalPesquisado();
         }
-        private void UCProdutos_ParentChanged(object sender, EventArgs e)
+        private void UCUsuarios_ParentChanged(object sender, EventArgs e)
         {
             LimparComponentes();
         }
 
-        /* Cbos */
         private void cboSetor_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboSetor != null)
@@ -240,26 +263,7 @@ namespace Estoque.Telas_Produto
                 cboCargo.Enabled = ((Setor)cboSetor.SelectedItem).PK_Setor > 0;
             }
         }
-        private void cboCargo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //if (cboCargo != null
-            //    && cboCargo.Items.Count > 0
-            //    && cboCargo.SelectedItem is Cargo cargoSelecionado)
-            //{
-            //    if (cboCargo.SelectedIndex <= 0)
-            //    {
-            //        cboSetor.DataSource = bindingSourceSetor;
-            //    }
-            //    else
-            //    {
-            //        cboSetor.DataSource = bindingSourceSetor.
-            //            Cast<Setor>().Where(s => s.PK_Setor == cargoSelecionado.FK_Setor).ToList();
-            //    }
-            //}
-        }
 
-
-        /*  Botoes */
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
             usuarios = usuarioRepositorio.ObterTabelaFiltroTelaUsuarios(new Usuario
@@ -271,21 +275,24 @@ namespace Estoque.Telas_Produto
 
             BindDataGridView();
         }
-        private void btnCadastrarUsuario_Click(object sender, EventArgs e)
+        private void btnLimpar_Click(object sender, EventArgs e)
         {
-            AbrirTela(typeof(FrmCadastrarUsuario), this, true, FilhoFechado);
-        }
-        private void btnSetorCargo_Click(object sender, EventArgs e)
-        {
-            AbrirTela(typeof(FrmCadastrarSetores_Cargos), this, true, FilhoFechado);
+            LimparComponentes();
+            btnPesquisar.PerformClick();
         }
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             ObterUsuarioDaLinhaSelecionar();
             ExcluirUsuarioSelecionado();
         }
-
-
+        private void btnSetorCargo_Click(object sender, EventArgs e)
+        {
+            AbrirTela(typeof(FrmCadastrarSetores_Cargos), this, true, FilhoFechado);
+        }
+        private void btnCadastrarUsuario_Click(object sender, EventArgs e)
+        {
+            AbrirTela(typeof(FrmCadastrarUsuario), this, true, FilhoFechado);
+        }
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             ObterUsuarioDaLinhaSelecionar();
@@ -295,11 +302,6 @@ namespace Estoque.Telas_Produto
                 ObjetoGenerico = usuarioSelecionado;
                 AbrirTela(typeof(FrmAlterarUsuario), this, true, FilhoFechado);
             }
-        }
-        private void btnLimpar_Click(object sender, EventArgs e)
-        {
-            LimparComponentes();
-            btnPesquisar.PerformClick();
         }
 
         /* Filhos */
