@@ -11,6 +11,9 @@ using System.Windows.Forms;
 
 namespace Estoque.Telas_Base
 {
+    /// <summary>
+    /// Responsável por Abrir Telas e guardar suas referencias em uma coleção (enquanto ativas)
+    /// </summary>
     public partial class FrmGerenciadorDeTelas : FrmBase
     {
         protected List<UserControl> telasInstanciadas = new List<UserControl>();

@@ -36,7 +36,6 @@
             tblBotoes.Controls.Add(btnExcluir, 5, 0);
             tblBotoes.Controls.Add(btnAlterar, 2, 0);
             tblBotoes.Controls.Add(btnCadastrar, 3, 0);
-            tblBotoes.Dock = DockStyle.Fill;
             tblBotoes.Location = new Point(0, 0);
             tblBotoes.Margin = new Padding(0);
             tblBotoes.Name = "tblBotoes";

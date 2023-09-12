@@ -25,11 +25,28 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Update="Telas-Usuario\FrmCadastrarSetorCargo.cs" />
+    <Compile Update="Telas-Modelos\FrmEstruturaBaseTabs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Telas-Modelos\FrmEstruturaBaseBtnsGenericos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Telas-Modelos\FrmEstruturaBaseCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Telas-Usuario\FrmAlterarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Telas-Usuario\FrmCadastrarSetores_Cargos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Telas-Usuario\UCCadastrarCargo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Telas-Usuario\UCCargo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Telas-Usuario\UCCadastrarSetor.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Telas-Usuario\UCUsuario.cs" />

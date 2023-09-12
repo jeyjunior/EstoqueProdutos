@@ -26,9 +26,3 @@ namespace Estoque.Telas_Base
         }
     }
 }
-
-
-//public void ObterGerenciadorTelas(IUCGerenciadorDeTelas GerenciadorDeTelas)
-//{
-//    this.GerenciadorDeTelas = GerenciadorDeTelas;
-//}

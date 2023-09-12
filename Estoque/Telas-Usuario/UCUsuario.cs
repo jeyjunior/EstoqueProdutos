@@ -277,7 +277,7 @@ namespace Estoque.Telas_Produto
         }
         private void btnSetorCargo_Click(object sender, EventArgs e)
         {
-            AbrirTela(typeof(FrmCadastrarSetorCargo), this, true, FilhoFechado);
+            AbrirTela(typeof(FrmCadastrarSetores_Cargos), this, true, FilhoFechado);
         }
         private void btnExcluir_Click(object sender, EventArgs e)
         {

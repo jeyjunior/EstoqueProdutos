@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace Estoque.Telas_Base
 {
+    /// <summary>
+    /// Padroniza para os UserControls propriedades
+    /// </summary>
     public partial class UCBase : UserControl
     {
         public UCBase()

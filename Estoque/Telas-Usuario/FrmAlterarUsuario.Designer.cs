@@ -370,7 +370,7 @@
             tblBotoes.RightToLeft = RightToLeft.Yes;
             tblBotoes.RowCount = 1;
             tblBotoes.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tblBotoes.Size = new Size(457, 37);
+            tblBotoes.Size = new Size(457, 40);
             tblBotoes.TabIndex = 3;
             // 
             // btnSalvar
@@ -382,7 +382,7 @@
             btnSalvar.Margin = new Padding(0);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Padding = new Padding(10, 0, 0, 0);
-            btnSalvar.Size = new Size(90, 37);
+            btnSalvar.Size = new Size(90, 40);
             btnSalvar.TabIndex = 0;
             btnSalvar.Text = "Salvar";
             btnSalvar.TextImageRelation = TextImageRelation.TextBeforeImage;
@@ -398,7 +398,7 @@
             btnLimpar.Margin = new Padding(0);
             btnLimpar.Name = "btnLimpar";
             btnLimpar.Padding = new Padding(5, 0, 0, 0);
-            btnLimpar.Size = new Size(90, 37);
+            btnLimpar.Size = new Size(90, 40);
             btnLimpar.TabIndex = 1;
             btnLimpar.Text = "Limpar";
             btnLimpar.TextImageRelation = TextImageRelation.TextBeforeImage;
