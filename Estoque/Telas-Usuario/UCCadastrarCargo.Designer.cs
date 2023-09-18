@@ -40,7 +40,7 @@
             colNomeCargo = new DataGridViewTextBoxColumn();
             colFK_Setor = new DataGridViewTextBoxColumn();
             colNomeSetor = new DataGridViewTextBoxColumn();
-            tableLayoutPanel1 = new TableLayoutPanel();
+            tlpCargo = new TableLayoutPanel();
             lblCargo = new Label();
             txtCargo = new TextBox();
             tlpBotoes = new TableLayoutPanel();
@@ -60,7 +60,7 @@
             lblTotalRegistrado = new Label();
             tlpCentral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgCargo).BeginInit();
-            tableLayoutPanel1.SuspendLayout();
+            tlpCargo.SuspendLayout();
             tlpBotoes.SuspendLayout();
             tblSetor.SuspendLayout();
             tblPrincipal.SuspendLayout();
@@ -73,7 +73,7 @@
             tlpCentral.ColumnCount = 1;
             tlpCentral.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tlpCentral.Controls.Add(dtgCargo, 0, 5);
-            tlpCentral.Controls.Add(tableLayoutPanel1, 0, 0);
+            tlpCentral.Controls.Add(tlpCargo, 0, 0);
             tlpCentral.Controls.Add(tlpBotoes, 0, 3);
             tlpCentral.Controls.Add(tblSetor, 0, 1);
             tlpCentral.Dock = DockStyle.Fill;
@@ -185,24 +185,23 @@
             colNomeSetor.Name = "colNomeSetor";
             colNomeSetor.ReadOnly = true;
             // 
-            // tableLayoutPanel1
+            // tlpCargo
             // 
-            tableLayoutPanel1.BackColor = Color.FromArgb(60, 75, 85);
-            tableLayoutPanel1.ColumnCount = 1;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Controls.Add(lblCargo, 0, 0);
-            tableLayoutPanel1.Controls.Add(txtCargo, 0, 1);
-            tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(0, 0);
-            tableLayoutPanel1.Margin = new Padding(0);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.Padding = new Padding(15, 0, 15, 0);
-            tableLayoutPanel1.RowCount = 2;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(560, 80);
-            tableLayoutPanel1.TabIndex = 16;
+            tlpCargo.BackColor = Color.FromArgb(60, 75, 85);
+            tlpCargo.ColumnCount = 1;
+            tlpCargo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tlpCargo.Controls.Add(lblCargo, 0, 0);
+            tlpCargo.Controls.Add(txtCargo, 0, 1);
+            tlpCargo.Dock = DockStyle.Fill;
+            tlpCargo.Location = new Point(0, 0);
+            tlpCargo.Margin = new Padding(0);
+            tlpCargo.Name = "tlpCargo";
+            tlpCargo.Padding = new Padding(15, 0, 15, 0);
+            tlpCargo.RowCount = 2;
+            tlpCargo.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
+            tlpCargo.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
+            tlpCargo.Size = new Size(560, 80);
+            tlpCargo.TabIndex = 16;
             // 
             // lblCargo
             // 
@@ -449,8 +448,8 @@
             Load += UCCadastrarSetor_Load;
             tlpCentral.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dtgCargo).EndInit();
-            tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel1.PerformLayout();
+            tlpCargo.ResumeLayout(false);
+            tlpCargo.PerformLayout();
             tlpBotoes.ResumeLayout(false);
             tblSetor.ResumeLayout(false);
             tblPrincipal.ResumeLayout(false);
@@ -478,7 +477,7 @@
         private Panel pBarraStatus;
         private Label lblTotalRegistrado;
         private Label lblTotalPesquisado;
-        private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel tlpCargo;
         private Label lblCargo;
         private TextBox txtCargo;
         private DataGridView dtgCargo;

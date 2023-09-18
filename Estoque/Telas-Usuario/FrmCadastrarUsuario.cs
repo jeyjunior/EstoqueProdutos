@@ -390,5 +390,10 @@ namespace Estoque.Telas_Usuario
             ValidarConfirmacaoSenha();
         }
         #endregion Eventos
+
+        private void tlpUsuario_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

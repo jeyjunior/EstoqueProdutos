@@ -366,7 +366,7 @@ namespace Estoque.Telas_Usuario
             AtualizarTotalPesquisado();
             LayoutBotoes();
         }
-        #endregion Eventos
 
+        #endregion Eventos
     }
 }

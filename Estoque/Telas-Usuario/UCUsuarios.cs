@@ -2,6 +2,7 @@
 using EP.Data.Interfaces;
 using Estoque.Enums;
 using Estoque.Interfaces;
+using Estoque.Telas_Modelos;
 using EstoqueProdutos.Formatacao;
 using EstoqueProdutos.Gerenciamento;
 using EstoqueProdutos.Repositorios;
@@ -291,7 +292,10 @@ namespace Estoque.Telas_Usuario
         }
         private void btnCadastrarUsuario_Click(object sender, EventArgs e)
         {
-            AbrirTela(typeof(FrmCadastrarUsuario), this, true, FilhoFechado);
+            //AbrirTela(typeof(FrmCadastrarUsuario), this, true, FilhoFechado);
+
+            FrmEstruturaBaseCadastro frmEstruturaBaseCadastro = new FrmEstruturaBaseCadastro();
+            frmEstruturaBaseCadastro.ShowDialog();
         }
         private void btnAlterar_Click(object sender, EventArgs e)
         {

@@ -103,10 +103,10 @@
             tlpUsuario.RowStyles.Add(new RowStyle(SizeType.Absolute, 23F));
             tlpUsuario.Size = new Size(320, 93);
             tlpUsuario.TabIndex = 11;
+            tlpUsuario.Paint += tlpUsuario_Paint;
             // 
             // lblNomeCompleto
             // 
-            lblNomeCompleto.Dock = DockStyle.Fill;
             lblNomeCompleto.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
             lblNomeCompleto.ForeColor = SystemColors.ControlLightLight;
             lblNomeCompleto.Location = new Point(0, 0);
@@ -120,7 +120,6 @@
             // txtNomeCompleto
             // 
             txtNomeCompleto.BorderStyle = BorderStyle.FixedSingle;
-            txtNomeCompleto.Dock = DockStyle.Fill;
             txtNomeCompleto.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
             txtNomeCompleto.Location = new Point(3, 23);
             txtNomeCompleto.MaxLength = 1000;
@@ -130,7 +129,6 @@
             // 
             // lblNomeAbreviado
             // 
-            lblNomeAbreviado.Dock = DockStyle.Fill;
             lblNomeAbreviado.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
             lblNomeAbreviado.ForeColor = SystemColors.ControlLightLight;
             lblNomeAbreviado.Location = new Point(0, 43);
@@ -144,7 +142,6 @@
             // txtNomeAbreviado
             // 
             txtNomeAbreviado.BorderStyle = BorderStyle.FixedSingle;
-            txtNomeAbreviado.Dock = DockStyle.Fill;
             txtNomeAbreviado.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
             txtNomeAbreviado.Location = new Point(3, 66);
             txtNomeAbreviado.MaxLength = 120;

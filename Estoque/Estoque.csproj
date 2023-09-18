@@ -40,6 +40,9 @@
     <Compile Update="Telas-Usuario\FrmCadastrarSetores_Cargos.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Telas-Usuario\FrmEstruturaBaseCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Telas-Usuario\UCCadastrarCargo.cs">
       <SubType>UserControl</SubType>
     </Compile>
