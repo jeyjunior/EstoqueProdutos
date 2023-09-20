@@ -292,10 +292,7 @@ namespace Estoque.Telas_Usuario
         }
         private void btnCadastrarUsuario_Click(object sender, EventArgs e)
         {
-            //AbrirTela(typeof(FrmCadastrarUsuario), this, true, FilhoFechado);
-
-            FrmEstruturaBaseCadastro frmEstruturaBaseCadastro = new FrmEstruturaBaseCadastro(this);
-            frmEstruturaBaseCadastro.ShowDialog();
+            AbrirTela(typeof(FrmCadastrarUsuario), this, true, FilhoFechado);
         }
         private void btnAlterar_Click(object sender, EventArgs e)
         {

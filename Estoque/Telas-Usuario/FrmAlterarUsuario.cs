@@ -6,6 +6,7 @@ using Estoque.Interfaces;
 using EstoqueProdutos.Entidades;
 using EstoqueProdutos.Gerenciamento;
 using JJ.Helpers.Formatacao;
+using JJ.Helpers.Interfaces;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,7 @@ namespace Estoque.Telas_Usuario
         private readonly ISetorRepositorio setorRepositorio;
         private readonly ICargoRepositorio cargoRepositorio;
         private readonly IUsuarioRepositorio usuarioRepositorio;
+        private readonly IValidacao validacao;
 
         private BindingSource bsCargo = new BindingSource();
 
@@ -44,6 +46,8 @@ namespace Estoque.Telas_Usuario
             setorRepositorio = DIRepositorios.Container.GetInstance<ISetorRepositorio>();
             cargoRepositorio = DIRepositorios.Container.GetInstance<ICargoRepositorio>();
             usuarioRepositorio = DIRepositorios.Container.GetInstance<IUsuarioRepositorio>();
+            validacao = DITelas.Container.GetInstance<IValidacao>();
+
             pcbImagemUsuario.Image = imagemRepositorio.ObterImagemPadrao();
         }
 
@@ -166,7 +170,7 @@ namespace Estoque.Telas_Usuario
                 return;
             }
 
-            if (txtEmail.Text.ValidarEmail())
+            if (validacao.ValidarEmail(txtEmail.Text))
             {
                 pcbValidacaoEmail.Visible = true;
                 pcbValidacaoEmail.Image = Properties.Resources.circulo_verde;
@@ -198,7 +202,7 @@ namespace Estoque.Telas_Usuario
                 }
             }
 
-            if (!txtConfirmarEmail.Text.ValidarEmail())
+            if (!validacao.ValidarEmail(txtConfirmarEmail.Text))
             {
                 pcbValidacaoConfirmarEmail.Visible = true;
                 pcbValidacaoConfirmarEmail.Image = Properties.Resources.erro;

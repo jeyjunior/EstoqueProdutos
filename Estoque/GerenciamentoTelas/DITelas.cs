@@ -6,6 +6,8 @@ using Estoque.Telas_Principal;
 using EstoqueProdutos.Interfaces;
 using EstoqueProdutos.Repositorios;
 using EstoqueProdutos.Telas_Principal;
+using JJ.Helpers.Formatacao;
+using JJ.Helpers.Interfaces;
 using SimpleInjector;
 
 namespace EstoqueProdutos.Gerenciamento
@@ -24,6 +26,7 @@ namespace EstoqueProdutos.Gerenciamento
             _container.RegisterSingleton<IUCTelaPrincipalCima, UCTelaPrincipalCima>();
             _container.RegisterSingleton<IUCTelaPrincipalDireita, UCTelaPrincipalDireita>();
             _container.RegisterSingleton<IUsuarioLogado, UsuarioLogado>();
+            _container.Register<IValidacao, Validacao>();
 
             _container.Options.ResolveUnregisteredConcreteTypes = true;
             _container.Verify();

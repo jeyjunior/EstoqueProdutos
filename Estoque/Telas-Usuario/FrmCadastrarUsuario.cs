@@ -1,10 +1,10 @@
-﻿using Azure.Core;
-using EP.Data.Entidades;
+﻿using EP.Data.Entidades;
 using EP.Data.Interfaces;
-using EP.Data.Repositorios;
 using Estoque.Interfaces;
+using Estoque.Telas_Base;
 using EstoqueProdutos.Gerenciamento;
 using JJ.Helpers.Formatacao;
+using JJ.Helpers.Interfaces;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -25,12 +24,18 @@ namespace Estoque.Telas_Usuario
         private readonly ISetorRepositorio setorRepositorio;
         private readonly ICargoRepositorio cargoRepositorio;
         private readonly IUsuarioRepositorio usuarioRepositorio;
+        private readonly IValidacao validacao;
+
 
         private BindingSource bsCargo = new BindingSource();
 
+        private bool nomeValidado = false;
+        private bool usuarioValidado = false;
         private bool emailValidado = false;
         private bool confirmacaoEmailValidado = false;
         private bool senhaValidada = false;
+        private bool confirmacaoSenhaValidada = false;
+
         public FrmCadastrarUsuario(IUCGerenciadorDeTelas gerenciadorDeTelas)
         {
             InitializeComponent();
@@ -41,6 +46,8 @@ namespace Estoque.Telas_Usuario
             setorRepositorio = DIRepositorios.Container.GetInstance<ISetorRepositorio>();
             cargoRepositorio = DIRepositorios.Container.GetInstance<ICargoRepositorio>();
             usuarioRepositorio = DIRepositorios.Container.GetInstance<IUsuarioRepositorio>();
+            validacao = DITelas.Container.GetInstance<IValidacao>();
+
             pcbImagemUsuario.Image = imagemRepositorio.ObterImagemPadrao();
         }
 
@@ -88,14 +95,13 @@ namespace Estoque.Telas_Usuario
                 cboCargo.ValueMember = "PK_Cargo";
             }
         }
-
         /* Updates */
         private void LimparComponetes()
         {
             pcbImagemUsuario.Image = imagemRepositorio.ObterImagemPadrao();
 
             txtNomeCompleto.Text = "";
-            txtNomeAbreviado.Text = "";
+            txtUsuario.Text = "";
 
             cboSetor.SelectedValue = 1;
 
@@ -104,6 +110,8 @@ namespace Estoque.Telas_Usuario
 
             txtSenha.Text = "";
             txtConfirmarSenha.Text = "";
+
+            txtNomeCompleto.Focus();
         }
         private IEnumerable<Cargo> FiltrarCargos()
         {
@@ -114,162 +122,32 @@ namespace Estoque.Telas_Usuario
 
             return null;
         }
-
-        /* Validacoes */
-        private void ValidarEmail()
+        
+        private bool ValidarComponentes()
         {
-            emailValidado = false;
+            bool componentesValidados = false;
 
-            if (txtEmail.Text == "")
+            if (!nomeValidado)
             {
-                pcbValidacaoEmail.Visible = false;
-                return;
-            }
 
-            if (txtEmail.Text.ValidarEmail())
-            {
-                pcbValidacaoEmail.Visible = true;
-                pcbValidacaoEmail.Image = Properties.Resources.circulo_verde;
-
-                emailValidado = true;
-            }
-            else
-            {
-                pcbValidacaoEmail.Visible = true;
-                pcbValidacaoEmail.Image = Properties.Resources.erro;
-            }
-        }
-        private void ValidarConfirmacaoDeEmail()
-        {
-            confirmacaoEmailValidado = false;
-
-            if (txtConfirmarEmail.Text == "" && txtEmail.Text == "")
-            {
-                if (txtEmail.Text == "")
-                {
-                    pcbValidacaoConfirmarEmail.Visible = false;
-                    return;
-                }
-                else
-                {
-                    pcbValidacaoConfirmarEmail.Visible = true;
-                    pcbValidacaoConfirmarEmail.Image = Properties.Resources.erro;
-                    return;
-                }
             }
 
-            if (!txtConfirmarEmail.Text.ValidarEmail())
-            {
-                pcbValidacaoConfirmarEmail.Visible = true;
-                pcbValidacaoConfirmarEmail.Image = Properties.Resources.erro;
-            }
-            else
-            {
-                if (txtConfirmarEmail.Text.Equals(txtEmail.Text))
-                {
-                    pcbValidacaoConfirmarEmail.Visible = true;
-                    pcbValidacaoConfirmarEmail.Image = Properties.Resources.circulo_verde;
 
-                    confirmacaoEmailValidado = true;
-                }
-                else
-                {
-                    pcbValidacaoConfirmarEmail.Visible = true;
-                    pcbValidacaoConfirmarEmail.Image = Properties.Resources.erro;
-                }
-            }
-        }
-        private void ValidarConfirmacaoSenha()
-        {
-            senhaValidada = false;
-            if (txtConfirmarSenha.Text == "" && txtSenha.Text == "")
-            {
-                pcbValidacaoConfirmacaoSenha.Visible = false;
-                pcbValidacaoConfirmacaoSenha.Image = Properties.Resources.circulo_verde;
-                return;
-            }
-            else
-            {
-                pcbValidacaoConfirmacaoSenha.Visible = true;
-                pcbValidacaoConfirmacaoSenha.Image = Properties.Resources.erro;
-            }
 
-            if (txtConfirmarSenha.Text.Equals(txtSenha.Text))
-            {
-                pcbValidacaoConfirmacaoSenha.Visible = true;
-                pcbValidacaoConfirmacaoSenha.Image = Properties.Resources.circulo_verde;
-                senhaValidada = true;
-            }
-            else
-            {
-                pcbValidacaoConfirmacaoSenha.Visible = true;
-                pcbValidacaoConfirmacaoSenha.Image = Properties.Resources.erro;
-            }
-        }
-        private bool ValidarCamposPreenchidos()
-        {
-            if (txtNomeCompleto.Text == "")
-            {
-                MessageBox.Show("Campo nome completo é obrigatorio");
-                txtNomeCompleto.Focus();
-                return false;
-            }
-
-            if (txtNomeAbreviado.Text == "")
-            {
-                MessageBox.Show("Campo usuário é obrigatorio");
-                txtNomeAbreviado.Focus();
-                return false;
-            }
-
-            if ((int)cboSetor.SelectedValue <= 0)
-            {
-                MessageBox.Show("Campo setor é obrigatorio");
-                cboSetor.Focus();
-                return false;
-            }
-
-            if ((int)cboCargo.SelectedValue <= 0)
-            {
-                MessageBox.Show("Campo cargo é obrigatorio");
-                cboCargo.Focus();
-                return false;
-            }
-
-            if (!emailValidado || !confirmacaoEmailValidado)
-            {
-                MessageBox.Show("Email inválido!");
-                txtEmail.Focus();
-                return false;
-            }
-
-            if (!senhaValidada)
-            {
-                MessageBox.Show("Senha inválida!");
-                txtSenha.Focus();
-                return false;
-            }
-
-            return true;
+            return componentesValidados;
         }
         #endregion Metodos
 
         #region Eventos
-        /* Form */
-        private void FrmCadastrarUsuario_Load(object sender, EventArgs e)
+        private void FrmEstruturaBaseCadastro_Load(object sender, EventArgs e)
         {
             InicializarComponentes();
         }
-        private void FrmCadastrarUsuario_FormClosed(object sender, FormClosedEventArgs e)
+        private void FrmEstruturaBaseCadastro_FormClosed(object sender, FormClosedEventArgs e)
         {
             Fechar();
         }
 
-        /* Botoes */
-        private void btnLimpar_Click(object sender, EventArgs e)
-        {
-            LimparComponetes();
-        }
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             var img = pcbImagemUsuario.Image;
@@ -277,13 +155,18 @@ namespace Estoque.Telas_Usuario
 
             try
             {
-                if (!ValidarCamposPreenchidos())
+                if (!nomeValidado ||
+                    !usuarioValidado ||
+                    !emailValidado ||
+                    !confirmacaoEmailValidado ||
+                    !senhaValidada ||
+                    !confirmacaoSenhaValidada)
                     return;
 
                 var usuario = new Usuario()
                 {
                     NomeCompleto = txtNomeCompleto.Text.Trim(),
-                    NomeAbreviado = txtNomeAbreviado.Text.Trim(),
+                    NomeAbreviado = txtUsuario.Text.Trim(),
                     FK_Setor = (int)cboSetor.SelectedValue,
                     FK_Cargo = (int)cboCargo.SelectedValue,
                     Ativo = true,
@@ -306,17 +189,11 @@ namespace Estoque.Telas_Usuario
                 MessageBox.Show("Erro ao cadastrar usuário.\nErro: " + ex.Message);
             }
         }
-
-        /* ComboBox */
-        private void cboSetor_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnLimpar_Click(object sender, EventArgs e)
         {
-            if (cboSetor != null)
-            {
-                cboCargo.DataSource = FiltrarCargos();
-            }
+            LimparComponetes();
         }
 
-        /* PictureBox */
         private void pcbImagemUsuario_Click(object sender, EventArgs e)
         {
             var img = imagemRepositorio.ProcurarImagemLocal();
@@ -326,73 +203,113 @@ namespace Estoque.Telas_Usuario
                 pcbImagemUsuario.Image = img;
             }
         }
-        private void pcbSenha_MouseDown(object sender, MouseEventArgs e)
-        {
-            txtSenha.PasswordChar = '\0';
-        }
-        private void pcbSenha_MouseUp(object sender, MouseEventArgs e)
-        {
-            txtSenha.PasswordChar = '*';
-        }
-        private void pcbConfirmarSenha_MouseDown(object sender, MouseEventArgs e)
-        {
-            txtConfirmarSenha.PasswordChar = '\0';
-        }
-        private void pcbConfirmarSenha_MouseUp(object sender, MouseEventArgs e)
-        {
-            txtConfirmarSenha.PasswordChar = '*';
-        }
 
-        /* TextBox */
-        private void txtEmail_TextChanged(object sender, EventArgs e)
+        private void cboSetor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ValidarEmail();
-        }
-        private void txtEmail_Leave(object sender, EventArgs e)
-        {
-            ValidarEmail();
-            if (txtConfirmarEmail.Text.Length > 0)
+            if (cboSetor != null)
             {
-                ValidarConfirmacaoDeEmail();
+                cboCargo.DataSource = FiltrarCargos();
             }
         }
-        private void txtEmail_Enter(object sender, EventArgs e)
+        private void cboCargo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ValidarEmail();
+
         }
-        private void txtConfirmarEmail_Leave(object sender, EventArgs e)
+
+        private void pcbExibirSenha_Click(object sender, EventArgs e)
         {
-            ValidarConfirmacaoDeEmail();
+            if (txtSenha.PasswordChar == '\0')
+            {
+                txtSenha.PasswordChar = '*';
+                pcbExibirSenha.Image = Properties.Resources.eyeBG_1;
+            }
+            else
+            {
+                txtSenha.PasswordChar = '\0';
+                pcbExibirSenha.Image = Properties.Resources.eyeBG_2;
+            }
+        }
+        private void pcbExibirConfirmarSenha_Click(object sender, EventArgs e)
+        {
+            if (txtConfirmarSenha.PasswordChar == '\0')
+            {
+                txtConfirmarSenha.PasswordChar = '*';
+                pcbExibirConfirmarSenha.Image = Properties.Resources.eyeBG_1;
+            }
+            else
+            {
+                txtConfirmarSenha.PasswordChar = '\0';
+                pcbExibirConfirmarSenha.Image = Properties.Resources.eyeBG_2;
+            }
+        }
+
+        private void txtNomeCompleto_TextChanged(object sender, EventArgs e)
+        {
+            nomeValidado = validacao.ValidarTextDoTextBox(ref txtNomeCompleto, ref pValidarNomeCompleto, 5);
+        }
+        private void txtUsuario_TextChanged(object sender, EventArgs e)
+        {
+            usuarioValidado = validacao.ValidarTextDoTextBox(ref txtUsuario, ref pValidarUsuario, 3);
+        }
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            emailValidado = validacao.ValidarEmail(ref txtEmail, ref pValidarEmail);
+
+            if (txtConfirmarEmail.Text.Length > 0)
+            {
+                txtConfirmarEmail_TextChanged(txtConfirmarEmail, e);
+            }
         }
         private void txtConfirmarEmail_TextChanged(object sender, EventArgs e)
         {
-            ValidarConfirmacaoDeEmail();
-        }
-        private void txtConfirmarEmail_Enter(object sender, EventArgs e)
-        {
-            ValidarConfirmacaoDeEmail();
-        }
-        private void txtSenha_Leave(object sender, EventArgs e)
-        {
-            ValidarConfirmacaoSenha();
-        }
-        private void txtConfirmarSenha_Leave(object sender, EventArgs e)
-        {
-            ValidarConfirmacaoSenha();
-        }
-        private void txtConfirmarSenha_Enter(object sender, EventArgs e)
-        {
-            ValidarConfirmacaoSenha();
+            confirmacaoEmailValidado = false;
+
+            if (txtConfirmarEmail.Text.Equals(txtEmail.Text) && txtConfirmarEmail.Text.Length > 0)
+            {
+                validacao.ObterCorValidacao(ref pValidarConfirmarEmail, eValidacao.itemValidado);
+                confirmacaoEmailValidado = true;
+            }
+            else if (txtConfirmarEmail.Text.Length > 0)
+            {
+                validacao.ObterCorValidacao(ref pValidarConfirmarEmail, eValidacao.itemNaoValidado);
+            }
+            else
+            {
+                validacao.ObterCorValidacao(ref pValidarConfirmarEmail, eValidacao.itemPadrao);
+            }
         }
         private void txtConfirmarSenha_TextChanged(object sender, EventArgs e)
         {
-            ValidarConfirmacaoSenha();
+            int max = txtConfirmarSenha.Text.Length > 8 ? txtConfirmarSenha.Text.Length : 8;
+            lblConfirmarSenha.Text = $"Confirmar Senha [{txtConfirmarSenha.Text.Length} / {max}]:";
+            confirmacaoSenhaValidada = false;
+
+            if (txtConfirmarSenha.Text.Equals(txtSenha.Text) && txtConfirmarSenha.Text.Length > 0)
+            {
+                validacao.ObterCorValidacao(ref pValidarConfirmarSenha, eValidacao.itemValidado);
+                confirmacaoSenhaValidada = true;
+            }
+            else if (txtConfirmarSenha.Text.Length > 0)
+            {
+                validacao.ObterCorValidacao(ref pValidarConfirmarSenha, eValidacao.itemNaoValidado);
+            }
+            else
+            {
+                validacao.ObterCorValidacao(ref pValidarConfirmarSenha, eValidacao.itemPadrao);
+            }
+        }
+        private void txtSenha_TextChanged(object sender, EventArgs e)
+        {
+            int max = txtSenha.Text.Length > 8 ? txtSenha.Text.Length : 8;
+            lblSenha.Text = $"Senha [{txtSenha.Text.Length} / {max}]:";
+
+            senhaValidada = validacao.ValidarTextDoTextBox(ref txtSenha, ref pValidarSenha, 8);
+
+            if (txtConfirmarSenha.Text.Length > 0)
+            {
+                txtConfirmarSenha_TextChanged(txtConfirmarSenha, e);
+            }
         }
         #endregion Eventos
-
-        private void tlpUsuario_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

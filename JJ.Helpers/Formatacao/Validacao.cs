@@ -1,39 +1,83 @@
 ﻿using System.Text.RegularExpressions;
-using System.Net.Mail;
 using System.Windows.Forms;
 using System.Drawing;
+using JJ.Helpers.Interfaces;
 
 namespace JJ.Helpers.Formatacao
 {
-    public static class Validacao
+    public class Validacao : IValidacao
     {
-        public static bool EmailValido(this string email)
+        private Color itemValidado = Color.Green;
+        private Color itemNaoValidado = Color.Red;
+        private Color itemPadrao = Color.FromArgb(16, 23, 28);
+
+        public bool ValidarEmail(string email)
         {
-            string pattern = @"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}(?:\.[A-Za-z]{2,})?$";
+            string pattern = @"^[A-Za-z0-9._-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}(?:\.[A-Za-z]{2,})?$";
             return Regex.IsMatch(email, pattern);
         }
-
-        public static bool ValidarEmail(this string email)
+        public bool ValidarEmail(ref TextBox textBox, ref Panel pValidacao)
         {
-            try
+            bool emailValidado = false;
+
+            if (ValidarEmail(textBox.Text))
             {
-                MailAddress mailAddress = new MailAddress(email);
-                return true;
+                emailValidado = true;
+                pValidacao.BackColor = itemValidado;
             }
-            catch (Exception)
+            else if(textBox.Text.Length > 0)
             {
-                return false;
+                pValidacao.BackColor = itemNaoValidado;
             }
+            else
+            {
+                pValidacao.BackColor = itemPadrao;
+            }
+
+            return emailValidado;
+        }
+        public bool ValidarTextDoTextBox(ref TextBox textBox, ref Panel pValidacao, int tamanhoMin)
+        {
+            bool textoValidado = false;
+
+            if(textBox.Text.Trim().Length >= tamanhoMin) 
+            {
+                textoValidado = true;
+                pValidacao.BackColor = itemValidado;
+            }
+            else if(textBox.Text.Length > 0)
+            {
+                pValidacao.BackColor = itemNaoValidado;
+            }
+            else
+            {
+                pValidacao.BackColor = itemPadrao;
+            }
+
+            return textoValidado;
         }
         
-        public static void ValidarTextDoTextBox(ref TextBox textBox, ref Panel pValidacao, int tamanhoMin)
+        public void ObterCorValidacao(ref Panel pValidacao, eValidacao validacao)
         {
-            pValidacao.BackColor = textBox.Text.Length >= tamanhoMin ? Color.Green: Color.Red;
-
-            if (textBox.Text.Length <= 0)
+            if(validacao == eValidacao.itemValidado)
             {
-                pValidacao.BackColor = Color.FromArgb(16, 23, 28);
+                pValidacao.BackColor = itemValidado;
+            }
+            else if(validacao == eValidacao.itemNaoValidado)
+            {
+                pValidacao.BackColor = itemNaoValidado;
+            }
+            else
+            {
+                pValidacao.BackColor = itemPadrao;
             }
         }
     }
+}
+
+public enum eValidacao
+{ 
+    itemValidado,
+    itemNaoValidado,
+    itemPadrao
 }
