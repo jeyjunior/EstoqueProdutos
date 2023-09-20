@@ -63,9 +63,9 @@ namespace Estoque.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap alert {
+        internal static System.Drawing.Bitmap alerta {
             get {
-                object obj = ResourceManager.GetObject("alert", resourceCulture);
+                object obj = ResourceManager.GetObject("alerta", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,19 +213,9 @@ namespace Estoque.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap eye_1 {
+        internal static System.Drawing.Bitmap erro {
             get {
-                object obj = ResourceManager.GetObject("eye_1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap eye_2 {
-            get {
-                object obj = ResourceManager.GetObject("eye_2", resourceCulture);
+                object obj = ResourceManager.GetObject("erro", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

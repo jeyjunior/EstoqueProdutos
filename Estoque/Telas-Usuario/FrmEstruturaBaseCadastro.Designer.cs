@@ -33,45 +33,59 @@
             tblBotoes = new TableLayoutPanel();
             btnSalvar = new Button();
             btnLimpar = new Button();
-            tableLayoutPanel1 = new TableLayoutPanel();
+            tlpInformacoesBase = new TableLayoutPanel();
             pcbImagemUsuario = new PictureBox();
-            tableLayoutPanel5 = new TableLayoutPanel();
-            textBox1 = new TextBox();
-            lblNomeCompleto = new Label();
-            label1 = new Label();
+            tblInformacoesBaseDados = new TableLayoutPanel();
+            tlpInformacoesBaseNomeCompleto = new TableLayoutPanel();
             txtNomeCompleto = new TextBox();
-            tableLayoutPanel2 = new TableLayoutPanel();
-            comboBox1 = new ComboBox();
-            label2 = new Label();
+            pValidarNomeCompleto = new Panel();
+            tlpInformacoesBaseUsuario = new TableLayoutPanel();
+            txtUsuario = new TextBox();
+            pValidarUsuario = new Panel();
+            lblNomeCompleto = new Label();
+            lblUsuario = new Label();
+            tlpSetor = new TableLayoutPanel();
+            cboCargo = new ComboBox();
+            lblSetor = new Label();
             cboSetor = new ComboBox();
-            label3 = new Label();
-            tableLayoutPanel3 = new TableLayoutPanel();
-            pcbValidacaoEmail = new PictureBox();
+            lblCargo = new Label();
+            tlpEmail = new TableLayoutPanel();
+            tlpDigitarEmail = new TableLayoutPanel();
             txtEmail = new TextBox();
-            label4 = new Label();
-            label5 = new Label();
-            textBox2 = new TextBox();
-            pictureBox2 = new PictureBox();
-            tableLayoutPanel4 = new TableLayoutPanel();
-            textBox3 = new TextBox();
-            label6 = new Label();
-            label7 = new Label();
-            textBox4 = new TextBox();
-            pcbSenha = new PictureBox();
-            pictureBox1 = new PictureBox();
+            pValidarEmail = new Panel();
+            lblEmail = new Label();
+            lblConfirmarEmail = new Label();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            txtConfirmarEmail = new TextBox();
+            pValidarConfirmarEmail = new Panel();
+            tlpSenha = new TableLayoutPanel();
+            lblSenha = new Label();
+            lblConfirmarSenha = new Label();
+            tlpConfirmarSenha = new TableLayoutPanel();
+            txtConfirmarSenha = new TextBox();
+            pcbExibirConfirmarSenha = new PictureBox();
+            pValidarConfirmarSenha = new Panel();
+            tlpDigitarSenha = new TableLayoutPanel();
+            txtSenha = new TextBox();
+            pcbExibirSenha = new PictureBox();
+            pValidarSenha = new Panel();
             tlpPrincipal.SuspendLayout();
             tblCentral.SuspendLayout();
             tblBotoes.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
+            tlpInformacoesBase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pcbImagemUsuario).BeginInit();
-            tableLayoutPanel5.SuspendLayout();
-            tableLayoutPanel2.SuspendLayout();
-            tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pcbValidacaoEmail).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            tableLayoutPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pcbSenha).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            tblInformacoesBaseDados.SuspendLayout();
+            tlpInformacoesBaseNomeCompleto.SuspendLayout();
+            tlpInformacoesBaseUsuario.SuspendLayout();
+            tlpSetor.SuspendLayout();
+            tlpEmail.SuspendLayout();
+            tlpDigitarEmail.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
+            tlpSenha.SuspendLayout();
+            tlpConfirmarSenha.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pcbExibirConfirmarSenha).BeginInit();
+            tlpDigitarSenha.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pcbExibirSenha).BeginInit();
             SuspendLayout();
             // 
             // tlpPrincipal
@@ -99,10 +113,10 @@
             tblCentral.ColumnCount = 1;
             tblCentral.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tblCentral.Controls.Add(tblBotoes, 0, 8);
-            tblCentral.Controls.Add(tableLayoutPanel1, 0, 0);
-            tblCentral.Controls.Add(tableLayoutPanel2, 0, 2);
-            tblCentral.Controls.Add(tableLayoutPanel3, 0, 4);
-            tblCentral.Controls.Add(tableLayoutPanel4, 0, 6);
+            tblCentral.Controls.Add(tlpInformacoesBase, 0, 0);
+            tblCentral.Controls.Add(tlpSetor, 0, 2);
+            tblCentral.Controls.Add(tlpEmail, 0, 4);
+            tblCentral.Controls.Add(tlpSenha, 0, 6);
             tblCentral.Dock = DockStyle.Fill;
             tblCentral.Location = new Point(15, 15);
             tblCentral.Margin = new Padding(0);
@@ -110,11 +124,11 @@
             tblCentral.RowCount = 9;
             tblCentral.RowStyles.Add(new RowStyle(SizeType.Absolute, 165F));
             tblCentral.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tblCentral.RowStyles.Add(new RowStyle(SizeType.Absolute, 90F));
+            tblCentral.RowStyles.Add(new RowStyle(SizeType.Absolute, 75F));
             tblCentral.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tblCentral.RowStyles.Add(new RowStyle(SizeType.Absolute, 90F));
+            tblCentral.RowStyles.Add(new RowStyle(SizeType.Absolute, 75F));
             tblCentral.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tblCentral.RowStyles.Add(new RowStyle(SizeType.Absolute, 90F));
+            tblCentral.RowStyles.Add(new RowStyle(SizeType.Absolute, 75F));
             tblCentral.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tblCentral.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
             tblCentral.Size = new Size(754, 531);
@@ -153,6 +167,7 @@
             btnSalvar.Text = "Salvar";
             btnSalvar.TextImageRelation = TextImageRelation.TextBeforeImage;
             btnSalvar.UseVisualStyleBackColor = true;
+            btnSalvar.Click += btnSalvar_Click;
             // 
             // btnLimpar
             // 
@@ -168,32 +183,33 @@
             btnLimpar.Text = "Limpar";
             btnLimpar.TextImageRelation = TextImageRelation.TextBeforeImage;
             btnLimpar.UseVisualStyleBackColor = true;
+            btnLimpar.Click += btnLimpar_Click;
             // 
-            // tableLayoutPanel1
+            // tlpInformacoesBase
             // 
-            tableLayoutPanel1.BackColor = Color.FromArgb(192, 255, 192);
-            tableLayoutPanel1.ColumnCount = 5;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 15F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 135F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 15F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 15F));
-            tableLayoutPanel1.Controls.Add(pcbImagemUsuario, 1, 1);
-            tableLayoutPanel1.Controls.Add(tableLayoutPanel5, 3, 1);
-            tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(0, 0);
-            tableLayoutPanel1.Margin = new Padding(0);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 3;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
-            tableLayoutPanel1.Size = new Size(754, 165);
-            tableLayoutPanel1.TabIndex = 5;
+            tlpInformacoesBase.BackColor = Color.FromArgb(60, 75, 85);
+            tlpInformacoesBase.ColumnCount = 5;
+            tlpInformacoesBase.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 15F));
+            tlpInformacoesBase.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 135F));
+            tlpInformacoesBase.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 15F));
+            tlpInformacoesBase.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tlpInformacoesBase.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 15F));
+            tlpInformacoesBase.Controls.Add(pcbImagemUsuario, 1, 1);
+            tlpInformacoesBase.Controls.Add(tblInformacoesBaseDados, 3, 1);
+            tlpInformacoesBase.Dock = DockStyle.Fill;
+            tlpInformacoesBase.Location = new Point(0, 0);
+            tlpInformacoesBase.Margin = new Padding(0);
+            tlpInformacoesBase.Name = "tlpInformacoesBase";
+            tlpInformacoesBase.RowCount = 3;
+            tlpInformacoesBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
+            tlpInformacoesBase.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tlpInformacoesBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
+            tlpInformacoesBase.Size = new Size(754, 165);
+            tlpInformacoesBase.TabIndex = 5;
             // 
             // pcbImagemUsuario
             // 
-            pcbImagemUsuario.BackColor = Color.Gray;
+            pcbImagemUsuario.BackColor = Color.WhiteSmoke;
             pcbImagemUsuario.BorderStyle = BorderStyle.FixedSingle;
             pcbImagemUsuario.Cursor = Cursors.Hand;
             pcbImagemUsuario.Dock = DockStyle.Fill;
@@ -204,41 +220,111 @@
             pcbImagemUsuario.SizeMode = PictureBoxSizeMode.StretchImage;
             pcbImagemUsuario.TabIndex = 1;
             pcbImagemUsuario.TabStop = false;
+            pcbImagemUsuario.Click += pcbImagemUsuario_Click;
             // 
-            // tableLayoutPanel5
+            // tblInformacoesBaseDados
             // 
-            tableLayoutPanel5.BackColor = Color.FromArgb(60, 75, 85);
-            tableLayoutPanel5.ColumnCount = 1;
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel5.Controls.Add(textBox1, 0, 4);
-            tableLayoutPanel5.Controls.Add(lblNomeCompleto, 0, 0);
-            tableLayoutPanel5.Controls.Add(label1, 0, 3);
-            tableLayoutPanel5.Controls.Add(txtNomeCompleto, 0, 1);
-            tableLayoutPanel5.Dock = DockStyle.Fill;
-            tableLayoutPanel5.Location = new Point(165, 15);
-            tableLayoutPanel5.Margin = new Padding(0);
-            tableLayoutPanel5.Name = "tableLayoutPanel5";
-            tableLayoutPanel5.RowCount = 5;
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 26F));
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 26F));
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel5.Size = new Size(574, 135);
-            tableLayoutPanel5.TabIndex = 2;
+            tblInformacoesBaseDados.BackColor = Color.FromArgb(60, 75, 85);
+            tblInformacoesBaseDados.ColumnCount = 1;
+            tblInformacoesBaseDados.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tblInformacoesBaseDados.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tblInformacoesBaseDados.Controls.Add(tlpInformacoesBaseNomeCompleto, 0, 1);
+            tblInformacoesBaseDados.Controls.Add(tlpInformacoesBaseUsuario, 0, 4);
+            tblInformacoesBaseDados.Controls.Add(lblNomeCompleto, 0, 0);
+            tblInformacoesBaseDados.Controls.Add(lblUsuario, 0, 3);
+            tblInformacoesBaseDados.Dock = DockStyle.Fill;
+            tblInformacoesBaseDados.Location = new Point(165, 15);
+            tblInformacoesBaseDados.Margin = new Padding(0);
+            tblInformacoesBaseDados.Name = "tblInformacoesBaseDados";
+            tblInformacoesBaseDados.RowCount = 5;
+            tblInformacoesBaseDados.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
+            tblInformacoesBaseDados.RowStyles.Add(new RowStyle(SizeType.Absolute, 26F));
+            tblInformacoesBaseDados.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
+            tblInformacoesBaseDados.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
+            tblInformacoesBaseDados.RowStyles.Add(new RowStyle(SizeType.Absolute, 26F));
+            tblInformacoesBaseDados.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tblInformacoesBaseDados.Size = new Size(574, 135);
+            tblInformacoesBaseDados.TabIndex = 2;
             // 
-            // textBox1
+            // tlpInformacoesBaseNomeCompleto
             // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Dock = DockStyle.Fill;
-            textBox1.Font = new Font("Verdana", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(0, 109);
-            textBox1.Margin = new Padding(0);
-            textBox1.MaxLength = 1000;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(574, 25);
-            textBox1.TabIndex = 6;
+            tlpInformacoesBaseNomeCompleto.AutoScroll = true;
+            tlpInformacoesBaseNomeCompleto.BackColor = Color.White;
+            tlpInformacoesBaseNomeCompleto.ColumnCount = 2;
+            tlpInformacoesBaseNomeCompleto.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tlpInformacoesBaseNomeCompleto.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tlpInformacoesBaseNomeCompleto.Controls.Add(txtNomeCompleto, 0, 0);
+            tlpInformacoesBaseNomeCompleto.Controls.Add(pValidarNomeCompleto, 1, 0);
+            tlpInformacoesBaseNomeCompleto.Dock = DockStyle.Fill;
+            tlpInformacoesBaseNomeCompleto.Location = new Point(0, 34);
+            tlpInformacoesBaseNomeCompleto.Margin = new Padding(0);
+            tlpInformacoesBaseNomeCompleto.Name = "tlpInformacoesBaseNomeCompleto";
+            tlpInformacoesBaseNomeCompleto.RowCount = 1;
+            tlpInformacoesBaseNomeCompleto.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tlpInformacoesBaseNomeCompleto.Size = new Size(574, 26);
+            tlpInformacoesBaseNomeCompleto.TabIndex = 17;
+            // 
+            // txtNomeCompleto
+            // 
+            txtNomeCompleto.BorderStyle = BorderStyle.None;
+            txtNomeCompleto.Dock = DockStyle.Fill;
+            txtNomeCompleto.Font = new Font("Verdana", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            txtNomeCompleto.Location = new Point(10, 4);
+            txtNomeCompleto.Margin = new Padding(10, 4, 0, 0);
+            txtNomeCompleto.MaxLength = 120;
+            txtNomeCompleto.Name = "txtNomeCompleto";
+            txtNomeCompleto.Size = new Size(554, 18);
+            txtNomeCompleto.TabIndex = 28;
+            txtNomeCompleto.TextChanged += txtNomeCompleto_TextChanged;
+            // 
+            // pValidarNomeCompleto
+            // 
+            pValidarNomeCompleto.BackColor = Color.FromArgb(16, 23, 28);
+            pValidarNomeCompleto.Location = new Point(564, 0);
+            pValidarNomeCompleto.Margin = new Padding(0);
+            pValidarNomeCompleto.Name = "pValidarNomeCompleto";
+            pValidarNomeCompleto.Size = new Size(10, 26);
+            pValidarNomeCompleto.TabIndex = 29;
+            // 
+            // tlpInformacoesBaseUsuario
+            // 
+            tlpInformacoesBaseUsuario.AutoScroll = true;
+            tlpInformacoesBaseUsuario.BackColor = Color.White;
+            tlpInformacoesBaseUsuario.ColumnCount = 2;
+            tlpInformacoesBaseUsuario.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tlpInformacoesBaseUsuario.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tlpInformacoesBaseUsuario.Controls.Add(txtUsuario, 0, 0);
+            tlpInformacoesBaseUsuario.Controls.Add(pValidarUsuario, 1, 0);
+            tlpInformacoesBaseUsuario.Dock = DockStyle.Fill;
+            tlpInformacoesBaseUsuario.Location = new Point(0, 109);
+            tlpInformacoesBaseUsuario.Margin = new Padding(0);
+            tlpInformacoesBaseUsuario.Name = "tlpInformacoesBaseUsuario";
+            tlpInformacoesBaseUsuario.RowCount = 1;
+            tlpInformacoesBaseUsuario.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tlpInformacoesBaseUsuario.Size = new Size(574, 26);
+            tlpInformacoesBaseUsuario.TabIndex = 16;
+            // 
+            // txtUsuario
+            // 
+            txtUsuario.BorderStyle = BorderStyle.None;
+            txtUsuario.Dock = DockStyle.Fill;
+            txtUsuario.Font = new Font("Verdana", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            txtUsuario.Location = new Point(10, 4);
+            txtUsuario.Margin = new Padding(10, 4, 0, 0);
+            txtUsuario.MaxLength = 120;
+            txtUsuario.Name = "txtUsuario";
+            txtUsuario.Size = new Size(554, 18);
+            txtUsuario.TabIndex = 28;
+            txtUsuario.TextChanged += txtUsuario_TextChanged;
+            // 
+            // pValidarUsuario
+            // 
+            pValidarUsuario.BackColor = Color.FromArgb(16, 23, 28);
+            pValidarUsuario.Location = new Point(564, 0);
+            pValidarUsuario.Margin = new Padding(0);
+            pValidarUsuario.Name = "pValidarUsuario";
+            pValidarUsuario.Size = new Size(10, 26);
+            pValidarUsuario.TabIndex = 29;
             // 
             // lblNomeCompleto
             // 
@@ -254,82 +340,71 @@
             lblNomeCompleto.Text = "Nome completo:";
             lblNomeCompleto.TextAlign = ContentAlignment.BottomLeft;
             // 
-            // label1
+            // lblUsuario
             // 
-            label1.Dock = DockStyle.Fill;
-            label1.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = SystemColors.ControlLightLight;
-            label1.Location = new Point(0, 75);
-            label1.Margin = new Padding(0);
-            label1.Name = "label1";
-            label1.Padding = new Padding(0, 0, 0, 5);
-            label1.Size = new Size(574, 34);
-            label1.TabIndex = 4;
-            label1.Text = "Usuário:";
-            label1.TextAlign = ContentAlignment.BottomLeft;
+            lblUsuario.Dock = DockStyle.Fill;
+            lblUsuario.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblUsuario.ForeColor = SystemColors.ControlLightLight;
+            lblUsuario.Location = new Point(0, 75);
+            lblUsuario.Margin = new Padding(0);
+            lblUsuario.Name = "lblUsuario";
+            lblUsuario.Padding = new Padding(0, 0, 0, 5);
+            lblUsuario.Size = new Size(574, 34);
+            lblUsuario.TabIndex = 4;
+            lblUsuario.Text = "Usuário:";
+            lblUsuario.TextAlign = ContentAlignment.BottomLeft;
             // 
-            // txtNomeCompleto
+            // tlpSetor
             // 
-            txtNomeCompleto.BorderStyle = BorderStyle.FixedSingle;
-            txtNomeCompleto.Dock = DockStyle.Fill;
-            txtNomeCompleto.Font = new Font("Verdana", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            txtNomeCompleto.Location = new Point(0, 34);
-            txtNomeCompleto.Margin = new Padding(0);
-            txtNomeCompleto.MaxLength = 1000;
-            txtNomeCompleto.Name = "txtNomeCompleto";
-            txtNomeCompleto.Size = new Size(574, 25);
-            txtNomeCompleto.TabIndex = 5;
+            tlpSetor.BackColor = Color.FromArgb(60, 75, 85);
+            tlpSetor.ColumnCount = 5;
+            tlpSetor.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 15F));
+            tlpSetor.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tlpSetor.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tlpSetor.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tlpSetor.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 15F));
+            tlpSetor.Controls.Add(cboCargo, 3, 1);
+            tlpSetor.Controls.Add(lblSetor, 1, 0);
+            tlpSetor.Controls.Add(cboSetor, 1, 1);
+            tlpSetor.Controls.Add(lblCargo, 3, 0);
+            tlpSetor.Dock = DockStyle.Fill;
+            tlpSetor.Location = new Point(0, 191);
+            tlpSetor.Margin = new Padding(0);
+            tlpSetor.Name = "tlpSetor";
+            tlpSetor.RowCount = 3;
+            tlpSetor.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
+            tlpSetor.RowStyles.Add(new RowStyle(SizeType.Absolute, 26F));
+            tlpSetor.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
+            tlpSetor.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tlpSetor.Size = new Size(754, 75);
+            tlpSetor.TabIndex = 6;
             // 
-            // tableLayoutPanel2
+            // cboCargo
             // 
-            tableLayoutPanel2.BackColor = Color.FromArgb(60, 75, 85);
-            tableLayoutPanel2.ColumnCount = 5;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 15F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 15F));
-            tableLayoutPanel2.Controls.Add(comboBox1, 3, 2);
-            tableLayoutPanel2.Controls.Add(label2, 1, 1);
-            tableLayoutPanel2.Controls.Add(cboSetor, 1, 2);
-            tableLayoutPanel2.Controls.Add(label3, 3, 1);
-            tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(0, 180);
-            tableLayoutPanel2.Margin = new Padding(0);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 4;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 26F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
-            tableLayoutPanel2.Size = new Size(754, 90);
-            tableLayoutPanel2.TabIndex = 6;
+            cboCargo.Dock = DockStyle.Fill;
+            cboCargo.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboCargo.Font = new Font("Verdana", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            cboCargo.FormattingEnabled = true;
+            cboCargo.Location = new Point(387, 34);
+            cboCargo.Margin = new Padding(0);
+            cboCargo.Name = "cboCargo";
+            cboCargo.Size = new Size(352, 26);
+            cboCargo.TabIndex = 7;
+            cboCargo.SelectedIndexChanged += cboCargo_SelectedIndexChanged;
             // 
-            // comboBox1
+            // lblSetor
             // 
-            comboBox1.Dock = DockStyle.Fill;
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox1.Font = new Font("Verdana", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(387, 49);
-            comboBox1.Margin = new Padding(0);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(352, 26);
-            comboBox1.TabIndex = 7;
-            // 
-            // label2
-            // 
-            label2.Dock = DockStyle.Fill;
-            label2.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.ForeColor = SystemColors.ControlLightLight;
-            label2.Location = new Point(15, 15);
-            label2.Margin = new Padding(0);
-            label2.Name = "label2";
-            label2.Padding = new Padding(0, 0, 0, 5);
-            label2.Size = new Size(352, 34);
-            label2.TabIndex = 5;
-            label2.Text = "Setor:";
-            label2.TextAlign = ContentAlignment.BottomLeft;
+            lblSetor.Dock = DockStyle.Fill;
+            lblSetor.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblSetor.ForeColor = SystemColors.ControlLightLight;
+            lblSetor.Location = new Point(15, 0);
+            lblSetor.Margin = new Padding(0);
+            lblSetor.Name = "lblSetor";
+            lblSetor.Padding = new Padding(0, 0, 0, 5);
+            lblSetor.Size = new Size(352, 34);
+            lblSetor.TabIndex = 5;
+            lblSetor.Text = "Setor:";
+            lblSetor.TextAlign = ContentAlignment.BottomLeft;
             // 
             // cboSetor
             // 
@@ -337,237 +412,326 @@
             cboSetor.DropDownStyle = ComboBoxStyle.DropDownList;
             cboSetor.Font = new Font("Verdana", 11F, FontStyle.Regular, GraphicsUnit.Point);
             cboSetor.FormattingEnabled = true;
-            cboSetor.Location = new Point(15, 49);
+            cboSetor.Location = new Point(15, 34);
             cboSetor.Margin = new Padding(0);
             cboSetor.Name = "cboSetor";
             cboSetor.Size = new Size(352, 26);
             cboSetor.TabIndex = 6;
+            cboSetor.SelectedIndexChanged += cboSetor_SelectedIndexChanged;
             // 
-            // label3
+            // lblCargo
             // 
-            label3.Dock = DockStyle.Fill;
-            label3.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.ForeColor = SystemColors.ControlLightLight;
-            label3.Location = new Point(387, 15);
-            label3.Margin = new Padding(0);
-            label3.Name = "label3";
-            label3.Padding = new Padding(0, 0, 0, 5);
-            label3.Size = new Size(352, 34);
-            label3.TabIndex = 8;
-            label3.Text = "Cargo:";
-            label3.TextAlign = ContentAlignment.BottomLeft;
+            lblCargo.Dock = DockStyle.Fill;
+            lblCargo.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblCargo.ForeColor = SystemColors.ControlLightLight;
+            lblCargo.Location = new Point(387, 0);
+            lblCargo.Margin = new Padding(0);
+            lblCargo.Name = "lblCargo";
+            lblCargo.Padding = new Padding(0, 0, 0, 5);
+            lblCargo.Size = new Size(352, 34);
+            lblCargo.TabIndex = 8;
+            lblCargo.Text = "Cargo:";
+            lblCargo.TextAlign = ContentAlignment.BottomLeft;
             // 
-            // tableLayoutPanel3
+            // tlpEmail
             // 
-            tableLayoutPanel3.BackColor = Color.FromArgb(60, 75, 85);
-            tableLayoutPanel3.ColumnCount = 7;
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 15F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 34F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 34F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 15F));
-            tableLayoutPanel3.Controls.Add(pcbValidacaoEmail, 2, 2);
-            tableLayoutPanel3.Controls.Add(txtEmail, 1, 2);
-            tableLayoutPanel3.Controls.Add(label4, 1, 1);
-            tableLayoutPanel3.Controls.Add(label5, 4, 1);
-            tableLayoutPanel3.Controls.Add(textBox2, 4, 2);
-            tableLayoutPanel3.Controls.Add(pictureBox2, 5, 2);
-            tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(0, 285);
-            tableLayoutPanel3.Margin = new Padding(0);
-            tableLayoutPanel3.Name = "tableLayoutPanel3";
-            tableLayoutPanel3.RowCount = 4;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 26F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
-            tableLayoutPanel3.Size = new Size(754, 90);
-            tableLayoutPanel3.TabIndex = 9;
+            tlpEmail.BackColor = Color.FromArgb(60, 75, 85);
+            tlpEmail.ColumnCount = 5;
+            tlpEmail.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 15F));
+            tlpEmail.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tlpEmail.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tlpEmail.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tlpEmail.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 15F));
+            tlpEmail.Controls.Add(tlpDigitarEmail, 1, 1);
+            tlpEmail.Controls.Add(lblEmail, 1, 0);
+            tlpEmail.Controls.Add(lblConfirmarEmail, 3, 0);
+            tlpEmail.Controls.Add(tableLayoutPanel1, 3, 1);
+            tlpEmail.Dock = DockStyle.Fill;
+            tlpEmail.Location = new Point(0, 292);
+            tlpEmail.Margin = new Padding(0);
+            tlpEmail.Name = "tlpEmail";
+            tlpEmail.RowCount = 3;
+            tlpEmail.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
+            tlpEmail.RowStyles.Add(new RowStyle(SizeType.Absolute, 26F));
+            tlpEmail.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
+            tlpEmail.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tlpEmail.Size = new Size(754, 75);
+            tlpEmail.TabIndex = 9;
             // 
-            // pcbValidacaoEmail
+            // tlpDigitarEmail
             // 
-            pcbValidacaoEmail.Dock = DockStyle.Fill;
-            pcbValidacaoEmail.Image = Properties.Resources.circulo_verde;
-            pcbValidacaoEmail.Location = new Point(333, 49);
-            pcbValidacaoEmail.Margin = new Padding(0);
-            pcbValidacaoEmail.Name = "pcbValidacaoEmail";
-            pcbValidacaoEmail.Size = new Size(34, 26);
-            pcbValidacaoEmail.SizeMode = PictureBoxSizeMode.CenterImage;
-            pcbValidacaoEmail.TabIndex = 26;
-            pcbValidacaoEmail.TabStop = false;
-            pcbValidacaoEmail.Visible = false;
+            tlpDigitarEmail.AutoScroll = true;
+            tlpDigitarEmail.BackColor = Color.White;
+            tlpDigitarEmail.ColumnCount = 2;
+            tlpDigitarEmail.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tlpDigitarEmail.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tlpDigitarEmail.Controls.Add(txtEmail, 0, 0);
+            tlpDigitarEmail.Controls.Add(pValidarEmail, 1, 0);
+            tlpDigitarEmail.Dock = DockStyle.Fill;
+            tlpDigitarEmail.Location = new Point(15, 34);
+            tlpDigitarEmail.Margin = new Padding(0);
+            tlpDigitarEmail.Name = "tlpDigitarEmail";
+            tlpDigitarEmail.RowCount = 1;
+            tlpDigitarEmail.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tlpDigitarEmail.Size = new Size(352, 26);
+            tlpDigitarEmail.TabIndex = 15;
             // 
             // txtEmail
             // 
-            txtEmail.BorderStyle = BorderStyle.FixedSingle;
+            txtEmail.BorderStyle = BorderStyle.None;
             txtEmail.Dock = DockStyle.Fill;
             txtEmail.Font = new Font("Verdana", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            txtEmail.Location = new Point(15, 49);
-            txtEmail.Margin = new Padding(0);
+            txtEmail.Location = new Point(10, 4);
+            txtEmail.Margin = new Padding(10, 4, 0, 0);
             txtEmail.MaxLength = 120;
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(318, 25);
-            txtEmail.TabIndex = 9;
+            txtEmail.Size = new Size(332, 18);
+            txtEmail.TabIndex = 28;
+            txtEmail.TextChanged += txtEmail_TextChanged;
             // 
-            // label4
+            // pValidarEmail
             // 
-            label4.Dock = DockStyle.Fill;
-            label4.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.ForeColor = SystemColors.ControlLightLight;
-            label4.Location = new Point(15, 15);
-            label4.Margin = new Padding(0);
-            label4.Name = "label4";
-            label4.Padding = new Padding(0, 0, 0, 5);
-            label4.Size = new Size(318, 34);
-            label4.TabIndex = 5;
-            label4.Text = "Email:";
-            label4.TextAlign = ContentAlignment.BottomLeft;
+            pValidarEmail.BackColor = Color.FromArgb(16, 23, 28);
+            pValidarEmail.Location = new Point(342, 0);
+            pValidarEmail.Margin = new Padding(0);
+            pValidarEmail.Name = "pValidarEmail";
+            pValidarEmail.Size = new Size(10, 26);
+            pValidarEmail.TabIndex = 29;
             // 
-            // label5
+            // lblEmail
             // 
-            label5.Dock = DockStyle.Fill;
-            label5.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.ForeColor = SystemColors.ControlLightLight;
-            label5.Location = new Point(387, 15);
-            label5.Margin = new Padding(0);
-            label5.Name = "label5";
-            label5.Padding = new Padding(0, 0, 0, 5);
-            label5.Size = new Size(318, 34);
-            label5.TabIndex = 8;
-            label5.Text = "Confirmar Email:";
-            label5.TextAlign = ContentAlignment.BottomLeft;
+            lblEmail.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblEmail.ForeColor = SystemColors.ControlLightLight;
+            lblEmail.Location = new Point(15, 0);
+            lblEmail.Margin = new Padding(0);
+            lblEmail.Name = "lblEmail";
+            lblEmail.Padding = new Padding(0, 0, 0, 5);
+            lblEmail.Size = new Size(352, 34);
+            lblEmail.TabIndex = 17;
+            lblEmail.Text = "Email:";
+            lblEmail.TextAlign = ContentAlignment.BottomLeft;
             // 
-            // textBox2
+            // lblConfirmarEmail
             // 
-            textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.Dock = DockStyle.Fill;
-            textBox2.Font = new Font("Verdana", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox2.Location = new Point(387, 49);
-            textBox2.Margin = new Padding(0);
-            textBox2.MaxLength = 120;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(318, 25);
-            textBox2.TabIndex = 10;
+            lblConfirmarEmail.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblConfirmarEmail.ForeColor = SystemColors.ControlLightLight;
+            lblConfirmarEmail.Location = new Point(387, 0);
+            lblConfirmarEmail.Margin = new Padding(0);
+            lblConfirmarEmail.Name = "lblConfirmarEmail";
+            lblConfirmarEmail.Padding = new Padding(0, 0, 0, 5);
+            lblConfirmarEmail.Size = new Size(352, 34);
+            lblConfirmarEmail.TabIndex = 18;
+            lblConfirmarEmail.Text = "Confirmar Email:";
+            lblConfirmarEmail.TextAlign = ContentAlignment.BottomLeft;
             // 
-            // pictureBox2
+            // tableLayoutPanel1
             // 
-            pictureBox2.Dock = DockStyle.Fill;
-            pictureBox2.Image = Properties.Resources.circulo_verde;
-            pictureBox2.Location = new Point(705, 49);
-            pictureBox2.Margin = new Padding(0);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(34, 26);
-            pictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
-            pictureBox2.TabIndex = 27;
-            pictureBox2.TabStop = false;
-            pictureBox2.Visible = false;
+            tableLayoutPanel1.AutoScroll = true;
+            tableLayoutPanel1.BackColor = Color.White;
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableLayoutPanel1.Controls.Add(txtConfirmarEmail, 0, 0);
+            tableLayoutPanel1.Controls.Add(pValidarConfirmarEmail, 1, 0);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(387, 34);
+            tableLayoutPanel1.Margin = new Padding(0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Size = new Size(352, 26);
+            tableLayoutPanel1.TabIndex = 19;
             // 
-            // tableLayoutPanel4
+            // txtConfirmarEmail
             // 
-            tableLayoutPanel4.BackColor = Color.FromArgb(60, 75, 85);
-            tableLayoutPanel4.ColumnCount = 7;
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 15F));
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 34F));
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 34F));
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 15F));
-            tableLayoutPanel4.Controls.Add(textBox3, 1, 2);
-            tableLayoutPanel4.Controls.Add(label6, 1, 1);
-            tableLayoutPanel4.Controls.Add(label7, 4, 1);
-            tableLayoutPanel4.Controls.Add(textBox4, 4, 2);
-            tableLayoutPanel4.Controls.Add(pcbSenha, 2, 2);
-            tableLayoutPanel4.Controls.Add(pictureBox1, 5, 2);
-            tableLayoutPanel4.Dock = DockStyle.Fill;
-            tableLayoutPanel4.Location = new Point(0, 390);
-            tableLayoutPanel4.Margin = new Padding(0);
-            tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.RowCount = 4;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 26F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
-            tableLayoutPanel4.Size = new Size(754, 90);
-            tableLayoutPanel4.TabIndex = 10;
+            txtConfirmarEmail.BorderStyle = BorderStyle.None;
+            txtConfirmarEmail.Dock = DockStyle.Fill;
+            txtConfirmarEmail.Font = new Font("Verdana", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            txtConfirmarEmail.Location = new Point(10, 4);
+            txtConfirmarEmail.Margin = new Padding(10, 4, 0, 0);
+            txtConfirmarEmail.MaxLength = 120;
+            txtConfirmarEmail.Name = "txtConfirmarEmail";
+            txtConfirmarEmail.Size = new Size(332, 18);
+            txtConfirmarEmail.TabIndex = 28;
+            txtConfirmarEmail.TextChanged += txtConfirmarEmail_TextChanged;
             // 
-            // textBox3
+            // pValidarConfirmarEmail
             // 
-            textBox3.BorderStyle = BorderStyle.FixedSingle;
-            textBox3.Dock = DockStyle.Fill;
-            textBox3.Font = new Font("Verdana", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox3.Location = new Point(15, 49);
-            textBox3.Margin = new Padding(0);
-            textBox3.MaxLength = 120;
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(318, 25);
-            textBox3.TabIndex = 11;
+            pValidarConfirmarEmail.BackColor = Color.FromArgb(16, 23, 28);
+            pValidarConfirmarEmail.Location = new Point(342, 0);
+            pValidarConfirmarEmail.Margin = new Padding(0);
+            pValidarConfirmarEmail.Name = "pValidarConfirmarEmail";
+            pValidarConfirmarEmail.Size = new Size(10, 26);
+            pValidarConfirmarEmail.TabIndex = 29;
             // 
-            // label6
+            // tlpSenha
             // 
-            label6.Dock = DockStyle.Fill;
-            label6.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.ForeColor = SystemColors.ControlLightLight;
-            label6.Location = new Point(15, 15);
-            label6.Margin = new Padding(0);
-            label6.Name = "label6";
-            label6.Padding = new Padding(0, 0, 0, 5);
-            label6.Size = new Size(318, 34);
-            label6.TabIndex = 5;
-            label6.Text = "Senha:";
-            label6.TextAlign = ContentAlignment.BottomLeft;
+            tlpSenha.BackColor = Color.FromArgb(60, 75, 85);
+            tlpSenha.ColumnCount = 5;
+            tlpSenha.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 15F));
+            tlpSenha.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tlpSenha.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tlpSenha.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tlpSenha.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 15F));
+            tlpSenha.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tlpSenha.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tlpSenha.Controls.Add(lblSenha, 1, 0);
+            tlpSenha.Controls.Add(lblConfirmarSenha, 3, 0);
+            tlpSenha.Controls.Add(tlpConfirmarSenha, 3, 1);
+            tlpSenha.Controls.Add(tlpDigitarSenha, 1, 1);
+            tlpSenha.Dock = DockStyle.Fill;
+            tlpSenha.Location = new Point(0, 393);
+            tlpSenha.Margin = new Padding(0);
+            tlpSenha.Name = "tlpSenha";
+            tlpSenha.RowCount = 3;
+            tlpSenha.RowStyles.Add(new RowStyle(SizeType.Absolute, 34F));
+            tlpSenha.RowStyles.Add(new RowStyle(SizeType.Absolute, 26F));
+            tlpSenha.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
+            tlpSenha.Size = new Size(754, 75);
+            tlpSenha.TabIndex = 10;
             // 
-            // label7
+            // lblSenha
             // 
-            label7.Dock = DockStyle.Fill;
-            label7.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.ForeColor = SystemColors.ControlLightLight;
-            label7.Location = new Point(387, 15);
-            label7.Margin = new Padding(0);
-            label7.Name = "label7";
-            label7.Padding = new Padding(0, 0, 0, 5);
-            label7.Size = new Size(318, 34);
-            label7.TabIndex = 8;
-            label7.Text = "Confirmar Senha:";
-            label7.TextAlign = ContentAlignment.BottomLeft;
+            lblSenha.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblSenha.ForeColor = SystemColors.ControlLightLight;
+            lblSenha.Location = new Point(15, 0);
+            lblSenha.Margin = new Padding(0);
+            lblSenha.Name = "lblSenha";
+            lblSenha.Padding = new Padding(0, 0, 0, 5);
+            lblSenha.Size = new Size(352, 34);
+            lblSenha.TabIndex = 5;
+            lblSenha.Text = "Senha:";
+            lblSenha.TextAlign = ContentAlignment.BottomLeft;
             // 
-            // textBox4
+            // lblConfirmarSenha
             // 
-            textBox4.BorderStyle = BorderStyle.FixedSingle;
-            textBox4.Dock = DockStyle.Fill;
-            textBox4.Font = new Font("Verdana", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox4.Location = new Point(387, 49);
-            textBox4.Margin = new Padding(0);
-            textBox4.MaxLength = 120;
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(318, 25);
-            textBox4.TabIndex = 12;
+            lblConfirmarSenha.Dock = DockStyle.Fill;
+            lblConfirmarSenha.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblConfirmarSenha.ForeColor = SystemColors.ControlLightLight;
+            lblConfirmarSenha.Location = new Point(387, 0);
+            lblConfirmarSenha.Margin = new Padding(0);
+            lblConfirmarSenha.Name = "lblConfirmarSenha";
+            lblConfirmarSenha.Padding = new Padding(0, 0, 0, 5);
+            lblConfirmarSenha.Size = new Size(352, 34);
+            lblConfirmarSenha.TabIndex = 8;
+            lblConfirmarSenha.Text = "Confirmar Senha:";
+            lblConfirmarSenha.TextAlign = ContentAlignment.BottomLeft;
             // 
-            // pcbSenha
+            // tlpConfirmarSenha
             // 
-            pcbSenha.Dock = DockStyle.Fill;
-            pcbSenha.Image = Properties.Resources.eye_1;
-            pcbSenha.Location = new Point(333, 49);
-            pcbSenha.Margin = new Padding(0);
-            pcbSenha.Name = "pcbSenha";
-            pcbSenha.Size = new Size(34, 26);
-            pcbSenha.SizeMode = PictureBoxSizeMode.CenterImage;
-            pcbSenha.TabIndex = 15;
-            pcbSenha.TabStop = false;
+            tlpConfirmarSenha.AutoScroll = true;
+            tlpConfirmarSenha.BackColor = Color.White;
+            tlpConfirmarSenha.ColumnCount = 3;
+            tlpConfirmarSenha.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tlpConfirmarSenha.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 34F));
+            tlpConfirmarSenha.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tlpConfirmarSenha.Controls.Add(txtConfirmarSenha, 0, 0);
+            tlpConfirmarSenha.Controls.Add(pcbExibirConfirmarSenha, 1, 0);
+            tlpConfirmarSenha.Controls.Add(pValidarConfirmarSenha, 2, 0);
+            tlpConfirmarSenha.Dock = DockStyle.Fill;
+            tlpConfirmarSenha.Location = new Point(387, 34);
+            tlpConfirmarSenha.Margin = new Padding(0);
+            tlpConfirmarSenha.Name = "tlpConfirmarSenha";
+            tlpConfirmarSenha.RowCount = 1;
+            tlpConfirmarSenha.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tlpConfirmarSenha.Size = new Size(352, 26);
+            tlpConfirmarSenha.TabIndex = 15;
             // 
-            // pictureBox1
+            // txtConfirmarSenha
             // 
-            pictureBox1.Dock = DockStyle.Fill;
-            pictureBox1.Image = Properties.Resources.eye_1;
-            pictureBox1.Location = new Point(705, 49);
-            pictureBox1.Margin = new Padding(0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(34, 26);
-            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
-            pictureBox1.TabIndex = 16;
-            pictureBox1.TabStop = false;
+            txtConfirmarSenha.BorderStyle = BorderStyle.None;
+            txtConfirmarSenha.Dock = DockStyle.Fill;
+            txtConfirmarSenha.Font = new Font("Verdana", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            txtConfirmarSenha.Location = new Point(10, 4);
+            txtConfirmarSenha.Margin = new Padding(10, 4, 0, 0);
+            txtConfirmarSenha.MaxLength = 120;
+            txtConfirmarSenha.Name = "txtConfirmarSenha";
+            txtConfirmarSenha.PasswordChar = '*';
+            txtConfirmarSenha.Size = new Size(298, 18);
+            txtConfirmarSenha.TabIndex = 28;
+            txtConfirmarSenha.TextChanged += txtConfirmarSenha_TextChanged;
+            // 
+            // pcbExibirConfirmarSenha
+            // 
+            pcbExibirConfirmarSenha.Cursor = Cursors.Hand;
+            pcbExibirConfirmarSenha.Dock = DockStyle.Fill;
+            pcbExibirConfirmarSenha.Image = Properties.Resources.eyeBG_1;
+            pcbExibirConfirmarSenha.Location = new Point(308, 0);
+            pcbExibirConfirmarSenha.Margin = new Padding(0);
+            pcbExibirConfirmarSenha.Name = "pcbExibirConfirmarSenha";
+            pcbExibirConfirmarSenha.Size = new Size(34, 26);
+            pcbExibirConfirmarSenha.SizeMode = PictureBoxSizeMode.CenterImage;
+            pcbExibirConfirmarSenha.TabIndex = 29;
+            pcbExibirConfirmarSenha.TabStop = false;
+            pcbExibirConfirmarSenha.MouseDown += pcbExibirConfirmarSenha_MouseDown;
+            pcbExibirConfirmarSenha.MouseUp += pcbExibirConfirmarSenha_MouseUp;
+            // 
+            // pValidarConfirmarSenha
+            // 
+            pValidarConfirmarSenha.BackColor = Color.FromArgb(16, 23, 28);
+            pValidarConfirmarSenha.Location = new Point(342, 0);
+            pValidarConfirmarSenha.Margin = new Padding(0);
+            pValidarConfirmarSenha.Name = "pValidarConfirmarSenha";
+            pValidarConfirmarSenha.Size = new Size(10, 26);
+            pValidarConfirmarSenha.TabIndex = 30;
+            // 
+            // tlpDigitarSenha
+            // 
+            tlpDigitarSenha.AutoScroll = true;
+            tlpDigitarSenha.BackColor = Color.White;
+            tlpDigitarSenha.ColumnCount = 3;
+            tlpDigitarSenha.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tlpDigitarSenha.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 34F));
+            tlpDigitarSenha.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tlpDigitarSenha.Controls.Add(txtSenha, 0, 0);
+            tlpDigitarSenha.Controls.Add(pcbExibirSenha, 1, 0);
+            tlpDigitarSenha.Controls.Add(pValidarSenha, 2, 0);
+            tlpDigitarSenha.Dock = DockStyle.Fill;
+            tlpDigitarSenha.Location = new Point(15, 34);
+            tlpDigitarSenha.Margin = new Padding(0);
+            tlpDigitarSenha.Name = "tlpDigitarSenha";
+            tlpDigitarSenha.RowCount = 1;
+            tlpDigitarSenha.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tlpDigitarSenha.Size = new Size(352, 26);
+            tlpDigitarSenha.TabIndex = 14;
+            // 
+            // txtSenha
+            // 
+            txtSenha.BorderStyle = BorderStyle.None;
+            txtSenha.Dock = DockStyle.Fill;
+            txtSenha.Font = new Font("Verdana", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            txtSenha.Location = new Point(10, 4);
+            txtSenha.Margin = new Padding(10, 4, 0, 0);
+            txtSenha.MaxLength = 120;
+            txtSenha.Name = "txtSenha";
+            txtSenha.PasswordChar = '*';
+            txtSenha.Size = new Size(298, 18);
+            txtSenha.TabIndex = 28;
+            txtSenha.TextChanged += txtSenha_TextChanged;
+            // 
+            // pcbExibirSenha
+            // 
+            pcbExibirSenha.Cursor = Cursors.Hand;
+            pcbExibirSenha.Dock = DockStyle.Fill;
+            pcbExibirSenha.Image = Properties.Resources.eyeBG_1;
+            pcbExibirSenha.Location = new Point(308, 0);
+            pcbExibirSenha.Margin = new Padding(0);
+            pcbExibirSenha.Name = "pcbExibirSenha";
+            pcbExibirSenha.Size = new Size(34, 26);
+            pcbExibirSenha.SizeMode = PictureBoxSizeMode.CenterImage;
+            pcbExibirSenha.TabIndex = 29;
+            pcbExibirSenha.TabStop = false;
+            pcbExibirSenha.MouseDown += pcbExibirSenha_MouseDown;
+            pcbExibirSenha.MouseUp += pcbExibirSenha_MouseUp;
+            // 
+            // pValidarSenha
+            // 
+            pValidarSenha.BackColor = Color.FromArgb(16, 23, 28);
+            pValidarSenha.Location = new Point(342, 0);
+            pValidarSenha.Margin = new Padding(0);
+            pValidarSenha.Name = "pValidarSenha";
+            pValidarSenha.Size = new Size(10, 26);
+            pValidarSenha.TabIndex = 30;
             // 
             // FrmEstruturaBaseCadastro
             // 
@@ -580,24 +744,32 @@
             MinimizeBox = false;
             MinimumSize = new Size(800, 600);
             Name = "FrmEstruturaBaseCadastro";
-            Text = "FrmEstruturaBase";
+            Text = "Cadastrar Usuário";
+            FormClosed += FrmEstruturaBaseCadastro_FormClosed;
             Load += FrmEstruturaBaseCadastro_Load;
             tlpPrincipal.ResumeLayout(false);
             tblCentral.ResumeLayout(false);
             tblBotoes.ResumeLayout(false);
-            tableLayoutPanel1.ResumeLayout(false);
+            tlpInformacoesBase.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pcbImagemUsuario).EndInit();
-            tableLayoutPanel5.ResumeLayout(false);
-            tableLayoutPanel5.PerformLayout();
-            tableLayoutPanel2.ResumeLayout(false);
-            tableLayoutPanel3.ResumeLayout(false);
-            tableLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pcbValidacaoEmail).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            tableLayoutPanel4.ResumeLayout(false);
-            tableLayoutPanel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pcbSenha).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            tblInformacoesBaseDados.ResumeLayout(false);
+            tlpInformacoesBaseNomeCompleto.ResumeLayout(false);
+            tlpInformacoesBaseNomeCompleto.PerformLayout();
+            tlpInformacoesBaseUsuario.ResumeLayout(false);
+            tlpInformacoesBaseUsuario.PerformLayout();
+            tlpSetor.ResumeLayout(false);
+            tlpEmail.ResumeLayout(false);
+            tlpDigitarEmail.ResumeLayout(false);
+            tlpDigitarEmail.PerformLayout();
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
+            tlpSenha.ResumeLayout(false);
+            tlpConfirmarSenha.ResumeLayout(false);
+            tlpConfirmarSenha.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pcbExibirConfirmarSenha).EndInit();
+            tlpDigitarSenha.ResumeLayout(false);
+            tlpDigitarSenha.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pcbExibirSenha).EndInit();
             ResumeLayout(false);
         }
 
@@ -608,31 +780,41 @@
         private TableLayoutPanel tblBotoes;
         private Button btnSalvar;
         private Button btnLimpar;
-        private TableLayoutPanel tableLayoutPanel1;
-        private TableLayoutPanel tableLayoutPanel2;
+        private TableLayoutPanel tlpInformacoesBase;
+        private TableLayoutPanel tlpSetor;
         private PictureBox pcbImagemUsuario;
-        private TableLayoutPanel tableLayoutPanel5;
+        private TableLayoutPanel tblInformacoesBaseDados;
         private Label lblNomeCompleto;
-        private Label label1;
-        private TextBox textBox1;
-        private TextBox txtNomeCompleto;
-        private Label label2;
+        private Label lblUsuario;
+        private Label lblSetor;
         private ComboBox cboSetor;
-        private ComboBox comboBox1;
-        private Label label3;
-        private TableLayoutPanel tableLayoutPanel3;
-        private Label label4;
-        private Label label5;
-        private TableLayoutPanel tableLayoutPanel4;
-        private Label label6;
-        private Label label7;
+        private ComboBox cboCargo;
+        private Label lblCargo;
+        private TableLayoutPanel tlpEmail;
+        private TableLayoutPanel tlpSenha;
+        private Label lblSenha;
+        private Label lblConfirmarSenha;
+        private TableLayoutPanel tlpDigitarSenha;
+        private TextBox txtSenha;
+        private PictureBox pcbExibirSenha;
+        private TableLayoutPanel tlpConfirmarSenha;
+        private TextBox txtConfirmarSenha;
+        private PictureBox pcbExibirConfirmarSenha;
+        private TableLayoutPanel tlpDigitarEmail;
         private TextBox txtEmail;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private PictureBox pcbSenha;
-        private PictureBox pictureBox1;
-        private PictureBox pcbValidacaoEmail;
-        private PictureBox pictureBox2;
+        private Panel pValidarEmail;
+        private Label lblEmail;
+        private Label lblConfirmarEmail;
+        private Panel pValidarConfirmarSenha;
+        private Panel pValidarSenha;
+        private TableLayoutPanel tableLayoutPanel1;
+        private TextBox txtConfirmarEmail;
+        private Panel pValidarConfirmarEmail;
+        private TableLayoutPanel tlpInformacoesBaseNomeCompleto;
+        private TextBox txtNomeCompleto;
+        private Panel pValidarNomeCompleto;
+        private TableLayoutPanel tlpInformacoesBaseUsuario;
+        private TextBox txtUsuario;
+        private Panel pValidarUsuario;
     }
 }

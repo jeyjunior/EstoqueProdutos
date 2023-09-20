@@ -267,7 +267,7 @@
             // pcbSenha
             // 
             pcbSenha.Dock = DockStyle.Fill;
-            pcbSenha.Image = Properties.Resources.eye_1;
+            pcbSenha.Image = Properties.Resources.eyeBG_1;
             pcbSenha.Location = new Point(197, 87);
             pcbSenha.Name = "pcbSenha";
             pcbSenha.Size = new Size(16, 24);
@@ -305,7 +305,7 @@
             // pcbConfirmarSenha
             // 
             pcbConfirmarSenha.Dock = DockStyle.Fill;
-            pcbConfirmarSenha.Image = Properties.Resources.eye_1;
+            pcbConfirmarSenha.Image = Properties.Resources.eyeBG_1;
             pcbConfirmarSenha.Location = new Point(418, 87);
             pcbConfirmarSenha.Name = "pcbConfirmarSenha";
             pcbConfirmarSenha.Size = new Size(17, 24);

@@ -294,7 +294,7 @@ namespace Estoque.Telas_Usuario
         {
             //AbrirTela(typeof(FrmCadastrarUsuario), this, true, FilhoFechado);
 
-            FrmEstruturaBaseCadastro frmEstruturaBaseCadastro = new FrmEstruturaBaseCadastro();
+            FrmEstruturaBaseCadastro frmEstruturaBaseCadastro = new FrmEstruturaBaseCadastro(this);
             frmEstruturaBaseCadastro.ShowDialog();
         }
         private void btnAlterar_Click(object sender, EventArgs e)

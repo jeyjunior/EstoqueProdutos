@@ -136,7 +136,7 @@ namespace Estoque.Telas_Usuario
             else
             {
                 pcbValidacaoEmail.Visible = true;
-                pcbValidacaoEmail.Image = Properties.Resources.alert;
+                pcbValidacaoEmail.Image = Properties.Resources.erro;
             }
         }
         private void ValidarConfirmacaoDeEmail()
@@ -153,7 +153,7 @@ namespace Estoque.Telas_Usuario
                 else
                 {
                     pcbValidacaoConfirmarEmail.Visible = true;
-                    pcbValidacaoConfirmarEmail.Image = Properties.Resources.alert;
+                    pcbValidacaoConfirmarEmail.Image = Properties.Resources.erro;
                     return;
                 }
             }
@@ -161,7 +161,7 @@ namespace Estoque.Telas_Usuario
             if (!txtConfirmarEmail.Text.ValidarEmail())
             {
                 pcbValidacaoConfirmarEmail.Visible = true;
-                pcbValidacaoConfirmarEmail.Image = Properties.Resources.alert;
+                pcbValidacaoConfirmarEmail.Image = Properties.Resources.erro;
             }
             else
             {
@@ -175,7 +175,7 @@ namespace Estoque.Telas_Usuario
                 else
                 {
                     pcbValidacaoConfirmarEmail.Visible = true;
-                    pcbValidacaoConfirmarEmail.Image = Properties.Resources.alert;
+                    pcbValidacaoConfirmarEmail.Image = Properties.Resources.erro;
                 }
             }
         }
@@ -191,7 +191,7 @@ namespace Estoque.Telas_Usuario
             else
             {
                 pcbValidacaoConfirmacaoSenha.Visible = true;
-                pcbValidacaoConfirmacaoSenha.Image = Properties.Resources.alert;
+                pcbValidacaoConfirmacaoSenha.Image = Properties.Resources.erro;
             }
 
             if (txtConfirmarSenha.Text.Equals(txtSenha.Text))
@@ -203,7 +203,7 @@ namespace Estoque.Telas_Usuario
             else
             {
                 pcbValidacaoConfirmacaoSenha.Visible = true;
-                pcbValidacaoConfirmacaoSenha.Image = Properties.Resources.alert;
+                pcbValidacaoConfirmacaoSenha.Image = Properties.Resources.erro;
             }
         }
         private bool ValidarCamposPreenchidos()
@@ -374,7 +374,6 @@ namespace Estoque.Telas_Usuario
         }
         private void txtSenha_Leave(object sender, EventArgs e)
         {
-
             ValidarConfirmacaoSenha();
         }
         private void txtConfirmarSenha_Leave(object sender, EventArgs e)

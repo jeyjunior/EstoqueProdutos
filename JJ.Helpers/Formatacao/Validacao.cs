@@ -1,5 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using System.Net.Mail;
+using System.Windows.Forms;
+using System.Drawing;
 
 namespace JJ.Helpers.Formatacao
 {
@@ -23,10 +25,15 @@ namespace JJ.Helpers.Formatacao
                 return false;
             }
         }
-
-        public static bool CompararDuasStrings(this string text1, string text2)
+        
+        public static void ValidarTextDoTextBox(ref TextBox textBox, ref Panel pValidacao, int tamanhoMin)
         {
-            return text1.Equals(text2);
+            pValidacao.BackColor = textBox.Text.Length >= tamanhoMin ? Color.Green: Color.Red;
+
+            if (textBox.Text.Length <= 0)
+            {
+                pValidacao.BackColor = Color.FromArgb(16, 23, 28);
+            }
         }
     }
 }
