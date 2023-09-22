@@ -1,5 +1,6 @@
 ﻿using EP.Data.Entidades;
 using EP.Data.Interfaces;
+using Estoque.Controladores;
 using Estoque.GerenciamentoTelas;
 using Estoque.Interfaces;
 using Estoque.Telas_Base;
@@ -128,7 +129,16 @@ namespace Estoque.Telas_Usuario
         {
             if (!nomeValidado)
             {
-                Alerta.Erro("Campo nome é obrigatório!");
+                //Alerta.Erro("Campo nome é obrigatório!");
+
+                Mensagem mensagem = new Mensagem(this);
+                var resultado = mensagem.Erro("Não foi possível cadastrar usuário, campo Nome não foi preenchido corretamente.", "Erro: Nome do usuário inválido!");
+
+                if (resultado)
+                {
+                    MessageBox.Show("Resultado captirado com sucesso!");
+                }
+
                 txtNomeCompleto.Focus();
                 return false;
             }

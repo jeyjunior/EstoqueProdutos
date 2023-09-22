@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             tlpCentral = new TableLayoutPanel();
+            panel3 = new Panel();
+            panel2 = new Panel();
+            lblTitulo = new Label();
             tblBotoes = new TableLayoutPanel();
             btnAfirmacao = new Button();
             btnNegacao = new Button();
             panel1 = new Panel();
-            panel2 = new Panel();
-            panel3 = new Panel();
-            lblTitulo = new Label();
             lblMensagem = new Label();
             tlpCentral.SuspendLayout();
-            tblBotoes.SuspendLayout();
             panel2.SuspendLayout();
+            tblBotoes.SuspendLayout();
             SuspendLayout();
             // 
             // tlpCentral
@@ -65,7 +65,41 @@
             tlpCentral.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
             tlpCentral.Size = new Size(390, 190);
             tlpCentral.TabIndex = 0;
-            tlpCentral.Paint += tableLayoutPanel1_Paint;
+            // 
+            // panel3
+            // 
+            panel3.BackColor = Color.FromArgb(16, 23, 28);
+            panel3.Dock = DockStyle.Fill;
+            panel3.Location = new Point(375, 0);
+            panel3.Margin = new Padding(0);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(15, 30);
+            panel3.TabIndex = 7;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.FromArgb(16, 23, 28);
+            panel2.Controls.Add(lblTitulo);
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(15, 0);
+            panel2.Margin = new Padding(0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(360, 30);
+            panel2.TabIndex = 7;
+            // 
+            // lblTitulo
+            // 
+            lblTitulo.Dock = DockStyle.Fill;
+            lblTitulo.Font = new Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTitulo.ForeColor = SystemColors.ControlLightLight;
+            lblTitulo.Location = new Point(0, 0);
+            lblTitulo.Margin = new Padding(0);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Padding = new Padding(0, 0, 0, 5);
+            lblTitulo.Size = new Size(360, 30);
+            lblTitulo.TabIndex = 8;
+            lblTitulo.Text = "Título";
+            lblTitulo.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // tblBotoes
             // 
@@ -123,41 +157,6 @@
             panel1.Size = new Size(15, 30);
             panel1.TabIndex = 6;
             // 
-            // panel2
-            // 
-            panel2.BackColor = Color.FromArgb(16, 23, 28);
-            panel2.Controls.Add(lblTitulo);
-            panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(15, 0);
-            panel2.Margin = new Padding(0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(360, 30);
-            panel2.TabIndex = 7;
-            // 
-            // panel3
-            // 
-            panel3.BackColor = Color.FromArgb(16, 23, 28);
-            panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(375, 0);
-            panel3.Margin = new Padding(0);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(15, 30);
-            panel3.TabIndex = 7;
-            // 
-            // lblTitulo
-            // 
-            lblTitulo.Dock = DockStyle.Fill;
-            lblTitulo.Font = new Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point);
-            lblTitulo.ForeColor = SystemColors.ControlLightLight;
-            lblTitulo.Location = new Point(0, 0);
-            lblTitulo.Margin = new Padding(0);
-            lblTitulo.Name = "lblTitulo";
-            lblTitulo.Padding = new Padding(0, 0, 0, 5);
-            lblTitulo.Size = new Size(360, 30);
-            lblTitulo.TabIndex = 8;
-            lblTitulo.Text = "Título";
-            lblTitulo.TextAlign = ContentAlignment.MiddleLeft;
-            // 
             // lblMensagem
             // 
             lblMensagem.Dock = DockStyle.Fill;
@@ -181,8 +180,8 @@
             Name = "UCMensagem";
             Size = new Size(400, 200);
             tlpCentral.ResumeLayout(false);
-            tblBotoes.ResumeLayout(false);
             panel2.ResumeLayout(false);
+            tblBotoes.ResumeLayout(false);
             ResumeLayout(false);
         }
 
