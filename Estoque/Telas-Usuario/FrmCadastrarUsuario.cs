@@ -1,5 +1,6 @@
 ﻿using EP.Data.Entidades;
 using EP.Data.Interfaces;
+using Estoque.GerenciamentoTelas;
 using Estoque.Interfaces;
 using Estoque.Telas_Base;
 using EstoqueProdutos.Gerenciamento;
@@ -122,19 +123,52 @@ namespace Estoque.Telas_Usuario
 
             return null;
         }
-        
+
         private bool ValidarComponentes()
         {
-            bool componentesValidados = false;
-
             if (!nomeValidado)
             {
-
+                Alerta.Erro("Campo nome é obrigatório!");
+                txtNomeCompleto.Focus();
+                return false;
             }
 
+            if (!usuarioValidado)
+            {
+                Alerta.Erro("Campo usuário é obrigatório!");
+                txtUsuario.Focus();
+                return false;
+            }
 
+            if (!emailValidado)
+            {
+                Alerta.Erro("Campo email é obrigatório!");
+                txtEmail.Focus();
+                return false;
+            }
 
-            return componentesValidados;
+            if (!confirmacaoEmailValidado)
+            {
+                Alerta.Erro("Campo confirmar email é obrigatório!");
+                txtConfirmarEmail.Focus();
+                return false;
+            }
+
+            if (!senhaValidada)
+            {
+                Alerta.Erro("Campo senha é obrigatório!");
+                txtSenha.Focus();
+                return false;
+            }
+
+            if (!confirmacaoSenhaValidada)
+            {
+                Alerta.Erro("Campo confirmar senha é obrigatório!");
+                txtConfirmarSenha.Focus();
+                return false;
+            }
+
+            return true;
         }
         #endregion Metodos
 
@@ -155,12 +189,7 @@ namespace Estoque.Telas_Usuario
 
             try
             {
-                if (!nomeValidado ||
-                    !usuarioValidado ||
-                    !emailValidado ||
-                    !confirmacaoEmailValidado ||
-                    !senhaValidada ||
-                    !confirmacaoSenhaValidada)
+                if (!ValidarComponentes())
                     return;
 
                 var usuario = new Usuario()
@@ -180,13 +209,13 @@ namespace Estoque.Telas_Usuario
 
                 if (resultado)
                 {
-                    MessageBox.Show("Usuário cadastrado com sucesso!");
+                    Alerta.Confirmacao("Usuário cadastrado com sucesso!");
                     LimparComponetes();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao cadastrar usuário.\nErro: " + ex.Message);
+                Alerta.Erro("Erro ao cadastrar usuário.\nErro: " + ex.Message);
             }
         }
         private void btnLimpar_Click(object sender, EventArgs e)
@@ -264,7 +293,7 @@ namespace Estoque.Telas_Usuario
         {
             confirmacaoEmailValidado = false;
 
-            if (txtConfirmarEmail.Text.Equals(txtEmail.Text) && txtConfirmarEmail.Text.Length > 0)
+            if (txtConfirmarEmail.Text.Equals(txtEmail.Text) && validacao.ValidarEmail(txtConfirmarEmail.Text))
             {
                 validacao.ObterCorValidacao(ref pValidarConfirmarEmail, eValidacao.itemValidado);
                 confirmacaoEmailValidado = true;
@@ -284,7 +313,7 @@ namespace Estoque.Telas_Usuario
             lblConfirmarSenha.Text = $"Confirmar Senha [{txtConfirmarSenha.Text.Length} / {max}]:";
             confirmacaoSenhaValidada = false;
 
-            if (txtConfirmarSenha.Text.Equals(txtSenha.Text) && txtConfirmarSenha.Text.Length > 0)
+            if (txtConfirmarSenha.Text.Equals(txtSenha.Text) && txtConfirmarSenha.Text.Length >= 8)
             {
                 validacao.ObterCorValidacao(ref pValidarConfirmarSenha, eValidacao.itemValidado);
                 confirmacaoSenhaValidada = true;

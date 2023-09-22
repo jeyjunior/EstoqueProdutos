@@ -246,16 +246,11 @@ namespace Estoque.Telas_Usuario
         private void UCUsuarios_Load(object sender, EventArgs e)
         {
             InicializarComponentes();
-            btnPesquisar.PerformClick();
-
-            AtualizarTotalRegistrado();
-            AtualizarTotalPesquisado();
         }
         private void UCUsuarios_ParentChanged(object sender, EventArgs e)
         {
             LimparComponentes();
         }
-
         private void cboSetor_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboSetor != null)
@@ -264,7 +259,6 @@ namespace Estoque.Telas_Usuario
                 cboCargo.Enabled = ((Setor)cboSetor.SelectedItem).PK_Setor > 0;
             }
         }
-
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
             usuarios = usuarioRepositorio.ObterTabelaFiltroTelaUsuarios(new Usuario
@@ -310,8 +304,16 @@ namespace Estoque.Telas_Usuario
         {
             InicializarComponentes();
         }
-
         #endregion Eventos
+        private void tlpCentral_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible)
+            {
+                btnPesquisar.PerformClick();
 
+                AtualizarTotalRegistrado();
+                AtualizarTotalPesquisado();
+            }
+        }
     }
 }

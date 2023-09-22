@@ -136,7 +136,6 @@
             // 
             // tblBotoes
             // 
-            tblBotoes.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tblBotoes.ColumnCount = 4;
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 90F));
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 5F));
@@ -144,13 +143,14 @@
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tblBotoes.Controls.Add(btnSalvar, 0, 0);
             tblBotoes.Controls.Add(btnLimpar, 2, 0);
-            tblBotoes.Location = new Point(0, 496);
+            tblBotoes.Dock = DockStyle.Fill;
+            tblBotoes.Location = new Point(0, 494);
             tblBotoes.Margin = new Padding(0);
             tblBotoes.Name = "tblBotoes";
             tblBotoes.RightToLeft = RightToLeft.Yes;
             tblBotoes.RowCount = 1;
             tblBotoes.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tblBotoes.Size = new Size(754, 35);
+            tblBotoes.Size = new Size(754, 37);
             tblBotoes.TabIndex = 4;
             // 
             // btnSalvar
@@ -162,8 +162,8 @@
             btnSalvar.Margin = new Padding(0);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Padding = new Padding(10, 0, 0, 0);
-            btnSalvar.Size = new Size(90, 35);
-            btnSalvar.TabIndex = 8;
+            btnSalvar.Size = new Size(90, 37);
+            btnSalvar.TabIndex = 0;
             btnSalvar.Text = "Salvar";
             btnSalvar.TextImageRelation = TextImageRelation.TextBeforeImage;
             btnSalvar.UseVisualStyleBackColor = true;
@@ -178,8 +178,8 @@
             btnLimpar.Margin = new Padding(0);
             btnLimpar.Name = "btnLimpar";
             btnLimpar.Padding = new Padding(5, 0, 0, 0);
-            btnLimpar.Size = new Size(90, 35);
-            btnLimpar.TabIndex = 9;
+            btnLimpar.Size = new Size(90, 37);
+            btnLimpar.TabIndex = 1;
             btnLimpar.Text = "Limpar";
             btnLimpar.TextImageRelation = TextImageRelation.TextBeforeImage;
             btnLimpar.UseVisualStyleBackColor = true;
@@ -205,7 +205,7 @@
             tlpInformacoesBase.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tlpInformacoesBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
             tlpInformacoesBase.Size = new Size(754, 165);
-            tlpInformacoesBase.TabIndex = 5;
+            tlpInformacoesBase.TabIndex = 0;
             // 
             // pcbImagemUsuario
             // 
@@ -262,7 +262,7 @@
             tlpInformacoesBaseNomeCompleto.RowCount = 1;
             tlpInformacoesBaseNomeCompleto.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tlpInformacoesBaseNomeCompleto.Size = new Size(574, 26);
-            tlpInformacoesBaseNomeCompleto.TabIndex = 17;
+            tlpInformacoesBaseNomeCompleto.TabIndex = 0;
             // 
             // txtNomeCompleto
             // 
@@ -275,7 +275,7 @@
             txtNomeCompleto.Name = "txtNomeCompleto";
             txtNomeCompleto.PlaceholderText = "Digite seu nome completo";
             txtNomeCompleto.Size = new Size(554, 18);
-            txtNomeCompleto.TabIndex = 0;
+            txtNomeCompleto.TabIndex = 1;
             txtNomeCompleto.TextChanged += txtNomeCompleto_TextChanged;
             // 
             // pValidarNomeCompleto
@@ -303,7 +303,7 @@
             tlpInformacoesBaseUsuario.RowCount = 1;
             tlpInformacoesBaseUsuario.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tlpInformacoesBaseUsuario.Size = new Size(574, 26);
-            tlpInformacoesBaseUsuario.TabIndex = 16;
+            tlpInformacoesBaseUsuario.TabIndex = 1;
             // 
             // txtUsuario
             // 
@@ -316,7 +316,7 @@
             txtUsuario.Name = "txtUsuario";
             txtUsuario.PlaceholderText = "Digite um nome de usuario";
             txtUsuario.Size = new Size(554, 18);
-            txtUsuario.TabIndex = 1;
+            txtUsuario.TabIndex = 2;
             txtUsuario.TextChanged += txtUsuario_TextChanged;
             // 
             // pValidarUsuario
@@ -379,7 +379,7 @@
             tlpSetor.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
             tlpSetor.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tlpSetor.Size = new Size(754, 75);
-            tlpSetor.TabIndex = 6;
+            tlpSetor.TabIndex = 1;
             // 
             // cboCargo
             // 
@@ -391,7 +391,7 @@
             cboCargo.Margin = new Padding(0);
             cboCargo.Name = "cboCargo";
             cboCargo.Size = new Size(352, 26);
-            cboCargo.TabIndex = 3;
+            cboCargo.TabIndex = 1;
             cboCargo.SelectedIndexChanged += cboCargo_SelectedIndexChanged;
             // 
             // lblSetor
@@ -418,7 +418,7 @@
             cboSetor.Margin = new Padding(0);
             cboSetor.Name = "cboSetor";
             cboSetor.Size = new Size(352, 26);
-            cboSetor.TabIndex = 2;
+            cboSetor.TabIndex = 0;
             cboSetor.SelectedIndexChanged += cboSetor_SelectedIndexChanged;
             // 
             // lblCargo
@@ -458,7 +458,7 @@
             tlpEmail.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
             tlpEmail.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tlpEmail.Size = new Size(754, 75);
-            tlpEmail.TabIndex = 9;
+            tlpEmail.TabIndex = 2;
             // 
             // tlpDigitarEmail
             // 
@@ -489,7 +489,7 @@
             txtEmail.Name = "txtEmail";
             txtEmail.PlaceholderText = "Digite seu endereço de e-mail";
             txtEmail.Size = new Size(332, 18);
-            txtEmail.TabIndex = 4;
+            txtEmail.TabIndex = 0;
             txtEmail.TextChanged += txtEmail_TextChanged;
             // 
             // pValidarEmail
@@ -556,7 +556,7 @@
             txtConfirmarEmail.Name = "txtConfirmarEmail";
             txtConfirmarEmail.PlaceholderText = "Confirme seu endereço de e-mail";
             txtConfirmarEmail.Size = new Size(332, 18);
-            txtConfirmarEmail.TabIndex = 5;
+            txtConfirmarEmail.TabIndex = 1;
             txtConfirmarEmail.TextChanged += txtConfirmarEmail_TextChanged;
             // 
             // pValidarConfirmarEmail
@@ -592,7 +592,7 @@
             tlpSenha.RowStyles.Add(new RowStyle(SizeType.Absolute, 26F));
             tlpSenha.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
             tlpSenha.Size = new Size(754, 75);
-            tlpSenha.TabIndex = 10;
+            tlpSenha.TabIndex = 3;
             // 
             // lblSenha
             // 
@@ -653,7 +653,7 @@
             txtConfirmarSenha.PasswordChar = '*';
             txtConfirmarSenha.PlaceholderText = "Confirme sua senha";
             txtConfirmarSenha.Size = new Size(298, 18);
-            txtConfirmarSenha.TabIndex = 7;
+            txtConfirmarSenha.TabIndex = 1;
             txtConfirmarSenha.TextChanged += txtConfirmarSenha_TextChanged;
             // 
             // pcbExibirConfirmarSenha
@@ -711,7 +711,7 @@
             txtSenha.PasswordChar = '*';
             txtSenha.PlaceholderText = "Digite sua senha";
             txtSenha.Size = new Size(298, 18);
-            txtSenha.TabIndex = 6;
+            txtSenha.TabIndex = 0;
             txtSenha.TextChanged += txtSenha_TextChanged;
             // 
             // pcbExibirSenha
