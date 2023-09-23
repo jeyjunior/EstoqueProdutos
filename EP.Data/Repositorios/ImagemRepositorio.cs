@@ -112,9 +112,9 @@ namespace EstoqueProdutos.Repositorios
                     PK_Imagem = connection.QuerySingle<int>(sql, imagem);
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                Mensagem.Erro("Erro: " + ex.Message, "Erro ao salvar imagem.");
+                throw new Exception("Erro ao salvar imagem.");
             }
 
             return PK_Imagem;

@@ -1,4 +1,5 @@
 ﻿using Estoque.Controladores;
+using Estoque.Enums;
 using Estoque.Telas_Base;
 using System;
 using System.Collections.Generic;
@@ -14,10 +15,8 @@ namespace Estoque.Telas_Mensagens
 {
     public partial class FrmMensagem : FrmBase
     {
-        public enum Resposta { Nenhuma, Afirmacao, Negacao }
-        public enum TipoMensagem { Pergunta, Erro }
-        public Resposta Resultado { get; private set; } = Resposta.Nenhuma;
 
+        public RespostaCaixaDialogo Resultado { get; private set; } = RespostaCaixaDialogo.Nenhuma;
 
         public FrmMensagem()
         {
@@ -77,13 +76,13 @@ namespace Estoque.Telas_Mensagens
 
         private void btnAfirmacao_Click(object sender, EventArgs e)
         {
-            Resultado = Resposta.Afirmacao;
+            Resultado = RespostaCaixaDialogo.Sim;
             this.Close();
         }
 
         private void btnNegacao_Click(object sender, EventArgs e)
         {
-            Resultado = Resposta.Negacao;
+            Resultado = RespostaCaixaDialogo.Não;
             this.Close();
         }
     }

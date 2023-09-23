@@ -1,6 +1,8 @@
 ﻿using EP.Data.Entidades;
 using EP.Data.Interfaces;
+using Estoque.Controladores;
 using Estoque.Enums;
+using Estoque.GerenciamentoTelas;
 using Estoque.Interfaces;
 using Estoque.Telas_Base.UC_Componentes;
 using EstoqueProdutos.Formatacao;
@@ -53,11 +55,11 @@ namespace Estoque.Telas_Usuario
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Falha sql\n\n" + ex.Message);
+                Mensagem.Erro("Erro: " + ex.Message, "Falha conexão");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Falha ao executar essa operação\n\n" + ex.Message);
+                Mensagem.Erro("Erro: " + ex.Message, "Falha ao carregar componentes");
             }
         }
         private void BindDataGridView(Cargo cargo)
@@ -97,7 +99,7 @@ namespace Estoque.Telas_Usuario
         {
             if (dtgCargo.Rows.Count <= 0)
             {
-                MessageBox.Show("Para realizar essa operação, é necessário selecionar um cargo");
+                Alerta.Aviso("Para realizar essa operação, é necessário selecionar um cargo");
                 return;
             }
 
@@ -140,14 +142,14 @@ namespace Estoque.Telas_Usuario
             if (txtCargo.Text == "")
             {
                 txtCargo.Focus();
-                MessageBox.Show("Preencha o campo cargo corretamente.");
+                Alerta.Aviso("Preencha o campo cargo corretamente.");
                 return;
             }
 
             if ((int)cboSetor.SelectedValue == 0)
             {
                 cboSetor.Focus();
-                MessageBox.Show("Selecione um setor.");
+                Alerta.Aviso("Selecione um setor.");
                 return;
             }
 
@@ -156,18 +158,15 @@ namespace Estoque.Telas_Usuario
                 string mensagem = "Tem certeza que deseja incluir esse cargo?\n";
                 string novoCargo = "Cargo: " + txtCargo.Text.Trim();
 
-                var resultado = MessageBox.Show(mensagem + novoCargo,
-                                            "Cadastro",
-                                            MessageBoxButtons.YesNo,
-                                            MessageBoxIcon.Question);
+                var resultado = Mensagem.Pergunta(mensagem + novoCargo, "Cadastro");
 
-                if (resultado == DialogResult.Yes)
+                if (resultado == RespostaCaixaDialogo.Sim)
                 {
                     var resultadoInsert = cargoRepositorio.InserirDadosNaTabela(new Cargo() { NomeCargo = txtCargo.TextoFormatoLikeSQL().Replace("%", "").Trim(), FK_Setor = ((Setor)cboSetor.SelectedItem).PK_Setor });
 
                     if (resultadoInsert)
                     {
-                        MessageBox.Show("Cargo registrado com sucesso!");
+                        Alerta.Confirmacao("Cargo registrado com sucesso!");
                         Reiniciar();
                         AtualizarTotalRegistrado();
                     }
@@ -179,7 +178,7 @@ namespace Estoque.Telas_Usuario
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Falha ao executar essa operação\n.Erro: " + ex.Message);
+                Mensagem.Erro("Erro: " + ex.Message, "Falha ao executar essa operação");
             }
         }
         private void AlterarCargoSelecionado()
@@ -190,12 +189,9 @@ namespace Estoque.Telas_Usuario
                 string antigoCargo = "\nAntigo: " + cargoSelecionado.NomeCargo;
                 string novoCargo = "\nNovo: " + txtCargo.Text.Trim();
 
-                var resultado = MessageBox.Show(mensagem + antigoCargo + novoCargo,
-                                            "Alterar",
-                                            MessageBoxButtons.YesNo,
-                                            MessageBoxIcon.Question);
+                var resultado = Mensagem.Pergunta(mensagem + antigoCargo + novoCargo, "Alterar");
 
-                if (resultado == DialogResult.Yes)
+                if (resultado == RespostaCaixaDialogo.Sim)
                 {
                     var resultadoInsert = cargoRepositorio
                         .AtualizarCargo(new Cargo()
@@ -207,7 +203,7 @@ namespace Estoque.Telas_Usuario
 
                     if (resultadoInsert)
                     {
-                        MessageBox.Show("Cargo atualizado com sucesso!");
+                        Alerta.Confirmacao("Cargo atualizado com sucesso!");
                         Reiniciar();
                         AtualizarTotalRegistrado();
                     }
@@ -219,7 +215,7 @@ namespace Estoque.Telas_Usuario
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Falha ao executar essa operação\n.Erro: " + ex.Message);
+                Mensagem.Erro("Erro: " + ex.Message, "Falha ao executar essa operação");
             }
         }
         private void ExcluirCargoSelecionado()
@@ -229,19 +225,16 @@ namespace Estoque.Telas_Usuario
                 string mensagem = "Tem certeza que excluir esse cargo?\n";
                 string excluirCargo = "\nDeletar: " + txtCargo.Text.Trim();
 
-                var resultado = MessageBox.Show(mensagem + excluirCargo,
-                                            "Deletar",
-                                            MessageBoxButtons.YesNo,
-                                            MessageBoxIcon.Question);
+                var resultado = Mensagem.Pergunta(mensagem + excluirCargo, "Deletar");
 
-                if (resultado == DialogResult.Yes)
+                if (resultado == RespostaCaixaDialogo.Sim)
                 {
                     var resultadoInsert = cargoRepositorio.ExcluirCargo(new Cargo()
                     { PK_Cargo = cargoSelecionado.PK_Cargo });
 
                     if (resultadoInsert)
                     {
-                        MessageBox.Show("Cargo excluído com sucesso!");
+                        Alerta.Confirmacao("Cargo excluído com sucesso!");
                         Reiniciar();
                         AtualizarTotalRegistrado();
                     }
@@ -251,13 +244,9 @@ namespace Estoque.Telas_Usuario
                     txtCargo.Focus();
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                string mensagem = "Falha ao executar essa operação\n" +
-                    "Se existir Usuários cadastrado no cargo\n" +
-                    "o mesmo não poderá ser excluído.";
-
-                MessageBox.Show(mensagem);
+                Mensagem.Erro("Erro: " + ex.Message);
             }
         }
         private void PesquisarCargos()
@@ -276,7 +265,7 @@ namespace Estoque.Telas_Usuario
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocorreu um erro na pesquisa.\nErro:" + ex.Message);
+                Mensagem.Erro("Erro: " + ex.Message);
             }
         }
         private void LayoutBotoes()
@@ -308,7 +297,7 @@ namespace Estoque.Telas_Usuario
         {
             if (txtCargo.Text == "" && (int)cboSetor.SelectedValue <= 0)
             {
-                MessageBox.Show("Digite um valor válido!");
+                Alerta.Aviso("Digite um valor válido!");
                 return;
             }
 

@@ -1,4 +1,5 @@
-﻿using Estoque.Interfaces;
+﻿using Estoque.Controladores;
+using Estoque.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -54,7 +55,7 @@ namespace Estoque.Telas_Base
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocorreu uma falha ao tentar abrir tela.\nErro: " + ex.Message);
+                Mensagem.Erro("Erro: " + ex.Message, "Falha ao abrir telas!");
             }
         }
         public void FecharTela(Type tipoTela)

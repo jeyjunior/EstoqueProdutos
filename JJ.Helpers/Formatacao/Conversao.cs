@@ -21,7 +21,7 @@ namespace JJ.Helpers.Formatacao
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Falha ao converter imagem para byte.\nErro: " + ex.Message);
+                throw new Exception("Falha ao converter imagem para byte.");
             }
 
             return stream.ToArray();

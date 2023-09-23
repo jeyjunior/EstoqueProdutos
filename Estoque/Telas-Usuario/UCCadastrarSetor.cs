@@ -1,6 +1,8 @@
 ﻿using EP.Data.Entidades;
 using EP.Data.Interfaces;
+using Estoque.Controladores;
 using Estoque.Enums;
+using Estoque.GerenciamentoTelas;
 using Estoque.Interfaces;
 using EstoqueProdutos.Formatacao;
 using EstoqueProdutos.Gerenciamento;
@@ -47,20 +49,16 @@ namespace Estoque.Telas_Usuario
             {
                 dtgSetor.DataSource = setorRepositorio.ObterTabela().ToList();
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Falha sql\n\n" + ex.Message);
-            }
             catch (Exception ex)
             {
-                MessageBox.Show("Falha ao executar essa operação\n\n" + ex.Message);
+                Mensagem.Erro("Erro: " + ex.Message);
             }
         }
         private void SelecionarSetor()
         {
             if (dtgSetor.Rows.Count <= 0)
             {
-                MessageBox.Show("Para realizar essa operação, é necessário selecionar um setor");
+                Alerta.Aviso("Selecione um setor válido");
                 return;
             }
 
@@ -108,18 +106,15 @@ namespace Estoque.Telas_Usuario
                 string mensagem = "Tem certeza que deseja incluir esse setor?\n";
                 string novoSetor = "Setor: " + txtSetor.Text.Trim();
 
-                var resultado = MessageBox.Show(mensagem + novoSetor,
-                                            "Cadastro",
-                                            MessageBoxButtons.YesNo,
-                                            MessageBoxIcon.Question);
+                var resultado = Mensagem.Pergunta(mensagem + novoSetor, "Cadastro");
 
-                if (resultado == DialogResult.Yes)
+                if (resultado == RespostaCaixaDialogo.Sim)
                 {
                     var resultadoInsert = setorRepositorio.InserirDadosNaTabela(new Setor() { NomeSetor = txtSetor.TextoFormatoLikeSQL().Replace("%", "").Trim() });
 
                     if (resultadoInsert)
                     {
-                        MessageBox.Show("Setor registrado com sucesso!");
+                        Alerta.Confirmacao("Setor registrado com sucesso!");
                         Reiniciar();
                         AtualizarTotalRegistrado();
                     }
@@ -131,7 +126,7 @@ namespace Estoque.Telas_Usuario
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Falha ao executar essa operação\n.Erro: " + ex.Message);
+                Mensagem.Erro("Erro: " + ex.Message);
             }
         }
         private void AlterarSetorSelecionado()
@@ -142,18 +137,15 @@ namespace Estoque.Telas_Usuario
                 string antigoSetor = "\nAntigo: " + setorSelecionado.NomeSetor;
                 string novoSetor = "\nNovo: " + txtSetor.Text.Trim();
 
-                var resultado = MessageBox.Show(mensagem + antigoSetor + novoSetor,
-                                            "Alterar",
-                                            MessageBoxButtons.YesNo,
-                                            MessageBoxIcon.Question);
+                var resultado = Mensagem.Pergunta(mensagem + antigoSetor + novoSetor, "Alterar");
 
-                if (resultado == DialogResult.Yes)
+                if (resultado == RespostaCaixaDialogo.Sim)
                 {
                     var resultadoInsert = setorRepositorio.AtualizarSetor(new Setor() { PK_Setor = setorSelecionado.PK_Setor, NomeSetor = txtSetor.TextoFormatoLikeSQL().Replace("%", "").Trim() });
 
                     if (resultadoInsert)
                     {
-                        MessageBox.Show("Setor atualizado com sucesso!");
+                        Alerta.Confirmacao("Setor atualizado com sucesso!");
                         Reiniciar();
                         AtualizarTotalRegistrado();
                     }
@@ -165,7 +157,7 @@ namespace Estoque.Telas_Usuario
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Falha ao executar essa operação\n.Erro: " + ex.Message);
+                Mensagem.Erro("Erro: " +  ex.Message);
             }
         }
         private void ExcluirSetorSelecionado()
@@ -175,18 +167,15 @@ namespace Estoque.Telas_Usuario
                 string mensagem = "Tem certeza que excluir esse setor e os cargos relacionados?\n";
                 string excluirSetor = "\nDeletar: " + txtSetor.Text.Trim();
 
-                var resultado = MessageBox.Show(mensagem + excluirSetor,
-                                            "Deletar",
-                                            MessageBoxButtons.YesNo,
-                                            MessageBoxIcon.Question);
+                var resultado = Mensagem.Pergunta(mensagem + excluirSetor, "Deletar");
 
-                if (resultado == DialogResult.Yes)
+                if (resultado == RespostaCaixaDialogo.Sim)
                 {
                     var resultadoInsert = setorRepositorio.ExcluirSetor(new Setor() { PK_Setor = setorSelecionado.PK_Setor });
 
                     if (resultadoInsert)
                     {
-                        MessageBox.Show("Setor excluído com sucesso!");
+                        Alerta.Confirmacao("Setor excluído com sucesso!");
                         Reiniciar();
                         AtualizarTotalRegistrado();
                     }
@@ -198,7 +187,7 @@ namespace Estoque.Telas_Usuario
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Falha ao executar essa operação\n.Erro: " + ex.Message);
+                Mensagem.Erro("Erro: " + ex.Message);
             }
         }
         private void PesquisarSetores()
@@ -217,7 +206,7 @@ namespace Estoque.Telas_Usuario
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocorreu um erro na pesquisa.\nErro:" + ex.Message);
+                Mensagem.Erro("Erro: " + ex.Message);
             }
         }
         private void LayoutBotoes()
@@ -249,7 +238,7 @@ namespace Estoque.Telas_Usuario
         {
             if (txtSetor.Text == "")
             {
-                MessageBox.Show("Digite um valor válido!");
+                Alerta.Aviso("Digite um valor válido!");
                 return;
             }
 

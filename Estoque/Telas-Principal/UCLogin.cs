@@ -1,4 +1,5 @@
 ﻿using EP.Data.Interfaces;
+using Estoque.Controladores;
 using Estoque.GerenciamentoTelas;
 using Estoque.Interfaces;
 using EstoqueProdutos.Gerenciamento;
@@ -105,9 +106,9 @@ namespace Estoque.Telas_Principal
 
                 Cursor.Current = Cursors.Default;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                Mensagem.Erro("Erro: " + ex.Message, "Erro");
             }
         }
 

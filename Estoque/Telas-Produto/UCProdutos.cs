@@ -1,4 +1,5 @@
 ﻿using EP.Data.Interfaces;
+using Estoque.Controladores;
 using EstoqueProdutos.Entidades;
 using EstoqueProdutos.Formatacao;
 using EstoqueProdutos.Gerenciamento;
@@ -50,11 +51,11 @@ namespace Estoque.Telas_Produto
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Falha sql\n\n" + ex.Message);
+                Mensagem.Erro("Erro: " + ex.Message, "Falha conexão");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Falha ao executar essa operação\n\n" + ex.Message);
+                Mensagem.Erro("Erro: " + ex.Message, "Falha ao executar essa operação");
             }
         }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Estoque.Telas_Mensagens.FrmMensagem;
 
 namespace Estoque.Enums
 {
@@ -44,4 +45,18 @@ namespace Estoque.Enums
         Confirmacao,
         Informacao
     }
+
+    public enum TipoMensagem 
+    { 
+        Pergunta, 
+        Erro 
+    }
+
+    public enum RespostaCaixaDialogo 
+    { 
+        Nenhuma, 
+        Sim,
+        Não
+    }
+
 }

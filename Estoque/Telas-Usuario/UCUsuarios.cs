@@ -1,6 +1,8 @@
 ﻿using EP.Data.Entidades;
 using EP.Data.Interfaces;
+using Estoque.Controladores;
 using Estoque.Enums;
+using Estoque.GerenciamentoTelas;
 using Estoque.Interfaces;
 using Estoque.Telas_Modelos;
 using EstoqueProdutos.Formatacao;
@@ -56,13 +58,9 @@ namespace Estoque.Telas_Usuario
                 txtNome.Focus();
                 btnPesquisar.PerformClick();
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Falha sql\n\n" + ex.Message);
-            }
             catch (Exception ex)
             {
-                MessageBox.Show("Falha ao executar essa operação\n\n" + ex.Message);
+                Mensagem.Erro("Erro: " + ex.Message);
             }
         }
         private void BindComboBoxSetor()
@@ -133,7 +131,7 @@ namespace Estoque.Telas_Usuario
             {
                 if (dtgUsuarios.Rows.Count <= 0)
                 {
-                    MessageBox.Show("Selecione um usuário");
+                    Alerta.Aviso("Selecione um usuário");
                     return;
                 }
 
@@ -163,9 +161,9 @@ namespace Estoque.Telas_Usuario
                     cboSetor.SelectedValue = usuarioSelecionado.FK_Setor;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Ocorreu uma falha ao tentar obter linha selecionada");
+                Mensagem.Erro("Erro: " + ex.Message);
             }
         }
         private IEnumerable<Cargo> FiltrarCargos()
@@ -204,19 +202,16 @@ namespace Estoque.Telas_Usuario
                 string mensagem = "Tem certeza que excluir esse usuário?\n";
                 string usuario = "\nDeletar: " + txtNome.Text.Trim();
 
-                var resultado = MessageBox.Show(mensagem + usuario,
-                                            "Deletar",
-                                            MessageBoxButtons.YesNo,
-                                            MessageBoxIcon.Question);
+                var resultado = Mensagem.Pergunta(mensagem + usuario, "Deletar");
 
-                if (resultado == DialogResult.Yes)
+                if (resultado == RespostaCaixaDialogo.Sim)
                 {
                     var resultadoInsert = usuarioRepositorio.ExcluirUsuario(new Usuario()
                     { PK_Usuario = usuarioSelecionado.PK_Usuario });
 
                     if (resultadoInsert)
                     {
-                        MessageBox.Show("Usuário excluído com sucesso!");
+                        Alerta.Confirmacao("Usuário excluído com sucesso!");
                         LimparComponentes();
                         btnPesquisar.PerformClick();
                     }
@@ -228,7 +223,7 @@ namespace Estoque.Telas_Usuario
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Mensagem.Erro("Erro: " + ex.Message);
             }
         }
         private void AtualizarTotalRegistrado()

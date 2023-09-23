@@ -2,6 +2,8 @@
 using EP.Data.Entidades;
 using EP.Data.Interfaces;
 using EP.Data.Repositorios;
+using Estoque.Controladores;
+using Estoque.GerenciamentoTelas;
 using Estoque.Interfaces;
 using EstoqueProdutos.Entidades;
 using EstoqueProdutos.Gerenciamento;
@@ -73,7 +75,7 @@ namespace Estoque.Telas_Usuario
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Falha ao encontrar usuário!" + ex.Message);
+                Mensagem.Erro("Erro: " + ex.Message, "Falha ao encontrar usuário");
                 this.Close();
             }
         }
@@ -99,12 +101,12 @@ namespace Estoque.Telas_Usuario
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Falha sql\n\n" + ex.Message);
+                Mensagem.Erro("Erro: " + ex.Message, "Falha conexão");
                 this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Falha ao executar essa operação\n\n" + ex.Message);
+                Mensagem.Erro("Erro: " + ex.Message, "Falha ao executar essa operação");
                 this.Close();
             }
         }
@@ -267,42 +269,42 @@ namespace Estoque.Telas_Usuario
         {
             if (txtNomeCompleto.Text == "")
             {
-                MessageBox.Show("Campo nome completo é obrigatorio");
+                Alerta.Erro("Campo nome completo é obrigatorio");
                 txtNomeCompleto.Focus();
                 return false;
             }
 
             if (txtNomeAbreviado.Text == "")
             {
-                MessageBox.Show("Campo usuário é obrigatorio");
+                Alerta.Erro("Campo usuário é obrigatorio");
                 txtNomeAbreviado.Focus();
                 return false;
             }
 
             if ((int)cboSetor.SelectedValue <= 0)
             {
-                MessageBox.Show("Campo setor é obrigatorio");
+                Alerta.Erro("Campo setor é obrigatorio");
                 cboSetor.Focus();
                 return false;
             }
 
             if ((int)cboCargo.SelectedValue <= 0)
             {
-                MessageBox.Show("Campo cargo é obrigatorio");
+                Alerta.Erro("Campo cargo é obrigatorio");
                 cboCargo.Focus();
                 return false;
             }
 
             if (!emailValidado || !confirmacaoEmailValidado)
             {
-                MessageBox.Show("Email inválido!");
+                Alerta.Erro("Email inválido!");
                 txtEmail.Focus();
                 return false;
             }
 
             if (!ValidarSenhaNovaRegistrada())
             {
-                MessageBox.Show("Senha inválida!");
+                Alerta.Erro("Senha inválida!");
                 txtSenha.Focus();
                 return false;
             }
@@ -363,12 +365,7 @@ namespace Estoque.Telas_Usuario
 
                 if (resultado)
                 {
-                    MessageBox.Show("Usuário atualizado com sucesso!");
-
-                    //if (PK_Imagem == 1)
-                    //{
-                    //    MessageBox.Show("Imagem já existe em nossa base de dados e esta sendo utilizada por outro usuário.\n");
-                    //}
+                    Alerta.Confirmacao("Usuário atualizado com sucesso!");
 
                     LimparComponetes();
                     ObterUsuarioSelecionado();
@@ -376,7 +373,7 @@ namespace Estoque.Telas_Usuario
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao atualizar dados do usuário.\nErro: " + ex.Message);
+                Mensagem.Erro("Erro: " + ex.Message, "Erro ao atualizar dados");
             }
         }
 

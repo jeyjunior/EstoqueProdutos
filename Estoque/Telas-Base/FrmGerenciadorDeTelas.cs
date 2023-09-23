@@ -1,4 +1,5 @@
-﻿using EstoqueProdutos.Interfaces;
+﻿using Estoque.Controladores;
+using EstoqueProdutos.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -50,9 +51,9 @@ namespace Estoque.Telas_Base
                     telaNova.Show();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Falha ao abrir telas!");
+                Mensagem.Erro("Erro: " + ex.Message, "Falha ao abrir telas!");
             }
         }
 
@@ -82,9 +83,9 @@ namespace Estoque.Telas_Base
                     newUserControl.Visible = true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Falha ao abrir telas!");
+                Mensagem.Erro("Erro: " + ex.Message, "Falha ao abrir telas!");
             }
         }
 
