@@ -25,6 +25,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Telas-Mensagens\FrmMensagem.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Telas-Modelos\FrmEstruturaBaseTabs.cs">
       <SubType>Form</SubType>
     </Compile>

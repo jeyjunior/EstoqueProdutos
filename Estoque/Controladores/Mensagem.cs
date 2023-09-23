@@ -4,37 +4,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using static Estoque.Telas_Mensagens.FrmMensagem;
 
 namespace Estoque.Controladores
 {
-    public class Mensagem
+    public static class Mensagem
     {
-        private Control parentControl;
-
-        public Mensagem(Control parentControl)
+        public static bool Erro(string mensagem, string titulo = "Pergunta")
         {
-            this.parentControl = parentControl;
+            FrmMensagem frmMensagem = new FrmMensagem();
+            frmMensagem.ExibirErro(mensagem, titulo);
+            frmMensagem.ShowDialog();
+
+            Resposta resultado = frmMensagem.Resultado;
+
+            return resultado == Resposta.Afirmacao;
         }
 
-        public bool Erro(string mensagem, string titulo = "Erro")
+        public static bool Pergunta(string mensagem, string titulo = "Pergunta")
         {
-            UCMensagem mensagemControl = new UCMensagem(this);
-            parentControl.Controls.Add(mensagemControl);
-            mensagemControl.ExibirPergunta(mensagem, titulo);
+            FrmMensagem frmMensagem = new FrmMensagem();
+            frmMensagem.ExibirPergunta(mensagem, titulo);
+            frmMensagem.ShowDialog();
 
-            if (mensagemControl.Disposing)
-                parentControl.Controls.Remove(mensagemControl);
-            return mensagemControl.Resultado == UCMensagem.Resposta.Afirmacao;
-        }
-        public bool Pergunta(string mensagem, string titulo = "Pergunta")
-        {
-            UCMensagem mensagemControl = new UCMensagem(this);
-            parentControl.Controls.Add(mensagemControl);
-            mensagemControl.ExibirPergunta(mensagem, titulo);
+            Resposta resultado = frmMensagem.Resultado;
 
-            if (mensagemControl.Disposing)
-                parentControl.Controls.Remove(mensagemControl);
-            return mensagemControl.Resultado == UCMensagem.Resposta.Afirmacao;
+            return resultado == Resposta.Afirmacao;
         }
     }
 }

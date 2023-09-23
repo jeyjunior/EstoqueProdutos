@@ -1,6 +1,6 @@
 ﻿namespace Estoque.Telas_Modelos
 {
-    partial class FrmEstruturaBase
+    partial class FrmMensagem
     {
         /// <summary>
         /// Required designer variable.

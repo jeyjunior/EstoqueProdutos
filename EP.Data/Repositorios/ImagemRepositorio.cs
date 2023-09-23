@@ -114,7 +114,7 @@ namespace EstoqueProdutos.Repositorios
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao salvar imagem:\n" + ex.Message);
+                Mensagem.Erro("Erro: " + ex.Message, "Erro ao salvar imagem.");
             }
 
             return PK_Imagem;

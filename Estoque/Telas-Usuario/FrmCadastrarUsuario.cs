@@ -3,20 +3,11 @@ using EP.Data.Interfaces;
 using Estoque.Controladores;
 using Estoque.GerenciamentoTelas;
 using Estoque.Interfaces;
-using Estoque.Telas_Base;
 using EstoqueProdutos.Gerenciamento;
-using JJ.Helpers.Formatacao;
 using JJ.Helpers.Interfaces;
 using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+
 
 namespace Estoque.Telas_Usuario
 {
@@ -64,12 +55,12 @@ namespace Estoque.Telas_Usuario
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Falha sql\n\n" + ex.Message);
+                Mensagem.Erro("Erro: " + ex.Message, "Falha conexão.");
                 this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Falha ao executar essa operação\n\n" + ex.Message);
+                Mensagem.Erro("Erro: " + ex.Message, "Falha carregar componentes");
                 this.Close();
             }
         }
@@ -129,16 +120,7 @@ namespace Estoque.Telas_Usuario
         {
             if (!nomeValidado)
             {
-                //Alerta.Erro("Campo nome é obrigatório!");
-
-                Mensagem mensagem = new Mensagem(this);
-                var resultado = mensagem.Erro("Não foi possível cadastrar usuário, campo Nome não foi preenchido corretamente.", "Erro: Nome do usuário inválido!");
-
-                if (resultado)
-                {
-                    MessageBox.Show("Resultado captirado com sucesso!");
-                }
-
+                Alerta.Erro("Campo nome é obrigatório!");
                 txtNomeCompleto.Focus();
                 return false;
             }
@@ -225,7 +207,7 @@ namespace Estoque.Telas_Usuario
             }
             catch (Exception ex)
             {
-                Alerta.Erro("Erro ao cadastrar usuário.\nErro: " + ex.Message);
+                Mensagem.Erro("Erro: " + ex.Message, "Erro ao cadastrar usuário.");
             }
         }
         private void btnLimpar_Click(object sender, EventArgs e)

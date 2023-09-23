@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace Estoque.Telas_Modelos
 {
-    public partial class FrmEstruturaBase : FrmBase
+    public partial class FrmMensagem : FrmBase
     {
-        public FrmEstruturaBase()
+        public FrmMensagem()
         {
             InitializeComponent();
         }
