@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             tlpCentral = new TableLayoutPanel();
             dtgUsuarios = new DataGridView();
             colPK_Usuario = new DataGridViewTextBoxColumn();
@@ -50,13 +50,16 @@
             cboCargo = new ComboBox();
             lblNome = new Label();
             lblCargo = new Label();
+            lblAtivo = new Label();
+            cboAtivo = new ComboBox();
             tblBotoes = new TableLayoutPanel();
             btnPesquisar = new Button();
-            btnExcluir = new Button();
+            btnDesativar = new Button();
             btnCadastrarUsuario = new Button();
             btnAlterar = new Button();
             btnSetorCargo = new Button();
             btnLimpar = new Button();
+            btnAtivar = new Button();
             tblPrincipal = new TableLayoutPanel();
             pBarraStatus = new Panel();
             lblTotalPesquisado = new Label();
@@ -103,31 +106,31 @@
             dtgUsuarios.AllowUserToDeleteRows = false;
             dtgUsuarios.AllowUserToOrderColumns = true;
             dtgUsuarios.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(235, 235, 235);
-            dtgUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(235, 235, 235);
+            dtgUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dtgUsuarios.BackgroundColor = Color.FromArgb(235, 235, 235);
             dtgUsuarios.BorderStyle = BorderStyle.None;
             dtgUsuarios.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
             dtgUsuarios.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = Color.FromArgb(60, 74, 84);
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(47, 59, 67);
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dtgUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(60, 74, 84);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(47, 59, 67);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dtgUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dtgUsuarios.ColumnHeadersHeight = 35;
             dtgUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dtgUsuarios.Columns.AddRange(new DataGridViewColumn[] { colPK_Usuario, colNomeCompleto, colNomeAbreviado, colEmail, colFK_Setor, colNomeSetor, colFK_Cargo, colNomeCargo, colFK_Imagem });
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = Color.FromArgb(246, 246, 246);
-            dataGridViewCellStyle7.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(140, 200, 120);
-            dataGridViewCellStyle7.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
-            dtgUsuarios.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(246, 246, 246);
+            dataGridViewCellStyle3.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(140, 200, 120);
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dtgUsuarios.DefaultCellStyle = dataGridViewCellStyle3;
             dtgUsuarios.Dock = DockStyle.Fill;
             dtgUsuarios.EnableHeadersVisualStyles = false;
             dtgUsuarios.GridColor = Color.White;
@@ -135,13 +138,13 @@
             dtgUsuarios.Margin = new Padding(0);
             dtgUsuarios.Name = "dtgUsuarios";
             dtgUsuarios.ReadOnly = true;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.FromArgb(217, 217, 217);
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            dtgUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(217, 217, 217);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dtgUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dtgUsuarios.RowHeadersVisible = false;
             dtgUsuarios.RowHeadersWidth = 55;
             dtgUsuarios.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -231,18 +234,22 @@
             // tblSetor
             // 
             tblSetor.BackColor = Color.FromArgb(60, 75, 85);
-            tblSetor.ColumnCount = 5;
-            tblSetor.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tblSetor.ColumnCount = 7;
+            tblSetor.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 28.6122952F));
             tblSetor.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 15F));
-            tblSetor.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tblSetor.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 28.6123066F));
             tblSetor.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 15F));
-            tblSetor.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tblSetor.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 28.6123066F));
+            tblSetor.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 15F));
+            tblSetor.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.1630907F));
             tblSetor.Controls.Add(txtNome, 0, 1);
             tblSetor.Controls.Add(lblSetor, 2, 0);
             tblSetor.Controls.Add(cboSetor, 2, 1);
             tblSetor.Controls.Add(cboCargo, 4, 1);
             tblSetor.Controls.Add(lblNome, 0, 0);
             tblSetor.Controls.Add(lblCargo, 4, 0);
+            tblSetor.Controls.Add(lblAtivo, 6, 0);
+            tblSetor.Controls.Add(cboAtivo, 6, 1);
             tblSetor.Dock = DockStyle.Fill;
             tblSetor.Location = new Point(0, 0);
             tblSetor.Margin = new Padding(0);
@@ -262,7 +269,7 @@
             txtNome.Location = new Point(18, 35);
             txtNome.MaxLength = 120;
             txtNome.Name = "txtNome";
-            txtNome.Size = new Size(160, 27);
+            txtNome.Size = new Size(132, 27);
             txtNome.TabIndex = 19;
             // 
             // lblSetor
@@ -270,10 +277,10 @@
             lblSetor.Dock = DockStyle.Fill;
             lblSetor.Font = new Font("Verdana", 10F, FontStyle.Bold, GraphicsUnit.Point);
             lblSetor.ForeColor = SystemColors.ControlLightLight;
-            lblSetor.Location = new Point(196, 0);
+            lblSetor.Location = new Point(168, 0);
             lblSetor.Margin = new Padding(0);
             lblSetor.Name = "lblSetor";
-            lblSetor.Size = new Size(166, 32);
+            lblSetor.Size = new Size(138, 32);
             lblSetor.TabIndex = 17;
             lblSetor.Text = "Setor:";
             lblSetor.TextAlign = ContentAlignment.MiddleLeft;
@@ -286,9 +293,9 @@
             cboSetor.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cboSetor.FormattingEnabled = true;
             cboSetor.IntegralHeight = false;
-            cboSetor.Location = new Point(199, 35);
+            cboSetor.Location = new Point(171, 35);
             cboSetor.Name = "cboSetor";
-            cboSetor.Size = new Size(160, 26);
+            cboSetor.Size = new Size(132, 26);
             cboSetor.TabIndex = 18;
             cboSetor.SelectedIndexChanged += cboSetor_SelectedIndexChanged;
             // 
@@ -301,9 +308,9 @@
             cboCargo.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cboCargo.FormattingEnabled = true;
             cboCargo.IntegralHeight = false;
-            cboCargo.Location = new Point(380, 35);
+            cboCargo.Location = new Point(324, 35);
             cboCargo.Name = "cboCargo";
-            cboCargo.Size = new Size(162, 26);
+            cboCargo.Size = new Size(132, 26);
             cboCargo.TabIndex = 20;
             // 
             // lblNome
@@ -314,27 +321,54 @@
             lblNome.Location = new Point(15, 0);
             lblNome.Margin = new Padding(0);
             lblNome.Name = "lblNome";
-            lblNome.Size = new Size(166, 32);
+            lblNome.Size = new Size(138, 32);
             lblNome.TabIndex = 21;
             lblNome.Text = "Nome:";
             lblNome.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // lblCargo
             // 
-            lblCargo.Dock = DockStyle.Fill;
             lblCargo.Font = new Font("Verdana", 10F, FontStyle.Bold, GraphicsUnit.Point);
             lblCargo.ForeColor = SystemColors.ControlLightLight;
-            lblCargo.Location = new Point(377, 0);
+            lblCargo.Location = new Point(321, 0);
             lblCargo.Margin = new Padding(0);
             lblCargo.Name = "lblCargo";
-            lblCargo.Size = new Size(168, 32);
+            lblCargo.Size = new Size(136, 32);
             lblCargo.TabIndex = 22;
             lblCargo.Text = "Cargo:";
             lblCargo.TextAlign = ContentAlignment.MiddleLeft;
             // 
+            // lblAtivo
+            // 
+            lblAtivo.Dock = DockStyle.Fill;
+            lblAtivo.Font = new Font("Verdana", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            lblAtivo.ForeColor = SystemColors.ControlLightLight;
+            lblAtivo.Location = new Point(474, 0);
+            lblAtivo.Margin = new Padding(0);
+            lblAtivo.Name = "lblAtivo";
+            lblAtivo.Size = new Size(71, 32);
+            lblAtivo.TabIndex = 23;
+            lblAtivo.Text = "Ativo:";
+            lblAtivo.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // cboAtivo
+            // 
+            cboAtivo.BackColor = SystemColors.Window;
+            cboAtivo.Dock = DockStyle.Fill;
+            cboAtivo.DropDownHeight = 200;
+            cboAtivo.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboAtivo.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cboAtivo.FormattingEnabled = true;
+            cboAtivo.IntegralHeight = false;
+            cboAtivo.Items.AddRange(new object[] { "Ativado", "Desativado" });
+            cboAtivo.Location = new Point(477, 35);
+            cboAtivo.Name = "cboAtivo";
+            cboAtivo.Size = new Size(65, 26);
+            cboAtivo.TabIndex = 24;
+            // 
             // tblBotoes
             // 
-            tblBotoes.ColumnCount = 11;
+            tblBotoes.ColumnCount = 13;
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 5F));
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
@@ -346,12 +380,15 @@
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 5F));
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
             tblBotoes.Controls.Add(btnPesquisar, 0, 0);
-            tblBotoes.Controls.Add(btnExcluir, 10, 0);
+            tblBotoes.Controls.Add(btnDesativar, 10, 0);
             tblBotoes.Controls.Add(btnCadastrarUsuario, 8, 0);
             tblBotoes.Controls.Add(btnAlterar, 6, 0);
             tblBotoes.Controls.Add(btnSetorCargo, 4, 0);
             tblBotoes.Controls.Add(btnLimpar, 2, 0);
+            tblBotoes.Controls.Add(btnAtivar, 12, 0);
             tblBotoes.Dock = DockStyle.Fill;
             tblBotoes.Location = new Point(0, 95);
             tblBotoes.Margin = new Padding(0);
@@ -373,16 +410,16 @@
             btnPesquisar.UseVisualStyleBackColor = true;
             btnPesquisar.Click += btnPesquisar_Click;
             // 
-            // btnExcluir
+            // btnDesativar
             // 
-            btnExcluir.Image = Properties.Resources.delete_outline_1;
-            btnExcluir.Location = new Point(0, 0);
-            btnExcluir.Margin = new Padding(0);
-            btnExcluir.Name = "btnExcluir";
-            btnExcluir.Size = new Size(35, 35);
-            btnExcluir.TabIndex = 3;
-            btnExcluir.UseVisualStyleBackColor = true;
-            btnExcluir.Click += btnExcluir_Click;
+            btnDesativar.Image = Properties.Resources.desativarUsuario;
+            btnDesativar.Location = new Point(40, 0);
+            btnDesativar.Margin = new Padding(0);
+            btnDesativar.Name = "btnDesativar";
+            btnDesativar.Size = new Size(35, 35);
+            btnDesativar.TabIndex = 3;
+            btnDesativar.UseVisualStyleBackColor = true;
+            btnDesativar.Click += btnExcluir_Click;
             // 
             // btnCadastrarUsuario
             // 
@@ -427,6 +464,17 @@
             btnLimpar.TabIndex = 6;
             btnLimpar.UseVisualStyleBackColor = true;
             btnLimpar.Click += btnLimpar_Click;
+            // 
+            // btnAtivar
+            // 
+            btnAtivar.Image = Properties.Resources.ativarUsuario;
+            btnAtivar.Location = new Point(0, 0);
+            btnAtivar.Margin = new Padding(0);
+            btnAtivar.Name = "btnAtivar";
+            btnAtivar.Size = new Size(35, 35);
+            btnAtivar.TabIndex = 7;
+            btnAtivar.UseVisualStyleBackColor = true;
+            btnAtivar.Click += btnAtivar_Click;
             // 
             // tblPrincipal
             // 
@@ -524,7 +572,7 @@
         private Label lblNome;
         private Label lblCargo;
         private Button btnPesquisar;
-        private Button btnExcluir;
+        private Button btnDesativar;
         private Button btnCadastrarUsuario;
         private Button btnAlterar;
         private Button btnSetorCargo;
@@ -539,5 +587,8 @@
         private DataGridViewTextBoxColumn colFK_Cargo;
         private DataGridViewTextBoxColumn colNomeCargo;
         private DataGridViewTextBoxColumn colFK_Imagem;
+        private Label lblAtivo;
+        private ComboBox cboAtivo;
+        private Button btnAtivar;
     }
 }

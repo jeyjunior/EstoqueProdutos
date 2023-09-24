@@ -1,4 +1,5 @@
 ﻿using Estoque.Controladores;
+using Estoque.Interfaces;
 using EstoqueProdutos.Interfaces;
 using System;
 using System.Collections.Generic;

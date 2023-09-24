@@ -119,7 +119,7 @@
             btnPesquisar.Size = new Size(35, 35);
             btnPesquisar.TabIndex = 1;
             btnPesquisar.UseVisualStyleBackColor = true;
-            btnPesquisar.Click += this.btnPesquisar_Click;
+            btnPesquisar.Click += btnPesquisar_Click;
             // 
             // btnExcluir
             // 
@@ -130,7 +130,7 @@
             btnExcluir.Size = new Size(35, 35);
             btnExcluir.TabIndex = 5;
             btnExcluir.UseVisualStyleBackColor = true;
-            btnExcluir.Click += this.btnExcluir_Click;
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // btnCancelar
             // 
@@ -142,7 +142,7 @@
             btnCancelar.TabIndex = 16;
             btnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnCancelar.UseVisualStyleBackColor = true;
-            btnCancelar.Click += this.btnCancelar_Click;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // btnSalvar
             // 
@@ -153,7 +153,7 @@
             btnSalvar.Size = new Size(35, 35);
             btnSalvar.TabIndex = 15;
             btnSalvar.UseVisualStyleBackColor = true;
-            btnSalvar.Click += this.btnSalvar_Click;
+            btnSalvar.Click += btnSalvar_Click;
             // 
             // btnCadastrar
             // 
@@ -164,7 +164,7 @@
             btnCadastrar.Size = new Size(35, 35);
             btnCadastrar.TabIndex = 3;
             btnCadastrar.UseVisualStyleBackColor = true;
-            btnCadastrar.Click += this.btnCadastrar_Click;
+            btnCadastrar.Click += btnCadastrar_Click;
             // 
             // btnAlterar
             // 
@@ -175,7 +175,7 @@
             btnAlterar.Size = new Size(35, 35);
             btnAlterar.TabIndex = 4;
             btnAlterar.UseVisualStyleBackColor = true;
-            btnAlterar.Click += this.btnAlterar_Click;
+            btnAlterar.Click += btnAlterar_Click;
             // 
             // btnLimpar
             // 
@@ -186,7 +186,7 @@
             btnLimpar.Size = new Size(35, 35);
             btnLimpar.TabIndex = 14;
             btnLimpar.UseVisualStyleBackColor = true;
-            btnLimpar.Click += this.btnLimpar_Click;
+            btnLimpar.Click += btnLimpar_Click;
             // 
             // tblSetor
             // 
@@ -373,7 +373,7 @@
             Controls.Add(tblPrincipal);
             Name = "UCCadastrarSetor";
             Size = new Size(560, 560);
-            Load += this.UCCadastrarSetor_Load;
+            Load += UCCadastrarSetor_Load;
             tlpCentral.ResumeLayout(false);
             tlpBotoes.ResumeLayout(false);
             tblSetor.ResumeLayout(false);

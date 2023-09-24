@@ -54,6 +54,7 @@ namespace Estoque.Telas_Usuario
             {
                 BindComboBoxSetor();
                 BindComboBoxCargo();
+                BindComboBoxAtivo();
                 txtNome.Text = "";
                 txtNome.Focus();
                 btnPesquisar.PerformClick();
@@ -93,6 +94,28 @@ namespace Estoque.Telas_Usuario
                 cboCargo.ValueMember = "PK_Cargo";
             }
         }
+        private void BindComboBoxAtivo()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ID", typeof(int));
+            dt.Columns.Add("Ativo", typeof(string));
+
+            DataRow r1 = dt.NewRow();
+            r1["ID"] = 1;
+            r1["Ativo"] = "Ativado";
+            dt.Rows.Add(r1);
+
+            DataRow r2 = dt.NewRow();
+            r2["ID"] = 0;
+            r2["Ativo"] = "Desativado";
+            dt.Rows.Add(r2);
+
+            cboAtivo.DataSource = dt;
+            cboAtivo.DisplayMember = "Ativo";
+            cboAtivo.ValueMember = "ID";
+        }
+
+
         private void BindDataGridView()
         {
             if (usuarios != null)
@@ -121,6 +144,7 @@ namespace Estoque.Telas_Usuario
 
             cboSetor.SelectedValue = 0;
             cboCargo.SelectedValue = 0;
+            cboAtivo.SelectedValue = 1;
 
             if (dtgUsuarios.Rows.Count > 0)
                 dtgUsuarios.Rows.Clear();
@@ -144,6 +168,7 @@ namespace Estoque.Telas_Usuario
                 var fkSetor = Convert.ToInt32(linhaSelecionada.Cells["colFK_Setor"].Value);
                 var fkCargo = Convert.ToInt32(linhaSelecionada.Cells["colFK_Cargo"].Value);
                 var fkImagem = Convert.ToInt32(linhaSelecionada.Cells["colFK_Imagem"].Value);
+
                 usuarioSelecionado = new Usuario
                 {
                     PK_Usuario = pkUsuario,
@@ -195,25 +220,26 @@ namespace Estoque.Telas_Usuario
 
             return null;
         }
-        private void ExcluirUsuarioSelecionado()
+        private void DesativarUsuarioSelecionado()
         {
             try
             {
-                string mensagem = "Tem certeza que excluir esse usuário?\n";
-                string usuario = "\nDeletar: " + txtNome.Text.Trim();
+                string mensagem = "Desativar esse usuário?\n";
+                string usuario = txtNome.Text.Trim();
 
-                var resultado = Mensagem.Pergunta(mensagem + usuario, "Deletar");
+                var resultado = Mensagem.Pergunta(mensagem + usuario, "Desativar");
 
                 if (resultado == RespostaCaixaDialogo.Sim)
                 {
-                    var resultadoInsert = usuarioRepositorio.ExcluirUsuario(new Usuario()
-                    { PK_Usuario = usuarioSelecionado.PK_Usuario });
+                    var resultadoInsert = usuarioRepositorio.AlterarAtivoUsuario(new Usuario()
+                    {
+                        PK_Usuario = usuarioSelecionado.PK_Usuario,
+                        Ativo = false
+                    });
 
                     if (resultadoInsert)
                     {
-                        Alerta.Confirmacao("Usuário excluído com sucesso!");
-                        LimparComponentes();
-                        btnPesquisar.PerformClick();
+                        Alerta.Confirmacao("Usuário desativado com sucesso!");
                     }
                 }
                 else
@@ -226,6 +252,40 @@ namespace Estoque.Telas_Usuario
                 Mensagem.Erro("Erro: " + ex.Message);
             }
         }
+        private void AtivarUsuarioSelecionado()
+        {
+            try
+            {
+                string mensagem = "Ativar esse usuário?\n";
+                string usuario = txtNome.Text.Trim();
+
+                var resultado = Mensagem.Pergunta(mensagem + usuario, "Ativar");
+
+                if (resultado == RespostaCaixaDialogo.Sim)
+                {
+                    var resultadoInsert = usuarioRepositorio.AlterarAtivoUsuario(new Usuario()
+                    {
+                        PK_Usuario = usuarioSelecionado.PK_Usuario,
+                        Ativo = true
+                    });
+
+                    if (resultadoInsert)
+                    {
+                        Alerta.Confirmacao("Usuário ativado com sucesso!");
+                    }
+                }
+                else
+                {
+                    txtNome.Focus();
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensagem.Erro("Erro: " + ex.Message);
+            }
+        }
+
+
         private void AtualizarTotalRegistrado()
         {
             int total = setorRepositorio.ObterTotalSetoresRegistrados();
@@ -233,7 +293,7 @@ namespace Estoque.Telas_Usuario
         }
         private void AtualizarTotalPesquisado()
         {
-            //lblTotalPesquisado.Text = "Pesquisado: " + dtgSetor.Rows.Count;
+            lblTotalPesquisado.Text = "Pesquisado: " + dtgUsuarios.Rows.Count;
         }
         #endregion Metodos
 
@@ -260,8 +320,20 @@ namespace Estoque.Telas_Usuario
             {
                 NomeCompleto = txtNome.TextoFormatoLikeSQL(),
                 FK_Setor = ((Setor)cboSetor.SelectedItem).PK_Setor,
-                FK_Cargo = ((Cargo)cboCargo.SelectedItem).PK_Cargo
+                FK_Cargo = ((Cargo)cboCargo.SelectedItem).PK_Cargo,
+                Ativo = Convert.ToBoolean((int)cboAtivo.SelectedValue)
             });
+
+            if ((int)cboAtivo.SelectedIndex == 0)
+            {
+                btnDesativar.Enabled = true;
+                btnAtivar.Enabled = false;
+            }
+            else
+            {
+                btnDesativar.Enabled = false;
+                btnAtivar.Enabled = true;
+            }
 
             BindDataGridView();
         }
@@ -273,7 +345,12 @@ namespace Estoque.Telas_Usuario
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             ObterUsuarioDaLinhaSelecionar();
-            ExcluirUsuarioSelecionado();
+            DesativarUsuarioSelecionado();
+        }
+        private void btnAtivar_Click(object sender, EventArgs e)
+        {
+            ObterUsuarioDaLinhaSelecionar();
+            AtivarUsuarioSelecionado();
         }
         private void btnSetorCargo_Click(object sender, EventArgs e)
         {
@@ -290,7 +367,7 @@ namespace Estoque.Telas_Usuario
             if (usuarioSelecionado != null)
             {
                 ObjetoGenerico = usuarioSelecionado;
-                AbrirTela(typeof(FrmAlterarUsuario), this, true, FilhoFechado);
+                AbrirTela(typeof(FrmAlterarUsuarioNovo), this, true, FilhoFechado);
             }
         }
 

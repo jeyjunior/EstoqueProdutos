@@ -157,7 +157,7 @@ namespace Estoque.Telas_Usuario
             }
             catch (Exception ex)
             {
-                Mensagem.Erro("Erro: " +  ex.Message);
+                Mensagem.Erro("Erro: " + ex.Message);
             }
         }
         private void ExcluirSetorSelecionado()
@@ -285,8 +285,6 @@ namespace Estoque.Telas_Usuario
             LayoutBotoes();
             SelecionarSetor();
         }
-
-
         private void UCCadastrarSetor_Load(object sender, EventArgs e)
         {
             InicializarGrid();

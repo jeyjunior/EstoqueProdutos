@@ -42,7 +42,7 @@
             // 
             // pCentral
             // 
-            pCentral.BackColor = Color.MediumSeaGreen;
+            pCentral.BackColor = Color.FromArgb(80, 90, 100);
             pCentral.Dock = DockStyle.Fill;
             pCentral.Location = new Point(15, 15);
             pCentral.Margin = new Padding(0);
@@ -52,7 +52,7 @@
             // 
             // pTop
             // 
-            pTop.BackColor = Color.FromArgb(255, 128, 128);
+            pTop.BackColor = Color.FromArgb(80, 90, 100);
             pTop.Dock = DockStyle.Fill;
             pTop.Location = new Point(0, 0);
             pTop.Margin = new Padding(0);
@@ -62,7 +62,7 @@
             // 
             // pBot
             // 
-            pBot.BackColor = Color.FromArgb(255, 128, 128);
+            pBot.BackColor = Color.FromArgb(80, 90, 100);
             pBot.Dock = DockStyle.Fill;
             pBot.Location = new Point(0, 534);
             pBot.Margin = new Padding(0);
@@ -72,7 +72,7 @@
             // 
             // pDireita
             // 
-            pDireita.BackColor = Color.FromArgb(255, 192, 128);
+            pDireita.BackColor = Color.FromArgb(80, 90, 100);
             pDireita.Dock = DockStyle.Fill;
             pDireita.Location = new Point(0, 0);
             pDireita.Margin = new Padding(0);

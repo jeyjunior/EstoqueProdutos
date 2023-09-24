@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+
 
 namespace EP.Data.Repositorios
 {
@@ -21,7 +21,7 @@ namespace EP.Data.Repositorios
             using (var connection = new SqlConnection(Conexao.ConexaoBase))
             {
                 connection.Open();
-                string sql = "SELECT * FROM Usuario";
+                string sql = "SELECT * FROM Usuario WHERE Ativo = 1";
                 return connection.Query<Usuario>(sql);
             }
         }
@@ -29,8 +29,6 @@ namespace EP.Data.Repositorios
         public virtual IEnumerable<Usuario> ObterUsuario(Usuario usuarioParametros)
         {
             string sql = "";
-            string where = "WHERE ";
-            string condicao = "";
 
             sql = "SELECT TOP 1\n" +
                 "   U.*,\n" +
@@ -62,25 +60,25 @@ namespace EP.Data.Repositorios
         public virtual IEnumerable<Usuario> ObterTabelaFiltroTelaUsuarios(Usuario usuarioParametros) 
         {
             string sql = "";
-            string where = "WHERE ";
+            string where = "";
             string condicao = "";
+
+            where = "WHERE Ativo = @Ativo\n";
 
             if (usuarioParametros.NomeCompleto != "")
             {
-                condicao += (condicao != "" ? " AND" : "") + " U.NomeCompleto LIKE @NomeCompleto\n";
+                condicao += "AND U.NomeCompleto LIKE @NomeCompleto\n";
             }
 
             if (usuarioParametros.FK_Setor > 0)
             {
-                condicao += (condicao != "" ? " AND" : "") + " U.FK_Setor = @FK_Setor\n";
+                condicao += "AND U.FK_Setor = @FK_Setor\n";
             }
 
             if (usuarioParametros.FK_Cargo > 0)
             {
-                condicao += (condicao != "" ? " AND" : "") + " U.FK_Cargo = @FK_Cargo\n";
+                condicao += "AND U.FK_Cargo = @FK_Cargo\n";
             }
-
-
 
             sql = "SELECT\n" +
                 "   U.PK_Usuario,\n" +
@@ -95,7 +93,7 @@ namespace EP.Data.Repositorios
                 "FROM Usuario U\n" +
                 "INNER JOIN Setor S ON S.PK_Setor = U.FK_Setor\n" +
                 "INNER JOIN Cargo C ON C.PK_Cargo = U.FK_Cargo\n" +
-                " " + (condicao != "" ? where + condicao : "");
+                where + (condicao != "" ? condicao : "");
 
             using (SqlConnection connection = new SqlConnection(Conexao.ConexaoBase))
             {
@@ -149,9 +147,7 @@ namespace EP.Data.Repositorios
                 var resultado = connection.Execute(sql, usuario);
                 return Convert.ToBoolean(resultado);
             }
-
         }
-
 
         public bool ExcluirUsuario(Usuario usuario)
         {
@@ -174,6 +170,22 @@ namespace EP.Data.Repositorios
                     "   DELETE FROM Imagem  \n" +
                     "   WHERE PK_Imagem = @ImagemID \n" +
                     "END \n";
+
+                var resultado = connection.Execute(sql, usuario);
+                return Convert.ToBoolean(resultado);
+            }
+        }
+
+        public bool AlterarAtivoUsuario(Usuario usuario)
+        {
+            using (SqlConnection connection = new SqlConnection(Conexao.ConexaoBase))
+            {
+                connection.Open();
+
+                string sql = "" +
+                    "UPDATE Usuario \n" +
+                    "SET Ativo = @Ativo \n" +
+                    "WHERE PK_Usuario = @PK_Usuario\n";
 
                 var resultado = connection.Execute(sql, usuario);
                 return Convert.ToBoolean(resultado);

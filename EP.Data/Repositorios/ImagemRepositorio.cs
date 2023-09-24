@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using JJ.Helpers.Formatacao;
 using EP.Data.sql;
 using EP.Data.Entidades;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
+using System.Collections.Generic;
 
 namespace EstoqueProdutos.Repositorios
 {
@@ -86,25 +88,44 @@ namespace EstoqueProdutos.Repositorios
                     ImgBinary = img.ConvertImageToByteArray()
                 };
 
-                string sql = "";
+                /*Caso exista uma imagem com mesmo nome no sistema, a mesma passa a ser utilizada ao inves de inserir uma nova*/
+                //string sql = "DECLARE @ID_Imagem int \n" +
+                //        "SELECT @ID_Imagem = Imagem.PK_Imagem \n" +
+                //        "FROM Imagem \n" +
+                //        "WHERE Imagem.Nome = @Nome \n" +
 
-                sql = " \n" +
-                    "DECLARE @Contagem int \n" +
+                //        "IF @ID_Imagem > 0 \n" +
+                //            "BEGIN \n" +
+                //                "SELECT * FROM Imagem WHERE PK_Imagem = @ID_Imagem \n" +
+                //            "END \n" +
+                //        "ELSE \n" +
+                //            "BEGIN \n" +
+                //                "INSERT INTO Imagem(Nome, Formato, ImgBinary) \n" +
+                //                "VALUES(@Nome, @Formato, @ImgBinary); \n" +
+                //                "SELECT SCOPE_IDENTITY() \n" +
+                //        "END \n";
 
-                    "SELECT @Contagem = COUNT(*)  \n" +
-                    "FROM Imagem \n" +
-                    "WHERE Imagem.Nome = @Nome \n" +
+                //string sql = " \n" +
+                //    "DECLARE @Contagem int \n" +
 
-                    "IF @Contagem = 0 \n" +
-                    "   BEGIN  \n" +
-                    "       INSERT INTO Imagem (Nome, Formato, ImgBinary) \n" +
-                    "       VALUES (@Nome, @Formato, @ImgBinary); \n" +
-                    "       SELECT SCOPE_IDENTITY() \n" +
-                    "   END \n" +
-                    "ELSE \n" +
-                    "   BEGIN \n" +
-                    "       SELECT * FROM Imagem WHERE PK_Imagem = 1 \n" +
-                    "   END \n";
+                //    "SELECT @Contagem = COUNT(*)  \n" +
+                //    "FROM Imagem \n" +
+                //    "WHERE Imagem.Nome = @Nome \n" +
+
+                //    "IF @Contagem = 0 \n" +
+                //    "   BEGIN  \n" +
+                //    "       INSERT INTO Imagem (Nome, Formato, ImgBinary) \n" +
+                //    "       VALUES (@Nome, @Formato, @ImgBinary); \n" +
+                //    "       SELECT SCOPE_IDENTITY() \n" +
+                //    "   END \n" +
+                //    "ELSE \n" +
+                //    "   BEGIN \n" +
+                //    "       SELECT * FROM Imagem WHERE PK_Imagem = 1 \n" +
+                //    "   END \n";
+
+                string sql = "INSERT INTO Imagem (Nome, Formato, ImgBinary) \n" +
+                             "VALUES (@Nome, @Formato, @ImgBinary); \n" +
+                             "SELECT SCOPE_IDENTITY() \n";
 
                 using (SqlConnection connection = new SqlConnection(Conexao.ConexaoBase))
                 {

@@ -113,6 +113,16 @@ namespace Estoque.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ativarUsuario {
+            get {
+                object obj = ResourceManager.GetObject("ativarUsuario", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bgMensagem {
             get {
                 object obj = ResourceManager.GetObject("bgMensagem", resourceCulture);
@@ -186,6 +196,16 @@ namespace Estoque.Properties {
         internal static System.Drawing.Bitmap delete_outline_1 {
             get {
                 object obj = ResourceManager.GetObject("delete_outline_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap desativarUsuario {
+            get {
+                object obj = ResourceManager.GetObject("desativarUsuario", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

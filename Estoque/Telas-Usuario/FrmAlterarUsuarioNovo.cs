@@ -12,7 +12,7 @@ using System.Data;
 
 namespace Estoque.Telas_Usuario
 {
-    public partial class FrmCadastrarUsuario : FrmBase
+    public partial class FrmAlterarUsuarioNovo : FrmBase
     {
         private readonly IImagemRepositorio imagemRepositorio;
         private readonly ISetorRepositorio setorRepositorio;
@@ -20,8 +20,8 @@ namespace Estoque.Telas_Usuario
         private readonly IUsuarioRepositorio usuarioRepositorio;
         private readonly IValidacao validacao;
 
-
         private BindingSource bsCargo = new BindingSource();
+        public Usuario UsuarioSelecionado { get; set; }
 
         private bool nomeValidado = false;
         private bool usuarioValidado = false;
@@ -30,7 +30,7 @@ namespace Estoque.Telas_Usuario
         private bool senhaValidada = false;
         private bool confirmacaoSenhaValidada = false;
 
-        public FrmCadastrarUsuario(IUCGerenciadorDeTelas gerenciadorDeTelas)
+        public FrmAlterarUsuarioNovo(IUCGerenciadorDeTelas gerenciadorDeTelas)
         {
             InitializeComponent();
 
@@ -45,19 +45,42 @@ namespace Estoque.Telas_Usuario
             pcbImagemUsuario.Image = imagemRepositorio.ObterImagemPadrao();
         }
 
-        #region Metodos 
-        /* Inicializacao */
+        #region Metodos - Inicializacao
+        private void ObterUsuarioSelecionado()
+        {
+            try
+            {
+                UsuarioSelecionado = gerenciadorDeTelas.ObterObjetoGenerico() as Usuario;
+                if (UsuarioSelecionado != null)
+                {
+                    txtNomeCompleto.Text = UsuarioSelecionado.NomeCompleto;
+                    txtUsuario.Text = UsuarioSelecionado.NomeAbreviado;
+                    cboSetor.SelectedValue = UsuarioSelecionado.FK_Setor;
+                    cboCargo.SelectedValue = UsuarioSelecionado.FK_Cargo;
+                    txtEmail.Text = UsuarioSelecionado.Email;
+                    txtConfirmarEmail.Text = UsuarioSelecionado.Email;
+
+                    pcbImagemUsuario.Image = ObterImagemDoUsuario(UsuarioSelecionado.FK_Imagem);
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensagem.Erro("Erro: " + ex.Message, "Falha ao encontrar usuário");
+                this.Close();
+            }
+        }
+        private Image ObterImagemDoUsuario(int FK_Imagem)
+        {
+            //verificar se imagem ja existe em cache
+            var img = imagemRepositorio.ObterApenasImagem(FK_Imagem);
+            return img != null ? img : imagemRepositorio.ObterImagemPadrao();
+        }
         private void InicializarComponentes()
         {
             try
             {
                 BindComboBoxSetor();
                 BindComboBoxCargo();
-            }
-            catch (SqlException ex)
-            {
-                Mensagem.Erro("Erro: " + ex.Message, "Falha conexão.");
-                this.Close();
             }
             catch (Exception ex)
             {
@@ -89,7 +112,10 @@ namespace Estoque.Telas_Usuario
                 cboCargo.ValueMember = "PK_Cargo";
             }
         }
-        /* Updates */
+        #endregion Metodos - Inicializacao
+
+
+        #region Metodos - Update
         private void LimparComponetes()
         {
             pcbImagemUsuario.Image = imagemRepositorio.ObterImagemPadrao();
@@ -116,7 +142,6 @@ namespace Estoque.Telas_Usuario
 
             return null;
         }
-
         private bool ValidarComponentes()
         {
             if (!nomeValidado)
@@ -147,34 +172,42 @@ namespace Estoque.Telas_Usuario
                 return false;
             }
 
-            if (!senhaValidada)
+            if(txtSenha.Text.Length > 0 || txtConfirmarSenha.Text.Length > 0 )
             {
-                Alerta.Erro("Campo senha é obrigatório!");
-                txtSenha.Focus();
-                return false;
-            }
+                if (!senhaValidada)
+                {
+                    Alerta.Erro("Campo senha é obrigatório!");
+                    txtSenha.Focus();
+                    return false;
+                }
 
-            if (!confirmacaoSenhaValidada)
-            {
-                Alerta.Erro("Campo confirmar senha é obrigatório!");
-                txtConfirmarSenha.Focus();
-                return false;
+                if (!confirmacaoSenhaValidada)
+                {
+                    Alerta.Erro("Campo confirmar senha é obrigatório!");
+                    txtConfirmarSenha.Focus();
+                    return false;
+                }
             }
 
             return true;
         }
-        #endregion Metodos
+        #endregion Metodos - Update
 
-        #region Eventos
+
+
+        #region Eventos - Form
         private void FrmEstruturaBaseCadastro_Load(object sender, EventArgs e)
         {
             InicializarComponentes();
+            ObterUsuarioSelecionado();
         }
         private void FrmEstruturaBaseCadastro_FormClosed(object sender, FormClosedEventArgs e)
         {
             Fechar();
         }
+        #endregion Eventos - Form
 
+        #region Eventos - Botoes
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             var img = pcbImagemUsuario.Image;
@@ -185,37 +218,51 @@ namespace Estoque.Telas_Usuario
                 if (!ValidarComponentes())
                     return;
 
-                var usuario = new Usuario()
-                {
-                    NomeCompleto = txtNomeCompleto.Text.Trim(),
-                    NomeAbreviado = txtUsuario.Text.Trim(),
-                    FK_Setor = (int)cboSetor.SelectedValue,
-                    FK_Cargo = (int)cboCargo.SelectedValue,
-                    Ativo = true,
-                    DataCadastro = DateTime.Today,
-                    FK_Imagem = PK_Imagem,
-                    Email = txtEmail.Text,
-                    Senha = txtSenha.Text
-                };
+                if (UsuarioSelecionado.NomeCompleto != txtNomeCompleto.Text.Trim())
+                    UsuarioSelecionado.NomeCompleto = txtNomeCompleto.Text.Trim();
 
-                var resultado = usuarioRepositorio.InserirDadosNaTabela(usuario);
+                if (UsuarioSelecionado.NomeAbreviado != txtUsuario.Text.Trim())
+                    UsuarioSelecionado.NomeAbreviado = txtUsuario.Text.Trim();
+
+                if (UsuarioSelecionado.FK_Setor != (int)cboSetor.SelectedValue)
+                    UsuarioSelecionado.FK_Setor = (int)cboSetor.SelectedValue;
+
+                if (UsuarioSelecionado.FK_Cargo != (int)cboCargo.SelectedValue)
+                    UsuarioSelecionado.FK_Cargo = (int)cboCargo.SelectedValue;
+
+                if (UsuarioSelecionado.Email != txtEmail.Text.Trim())
+                    UsuarioSelecionado.Email = txtEmail.Text.Trim();
+
+                if (txtSenha.Text != "")
+                    UsuarioSelecionado.Senha = txtSenha.Text.Trim();
+
+                if (PK_Imagem > 1)
+                {
+                    UsuarioSelecionado.FK_Imagem = PK_Imagem;
+                }
+
+                var resultado = usuarioRepositorio.AtualizarDadosNaTabela(UsuarioSelecionado);
 
                 if (resultado)
                 {
-                    Alerta.Confirmacao("Usuário cadastrado com sucesso!");
+                    Alerta.Confirmacao("Usuário atualizado com sucesso!");
+
                     LimparComponetes();
+                    ObterUsuarioSelecionado();
                 }
             }
             catch (Exception ex)
             {
-                Mensagem.Erro("Erro: " + ex.Message, "Erro ao cadastrar usuário.");
+                Mensagem.Erro("Erro: " + ex.Message, "Erro ao atualizar dados");
             }
         }
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             LimparComponetes();
         }
+        #endregion Eventos - Botoes
 
+        #region Eventos - Componentes
         private void pcbImagemUsuario_Click(object sender, EventArgs e)
         {
             var img = imagemRepositorio.ProcurarImagemLocal();
@@ -332,6 +379,6 @@ namespace Estoque.Telas_Usuario
                 txtConfirmarSenha_TextChanged(txtConfirmarSenha, e);
             }
         }
-        #endregion Eventos
+        #endregion Eventos - Componentes
     }
 }

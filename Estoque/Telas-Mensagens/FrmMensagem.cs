@@ -58,16 +58,19 @@ namespace Estoque.Telas_Mensagens
             switch (tipoMensagem)
             {
                 case TipoMensagem.Pergunta:
-                    this.BackColor = Color.FromArgb(255, 255, 132);
-                    pTopL.BackColor = Color.FromArgb(255, 255, 132);
-                    pTopM.BackColor = Color.FromArgb(255, 255, 132);
-                    pTopR.BackColor = Color.FromArgb(255, 255, 132);
+                    this.BackColor = Color.FromArgb(16, 23, 28);
+                    pTopL.BackColor = Color.FromArgb(16, 23, 28);
+                    pTopM.BackColor = Color.FromArgb(16, 23, 28);
+                    pTopR.BackColor = Color.FromArgb(16, 23, 28);
+                    lblTitulo.ForeColor = Color.White;
                     break;
                 case TipoMensagem.Erro:
                     this.BackColor = Color.FromArgb(255, 88, 88);
                     pTopL.BackColor = Color.FromArgb(255, 88, 88);
                     pTopM.BackColor = Color.FromArgb(255, 88, 88);
                     pTopR.BackColor = Color.FromArgb(255, 88, 88);
+                    lblTitulo.ForeColor = Color.Black;
+
                     break;
                 default:
                     break;

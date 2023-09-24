@@ -5,25 +5,18 @@ using EP.Data.Repositorios;
 using Estoque.Controladores;
 using Estoque.GerenciamentoTelas;
 using Estoque.Interfaces;
+using Estoque.Telas_Base;
 using EstoqueProdutos.Entidades;
 using EstoqueProdutos.Gerenciamento;
 using JJ.Helpers.Formatacao;
 using JJ.Helpers.Interfaces;
 using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+
 
 namespace Estoque.Telas_Usuario
 {
-    public partial class FrmAlterarUsuario : Estoque.Telas_Base.FrmBase
+    public partial class FrmAlterarUsuario : FrmBase
     {
         private readonly IImagemRepositorio imagemRepositorio;
         private readonly ISetorRepositorio setorRepositorio;

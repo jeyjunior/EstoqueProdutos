@@ -17,5 +17,6 @@ namespace EP.Data.Interfaces
         bool InserirDadosNaTabela(Usuario usuario);
         bool AtualizarDadosNaTabela(Usuario usuario);
         bool ExcluirUsuario(Usuario usuario);
+        bool AlterarAtivoUsuario(Usuario usuario);
     }
 }
