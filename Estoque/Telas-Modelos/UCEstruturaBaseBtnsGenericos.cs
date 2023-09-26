@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Estoque.Telas_Modelos
 {
-    public partial class UCCadastrarSetor : Telas_Base.UCBase
+    public partial class UCEstruturaBaseBtnsGenericos : Telas_Base.UCBase
     {
-        public UCCadastrarSetor()
+        public UCEstruturaBaseBtnsGenericos()
         {
             InitializeComponent();
             AtualizarPropriedades();

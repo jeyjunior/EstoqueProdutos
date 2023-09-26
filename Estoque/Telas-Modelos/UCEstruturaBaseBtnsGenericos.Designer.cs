@@ -1,6 +1,6 @@
 ﻿namespace Estoque.Telas_Modelos
 {
-    partial class UCCadastrarSetor
+    partial class UCEstruturaBaseBtnsGenericos
     {
         /// <summary> 
         /// Required designer variable.
