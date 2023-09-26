@@ -59,6 +59,7 @@ namespace Estoque.Telas_Usuario
                 txtNome.Focus();
                 btnPesquisar.PerformClick();
                 AtualizarTotalPesquisado();
+                AtualizarTotalRegistrado();
             }
             catch (Exception ex)
             {
@@ -386,9 +387,8 @@ namespace Estoque.Telas_Usuario
         private void FilhoFechado(object? sender, FormClosedEventArgs e)
         {
             InicializarComponentes();
+            AtualizarTotalRegistrado();
         }
         #endregion Eventos
-
-
     }
 }
