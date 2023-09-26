@@ -52,7 +52,7 @@ namespace Estoque.Telas_Principal
         /* btns */
         private void btnProduto_Click(object sender, EventArgs e)
         {
-            frmPrincipal.AbrirTelaPanelCentral<UCProdutosNew>();
+            frmPrincipal.AbrirTelaPanelCentral<UCProdutos>();
             ModificarCorBotaoParaPadrao((Button)sender);
 
             uCPrincipalCima.AtualizarInfoTelaAberta(Properties.Resources.icone_Produto_24x, "Produto");

@@ -29,6 +29,9 @@
     <Compile Update="Telas-Modelos\FrmEstruturaBaseTabs.cs" />
     <Compile Update="Telas-Modelos\FrmEstruturaBaseBtnsGenericos.cs" />
     <Compile Update="Telas-Modelos\FrmEstruturaBaseCadastro.cs" />
+    <Compile Update="Telas-Produto\UCProdutos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Telas-Usuario\FrmCadastrarSetores_Cargos.cs" />
     <Compile Update="Telas-Usuario\FrmAlterarUsuario.cs">
       <SubType>Form</SubType>
