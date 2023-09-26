@@ -35,6 +35,7 @@ namespace Estoque.Telas_Usuario
         private BindingSource bsCargo = new BindingSource();
         private IEnumerable<Usuario> usuarios;
         private Usuario usuarioSelecionado;
+        private int indiceLinhaSelecionada;
         #endregion Propriedades
         public UCUsuarios()
         {
@@ -46,8 +47,7 @@ namespace Estoque.Telas_Usuario
             usuarioRepositorio = DIRepositorios.Container.GetInstance<IUsuarioRepositorio>();
         }
 
-
-        #region Metodos
+        #region Metodos 
         private void InicializarComponentes()
         {
             try
@@ -58,6 +58,7 @@ namespace Estoque.Telas_Usuario
                 txtNome.Text = "";
                 txtNome.Focus();
                 btnPesquisar.PerformClick();
+                AtualizarTotalPesquisado();
             }
             catch (Exception ex)
             {
@@ -114,8 +115,6 @@ namespace Estoque.Telas_Usuario
             cboAtivo.DisplayMember = "Ativo";
             cboAtivo.ValueMember = "ID";
         }
-
-
         private void BindDataGridView()
         {
             if (usuarios != null)
@@ -137,6 +136,8 @@ namespace Estoque.Telas_Usuario
                         );
                 });
             }
+
+            AtualizarTotalPesquisado();
         }
         private void LimparComponentes()
         {
@@ -160,6 +161,7 @@ namespace Estoque.Telas_Usuario
                 }
 
                 DataGridViewRow linhaSelecionada = dtgUsuarios.SelectedRows[0];
+                indiceLinhaSelecionada = linhaSelecionada.Index;
 
                 var pkUsuario = Convert.ToInt32(linhaSelecionada.Cells["colPK_Usuario"].Value);
                 var nomeCompleto = linhaSelecionada.Cells["colNomeCompleto"].Value.ToString();
@@ -179,12 +181,6 @@ namespace Estoque.Telas_Usuario
                     FK_Cargo = fkCargo,
                     FK_Imagem = fkImagem
                 };
-
-                if (usuarioRepositorio != null)
-                {
-                    txtNome.Text = usuarioSelecionado.NomeCompleto;
-                    cboSetor.SelectedValue = usuarioSelecionado.FK_Setor;
-                }
             }
             catch (Exception ex)
             {
@@ -239,6 +235,7 @@ namespace Estoque.Telas_Usuario
 
                     if (resultadoInsert)
                     {
+                        dtgUsuarios.Rows[indiceLinhaSelecionada].Visible = false;
                         Alerta.Confirmacao("Usuário desativado com sucesso!");
                     }
                 }
@@ -271,6 +268,7 @@ namespace Estoque.Telas_Usuario
 
                     if (resultadoInsert)
                     {
+                        dtgUsuarios.Rows[indiceLinhaSelecionada].Visible = false;
                         Alerta.Confirmacao("Usuário ativado com sucesso!");
                     }
                 }
@@ -284,8 +282,6 @@ namespace Estoque.Telas_Usuario
                 Mensagem.Erro("Erro: " + ex.Message);
             }
         }
-
-
         private void AtualizarTotalRegistrado()
         {
             int total = setorRepositorio.ObterTotalSetoresRegistrados();
@@ -301,6 +297,7 @@ namespace Estoque.Telas_Usuario
         private void UCUsuarios_Load(object sender, EventArgs e)
         {
             InicializarComponentes();
+            AtualizarTotalPesquisado();
         }
         private void UCUsuarios_ParentChanged(object sender, EventArgs e)
         {
@@ -367,16 +364,9 @@ namespace Estoque.Telas_Usuario
             if (usuarioSelecionado != null)
             {
                 ObjetoGenerico = usuarioSelecionado;
-                AbrirTela(typeof(FrmAlterarUsuarioNovo), this, true, FilhoFechado);
+                AbrirTela(typeof(FrmAlterarUsuario), this, true, FilhoFechado);
             }
         }
-
-        /* Filhos */
-        private void FilhoFechado(object? sender, FormClosedEventArgs e)
-        {
-            InicializarComponentes();
-        }
-        #endregion Eventos
         private void tlpCentral_VisibleChanged(object sender, EventArgs e)
         {
             if (this.Visible)
@@ -387,5 +377,18 @@ namespace Estoque.Telas_Usuario
                 AtualizarTotalPesquisado();
             }
         }
+        private void dtgUsuarios_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnAlterar.PerformClick();
+        }
+
+        /* Filhos */
+        private void FilhoFechado(object? sender, FormClosedEventArgs e)
+        {
+            InicializarComponentes();
+        }
+        #endregion Eventos
+
+
     }
 }

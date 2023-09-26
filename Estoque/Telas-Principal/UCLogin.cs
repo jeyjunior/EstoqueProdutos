@@ -1,4 +1,5 @@
-﻿using EP.Data.Interfaces;
+﻿using EP.Data.Entidades;
+using EP.Data.Interfaces;
 using Estoque.Controladores;
 using Estoque.GerenciamentoTelas;
 using Estoque.Interfaces;
@@ -38,16 +39,10 @@ namespace Estoque.Telas_Principal
 
         private void pcbCheckBoxEmail_Click(object sender, EventArgs e)
         {
-            if (salvarEmail)
-            {
-                pcbCheckBoxEmail.Image = Properties.Resources.chk_uncheck_32x32;
-            }
-            else
-            {
-                pcbCheckBoxEmail.Image = Properties.Resources.chk_checked_32x32;
-            }
-
             salvarEmail = !salvarEmail;
+
+            pcbCheckBoxEmail.Image = !salvarEmail ?
+                Properties.Resources.chk_uncheck_32x32 : Properties.Resources.chk_checked_32x32;
         }
 
         private void pcbCheckBoxSenha_Click(object sender, EventArgs e)
@@ -80,28 +75,48 @@ namespace Estoque.Telas_Principal
                 return;
             }
 
+            SalvarEmailEmCache();
+
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
 
-                var usuario = usuarioRepositorio.ObterUsuario(new EP.Data.Entidades.Usuario
+                var validarUsuarioAtivo = usuarioRepositorio.UsuarioLogin(new UsuarioLoginAcess
                 {
                     Email = txtEmail.Text.Trim(),
+                    Ativo = true
                 })
                 .FirstOrDefault();
 
-                if (usuario != null)
+                if (validarUsuarioAtivo != null && validarUsuarioAtivo.Ativo)
                 {
-                    if (txtSenha.Text.Equals(usuario.Senha))
+                    var usuario = usuarioRepositorio.ObterUsuario(new Usuario
                     {
-                        Alerta.Confirmacao("Bem vindo!");
-                        usuarioLogado.AtribuirUsuario(usuario);
-                        this.Dispose();
+                        Email = validarUsuarioAtivo.Email
+                    })
+                    .FirstOrDefault();
+
+                    if (usuario != null)
+                    {
+                        if (txtSenha.Text.Equals(usuario.Senha))
+                        {
+                            Alerta.Confirmacao("Bem vindo!");
+                            usuarioLogado.AtribuirUsuario(usuario);
+                            this.Dispose();
+                        }
+                        else
+                        {
+                            Alerta.Erro("Senha inválida!");
+                        }
                     }
                     else
                     {
-                        Alerta.Erro("Senha inválida!");
+                        Alerta.Erro("Falha ao tentar obter usuário!");
                     }
+                }
+                else
+                {
+                    Alerta.Erro("Usuário sem permissão!");
                 }
 
                 Cursor.Current = Cursors.Default;
@@ -112,10 +127,52 @@ namespace Estoque.Telas_Principal
             }
         }
 
+        private void SalvarEmailEmCache()
+        {
+            try
+            {
+                string arquivoCache = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                "Estoque", "userEmail.txt");
+
+                string emailSalvo = salvarEmail ? txtEmail.Text.Trim() : " ";
+
+                using (StreamWriter writer = new StreamWriter(arquivoCache))
+                {
+                    writer.Write(emailSalvo);
+                }
+            }
+            catch
+            {
+            }
+        }
+
         private void UCLogin_Load(object sender, EventArgs e)
         {
-            txtEmail.Text = "josejunior@teste.com";
-            txtSenha.Text = "adm123";
+            txtEmail.Text = "";
+            txtSenha.Text = "";
+
+            try
+            {
+                string arquivoCache = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Estoque", "userEmail.txt");
+
+                if (File.Exists(arquivoCache))
+                {
+                    txtEmail.Text = File.ReadAllText(arquivoCache).Trim();
+                }
+            }
+            catch
+            {
+
+            }
+
+            if (txtEmail.Text.Length > 0)
+            {
+                pcbCheckBoxEmail_Click(pcbCheckBoxEmail, EventArgs.Empty);
+                txtSenha.Focus();
+            }
+            else
+                txtEmail.Focus();
         }
     }
 }

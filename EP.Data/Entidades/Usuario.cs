@@ -26,3 +26,9 @@ namespace EP.Data.Entidades
     }
 }
 
+public class UsuarioLoginAcess
+{
+    public string Email { get; set; }
+    public bool Ativo { get; set; }
+}
+

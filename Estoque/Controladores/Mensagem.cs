@@ -5,7 +5,7 @@ namespace Estoque.Controladores
 {
     public static class Mensagem
     {
-        public static RespostaCaixaDialogo Erro(string mensagem, string titulo = "Pergunta")
+        public static RespostaCaixaDialogo Erro(string mensagem, string titulo = "Erro")
         {
             FrmMensagem frmMensagem = new FrmMensagem();
             frmMensagem.ExibirErro(mensagem, titulo);

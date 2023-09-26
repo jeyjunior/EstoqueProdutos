@@ -21,8 +21,24 @@ namespace EP.Data.Repositorios
             using (var connection = new SqlConnection(Conexao.ConexaoBase))
             {
                 connection.Open();
-                string sql = "SELECT * FROM Usuario WHERE Ativo = 1";
+                string sql = "SELECT * FROM Usuario";
                 return connection.Query<Usuario>(sql);
+            }
+        }
+
+        public virtual IEnumerable<Usuario> UsuarioLogin(UsuarioLoginAcess usuarioLoginAcess)
+        {
+            string sql = "";
+
+            sql = "SELECT TOP 1\n" +
+                "   U.*\n" +
+                "FROM Usuario U\n" +
+                "WHERE U.Email = @Email AND U.Ativo = @Ativo";
+
+            using (SqlConnection connection = new SqlConnection(Conexao.ConexaoBase))
+            {
+                connection.Open();
+                return connection.Query<Usuario>(sql, usuarioLoginAcess);
             }
         }
 
@@ -38,7 +54,7 @@ namespace EP.Data.Repositorios
                 "INNER JOIN Setor S ON S.PK_Setor = U.FK_Setor\n" +
                 "INNER JOIN Cargo C ON C.PK_Cargo = U.FK_Cargo\n" +
 
-                "WHERE U.Email = @Email ";
+                "WHERE U.Email = @Email";
 
             using (SqlConnection connection = new SqlConnection(Conexao.ConexaoBase))
             {

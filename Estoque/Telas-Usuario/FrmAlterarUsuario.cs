@@ -1,14 +1,10 @@
-﻿using Azure.Core;
-using EP.Data.Entidades;
+﻿using EP.Data.Entidades;
 using EP.Data.Interfaces;
-using EP.Data.Repositorios;
 using Estoque.Controladores;
 using Estoque.GerenciamentoTelas;
 using Estoque.Interfaces;
 using Estoque.Telas_Base;
-using EstoqueProdutos.Entidades;
 using EstoqueProdutos.Gerenciamento;
-using JJ.Helpers.Formatacao;
 using JJ.Helpers.Interfaces;
 using Microsoft.Data.SqlClient;
 using System.Data;
@@ -25,11 +21,14 @@ namespace Estoque.Telas_Usuario
         private readonly IValidacao validacao;
 
         private BindingSource bsCargo = new BindingSource();
+        public Usuario UsuarioSelecionado { get; set; }
 
+        private bool nomeValidado = false;
+        private bool usuarioValidado = false;
         private bool emailValidado = false;
         private bool confirmacaoEmailValidado = false;
         private bool senhaValidada = false;
-        public Usuario UsuarioSelecionado { get; set; }
+        private bool confirmacaoSenhaValidada = false;
 
         public FrmAlterarUsuario(IUCGerenciadorDeTelas gerenciadorDeTelas)
         {
@@ -46,9 +45,7 @@ namespace Estoque.Telas_Usuario
             pcbImagemUsuario.Image = imagemRepositorio.ObterImagemPadrao();
         }
 
-        #region Metodos 
-        /* Inicializacao */
-
+        #region Metodos - Inicializacao
         private void ObterUsuarioSelecionado()
         {
             try
@@ -57,7 +54,7 @@ namespace Estoque.Telas_Usuario
                 if (UsuarioSelecionado != null)
                 {
                     txtNomeCompleto.Text = UsuarioSelecionado.NomeCompleto;
-                    txtNomeAbreviado.Text = UsuarioSelecionado.NomeAbreviado;
+                    txtUsuario.Text = UsuarioSelecionado.NomeAbreviado;
                     cboSetor.SelectedValue = UsuarioSelecionado.FK_Setor;
                     cboCargo.SelectedValue = UsuarioSelecionado.FK_Cargo;
                     txtEmail.Text = UsuarioSelecionado.Email;
@@ -72,19 +69,12 @@ namespace Estoque.Telas_Usuario
                 this.Close();
             }
         }
-
         private Image ObterImagemDoUsuario(int FK_Imagem)
         {
             //verificar se imagem ja existe em cache
-
             var img = imagemRepositorio.ObterApenasImagem(FK_Imagem);
-
-            if (img != null)
-                return img;
-
-            return imagemRepositorio.ObterImagemPadrao();
+            return img != null ? img : imagemRepositorio.ObterImagemPadrao();
         }
-
         private void InicializarComponentes()
         {
             try
@@ -92,14 +82,9 @@ namespace Estoque.Telas_Usuario
                 BindComboBoxSetor();
                 BindComboBoxCargo();
             }
-            catch (SqlException ex)
-            {
-                Mensagem.Erro("Erro: " + ex.Message, "Falha conexão");
-                this.Close();
-            }
             catch (Exception ex)
             {
-                Mensagem.Erro("Erro: " + ex.Message, "Falha ao executar essa operação");
+                Mensagem.Erro("Erro: " + ex.Message, "Falha carregar componentes");
                 this.Close();
             }
         }
@@ -127,14 +112,16 @@ namespace Estoque.Telas_Usuario
                 cboCargo.ValueMember = "PK_Cargo";
             }
         }
+        #endregion Metodos - Inicializacao
 
-        /* Updates */
+
+        #region Metodos - Update
         private void LimparComponetes()
         {
             pcbImagemUsuario.Image = imagemRepositorio.ObterImagemPadrao();
 
             txtNomeCompleto.Text = "";
-            txtNomeAbreviado.Text = "";
+            txtUsuario.Text = "";
 
             cboSetor.SelectedValue = 1;
 
@@ -143,6 +130,8 @@ namespace Estoque.Telas_Usuario
 
             txtSenha.Text = "";
             txtConfirmarSenha.Text = "";
+
+            txtNomeCompleto.Focus();
         }
         private IEnumerable<Cargo> FiltrarCargos()
         {
@@ -153,176 +142,72 @@ namespace Estoque.Telas_Usuario
 
             return null;
         }
-
-        /* Validacoes */
-        private void ValidarEmail()
+        private bool ValidarComponentes()
         {
-            emailValidado = false;
-
-            if (txtEmail.Text == "")
+            if (!nomeValidado)
             {
-                pcbValidacaoEmail.Visible = false;
-                return;
-            }
-
-            if (validacao.ValidarEmail(txtEmail.Text))
-            {
-                pcbValidacaoEmail.Visible = true;
-                pcbValidacaoEmail.Image = Properties.Resources.circulo_verde;
-
-                emailValidado = true;
-            }
-            else
-            {
-                pcbValidacaoEmail.Visible = true;
-                pcbValidacaoEmail.Image = Properties.Resources.erro;
-            }
-        }
-        private void ValidarConfirmacaoDeEmail()
-        {
-            confirmacaoEmailValidado = false;
-
-            if (txtConfirmarEmail.Text == "" && txtEmail.Text == "")
-            {
-                if (txtEmail.Text == "")
-                {
-                    pcbValidacaoConfirmarEmail.Visible = false;
-                    return;
-                }
-                else
-                {
-                    pcbValidacaoConfirmarEmail.Visible = true;
-                    pcbValidacaoConfirmarEmail.Image = Properties.Resources.erro;
-                    return;
-                }
-            }
-
-            if (!validacao.ValidarEmail(txtConfirmarEmail.Text))
-            {
-                pcbValidacaoConfirmarEmail.Visible = true;
-                pcbValidacaoConfirmarEmail.Image = Properties.Resources.erro;
-            }
-            else
-            {
-                if (txtConfirmarEmail.Text.Equals(txtEmail.Text))
-                {
-                    pcbValidacaoConfirmarEmail.Visible = true;
-                    pcbValidacaoConfirmarEmail.Image = Properties.Resources.circulo_verde;
-
-                    confirmacaoEmailValidado = true;
-                }
-                else
-                {
-                    pcbValidacaoConfirmarEmail.Visible = true;
-                    pcbValidacaoConfirmarEmail.Image = Properties.Resources.erro;
-                }
-            }
-        }
-        private void ValidarConfirmacaoSenha()
-        {
-            senhaValidada = false;
-            if (txtConfirmarSenha.Text == "" && txtSenha.Text == "")
-            {
-                pcbValidacaoConfirmacaoSenha.Visible = false;
-                pcbValidacaoConfirmacaoSenha.Image = Properties.Resources.circulo_verde;
-                return;
-            }
-            else
-            {
-                pcbValidacaoConfirmacaoSenha.Visible = true;
-                pcbValidacaoConfirmacaoSenha.Image = Properties.Resources.erro;
-            }
-
-            if (txtConfirmarSenha.Text.Equals(txtSenha.Text))
-            {
-                pcbValidacaoConfirmacaoSenha.Visible = true;
-                pcbValidacaoConfirmacaoSenha.Image = Properties.Resources.circulo_verde;
-                senhaValidada = true;
-            }
-            else
-            {
-                pcbValidacaoConfirmacaoSenha.Visible = true;
-                pcbValidacaoConfirmacaoSenha.Image = Properties.Resources.erro;
-            }
-        }
-
-
-        private bool ValidarSenhaNovaRegistrada()
-        {
-            if ((txtConfirmarSenha.Text == "" && txtSenha.Text == "") ||
-                txtConfirmarSenha.Text.Equals(txtSenha.Text.Trim())
-                )
-            {
-                return true;
-            }
-
-            return false;
-        }
-        private bool ValidarCamposPreenchidos()
-        {
-            if (txtNomeCompleto.Text == "")
-            {
-                Alerta.Erro("Campo nome completo é obrigatorio");
+                Alerta.Erro("Campo nome é obrigatório!");
                 txtNomeCompleto.Focus();
                 return false;
             }
 
-            if (txtNomeAbreviado.Text == "")
+            if (!usuarioValidado)
             {
-                Alerta.Erro("Campo usuário é obrigatorio");
-                txtNomeAbreviado.Focus();
+                Alerta.Erro("Campo usuário é obrigatório!");
+                txtUsuario.Focus();
                 return false;
             }
 
-            if ((int)cboSetor.SelectedValue <= 0)
+            if (!emailValidado)
             {
-                Alerta.Erro("Campo setor é obrigatorio");
-                cboSetor.Focus();
-                return false;
-            }
-
-            if ((int)cboCargo.SelectedValue <= 0)
-            {
-                Alerta.Erro("Campo cargo é obrigatorio");
-                cboCargo.Focus();
-                return false;
-            }
-
-            if (!emailValidado || !confirmacaoEmailValidado)
-            {
-                Alerta.Erro("Email inválido!");
+                Alerta.Erro("Campo email é obrigatório!");
                 txtEmail.Focus();
                 return false;
             }
 
-            if (!ValidarSenhaNovaRegistrada())
+            if (!confirmacaoEmailValidado)
             {
-                Alerta.Erro("Senha inválida!");
-                txtSenha.Focus();
+                Alerta.Erro("Campo confirmar email é obrigatório!");
+                txtConfirmarEmail.Focus();
                 return false;
+            }
+
+            if(txtSenha.Text.Length > 0 || txtConfirmarSenha.Text.Length > 0 )
+            {
+                if (!senhaValidada)
+                {
+                    Alerta.Erro("Campo senha é obrigatório!");
+                    txtSenha.Focus();
+                    return false;
+                }
+
+                if (!confirmacaoSenhaValidada)
+                {
+                    Alerta.Erro("Campo confirmar senha é obrigatório!");
+                    txtConfirmarSenha.Focus();
+                    return false;
+                }
             }
 
             return true;
         }
-        #endregion Metodos
+        #endregion Metodos - Update
 
-        #region Eventos
-        /* Form */
-        private void FrmCadastrarUsuario_Load(object sender, EventArgs e)
+
+
+        #region Eventos - Form
+        private void FrmEstruturaBaseCadastro_Load(object sender, EventArgs e)
         {
             InicializarComponentes();
             ObterUsuarioSelecionado();
         }
-        private void FrmCadastrarUsuario_FormClosed(object sender, FormClosedEventArgs e)
+        private void FrmEstruturaBaseCadastro_FormClosed(object sender, FormClosedEventArgs e)
         {
             Fechar();
         }
+        #endregion Eventos - Form
 
-        /* Botoes */
-        private void btnLimpar_Click(object sender, EventArgs e)
-        {
-            LimparComponetes();
-        }
+        #region Eventos - Botoes
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             var img = pcbImagemUsuario.Image;
@@ -330,14 +215,14 @@ namespace Estoque.Telas_Usuario
 
             try
             {
-                if (!ValidarCamposPreenchidos())
+                if (!ValidarComponentes())
                     return;
 
                 if (UsuarioSelecionado.NomeCompleto != txtNomeCompleto.Text.Trim())
                     UsuarioSelecionado.NomeCompleto = txtNomeCompleto.Text.Trim();
 
-                if (UsuarioSelecionado.NomeAbreviado != txtNomeAbreviado.Text.Trim())
-                    UsuarioSelecionado.NomeAbreviado = txtNomeAbreviado.Text.Trim();
+                if (UsuarioSelecionado.NomeAbreviado != txtUsuario.Text.Trim())
+                    UsuarioSelecionado.NomeAbreviado = txtUsuario.Text.Trim();
 
                 if (UsuarioSelecionado.FK_Setor != (int)cboSetor.SelectedValue)
                     UsuarioSelecionado.FK_Setor = (int)cboSetor.SelectedValue;
@@ -352,7 +237,9 @@ namespace Estoque.Telas_Usuario
                     UsuarioSelecionado.Senha = txtSenha.Text.Trim();
 
                 if (PK_Imagem > 1)
+                {
                     UsuarioSelecionado.FK_Imagem = PK_Imagem;
+                }
 
                 var resultado = usuarioRepositorio.AtualizarDadosNaTabela(UsuarioSelecionado);
 
@@ -369,17 +256,13 @@ namespace Estoque.Telas_Usuario
                 Mensagem.Erro("Erro: " + ex.Message, "Erro ao atualizar dados");
             }
         }
-
-        /* ComboBox */
-        private void cboSetor_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnLimpar_Click(object sender, EventArgs e)
         {
-            if (cboSetor != null)
-            {
-                cboCargo.DataSource = FiltrarCargos();
-            }
+            LimparComponetes();
         }
+        #endregion Eventos - Botoes
 
-        /* PictureBox */
+        #region Eventos - Componentes
         private void pcbImagemUsuario_Click(object sender, EventArgs e)
         {
             var img = imagemRepositorio.ProcurarImagemLocal();
@@ -389,69 +272,113 @@ namespace Estoque.Telas_Usuario
                 pcbImagemUsuario.Image = img;
             }
         }
-        private void pcbSenha_MouseDown(object sender, MouseEventArgs e)
-        {
-            txtSenha.PasswordChar = '\0';
-        }
-        private void pcbSenha_MouseUp(object sender, MouseEventArgs e)
-        {
-            txtSenha.PasswordChar = '*';
-        }
-        private void pcbConfirmarSenha_MouseDown(object sender, MouseEventArgs e)
-        {
-            txtConfirmarSenha.PasswordChar = '\0';
-        }
-        private void pcbConfirmarSenha_MouseUp(object sender, MouseEventArgs e)
-        {
-            txtConfirmarSenha.PasswordChar = '*';
-        }
 
-        /* TextBox */
-        private void txtEmail_TextChanged(object sender, EventArgs e)
+        private void cboSetor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ValidarEmail();
-        }
-        private void txtEmail_Leave(object sender, EventArgs e)
-        {
-            ValidarEmail();
-            if (txtConfirmarEmail.Text.Length > 0)
+            if (cboSetor != null)
             {
-                ValidarConfirmacaoDeEmail();
+                cboCargo.DataSource = FiltrarCargos();
             }
         }
-        private void txtEmail_Enter(object sender, EventArgs e)
+        private void cboCargo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ValidarEmail();
+
         }
-        private void txtConfirmarEmail_Leave(object sender, EventArgs e)
+
+        private void pcbExibirSenha_Click(object sender, EventArgs e)
         {
-            ValidarConfirmacaoDeEmail();
+            if (txtSenha.PasswordChar == '\0')
+            {
+                txtSenha.PasswordChar = '*';
+                pcbExibirSenha.Image = Properties.Resources.eyeBG_1;
+            }
+            else
+            {
+                txtSenha.PasswordChar = '\0';
+                pcbExibirSenha.Image = Properties.Resources.eyeBG_2;
+            }
+        }
+        private void pcbExibirConfirmarSenha_Click(object sender, EventArgs e)
+        {
+            if (txtConfirmarSenha.PasswordChar == '\0')
+            {
+                txtConfirmarSenha.PasswordChar = '*';
+                pcbExibirConfirmarSenha.Image = Properties.Resources.eyeBG_1;
+            }
+            else
+            {
+                txtConfirmarSenha.PasswordChar = '\0';
+                pcbExibirConfirmarSenha.Image = Properties.Resources.eyeBG_2;
+            }
+        }
+
+        private void txtNomeCompleto_TextChanged(object sender, EventArgs e)
+        {
+            nomeValidado = validacao.ValidarTextDoTextBox(ref txtNomeCompleto, ref pValidarNomeCompleto, 5);
+        }
+        private void txtUsuario_TextChanged(object sender, EventArgs e)
+        {
+            usuarioValidado = validacao.ValidarTextDoTextBox(ref txtUsuario, ref pValidarUsuario, 3);
+        }
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            emailValidado = validacao.ValidarEmail(ref txtEmail, ref pValidarEmail);
+
+            if (txtConfirmarEmail.Text.Length > 0)
+            {
+                txtConfirmarEmail_TextChanged(txtConfirmarEmail, e);
+            }
         }
         private void txtConfirmarEmail_TextChanged(object sender, EventArgs e)
         {
-            ValidarConfirmacaoDeEmail();
-        }
-        private void txtConfirmarEmail_Enter(object sender, EventArgs e)
-        {
-            ValidarConfirmacaoDeEmail();
-        }
-        private void txtSenha_Leave(object sender, EventArgs e)
-        {
+            confirmacaoEmailValidado = false;
 
-            ValidarConfirmacaoSenha();
-        }
-        private void txtConfirmarSenha_Leave(object sender, EventArgs e)
-        {
-            ValidarConfirmacaoSenha();
-        }
-        private void txtConfirmarSenha_Enter(object sender, EventArgs e)
-        {
-            ValidarConfirmacaoSenha();
+            if (txtConfirmarEmail.Text.Equals(txtEmail.Text) && validacao.ValidarEmail(txtConfirmarEmail.Text))
+            {
+                validacao.ObterCorValidacao(ref pValidarConfirmarEmail, eValidacao.itemValidado);
+                confirmacaoEmailValidado = true;
+            }
+            else if (txtConfirmarEmail.Text.Length > 0)
+            {
+                validacao.ObterCorValidacao(ref pValidarConfirmarEmail, eValidacao.itemNaoValidado);
+            }
+            else
+            {
+                validacao.ObterCorValidacao(ref pValidarConfirmarEmail, eValidacao.itemPadrao);
+            }
         }
         private void txtConfirmarSenha_TextChanged(object sender, EventArgs e)
         {
-            ValidarConfirmacaoSenha();
+            int max = txtConfirmarSenha.Text.Length > 8 ? txtConfirmarSenha.Text.Length : 8;
+            lblConfirmarSenha.Text = $"Confirmar Senha [{txtConfirmarSenha.Text.Length} / {max}]:";
+            confirmacaoSenhaValidada = false;
+
+            if (txtConfirmarSenha.Text.Equals(txtSenha.Text) && txtConfirmarSenha.Text.Length >= 8)
+            {
+                validacao.ObterCorValidacao(ref pValidarConfirmarSenha, eValidacao.itemValidado);
+                confirmacaoSenhaValidada = true;
+            }
+            else if (txtConfirmarSenha.Text.Length > 0)
+            {
+                validacao.ObterCorValidacao(ref pValidarConfirmarSenha, eValidacao.itemNaoValidado);
+            }
+            else
+            {
+                validacao.ObterCorValidacao(ref pValidarConfirmarSenha, eValidacao.itemPadrao);
+            }
         }
-        #endregion Eventos
+        private void txtSenha_TextChanged(object sender, EventArgs e)
+        {
+            int max = txtSenha.Text.Length > 8 ? txtSenha.Text.Length : 8;
+            lblSenha.Text = $"Senha [{txtSenha.Text.Length} / {max}]:";
+
+            senhaValidada = validacao.ValidarTextDoTextBox(ref txtSenha, ref pValidarSenha, 8);
+
+            if (txtConfirmarSenha.Text.Length > 0)
+            {
+                txtConfirmarSenha_TextChanged(txtConfirmarSenha, e);
+            }
+        }
+        #endregion Eventos - Componentes
     }
 }

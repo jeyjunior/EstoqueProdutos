@@ -152,6 +152,7 @@
             dtgUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtgUsuarios.Size = new Size(560, 400);
             dtgUsuarios.TabIndex = 16;
+            dtgUsuarios.CellDoubleClick += dtgUsuarios_CellDoubleClick;
             // 
             // colPK_Usuario
             // 
