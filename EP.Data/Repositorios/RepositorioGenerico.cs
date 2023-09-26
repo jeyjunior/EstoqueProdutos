@@ -3,6 +3,7 @@ using EP.Data.sql;
 using EstoqueProdutos.Interfaces;
 using Microsoft.Data.SqlClient;
 using Microsoft.IdentityModel.Protocols;
+using Microsoft.VisualBasic;
 
 namespace EstoqueProdutos.Repositorios
 {
@@ -24,7 +25,23 @@ namespace EstoqueProdutos.Repositorios
                 return resultado;
             }
         }
+        public virtual int ObterContagemTotal(string nomeEntidade)
+        {
+            if(nomeEntidade != "")
+            {
+                string sql = "SELECT COUNT(*) AS Total FROM " + nomeEntidade;
 
+                using (var connection = new SqlConnection(Conexao.ConexaoBase))
+                {
+                    connection.Open();
+                    return connection.QueryFirstOrDefault<int>(sql);
+                }
+            }
+            else
+            {
+                return 0;
+            }
+        }
         public virtual bool InserirDadosNaTabela(T entity)
         {
             using (SqlConnection connection = new SqlConnection(conexao))

@@ -49,20 +49,6 @@ namespace EstoqueProdutos.Repositorios
             }
         }
 
-        public virtual int ObterTotalSetoresRegistrados()
-        {
-            string sql = "";
-            sql = "" +
-                "SELECT COUNT(*) AS Total \n" +
-                "FROM Setor\n";
-
-            using (var connection = new SqlConnection(Conexao.ConexaoBase))
-            {
-                connection.Open();
-                return connection.QueryFirstOrDefault<int>(sql);
-            }
-        }
-
         public virtual bool InserirDadosNaTabela(Setor setor)
         {
             using (SqlConnection connection = new SqlConnection(Conexao.ConexaoBase))

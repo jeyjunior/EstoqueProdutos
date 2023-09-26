@@ -10,5 +10,6 @@ namespace EstoqueProdutos.Interfaces
     {
         IEnumerable<T> ObterTabela();
         bool InserirDadosNaTabela(T entity);
+        int ObterContagemTotal(string nomeEntidade);
     }
 }

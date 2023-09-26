@@ -6,6 +6,7 @@ using Estoque.GerenciamentoTelas;
 using Estoque.Interfaces;
 using EstoqueProdutos.Formatacao;
 using EstoqueProdutos.Gerenciamento;
+using EstoqueProdutos.Interfaces;
 using EstoqueProdutos.Repositorios;
 using Microsoft.Data.SqlClient;
 using System;
@@ -26,6 +27,7 @@ namespace Estoque.Telas_Usuario
     {
         #region Interfaces 
         private readonly ISetorRepositorio setorRepositorio;
+        private readonly IRepositorio<Setor> repositorioGenerico;
         #endregion Interfaces
 
         #region Propriedades
@@ -38,6 +40,7 @@ namespace Estoque.Telas_Usuario
             AtualizarPropriedades();
 
             setorRepositorio = DIRepositorios.Container.GetInstance<ISetorRepositorio>();
+            repositorioGenerico = DIRepositorios.Container.GetInstance<IRepositorio<Setor>>();
         }
 
 
@@ -86,7 +89,7 @@ namespace Estoque.Telas_Usuario
         }
         private void AtualizarTotalRegistrado()
         {
-            int total = setorRepositorio.ObterTotalSetoresRegistrados();
+            int total = repositorioGenerico.ObterContagemTotal("Setor");
             lblTotalRegistrado.Text = "Registrados: " + total;
         }
         private void AtualizarTotalPesquisado()

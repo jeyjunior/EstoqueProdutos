@@ -7,6 +7,7 @@ using Estoque.Interfaces;
 using Estoque.Telas_Modelos;
 using EstoqueProdutos.Formatacao;
 using EstoqueProdutos.Gerenciamento;
+using EstoqueProdutos.Interfaces;
 using EstoqueProdutos.Repositorios;
 using Microsoft.Data.SqlClient;
 using System;
@@ -29,6 +30,7 @@ namespace Estoque.Telas_Usuario
         private readonly ISetorRepositorio setorRepositorio;
         private readonly ICargoRepositorio cargoRepositorio;
         private readonly IUsuarioRepositorio usuarioRepositorio;
+        private readonly IRepositorio<Usuario> repositorioGenerico;
         #endregion Interfaces
 
         #region Propriedades
@@ -37,6 +39,8 @@ namespace Estoque.Telas_Usuario
         private Usuario usuarioSelecionado;
         private int indiceLinhaSelecionada;
         #endregion Propriedades
+
+        #region Construtor
         public UCUsuarios()
         {
             InitializeComponent();
@@ -45,9 +49,11 @@ namespace Estoque.Telas_Usuario
             setorRepositorio = DIRepositorios.Container.GetInstance<ISetorRepositorio>();
             cargoRepositorio = DIRepositorios.Container.GetInstance<ICargoRepositorio>();
             usuarioRepositorio = DIRepositorios.Container.GetInstance<IUsuarioRepositorio>();
+            repositorioGenerico = DIRepositorios.Container.GetInstance<IRepositorio<Usuario>>();
         }
+        #endregion Construtor
 
-        #region Metodos 
+        #region Metodos - Inicialização
         private void InicializarComponentes()
         {
             try
@@ -140,6 +146,10 @@ namespace Estoque.Telas_Usuario
 
             AtualizarTotalPesquisado();
         }
+
+        #endregion Metodos - Inicialização
+
+        #region Metodos - Update
         private void LimparComponentes()
         {
             txtNome.Text = "";
@@ -285,16 +295,16 @@ namespace Estoque.Telas_Usuario
         }
         private void AtualizarTotalRegistrado()
         {
-            int total = setorRepositorio.ObterTotalSetoresRegistrados();
+            int total = repositorioGenerico.ObterContagemTotal("Usuario");
             lblTotalRegistrado.Text = "Registrados: " + total;
         }
         private void AtualizarTotalPesquisado()
         {
             lblTotalPesquisado.Text = "Pesquisado: " + dtgUsuarios.Rows.Count;
         }
-        #endregion Metodos
+        #endregion Metodos - Update
 
-        #region Eventos
+        #region Eventos - UserControl
         private void UCUsuarios_Load(object sender, EventArgs e)
         {
             InicializarComponentes();
@@ -304,14 +314,14 @@ namespace Estoque.Telas_Usuario
         {
             LimparComponentes();
         }
-        private void cboSetor_SelectedIndexChanged(object sender, EventArgs e)
+        private void UCUsuario_VisibleChanged(object sender, EventArgs e)
         {
-            if (cboSetor != null)
-            {
-                cboCargo.DataSource = FiltrarCargos();
-                cboCargo.Enabled = ((Setor)cboSetor.SelectedItem).PK_Setor > 0;
-            }
+            if (this.Visible)
+                btnPesquisar.PerformClick();
         }
+        #endregion Eventos - UserControl
+        
+        #region Eventos - Btns
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
             usuarios = usuarioRepositorio.ObterTabelaFiltroTelaUsuarios(new Usuario
@@ -368,27 +378,33 @@ namespace Estoque.Telas_Usuario
                 AbrirTela(typeof(FrmAlterarUsuario), this, true, FilhoFechado);
             }
         }
-        private void tlpCentral_VisibleChanged(object sender, EventArgs e)
-        {
-            if (this.Visible)
-            {
-                btnPesquisar.PerformClick();
+        #endregion Eventos - Btns
 
-                AtualizarTotalRegistrado();
-                AtualizarTotalPesquisado();
+        #region Eventos - ComboBoxs
+        private void cboSetor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboSetor != null)
+            {
+                cboCargo.DataSource = FiltrarCargos();
+                cboCargo.Enabled = ((Setor)cboSetor.SelectedItem).PK_Setor > 0;
             }
         }
+        #endregion Eventos - ComboBoxs
+
+        #region Eventos - DataGridView
         private void dtgUsuarios_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             btnAlterar.PerformClick();
         }
+        #endregion Eventos - DataGridView
 
-        /* Filhos */
+        #region Eventos - Filhos 
         private void FilhoFechado(object? sender, FormClosedEventArgs e)
         {
             InicializarComponentes();
             AtualizarTotalRegistrado();
         }
-        #endregion Eventos
+        #endregion Eventos - Filhos
+
     }
 }

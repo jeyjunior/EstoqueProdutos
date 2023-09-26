@@ -172,7 +172,7 @@ namespace Estoque.Telas_Usuario
                 return false;
             }
 
-            if(txtSenha.Text.Length > 0 || txtConfirmarSenha.Text.Length > 0 )
+            if (txtSenha.Text.Length > 0 || txtConfirmarSenha.Text.Length > 0)
             {
                 if (!senhaValidada)
                 {

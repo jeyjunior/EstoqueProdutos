@@ -737,7 +737,7 @@
             pValidarSenha.Size = new Size(10, 26);
             pValidarSenha.TabIndex = 30;
             // 
-            // FrmCadastrarUsuario
+            // FrmAlterarUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -747,7 +747,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             MinimumSize = new Size(800, 600);
-            Name = "FrmCadastrarUsuario";
+            Name = "FrmAlterarUsuario";
             Text = "Cadastrar Usuário";
             FormClosed += FrmEstruturaBaseCadastro_FormClosed;
             Load += FrmEstruturaBaseCadastro_Load;

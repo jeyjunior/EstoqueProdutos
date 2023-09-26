@@ -44,6 +44,9 @@
             colFK_Cargo = new DataGridViewTextBoxColumn();
             colNomeCargo = new DataGridViewTextBoxColumn();
             colFK_Imagem = new DataGridViewTextBoxColumn();
+            pBarraStatus = new Panel();
+            lblTotalPesquisado = new Label();
+            lblTotalRegistrado = new Label();
             tblSetor = new TableLayoutPanel();
             txtNome = new TextBox();
             lblSetor = new Label();
@@ -62,16 +65,13 @@
             btnLimpar = new Button();
             btnAtivar = new Button();
             tblPrincipal = new TableLayoutPanel();
-            pBarraStatus = new Panel();
-            lblTotalPesquisado = new Label();
-            lblTotalRegistrado = new Label();
             toolTip1 = new ToolTip(components);
             tlpCentral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgUsuarios).BeginInit();
+            pBarraStatus.SuspendLayout();
             tblSetor.SuspendLayout();
             tblBotoes.SuspendLayout();
             tblPrincipal.SuspendLayout();
-            pBarraStatus.SuspendLayout();
             SuspendLayout();
             // 
             // tlpCentral
@@ -80,21 +80,22 @@
             tlpCentral.ColumnCount = 1;
             tlpCentral.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tlpCentral.Controls.Add(dtgUsuarios, 0, 4);
+            tlpCentral.Controls.Add(pBarraStatus, 0, 5);
             tlpCentral.Controls.Add(tblSetor, 0, 0);
             tlpCentral.Controls.Add(tblBotoes, 0, 2);
             tlpCentral.Dock = DockStyle.Fill;
             tlpCentral.Location = new Point(0, 0);
             tlpCentral.Margin = new Padding(0);
             tlpCentral.Name = "tlpCentral";
-            tlpCentral.RowCount = 5;
+            tlpCentral.RowCount = 6;
             tlpCentral.RowStyles.Add(new RowStyle(SizeType.Absolute, 80F));
             tlpCentral.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
             tlpCentral.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
             tlpCentral.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
             tlpCentral.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tlpCentral.Size = new Size(560, 545);
+            tlpCentral.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tlpCentral.Size = new Size(560, 560);
             tlpCentral.TabIndex = 0;
-            tlpCentral.VisibleChanged += tlpCentral_VisibleChanged;
             // 
             // dtgUsuarios
             // 
@@ -146,7 +147,7 @@
             dtgUsuarios.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dtgUsuarios.RowTemplate.Height = 25;
             dtgUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgUsuarios.Size = new Size(560, 400);
+            dtgUsuarios.Size = new Size(560, 395);
             dtgUsuarios.TabIndex = 16;
             dtgUsuarios.CellDoubleClick += dtgUsuarios_CellDoubleClick;
             // 
@@ -228,6 +229,46 @@
             colFK_Imagem.ReadOnly = true;
             colFK_Imagem.Visible = false;
             // 
+            // pBarraStatus
+            // 
+            pBarraStatus.BackColor = Color.FromArgb(16, 23, 28);
+            pBarraStatus.Controls.Add(lblTotalPesquisado);
+            pBarraStatus.Controls.Add(lblTotalRegistrado);
+            pBarraStatus.Dock = DockStyle.Fill;
+            pBarraStatus.Location = new Point(0, 540);
+            pBarraStatus.Margin = new Padding(0);
+            pBarraStatus.Name = "pBarraStatus";
+            pBarraStatus.Size = new Size(560, 20);
+            pBarraStatus.TabIndex = 1;
+            // 
+            // lblTotalPesquisado
+            // 
+            lblTotalPesquisado.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            lblTotalPesquisado.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTotalPesquisado.ForeColor = SystemColors.ControlLightLight;
+            lblTotalPesquisado.Location = new Point(4, 0);
+            lblTotalPesquisado.Margin = new Padding(0);
+            lblTotalPesquisado.Name = "lblTotalPesquisado";
+            lblTotalPesquisado.Padding = new Padding(15, 0, 0, 0);
+            lblTotalPesquisado.Size = new Size(271, 20);
+            lblTotalPesquisado.TabIndex = 14;
+            lblTotalPesquisado.Text = "Pesquisado: 100000";
+            lblTotalPesquisado.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // lblTotalRegistrado
+            // 
+            lblTotalRegistrado.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            lblTotalRegistrado.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTotalRegistrado.ForeColor = SystemColors.ControlLightLight;
+            lblTotalRegistrado.Location = new Point(321, 0);
+            lblTotalRegistrado.Margin = new Padding(0);
+            lblTotalRegistrado.Name = "lblTotalRegistrado";
+            lblTotalRegistrado.Padding = new Padding(0, 0, 15, 0);
+            lblTotalRegistrado.Size = new Size(239, 20);
+            lblTotalRegistrado.TabIndex = 13;
+            lblTotalRegistrado.Text = "Registrado: 100000";
+            lblTotalRegistrado.TextAlign = ContentAlignment.MiddleRight;
+            // 
             // tblSetor
             // 
             tblSetor.BackColor = Color.FromArgb(60, 75, 85);
@@ -262,17 +303,18 @@
             // 
             txtNome.BorderStyle = BorderStyle.FixedSingle;
             txtNome.Dock = DockStyle.Fill;
-            txtNome.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtNome.Location = new Point(18, 35);
+            txtNome.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            txtNome.Location = new Point(15, 32);
+            txtNome.Margin = new Padding(0);
             txtNome.MaxLength = 120;
             txtNome.Name = "txtNome";
-            txtNome.Size = new Size(132, 27);
+            txtNome.Size = new Size(138, 27);
             txtNome.TabIndex = 19;
             // 
             // lblSetor
             // 
             lblSetor.Dock = DockStyle.Fill;
-            lblSetor.Font = new Font("Verdana", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            lblSetor.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
             lblSetor.ForeColor = SystemColors.ControlLightLight;
             lblSetor.Location = new Point(168, 0);
             lblSetor.Margin = new Padding(0);
@@ -280,19 +322,20 @@
             lblSetor.Size = new Size(138, 32);
             lblSetor.TabIndex = 17;
             lblSetor.Text = "Setor:";
-            lblSetor.TextAlign = ContentAlignment.MiddleLeft;
+            lblSetor.TextAlign = ContentAlignment.BottomLeft;
             // 
             // cboSetor
             // 
             cboSetor.Dock = DockStyle.Fill;
             cboSetor.DropDownHeight = 200;
             cboSetor.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboSetor.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cboSetor.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             cboSetor.FormattingEnabled = true;
             cboSetor.IntegralHeight = false;
-            cboSetor.Location = new Point(171, 35);
+            cboSetor.Location = new Point(168, 32);
+            cboSetor.Margin = new Padding(0);
             cboSetor.Name = "cboSetor";
-            cboSetor.Size = new Size(132, 26);
+            cboSetor.Size = new Size(138, 28);
             cboSetor.TabIndex = 18;
             cboSetor.SelectedIndexChanged += cboSetor_SelectedIndexChanged;
             // 
@@ -302,18 +345,19 @@
             cboCargo.Dock = DockStyle.Fill;
             cboCargo.DropDownHeight = 200;
             cboCargo.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboCargo.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cboCargo.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             cboCargo.FormattingEnabled = true;
             cboCargo.IntegralHeight = false;
-            cboCargo.Location = new Point(324, 35);
+            cboCargo.Location = new Point(321, 32);
+            cboCargo.Margin = new Padding(0);
             cboCargo.Name = "cboCargo";
-            cboCargo.Size = new Size(132, 26);
+            cboCargo.Size = new Size(138, 28);
             cboCargo.TabIndex = 20;
             // 
             // lblNome
             // 
             lblNome.Dock = DockStyle.Fill;
-            lblNome.Font = new Font("Verdana", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            lblNome.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
             lblNome.ForeColor = SystemColors.ControlLightLight;
             lblNome.Location = new Point(15, 0);
             lblNome.Margin = new Padding(0);
@@ -321,11 +365,11 @@
             lblNome.Size = new Size(138, 32);
             lblNome.TabIndex = 21;
             lblNome.Text = "Nome:";
-            lblNome.TextAlign = ContentAlignment.MiddleLeft;
+            lblNome.TextAlign = ContentAlignment.BottomLeft;
             // 
             // lblCargo
             // 
-            lblCargo.Font = new Font("Verdana", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            lblCargo.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
             lblCargo.ForeColor = SystemColors.ControlLightLight;
             lblCargo.Location = new Point(321, 0);
             lblCargo.Margin = new Padding(0);
@@ -333,12 +377,12 @@
             lblCargo.Size = new Size(136, 32);
             lblCargo.TabIndex = 22;
             lblCargo.Text = "Cargo:";
-            lblCargo.TextAlign = ContentAlignment.MiddleLeft;
+            lblCargo.TextAlign = ContentAlignment.BottomLeft;
             // 
             // lblAtivo
             // 
             lblAtivo.Dock = DockStyle.Fill;
-            lblAtivo.Font = new Font("Verdana", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            lblAtivo.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
             lblAtivo.ForeColor = SystemColors.ControlLightLight;
             lblAtivo.Location = new Point(474, 0);
             lblAtivo.Margin = new Padding(0);
@@ -346,7 +390,7 @@
             lblAtivo.Size = new Size(71, 32);
             lblAtivo.TabIndex = 23;
             lblAtivo.Text = "Ativo:";
-            lblAtivo.TextAlign = ContentAlignment.MiddleLeft;
+            lblAtivo.TextAlign = ContentAlignment.BottomLeft;
             // 
             // cboAtivo
             // 
@@ -354,38 +398,39 @@
             cboAtivo.Dock = DockStyle.Fill;
             cboAtivo.DropDownHeight = 200;
             cboAtivo.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboAtivo.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cboAtivo.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             cboAtivo.FormattingEnabled = true;
             cboAtivo.IntegralHeight = false;
             cboAtivo.Items.AddRange(new object[] { "Ativado", "Desativado" });
-            cboAtivo.Location = new Point(477, 35);
+            cboAtivo.Location = new Point(474, 32);
+            cboAtivo.Margin = new Padding(0);
             cboAtivo.Name = "cboAtivo";
-            cboAtivo.Size = new Size(65, 26);
+            cboAtivo.Size = new Size(71, 28);
             cboAtivo.TabIndex = 24;
             // 
             // tblBotoes
             // 
-            tblBotoes.ColumnCount = 13;
+            tblBotoes.ColumnCount = 8;
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 5F));
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 5F));
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 5F));
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 5F));
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
-            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 5F));
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tblBotoes.Controls.Add(btnPesquisar, 0, 0);
-            tblBotoes.Controls.Add(btnDesativar, 10, 0);
-            tblBotoes.Controls.Add(btnCadastrarUsuario, 8, 0);
-            tblBotoes.Controls.Add(btnAlterar, 6, 0);
-            tblBotoes.Controls.Add(btnSetorCargo, 4, 0);
-            tblBotoes.Controls.Add(btnLimpar, 2, 0);
-            tblBotoes.Controls.Add(btnAtivar, 12, 0);
+            tblBotoes.Controls.Add(btnDesativar, 6, 0);
+            tblBotoes.Controls.Add(btnCadastrarUsuario, 4, 0);
+            tblBotoes.Controls.Add(btnAlterar, 3, 0);
+            tblBotoes.Controls.Add(btnSetorCargo, 2, 0);
+            tblBotoes.Controls.Add(btnLimpar, 1, 0);
+            tblBotoes.Controls.Add(btnAtivar, 7, 0);
             tblBotoes.Dock = DockStyle.Fill;
             tblBotoes.Location = new Point(0, 95);
             tblBotoes.Margin = new Padding(0);
@@ -411,7 +456,7 @@
             // btnDesativar
             // 
             btnDesativar.Image = Properties.Resources.desativarUsuario;
-            btnDesativar.Location = new Point(40, 0);
+            btnDesativar.Location = new Point(35, 0);
             btnDesativar.Margin = new Padding(0);
             btnDesativar.Name = "btnDesativar";
             btnDesativar.Size = new Size(35, 35);
@@ -423,7 +468,7 @@
             // btnCadastrarUsuario
             // 
             btnCadastrarUsuario.Image = Properties.Resources.new_outline_1;
-            btnCadastrarUsuario.Location = new Point(365, 0);
+            btnCadastrarUsuario.Location = new Point(385, 0);
             btnCadastrarUsuario.Margin = new Padding(0);
             btnCadastrarUsuario.Name = "btnCadastrarUsuario";
             btnCadastrarUsuario.Size = new Size(35, 35);
@@ -435,7 +480,7 @@
             // btnAlterar
             // 
             btnAlterar.Image = Properties.Resources.edit_outline_1;
-            btnAlterar.Location = new Point(405, 0);
+            btnAlterar.Location = new Point(420, 0);
             btnAlterar.Margin = new Padding(0);
             btnAlterar.Name = "btnAlterar";
             btnAlterar.Size = new Size(35, 35);
@@ -447,7 +492,7 @@
             // btnSetorCargo
             // 
             btnSetorCargo.Image = Properties.Resources.new_outline_2;
-            btnSetorCargo.Location = new Point(445, 0);
+            btnSetorCargo.Location = new Point(455, 0);
             btnSetorCargo.Margin = new Padding(0);
             btnSetorCargo.Name = "btnSetorCargo";
             btnSetorCargo.Size = new Size(35, 35);
@@ -459,7 +504,7 @@
             // btnLimpar
             // 
             btnLimpar.Image = Properties.Resources.erase_outline_1;
-            btnLimpar.Location = new Point(485, 0);
+            btnLimpar.Location = new Point(490, 0);
             btnLimpar.Margin = new Padding(0);
             btnLimpar.Name = "btnLimpar";
             btnLimpar.Size = new Size(35, 35);
@@ -486,57 +531,15 @@
             tblPrincipal.ColumnCount = 1;
             tblPrincipal.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tblPrincipal.Controls.Add(tlpCentral, 0, 0);
-            tblPrincipal.Controls.Add(pBarraStatus, 0, 1);
             tblPrincipal.Dock = DockStyle.Fill;
             tblPrincipal.Location = new Point(0, 0);
             tblPrincipal.Margin = new Padding(0);
             tblPrincipal.Name = "tblPrincipal";
-            tblPrincipal.RowCount = 2;
+            tblPrincipal.RowCount = 1;
             tblPrincipal.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tblPrincipal.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
             tblPrincipal.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tblPrincipal.Size = new Size(560, 560);
             tblPrincipal.TabIndex = 1;
-            // 
-            // pBarraStatus
-            // 
-            pBarraStatus.BackColor = Color.FromArgb(16, 23, 28);
-            pBarraStatus.Controls.Add(lblTotalPesquisado);
-            pBarraStatus.Controls.Add(lblTotalRegistrado);
-            pBarraStatus.Dock = DockStyle.Fill;
-            pBarraStatus.Location = new Point(0, 545);
-            pBarraStatus.Margin = new Padding(0);
-            pBarraStatus.Name = "pBarraStatus";
-            pBarraStatus.Size = new Size(560, 15);
-            pBarraStatus.TabIndex = 1;
-            // 
-            // lblTotalPesquisado
-            // 
-            lblTotalPesquisado.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            lblTotalPesquisado.Font = new Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point);
-            lblTotalPesquisado.ForeColor = SystemColors.ControlLightLight;
-            lblTotalPesquisado.Location = new Point(4, -2);
-            lblTotalPesquisado.Margin = new Padding(0);
-            lblTotalPesquisado.Name = "lblTotalPesquisado";
-            lblTotalPesquisado.Padding = new Padding(15, 0, 0, 0);
-            lblTotalPesquisado.Size = new Size(266, 17);
-            lblTotalPesquisado.TabIndex = 14;
-            lblTotalPesquisado.Text = "Pesquisado: 100000";
-            lblTotalPesquisado.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // lblTotalRegistrado
-            // 
-            lblTotalRegistrado.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            lblTotalRegistrado.Font = new Font("Verdana", 8F, FontStyle.Regular, GraphicsUnit.Point);
-            lblTotalRegistrado.ForeColor = SystemColors.ControlLightLight;
-            lblTotalRegistrado.Location = new Point(263, -1);
-            lblTotalRegistrado.Margin = new Padding(0);
-            lblTotalRegistrado.Name = "lblTotalRegistrado";
-            lblTotalRegistrado.Padding = new Padding(0, 0, 15, 0);
-            lblTotalRegistrado.Size = new Size(294, 17);
-            lblTotalRegistrado.TabIndex = 13;
-            lblTotalRegistrado.Text = "Registrado: 100000";
-            lblTotalRegistrado.TextAlign = ContentAlignment.MiddleRight;
             // 
             // UCUsuarios
             // 
@@ -544,17 +547,19 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(80, 90, 100);
             Controls.Add(tblPrincipal);
+            Margin = new Padding(0);
             Name = "UCUsuarios";
             Size = new Size(560, 560);
             Load += UCUsuarios_Load;
+            VisibleChanged += UCUsuario_VisibleChanged;
             ParentChanged += UCUsuarios_ParentChanged;
             tlpCentral.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dtgUsuarios).EndInit();
+            pBarraStatus.ResumeLayout(false);
             tblSetor.ResumeLayout(false);
             tblSetor.PerformLayout();
             tblBotoes.ResumeLayout(false);
             tblPrincipal.ResumeLayout(false);
-            pBarraStatus.ResumeLayout(false);
             ResumeLayout(false);
         }
 
