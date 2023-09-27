@@ -18,7 +18,7 @@ using System.Windows.Forms;
 
 namespace Estoque.Telas_Produto
 {
-    public partial class UCProdutos : Telas_Base.UCBase
+    public partial class UCProdutos : Estoque.Telas_Base.UCGerenciadorDeTelas
     {
         #region Interfaces
         private readonly IProdutoRepositorio produtoRepositorio;
@@ -217,7 +217,7 @@ namespace Estoque.Telas_Produto
                 btnPesquisar.PerformClick();
             }
         }
-        
+
         #endregion Eventos - UserControl
 
         #region Eventos - Btn
@@ -235,6 +235,10 @@ namespace Estoque.Telas_Produto
 
             produtos = produtoRepositorio.ObterProduto(pesquisa);
             BindDataGridView();
+        }
+        private void btnConfiguracoes_Click(object sender, EventArgs e)
+        {
+            AbrirTela(typeof(FrmConfigurarGrid), this, true, null);
         }
 
         #endregion Eventos - Btn

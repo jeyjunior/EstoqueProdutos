@@ -80,6 +80,7 @@
             btnCadastrar = new Button();
             btnAlterar = new Button();
             btnLimpar = new Button();
+            btnConfiguracoes = new Button();
             tlpTextBox = new TableLayoutPanel();
             txtNomeProduto = new TextBox();
             lblNomeProduto = new Label();
@@ -547,7 +548,7 @@
             // 
             // tlpBotoes
             // 
-            tlpBotoes.ColumnCount = 8;
+            tlpBotoes.ColumnCount = 9;
             tlpBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
             tlpBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
             tlpBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
@@ -556,6 +557,7 @@
             tlpBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
             tlpBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tlpBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
+            tlpBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
             tlpBotoes.Controls.Add(btnPesquisar, 0, 0);
             tlpBotoes.Controls.Add(btnExcluir, 7, 0);
             tlpBotoes.Controls.Add(btnCancelar, 1, 0);
@@ -563,6 +565,7 @@
             tlpBotoes.Controls.Add(btnCadastrar, 5, 0);
             tlpBotoes.Controls.Add(btnAlterar, 4, 0);
             tlpBotoes.Controls.Add(btnLimpar, 3, 0);
+            tlpBotoes.Controls.Add(btnConfiguracoes, 8, 0);
             tlpBotoes.Dock = DockStyle.Fill;
             tlpBotoes.Location = new Point(0, 150);
             tlpBotoes.Margin = new Padding(0);
@@ -587,7 +590,7 @@
             // btnExcluir
             // 
             btnExcluir.Image = Properties.Resources.delete_outline_1;
-            btnExcluir.Location = new Point(0, 0);
+            btnExcluir.Location = new Point(35, 0);
             btnExcluir.Margin = new Padding(0);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(35, 35);
@@ -644,6 +647,16 @@
             btnLimpar.Size = new Size(35, 35);
             btnLimpar.TabIndex = 14;
             btnLimpar.UseVisualStyleBackColor = true;
+            // 
+            // btnConfiguracoes
+            // 
+            btnConfiguracoes.Location = new Point(0, 0);
+            btnConfiguracoes.Margin = new Padding(0);
+            btnConfiguracoes.Name = "btnConfiguracoes";
+            btnConfiguracoes.Size = new Size(35, 35);
+            btnConfiguracoes.TabIndex = 17;
+            btnConfiguracoes.UseVisualStyleBackColor = true;
+            btnConfiguracoes.Click += btnConfiguracoes_Click;
             // 
             // tlpTextBox
             // 
@@ -742,7 +755,7 @@
 
         #endregion
         private TableLayoutPanel tblBotoes;
-        private Button button1;
+        private Button btnConfiguracoes;
         private Button button2;
         private TableLayoutPanel tblSetor;
         private TextBox txtNome;
