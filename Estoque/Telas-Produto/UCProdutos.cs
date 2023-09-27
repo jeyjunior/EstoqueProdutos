@@ -1,5 +1,6 @@
 ﻿using EP.Data.Interfaces;
 using Estoque.Controladores;
+using Estoque.Telas_Usuario;
 using EstoqueProdutos.Entidades;
 using EstoqueProdutos.Formatacao;
 using EstoqueProdutos.Gerenciamento;
@@ -238,9 +239,11 @@ namespace Estoque.Telas_Produto
         }
         private void btnConfiguracoes_Click(object sender, EventArgs e)
         {
-            AbrirTela(typeof(FrmConfigurarGrid), this, true, null);
+            //FrmConfigurarColunas frmConfigurarColunas = new FrmConfigurarColunas();
+            //frmConfigurarColunas.Show();
+            AbrirTela(typeof(FrmAlterarUsuario), this, true, null);
+            //Estoque.Telas_Produto.FrmConfigurarColunas
         }
-
         #endregion Eventos - Btn
 
     }

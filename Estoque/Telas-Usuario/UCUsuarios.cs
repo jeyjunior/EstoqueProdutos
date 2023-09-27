@@ -320,7 +320,7 @@ namespace Estoque.Telas_Usuario
                 btnPesquisar.PerformClick();
         }
         #endregion Eventos - UserControl
-        
+
         #region Eventos - Btns
         private void btnPesquisar_Click(object sender, EventArgs e)
         {

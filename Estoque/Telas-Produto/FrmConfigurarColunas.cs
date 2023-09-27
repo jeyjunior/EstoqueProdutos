@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace Estoque.Telas_Produto
 {
-    public partial class FrmConfigurarGrid : FrmBase
+    public partial class FrmConfigurarColunas : FrmBase
     {
-        public FrmConfigurarGrid()
+        public FrmConfigurarColunas()
         {
             InitializeComponent();
         }

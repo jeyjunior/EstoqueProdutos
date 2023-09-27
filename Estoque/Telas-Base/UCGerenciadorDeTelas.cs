@@ -1,5 +1,6 @@
 ﻿using Estoque.Controladores;
 using Estoque.Interfaces;
+using Estoque.Telas_Produto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
