@@ -53,6 +53,9 @@
             pcbVolume = new PictureBox();
             pcbUnMedida = new PictureBox();
             pcbAltura = new PictureBox();
+            tblBotoes = new TableLayoutPanel();
+            btnSalvar = new Button();
+            btnLimpar = new Button();
             tlpCentral.SuspendLayout();
             tlpColunas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pcbEmbalagem).BeginInit();
@@ -66,6 +69,7 @@
             ((System.ComponentModel.ISupportInitialize)pcbVolume).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pcbUnMedida).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pcbAltura).BeginInit();
+            tblBotoes.SuspendLayout();
             SuspendLayout();
             // 
             // tlpCentral
@@ -75,15 +79,18 @@
             tlpCentral.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tlpCentral.Controls.Add(lblTitulo, 0, 0);
             tlpCentral.Controls.Add(tlpColunas, 0, 1);
+            tlpCentral.Controls.Add(tblBotoes, 0, 3);
             tlpCentral.Dock = DockStyle.Fill;
             tlpCentral.Location = new Point(0, 0);
             tlpCentral.Margin = new Padding(0);
             tlpCentral.Name = "tlpCentral";
-            tlpCentral.RowCount = 2;
+            tlpCentral.RowCount = 5;
             tlpCentral.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
             tlpCentral.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tlpCentral.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tlpCentral.Size = new Size(184, 451);
+            tlpCentral.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
+            tlpCentral.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
+            tlpCentral.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
+            tlpCentral.Size = new Size(226, 505);
             tlpCentral.TabIndex = 0;
             // 
             // lblTitulo
@@ -94,7 +101,7 @@
             lblTitulo.Location = new Point(0, 0);
             lblTitulo.Margin = new Padding(0);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(184, 45);
+            lblTitulo.Size = new Size(226, 45);
             lblTitulo.TabIndex = 23;
             lblTitulo.Text = "Exibir colunas";
             lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
@@ -147,7 +154,7 @@
             tlpColunas.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
             tlpColunas.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
             tlpColunas.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tlpColunas.Size = new Size(184, 406);
+            tlpColunas.Size = new Size(226, 395);
             tlpColunas.TabIndex = 0;
             // 
             // pcbEmbalagem
@@ -242,7 +249,7 @@
             lblNome.Location = new Point(55, 0);
             lblNome.Margin = new Padding(0);
             lblNome.Name = "lblNome";
-            lblNome.Size = new Size(114, 35);
+            lblNome.Size = new Size(156, 35);
             lblNome.TabIndex = 24;
             lblNome.Text = "Nome";
             lblNome.TextAlign = ContentAlignment.MiddleLeft;
@@ -255,7 +262,7 @@
             lblDescricao.Location = new Point(55, 35);
             lblDescricao.Margin = new Padding(0);
             lblDescricao.Name = "lblDescricao";
-            lblDescricao.Size = new Size(114, 35);
+            lblDescricao.Size = new Size(156, 35);
             lblDescricao.TabIndex = 26;
             lblDescricao.Text = "Descrição";
             lblDescricao.TextAlign = ContentAlignment.MiddleLeft;
@@ -268,7 +275,7 @@
             lblVolume.Location = new Point(55, 70);
             lblVolume.Margin = new Padding(0);
             lblVolume.Name = "lblVolume";
-            lblVolume.Size = new Size(114, 35);
+            lblVolume.Size = new Size(156, 35);
             lblVolume.TabIndex = 25;
             lblVolume.Text = "Volume";
             lblVolume.TextAlign = ContentAlignment.MiddleLeft;
@@ -281,7 +288,7 @@
             lblAltura.Location = new Point(55, 140);
             lblAltura.Margin = new Padding(0);
             lblAltura.Name = "lblAltura";
-            lblAltura.Size = new Size(114, 35);
+            lblAltura.Size = new Size(156, 35);
             lblAltura.TabIndex = 27;
             lblAltura.Text = "Altura";
             lblAltura.TextAlign = ContentAlignment.MiddleLeft;
@@ -294,7 +301,7 @@
             lblLargura.Location = new Point(55, 175);
             lblLargura.Margin = new Padding(0);
             lblLargura.Name = "lblLargura";
-            lblLargura.Size = new Size(114, 35);
+            lblLargura.Size = new Size(156, 35);
             lblLargura.TabIndex = 30;
             lblLargura.Text = "Largura";
             lblLargura.TextAlign = ContentAlignment.MiddleLeft;
@@ -307,7 +314,7 @@
             lblMedida.Location = new Point(55, 105);
             lblMedida.Margin = new Padding(0);
             lblMedida.Name = "lblMedida";
-            lblMedida.Size = new Size(114, 35);
+            lblMedida.Size = new Size(156, 35);
             lblMedida.TabIndex = 29;
             lblMedida.Text = "Un. de Medida";
             lblMedida.TextAlign = ContentAlignment.MiddleLeft;
@@ -320,7 +327,7 @@
             lblEmbalagem.Location = new Point(55, 350);
             lblEmbalagem.Margin = new Padding(0);
             lblEmbalagem.Name = "lblEmbalagem";
-            lblEmbalagem.Size = new Size(114, 35);
+            lblEmbalagem.Size = new Size(156, 35);
             lblEmbalagem.TabIndex = 32;
             lblEmbalagem.Text = "Embalagem";
             lblEmbalagem.TextAlign = ContentAlignment.MiddleLeft;
@@ -333,7 +340,7 @@
             lblMarca.Location = new Point(55, 315);
             lblMarca.Margin = new Padding(0);
             lblMarca.Name = "lblMarca";
-            lblMarca.Size = new Size(114, 35);
+            lblMarca.Size = new Size(156, 35);
             lblMarca.TabIndex = 28;
             lblMarca.Text = "Marca";
             lblMarca.TextAlign = ContentAlignment.MiddleLeft;
@@ -346,7 +353,7 @@
             lblCategoria.Location = new Point(55, 280);
             lblCategoria.Margin = new Padding(0);
             lblCategoria.Name = "lblCategoria";
-            lblCategoria.Size = new Size(114, 35);
+            lblCategoria.Size = new Size(156, 35);
             lblCategoria.TabIndex = 31;
             lblCategoria.Text = "Categoria";
             lblCategoria.TextAlign = ContentAlignment.MiddleLeft;
@@ -359,7 +366,7 @@
             lblFormato.Location = new Point(55, 245);
             lblFormato.Margin = new Padding(0);
             lblFormato.Name = "lblFormato";
-            lblFormato.Size = new Size(114, 35);
+            lblFormato.Size = new Size(156, 35);
             lblFormato.TabIndex = 34;
             lblFormato.Text = "Formato";
             lblFormato.TextAlign = ContentAlignment.MiddleLeft;
@@ -372,7 +379,7 @@
             lblComprimento.Location = new Point(55, 210);
             lblComprimento.Margin = new Padding(0);
             lblComprimento.Name = "lblComprimento";
-            lblComprimento.Size = new Size(114, 35);
+            lblComprimento.Size = new Size(156, 35);
             lblComprimento.TabIndex = 33;
             lblComprimento.Text = "Comprimento";
             lblComprimento.TextAlign = ContentAlignment.MiddleLeft;
@@ -447,19 +454,69 @@
             pcbAltura.TabIndex = 39;
             pcbAltura.TabStop = false;
             // 
-            // FrmConfigurarGrid
+            // tblBotoes
+            // 
+            tblBotoes.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tblBotoes.BackColor = Color.FromArgb(16, 23, 28);
+            tblBotoes.ColumnCount = 5;
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 15F));
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 90F));
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 90F));
+            tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 15F));
+            tblBotoes.Controls.Add(btnSalvar, 1, 0);
+            tblBotoes.Controls.Add(btnLimpar, 3, 0);
+            tblBotoes.Location = new Point(0, 455);
+            tblBotoes.Margin = new Padding(0);
+            tblBotoes.Name = "tblBotoes";
+            tblBotoes.RightToLeft = RightToLeft.Yes;
+            tblBotoes.RowCount = 1;
+            tblBotoes.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tblBotoes.Size = new Size(226, 35);
+            tblBotoes.TabIndex = 24;
+            // 
+            // btnSalvar
+            // 
+            btnSalvar.Dock = DockStyle.Fill;
+            btnSalvar.ForeColor = Color.FromArgb(66, 142, 79);
+            btnSalvar.Image = Properties.Resources.save_outline_1;
+            btnSalvar.Location = new Point(121, 0);
+            btnSalvar.Margin = new Padding(0);
+            btnSalvar.Name = "btnSalvar";
+            btnSalvar.Padding = new Padding(10, 0, 0, 0);
+            btnSalvar.Size = new Size(90, 35);
+            btnSalvar.TabIndex = 0;
+            btnSalvar.Text = "Salvar";
+            btnSalvar.TextImageRelation = TextImageRelation.TextBeforeImage;
+            btnSalvar.UseVisualStyleBackColor = true;
+            // 
+            // btnLimpar
+            // 
+            btnLimpar.Dock = DockStyle.Fill;
+            btnLimpar.ForeColor = Color.FromArgb(178, 88, 88);
+            btnLimpar.Image = Properties.Resources.cancel_outline_1;
+            btnLimpar.Location = new Point(15, 0);
+            btnLimpar.Margin = new Padding(0);
+            btnLimpar.Name = "btnLimpar";
+            btnLimpar.Padding = new Padding(5, 0, 0, 0);
+            btnLimpar.Size = new Size(90, 35);
+            btnLimpar.TabIndex = 1;
+            btnLimpar.Text = "Cancelar";
+            btnLimpar.TextImageRelation = TextImageRelation.TextBeforeImage;
+            btnLimpar.UseVisualStyleBackColor = true;
+            // 
+            // FrmConfigurarColunas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(80, 90, 100);
-            ClientSize = new Size(184, 451);
+            ClientSize = new Size(226, 505);
             Controls.Add(tlpCentral);
-            FormBorderStyle = FormBorderStyle.FixedDialog;
+            FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
-            MaximumSize = new Size(200, 490);
             MinimizeBox = false;
             MinimumSize = new Size(200, 490);
-            Name = "FrmConfigurarGrid";
+            Name = "FrmConfigurarColunas";
             StartPosition = FormStartPosition.CenterScreen;
             tlpCentral.ResumeLayout(false);
             tlpColunas.ResumeLayout(false);
@@ -474,6 +531,7 @@
             ((System.ComponentModel.ISupportInitialize)pcbVolume).EndInit();
             ((System.ComponentModel.ISupportInitialize)pcbUnMedida).EndInit();
             ((System.ComponentModel.ISupportInitialize)pcbAltura).EndInit();
+            tblBotoes.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -491,7 +549,6 @@
         private Label lblFormato;
         private Label lblCategoria;
         private Label lblMarca;
-        private Label lblEmbalagem;
         private Label lblMedida;
         private PictureBox pcbLargura;
         private PictureBox pcbNome;
@@ -499,10 +556,14 @@
         private PictureBox pcbVolume;
         private PictureBox pcbUnMedida;
         private PictureBox pcbAltura;
-        private PictureBox pcbEmbalagem;
         private PictureBox pcbMarca;
         private PictureBox pcbCategoria;
         private PictureBox pcbFormato;
         private PictureBox pcbComprimento;
+        private PictureBox pcbEmbalagem;
+        private Label lblEmbalagem;
+        private TableLayoutPanel tblBotoes;
+        private Button btnSalvar;
+        private Button btnLimpar;
     }
 }

@@ -239,12 +239,8 @@ namespace Estoque.Telas_Produto
         }
         private void btnConfiguracoes_Click(object sender, EventArgs e)
         {
-            //FrmConfigurarColunas frmConfigurarColunas = new FrmConfigurarColunas();
-            //frmConfigurarColunas.Show();
-            AbrirTela(typeof(FrmAlterarUsuario), this, true, null);
-            //Estoque.Telas_Produto.FrmConfigurarColunas
+            AbrirTela<FrmConfigurarColunas>();
         }
         #endregion Eventos - Btn
-
     }
 }

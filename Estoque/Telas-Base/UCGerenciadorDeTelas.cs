@@ -28,6 +28,19 @@ namespace Estoque.Telas_Base
         }
 
 
+        public void AbrirTela<T>() where T : Form, new()
+        {
+            try
+            {
+                T frm = new T();
+                frm.ShowDialog();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public void AbrirTela(Type tela, IUCGerenciadorDeTelas ucGestor, bool travarTela = false, FormClosedEventHandler eFecharFilho = null) 
         {
             try
