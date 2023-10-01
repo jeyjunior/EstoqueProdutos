@@ -1,5 +1,11 @@
 ﻿using EP.Data.Entidades;
+using EP.Data.Interfaces;
+using Estoque.GerenciamentoTelas;
+using Estoque.Interfaces;
 using Estoque.Telas_Base;
+using EstoqueProdutos;
+using EstoqueProdutos.Gerenciamento;
+using EstoqueProdutos.Repositorios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,26 +20,83 @@ namespace Estoque.Telas_Produto
 {
     public partial class FrmConfigurarColunas : FrmBase
     {
-        private ColunasGridProdutos colunasGridProdutos;
+        private readonly IConfigColunasProdutoRepositorio configColunasProdutoRepositorio;
+        private readonly IUsuarioLogado usuarioLogado;
+
+        private ConfigColunasProduto colunasGridProdutos;
+
         public FrmConfigurarColunas()
         {
             InitializeComponent();
 
-            colunasGridProdutos = new ColunasGridProdutos();
+            configColunasProdutoRepositorio = DIRepositorios.Container.GetInstance<IConfigColunasProdutoRepositorio>();
+            usuarioLogado = DIRepositorios.Container.GetInstance<IUsuarioLogado>();
+
+            colunasGridProdutos = new ConfigColunasProduto();
+        }
+
+        private void InicializarObjConfiguracao()
+        {
+            var usario = usuarioLogado.ObterUsuarioLogado();
+
+            colunasGridProdutos = configColunasProdutoRepositorio
+                .ObterTabela()
+                .FirstOrDefault(c => c.FK_Usuario.Equals(usario.PK_Usuario));
+
+            if(colunasGridProdutos != null)
+            {
+                var properties = typeof(ConfigColunasProduto).GetProperties();
+
+                foreach (Control control in this.Controls)
+                {
+                    if(control is PictureBox pcb)
+                    { 
+
+                    }
+                }
+            }
         }
 
         private void pcb_Click(object sender, EventArgs e)
         {
-            string componentName = ((Control)sender).Name;
-            var properties = typeof(ColunasGridProdutos).GetProperties();
+            var pcb = ((Control)sender) as PictureBox;
 
-            foreach (var property in properties)
+            if (pcb != null)
             {
-                if (property.Name == componentName)
+                string componentName = ((Control)sender).Name.Replace("pcb", "");
+                var properties = typeof(ConfigColunasProduto).GetProperties();
+
+                foreach (var property in properties)
                 {
-                    var currentValue = (bool)property.GetValue(colunasGridProdutos);
-                    property.SetValue(colunasGridProdutos, !currentValue);
+                    if (property.Name == componentName)
+                    {
+                        var currentValue = (bool)property.GetValue(colunasGridProdutos);
+                        property.SetValue(colunasGridProdutos, !currentValue);
+
+                        if ((bool)property.GetValue(colunasGridProdutos))
+                        {
+                            pcb.Image = Properties.Resources.chk_checked_32x32;
+                        }
+                        else
+                        {
+                            pcb.Image = Properties.Resources.chk_uncheck_32x32;
+                        }
+
+                        break;
+                    }
                 }
+            }
+        }
+
+        private void FrmConfigurarColunas_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                InicializarObjConfiguracao();
+            }
+            catch (Exception)
+            {
+                Alerta.Erro("Falha ao carregar configurações!");
             }
         }
     }

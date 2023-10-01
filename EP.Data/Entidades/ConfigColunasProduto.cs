@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace EP.Data.Entidades
 {
-    public class ColunasGridProdutos
+    public class ConfigColunasProduto
     {
+        public int PK_ConfigColunasProduto { get; set; }
+        public int FK_Usuario { get; set; }
         public bool Nome { get; set; }
         public bool Descricao { get; set; }
         public bool Volume { get; set; }

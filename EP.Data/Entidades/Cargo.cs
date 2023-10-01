@@ -11,9 +11,7 @@ namespace EP.Data.Entidades
     {
         public int PK_Cargo { get; set; }
         public string NomeCargo { get; set; }
-
         public int FK_Setor { get; set; }
-
         public virtual Setor Setor { get; set; }
     }
 }

@@ -170,6 +170,7 @@
             pcbEmbalagem.SizeMode = PictureBoxSizeMode.StretchImage;
             pcbEmbalagem.TabIndex = 45;
             pcbEmbalagem.TabStop = false;
+            pcbEmbalagem.Click += pcb_Click;
             // 
             // pcbMarca
             // 
@@ -184,6 +185,7 @@
             pcbMarca.SizeMode = PictureBoxSizeMode.StretchImage;
             pcbMarca.TabIndex = 44;
             pcbMarca.TabStop = false;
+            pcbMarca.Click += pcb_Click;
             // 
             // pcbCategoria
             // 
@@ -198,6 +200,7 @@
             pcbCategoria.SizeMode = PictureBoxSizeMode.StretchImage;
             pcbCategoria.TabIndex = 43;
             pcbCategoria.TabStop = false;
+            pcbCategoria.Click += pcb_Click;
             // 
             // pcbFormato
             // 
@@ -212,6 +215,7 @@
             pcbFormato.SizeMode = PictureBoxSizeMode.StretchImage;
             pcbFormato.TabIndex = 42;
             pcbFormato.TabStop = false;
+            pcbFormato.Click += pcb_Click;
             // 
             // pcbComprimento
             // 
@@ -226,6 +230,7 @@
             pcbComprimento.SizeMode = PictureBoxSizeMode.StretchImage;
             pcbComprimento.TabIndex = 41;
             pcbComprimento.TabStop = false;
+            pcbComprimento.Click += pcb_Click;
             // 
             // pcbLargura
             // 
@@ -240,6 +245,7 @@
             pcbLargura.SizeMode = PictureBoxSizeMode.StretchImage;
             pcbLargura.TabIndex = 40;
             pcbLargura.TabStop = false;
+            pcbLargura.Click += pcb_Click;
             // 
             // lblNome
             // 
@@ -397,6 +403,7 @@
             pcbNome.SizeMode = PictureBoxSizeMode.StretchImage;
             pcbNome.TabIndex = 35;
             pcbNome.TabStop = false;
+            pcbNome.Click += pcb_Click;
             // 
             // pcbDescricao
             // 
@@ -411,6 +418,7 @@
             pcbDescricao.SizeMode = PictureBoxSizeMode.StretchImage;
             pcbDescricao.TabIndex = 36;
             pcbDescricao.TabStop = false;
+            pcbDescricao.Click += pcb_Click;
             // 
             // pcbVolume
             // 
@@ -425,6 +433,7 @@
             pcbVolume.SizeMode = PictureBoxSizeMode.StretchImage;
             pcbVolume.TabIndex = 37;
             pcbVolume.TabStop = false;
+            pcbVolume.Click += pcb_Click;
             // 
             // pcbUnMedida
             // 
@@ -439,6 +448,7 @@
             pcbUnMedida.SizeMode = PictureBoxSizeMode.StretchImage;
             pcbUnMedida.TabIndex = 38;
             pcbUnMedida.TabStop = false;
+            pcbUnMedida.Click += pcb_Click;
             // 
             // pcbAltura
             // 
@@ -453,6 +463,7 @@
             pcbAltura.SizeMode = PictureBoxSizeMode.StretchImage;
             pcbAltura.TabIndex = 39;
             pcbAltura.TabStop = false;
+            pcbAltura.Click += pcb_Click;
             // 
             // tblBotoes
             // 
@@ -518,6 +529,7 @@
             MinimumSize = new Size(200, 490);
             Name = "FrmConfigurarColunas";
             StartPosition = FormStartPosition.CenterScreen;
+            Load += FrmConfigurarColunas_Load;
             tlpCentral.ResumeLayout(false);
             tlpColunas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pcbEmbalagem).EndInit();
