@@ -249,7 +249,6 @@ namespace Estoque.Telas_Produto
                 AtualizarConfiguracaoDoGrid();
             }
         }
-
         #endregion Eventos - UserControl
 
         #region Eventos - Btn
@@ -270,7 +269,7 @@ namespace Estoque.Telas_Produto
         }
         private void btnConfiguracoes_Click(object sender, EventArgs e)
         {
-            AbrirTela<FrmConfigurarColunas>();
+            AbrirTela(typeof(Estoque.Telas_Produto.FrmConfigurarColunas), this, true);
         }
         #endregion Eventos - Btn
     }

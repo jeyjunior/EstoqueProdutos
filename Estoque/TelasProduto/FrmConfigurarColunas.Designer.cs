@@ -55,7 +55,7 @@
             pcbAltura = new PictureBox();
             tblBotoes = new TableLayoutPanel();
             btnSalvar = new Button();
-            btnLimpar = new Button();
+            btnFechar = new Button();
             tlpCentral.SuspendLayout();
             tlpColunas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pcbEmbalagem).BeginInit();
@@ -476,7 +476,7 @@
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 90F));
             tblBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 15F));
             tblBotoes.Controls.Add(btnSalvar, 1, 0);
-            tblBotoes.Controls.Add(btnLimpar, 3, 0);
+            tblBotoes.Controls.Add(btnFechar, 3, 0);
             tblBotoes.Location = new Point(0, 449);
             tblBotoes.Margin = new Padding(0);
             tblBotoes.Name = "tblBotoes";
@@ -502,21 +502,21 @@
             btnSalvar.UseVisualStyleBackColor = true;
             btnSalvar.Click += btnSalvar_Click;
             // 
-            // btnLimpar
+            // btnFechar
             // 
-            btnLimpar.Dock = DockStyle.Fill;
-            btnLimpar.ForeColor = Color.FromArgb(178, 88, 88);
-            btnLimpar.Image = Properties.Resources.cancel_outline_1;
-            btnLimpar.Location = new Point(15, 0);
-            btnLimpar.Margin = new Padding(0);
-            btnLimpar.Name = "btnLimpar";
-            btnLimpar.Padding = new Padding(5, 0, 0, 0);
-            btnLimpar.Size = new Size(90, 35);
-            btnLimpar.TabIndex = 1;
-            btnLimpar.Text = "Cancelar";
-            btnLimpar.TextImageRelation = TextImageRelation.TextBeforeImage;
-            btnLimpar.UseVisualStyleBackColor = true;
-            btnLimpar.Click += btnLimpar_Click;
+            btnFechar.Dock = DockStyle.Fill;
+            btnFechar.ForeColor = Color.FromArgb(178, 88, 88);
+            btnFechar.Image = Properties.Resources.cancel_outline_1;
+            btnFechar.Location = new Point(15, 0);
+            btnFechar.Margin = new Padding(0);
+            btnFechar.Name = "btnFechar";
+            btnFechar.Padding = new Padding(5, 0, 0, 0);
+            btnFechar.Size = new Size(90, 35);
+            btnFechar.TabIndex = 1;
+            btnFechar.Text = "Fechar";
+            btnFechar.TextImageRelation = TextImageRelation.TextBeforeImage;
+            btnFechar.UseVisualStyleBackColor = true;
+            btnFechar.Click += btnLimpar_Click;
             // 
             // FrmConfigurarColunas
             // 
@@ -579,6 +579,6 @@
         private Label lblEmbalagem;
         private TableLayoutPanel tblBotoes;
         private Button btnSalvar;
-        private Button btnLimpar;
+        private Button btnFechar;
     }
 }

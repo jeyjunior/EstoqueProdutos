@@ -117,7 +117,7 @@ namespace Estoque.Telas_Produto
             {
                 bool resultado = configColunasProdutoRepositorio.AtualizarConfiguracao(colunasGridProdutos);
 
-                if(resultado)
+                if (resultado)
                 {
                     Alerta.Confirmacao("Configuração salva!");
                 }

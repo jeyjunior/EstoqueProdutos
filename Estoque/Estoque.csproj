@@ -25,28 +25,28 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Update="Telas-Mensagens\FrmMensagem.cs" />
-    <Compile Update="Telas-Modelos\FrmEstruturaBaseTabs.cs" />
-    <Compile Update="Telas-Modelos\FrmEstruturaBaseBtnsGenericos.cs" />
-    <Compile Update="Telas-Modelos\FrmEstruturaBaseCadastro.cs" />
-    <Compile Update="Telas-Produto\FrmConfigurarColunas.cs">
+    <Compile Update="TelasMensagens\FrmMensagem.cs" />
+    <Compile Update="TelasModelos\FrmEstruturaBaseTabs.cs" />
+    <Compile Update="TelasModelos\FrmEstruturaBaseBtnsGenericos.cs" />
+    <Compile Update="TelasModelos\FrmEstruturaBaseCadastro.cs" />
+    <Compile Update="TelasProduto\FrmConfigurarColunas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Telas-Produto\UCProdutos.cs">
+    <Compile Update="TelasProduto\UCProdutos.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Telas-Usuario\FrmCadastrarSetores_Cargos.cs" />
-    <Compile Update="Telas-Usuario\FrmAlterarUsuario.cs">
+    <Compile Update="TelasUsuario\FrmCadastrarSetores_Cargos.cs" />
+    <Compile Update="TelasUsuario\FrmAlterarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Telas-Usuario\FrmCadastrarUsuario.cs" />
-    <Compile Update="Telas-Usuario\UCCadastrarCargo.cs">
+    <Compile Update="TelasUsuario\FrmCadastrarUsuario.cs" />
+    <Compile Update="TelasUsuario\UCCadastrarCargo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Telas-Usuario\UCUsuarios.cs">
+    <Compile Update="TelasUsuario\UCUsuarios.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Telas-Usuario\UCCadastrarSetor.cs">
+    <Compile Update="TelasUsuario\UCCadastrarSetor.cs">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
