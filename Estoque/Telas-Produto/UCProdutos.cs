@@ -1,6 +1,9 @@
-﻿using EP.Data.Interfaces;
+﻿using Azure.Core;
+using EP.Data.Interfaces;
 using Estoque.Controladores;
+using Estoque.Interfaces;
 using Estoque.Telas_Usuario;
+using EstoqueProdutos;
 using EstoqueProdutos.Entidades;
 using EstoqueProdutos.Formatacao;
 using EstoqueProdutos.Gerenciamento;
@@ -28,6 +31,10 @@ namespace Estoque.Telas_Produto
         private readonly IFormatoRepositorio formatoRepositorio;
         private readonly IEmbalagemRepositorio embalagemRepositorio;
         private readonly IRepositorio<Produto> repositorioGenerico;
+
+        private readonly IConfigColunasProdutoRepositorio configColunasProdutoRepositorio;
+        private readonly IUsuarioLogado usuarioLogado;
+
         #endregion Interfaces
 
         #region Colecoes
@@ -46,6 +53,9 @@ namespace Estoque.Telas_Produto
             formatoRepositorio = DIRepositorios.Container.GetInstance<IFormatoRepositorio>();
             embalagemRepositorio = DIRepositorios.Container.GetInstance<IEmbalagemRepositorio>();
             repositorioGenerico = DIRepositorios.Container.GetInstance<IRepositorio<Produto>>();
+            configColunasProdutoRepositorio = DIRepositorios.Container.GetInstance<IConfigColunasProdutoRepositorio>();
+
+            usuarioLogado = DITelas.Container.GetInstance<IUsuarioLogado>();
         }
         #endregion Construtor
 
@@ -200,6 +210,26 @@ namespace Estoque.Telas_Produto
         {
             lblTotalPesquisado.Text = "Pesquisado: " + dtgProdutos.Rows.Count;
         }
+
+        private void AtualizarConfiguracaoDoGrid()
+        {
+            var PK_UsuarioLogado = usuarioLogado.ObterUsuarioLogado().PK_Usuario;
+            var resultado = configColunasProdutoRepositorio.ObterTabela(PK_UsuarioLogado).FirstOrDefault();
+
+            colPK_Produto.Visible = false;
+            colNome.Visible = resultado.Nome;
+            colVolume.Visible = resultado.Volume;
+            colDescricao.Visible = resultado.Descricao;
+            colAltura.Visible = resultado.Altura;
+            colLargura.Visible = resultado.Largura;
+            colComprimento.Visible = resultado.Comprimento;
+            colFK_Formato.Visible = resultado.Formato;
+            colFK_Imagem.Visible = resultado.Imagem;
+            colFK_Categoria.Visible = resultado.Categoria;
+            colFK_Marca.Visible = resultado.Marca;
+            colFK_Embalagem.Visible = resultado.Embalagem;
+            colFK_UnidadeMedida.Visible = resultado.UnidadeMedida;
+        }
         #endregion Metodos - Updates
 
         #region Eventos - UserControl
@@ -216,6 +246,7 @@ namespace Estoque.Telas_Produto
             if (this.Visible)
             {
                 btnPesquisar.PerformClick();
+                AtualizarConfiguracaoDoGrid();
             }
         }
 

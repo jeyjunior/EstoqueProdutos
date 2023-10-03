@@ -1,5 +1,6 @@
 ﻿using EP.Data.Entidades;
 using EP.Data.Interfaces;
+using Estoque.Controladores;
 using Estoque.GerenciamentoTelas;
 using Estoque.Interfaces;
 using Estoque.Telas_Base;
@@ -12,6 +13,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,36 +25,39 @@ namespace Estoque.Telas_Produto
         private readonly IConfigColunasProdutoRepositorio configColunasProdutoRepositorio;
         private readonly IUsuarioLogado usuarioLogado;
 
-        private ConfigColunasProduto colunasGridProdutos;
+        private ConfigColunasProduto? colunasGridProdutos;
 
         public FrmConfigurarColunas()
         {
             InitializeComponent();
 
             configColunasProdutoRepositorio = DIRepositorios.Container.GetInstance<IConfigColunasProdutoRepositorio>();
-            usuarioLogado = DIRepositorios.Container.GetInstance<IUsuarioLogado>();
-
-            colunasGridProdutos = new ConfigColunasProduto();
+            usuarioLogado = DITelas.Container.GetInstance<IUsuarioLogado>();
         }
 
         private void InicializarObjConfiguracao()
         {
             var usario = usuarioLogado.ObterUsuarioLogado();
+            colunasGridProdutos = configColunasProdutoRepositorio.ObterTabela().FirstOrDefault(c => c.FK_Usuario.Equals(usario.PK_Usuario));
+        }
 
-            colunasGridProdutos = configColunasProdutoRepositorio
-                .ObterTabela()
-                .FirstOrDefault(c => c.FK_Usuario.Equals(usario.PK_Usuario));
-
-            if(colunasGridProdutos != null)
+        private void InicializarPictureBoxs()
+        {
+            foreach (Control control in tlpColunas.Controls)
             {
-                var properties = typeof(ConfigColunasProduto).GetProperties();
-
-                foreach (Control control in this.Controls)
+                if (control is PictureBox pcb)
                 {
-                    if(control is PictureBox pcb)
-                    { 
+                    string nomeComponente = pcb.Name.Replace("pcb", "");
+                    var propriedades = colunasGridProdutos.GetType().GetProperties();
 
-                    }
+                    propriedades.ToList().ForEach(p =>
+                    {
+                        if (p.Name == nomeComponente)
+                        {
+                            var valor = (bool)p.GetValue(colunasGridProdutos);
+                            pcb.Image = valor ? Properties.Resources.chk_checked_32x32 : Properties.Resources.chk_uncheck_32x32;
+                        }
+                    });
                 }
             }
         }
@@ -93,10 +98,33 @@ namespace Estoque.Telas_Produto
             try
             {
                 InicializarObjConfiguracao();
+                InicializarPictureBoxs();
             }
             catch (Exception)
             {
                 Alerta.Erro("Falha ao carregar configurações!");
+            }
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool resultado = configColunasProdutoRepositorio.AtualizarConfiguracao(colunasGridProdutos);
+
+                if(resultado)
+                {
+                    Alerta.Confirmacao("Configuração salva!");
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensagem.Erro("Erro: " + ex.Message);
             }
         }
     }

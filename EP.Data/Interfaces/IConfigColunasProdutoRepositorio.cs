@@ -11,6 +11,7 @@ namespace EP.Data.Interfaces
 {
     public interface IConfigColunasProdutoRepositorio : IRepositorio<ConfigColunasProduto>
     {
-
+        IEnumerable<ConfigColunasProduto> ObterTabela(int FK_Usuario);
+        bool AtualizarConfiguracao(ConfigColunasProduto configColunasProduto);
     }
 }

@@ -4,19 +4,18 @@ CREATE TABLE ConfigColunasProduto (
 	Nome bit NOT NULL,
 	Volume bit NOT NULL,
 	Descricao bit NOT NULL,
-	DataFabricacao bit NOT NULL,
-	DataValidade bit NOT NULL,
 	Altura bit NOT NULL,
 	Largura bit NOT NULL,
 	Comprimento bit NOT NULL,
-	FK_Formato bit NOT NULL,
-	FK_Imagem bit NOT NULL,
-	FK_Categoria bit NOT NULL,
-	FK_Marca bit NOT NULL,
-	FK_Embalagem bit NOT NULL,
-	FK_UnidadeMedida bit NOT NULL,
+	Formato bit NOT NULL,
+	Imagem bit NOT NULL,
+	Categoria bit NOT NULL,
+	Marca bit NOT NULL,
+	Embalagem bit NOT NULL,
+	UnidadeMedida bit NOT NULL,
 
 	FOREIGN KEY (FK_Usuario) REFERENCES Usuario (PK_Usuario),
 );
+
 
 
