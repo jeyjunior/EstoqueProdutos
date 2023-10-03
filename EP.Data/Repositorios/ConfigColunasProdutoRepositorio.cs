@@ -2,18 +2,7 @@
 using EP.Data.Entidades;
 using EP.Data.Interfaces;
 using EP.Data.sql;
-using EstoqueProdutos.Entidades;
-using EstoqueProdutos.Interfaces;
 using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.ComponentModel.Design.ObjectSelectorEditor;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
-
 
 namespace EstoqueProdutos.Repositorios
 {

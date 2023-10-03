@@ -1,24 +1,11 @@
-﻿using Azure.Core;
-using EP.Data.Interfaces;
+﻿using EP.Data.Interfaces;
 using Estoque.Controladores;
 using Estoque.Interfaces;
-using Estoque.Telas_Usuario;
-using EstoqueProdutos;
 using EstoqueProdutos.Entidades;
 using EstoqueProdutos.Formatacao;
 using EstoqueProdutos.Gerenciamento;
 using EstoqueProdutos.Interfaces;
-using EstoqueProdutos.Repositorios;
 using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Estoque.Telas_Produto
 {
@@ -165,25 +152,24 @@ namespace Estoque.Telas_Produto
             if (produtos != null)
             {
                 Cursor.Current = Cursors.WaitCursor;
-                dtgProdutos.Rows.Clear();
-                produtos.ToList().ForEach(item =>
+                //dtgProdutos.Rows.Clear();
+
+                var resultado = produtos.Select(c => new
                 {
-                    dtgProdutos.Rows.Add(
-                        item.PK_Produto,
-                        item.Nome,
-                        item.Volume,
-                        item.Descricao,
-                        item.Altura,
-                        item.Largura,
-                        item.Comprimento,
-                        Formatacao.ObterNome(item.Formato),
-                        item.FK_Imagem,
-                        Formatacao.ObterNome(item.Categoria),
-                        Formatacao.ObterNome(item.Marca),
-                        Formatacao.ObterNome(item.Embalagem),
-                        item.FK_UnidadeMedida
-                        );
-                });
+                    PK_Produto = c.PK_Produto,
+                    Nome = c.Nome,
+                    Volume = $"{c.Volume} {c.UnidadeMedida.Sigla}",
+                    Descricao = c.Descricao,
+                    Altura = c.Altura,
+                    Largura = c.Largura,
+                    Comprimento = c.Comprimento,
+                    Formato = c.Formato.Nome,
+                    Categoria = c.Categoria.Nome,
+                    Marca = c.Marca.Nome,
+                    Embalagem = c.Embalagem.Nome
+                })
+                    .ToList();
+                dtgProdutos.DataSource = resultado;
             }
             AtualizarTotalRegistrado();
             AtualizarTotalPesquisado();
@@ -224,11 +210,9 @@ namespace Estoque.Telas_Produto
             colLargura.Visible = resultado.Largura;
             colComprimento.Visible = resultado.Comprimento;
             colFK_Formato.Visible = resultado.Formato;
-            colFK_Imagem.Visible = resultado.Imagem;
             colFK_Categoria.Visible = resultado.Categoria;
             colFK_Marca.Visible = resultado.Marca;
             colFK_Embalagem.Visible = resultado.Embalagem;
-            colFK_UnidadeMedida.Visible = resultado.UnidadeMedida;
         }
         #endregion Metodos - Updates
 
@@ -269,7 +253,7 @@ namespace Estoque.Telas_Produto
         }
         private void btnConfiguracoes_Click(object sender, EventArgs e)
         {
-            AbrirTela(typeof(Estoque.Telas_Produto.FrmConfigurarColunas), this, true);
+            AbrirTela(typeof(FrmConfigurarColunas), this, true, UCProdutos_VisibleChanged);
         }
         #endregion Eventos - Btn
     }

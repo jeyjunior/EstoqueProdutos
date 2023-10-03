@@ -25,10 +25,12 @@ namespace EstoqueProdutos.Entidades
         public int? FK_Embalagem { get; set; }
         public int? FK_UnidadeMedida { get; set; }
 
-        public virtual Categoria Categoria { get; set; }
         public virtual Formato Formato { get; set; }
+        public virtual Imagem Imagem { get; set; }
+        public virtual Categoria Categoria { get; set; }
         public virtual Marca Marca { get; set; }
         public virtual Embalagem Embalagem { get; set; }
+        public virtual UnidadeMedida UnidadeMedida { get; set; }
     }
 
     public class PesquisaProdutoSimples 

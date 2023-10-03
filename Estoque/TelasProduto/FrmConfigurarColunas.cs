@@ -27,7 +27,7 @@ namespace Estoque.Telas_Produto
 
         private ConfigColunasProduto? colunasGridProdutos;
 
-        public FrmConfigurarColunas()
+        public FrmConfigurarColunas(IUCGerenciadorDeTelas gerenciadorDeTelas) : base(gerenciadorDeTelas)
         {
             InitializeComponent();
 
@@ -105,12 +105,6 @@ namespace Estoque.Telas_Produto
                 Alerta.Erro("Falha ao carregar configurações!");
             }
         }
-
-        private void btnLimpar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             try
@@ -120,12 +114,18 @@ namespace Estoque.Telas_Produto
                 if (resultado)
                 {
                     Alerta.Confirmacao("Configuração salva!");
+                    btnFechar.PerformClick();
                 }
             }
             catch (Exception ex)
             {
                 Mensagem.Erro("Erro: " + ex.Message);
             }
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            Fechar();
         }
     }
 }

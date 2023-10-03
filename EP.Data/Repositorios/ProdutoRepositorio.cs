@@ -57,30 +57,33 @@ namespace EstoqueProdutos.Repositorios
                "       Categoria.*,\n" +
                "       Formato.*,\n" +
                "       Marca.*,\n" +
-               "       Embalagem.*\n" +
+               "       Embalagem.*,\n" +
+               "       UnidadeMedida.*\n" +
                "FROM Produto\n" +
                "       INNER JOIN Categoria ON Categoria.PK_Categoria = Produto.FK_Categoria\n" +
                "       INNER JOIN Formato ON Formato.PK_Formato = Produto.FK_Formato\n" +
                "       INNER JOIN Marca ON Marca.PK_Marca = Produto.FK_Marca\n" +
                "       INNER JOIN Embalagem ON Embalagem.PK_Embalagem = Produto.FK_Embalagem\n" +
+               "       INNER JOIN UnidadeMedida ON UnidadeMedida.PK_UnidadeMedida = Produto.FK_UnidadeMedida\n" +
                " " + (condicao != "" ? where + condicao : "");
 
 
             using (SqlConnection connection = new SqlConnection(conexao))
             {
                 connection.Open();
-                return connection.Query<Produto, Categoria, Formato,Marca,Embalagem, Produto>(
+                return connection.Query<Produto, Categoria, Formato, Marca,Embalagem, UnidadeMedida, Produto>(
                     sql: sql, 
-                    map: (produto, categoria, formato, marca, embalagem) => 
+                    map: (produto, categoria, formato, marca, embalagem, unidadeMedida) => 
                     {
                         produto.Categoria = categoria;
                         produto.Formato = formato;
                         produto.Marca = marca;
                         produto.Embalagem = embalagem;  
+                        produto.UnidadeMedida = unidadeMedida;
                         return produto;
                     }, 
                     pesquisarProduto,
-                    splitOn: "PK_Categoria, PK_Formato, PK_Marca, PK_Embalagem"); //,FK_Formato,FK_Marca,FK_Embalagem
+                    splitOn: "PK_Categoria, PK_Formato, PK_Marca, PK_Embalagem, PK_UnidadeMedida"); //,FK_Formato,FK_Marca,FK_Embalagem
             }
         }
     }

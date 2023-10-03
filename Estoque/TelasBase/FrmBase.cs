@@ -20,9 +20,21 @@ namespace Estoque.Telas_Base
         {
         }
 
+        public FrmBase(IUCGerenciadorDeTelas gerenciadorDeTelas)
+        {
+            this.gerenciadorDeTelas = gerenciadorDeTelas;
+        }
+
         public void Fechar()
         {
-            gerenciadorDeTelas.FecharTela(this.GetType());
+            if(gerenciadorDeTelas != null)
+            {
+                gerenciadorDeTelas.FecharTela(this.GetType());
+            }
+            else
+            {
+                this.Close();
+            }
         }
     }
 }

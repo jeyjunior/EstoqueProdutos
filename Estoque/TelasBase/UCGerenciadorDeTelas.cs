@@ -27,21 +27,27 @@ namespace Estoque.Telas_Base
             InitializeComponent();
         }
 
-
-        public void AbrirTela<T>() where T : Form, new()
+        public void Abrirtela(Type tela, bool travarTela)
         {
-            try
-            {
-                T frm = new T();
-                frm.ShowDialog();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            AbrirTela(tela, null, travarTela);
         }
-
-        public void AbrirTela(Type tela, IUCGerenciadorDeTelas ucGestor, bool travarTela = false, FormClosedEventHandler eFecharFilho = null) 
+        public void Abrirtela(Type tela, bool travarTela, FormClosedEventHandler eFecharFilho)
+        {
+            AbrirTela(tela, null, travarTela, eFecharFilho);
+        }
+        public void Abrirtela(Type tela, IUCGerenciadorDeTelas ucGestor)
+        {
+            AbrirTela(tela, ucGestor, false);
+        }
+        public void Abrirtela(Type tela, IUCGerenciadorDeTelas ucGestor, FormClosedEventHandler eFecharFilho)
+        {
+            AbrirTela(tela, ucGestor, false, eFecharFilho);
+        }
+        public void Abrirtela(Type tela, FormClosedEventHandler eFecharFilho)
+        {
+            AbrirTela(tela, null, false, eFecharFilho);
+        }
+        public void AbrirTela(Type tela, IUCGerenciadorDeTelas ucGestor = null, bool travarTela = false, FormClosedEventHandler eFecharFilho = null) 
         {
             try
             {
@@ -53,7 +59,12 @@ namespace Estoque.Telas_Base
                 }
                 else
                 {
-                    Form telaNova = (Form)Activator.CreateInstance(tela, ucGestor);
+                    Form telaNova;
+
+                    if (ucGestor != null)
+                        telaNova = (Form)Activator.CreateInstance(tela, ucGestor);
+                    else
+                        telaNova = (Form)Activator.CreateInstance(tela);
 
                     FormsInstanciados.Add(telaNova);
 
@@ -72,6 +83,7 @@ namespace Estoque.Telas_Base
                 Mensagem.Erro("Erro: " + ex.Message, "Falha ao abrir telas!");
             }
         }
+
         public void FecharTela(Type tipoTela)
         {
             var telaEncontrada = FormsInstanciados.FirstOrDefault(f => f.GetType() == tipoTela);
@@ -86,6 +98,5 @@ namespace Estoque.Telas_Base
         {
             return ObjetoGenerico;
         }
-
     }
 }
