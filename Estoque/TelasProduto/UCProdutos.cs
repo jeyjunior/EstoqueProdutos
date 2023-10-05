@@ -57,6 +57,7 @@ namespace Estoque.Telas_Produto
                 BindComboBoxEmbalagem();
                 AtualizarTotalRegistrado();
                 AtualizarTotalPesquisado();
+                btnPesquisar.PerformClick();
             }
             catch (SqlException ex)
             {
@@ -152,13 +153,13 @@ namespace Estoque.Telas_Produto
             if (produtos != null)
             {
                 Cursor.Current = Cursors.WaitCursor;
-                //dtgProdutos.Rows.Clear();
+                //dtgProdutos.DataSource = null;
 
                 var resultado = produtos.Select(c => new
                 {
                     PK_Produto = c.PK_Produto,
                     Nome = c.Nome,
-                    Volume = $"{c.Volume} {c.UnidadeMedida.Sigla}",
+                    Volume = (c.Volume != null) ? $"{c.Volume} {c.UnidadeMedida.Sigla}" : "",
                     Descricao = c.Descricao,
                     Altura = c.Altura,
                     Largura = c.Largura,
@@ -169,7 +170,29 @@ namespace Estoque.Telas_Produto
                     Embalagem = c.Embalagem.Nome
                 })
                     .ToList();
-                dtgProdutos.DataSource = resultado;
+
+                if (resultado.Count == 0)
+                {
+                    dtgProdutos.DataSource = produtos.Select(c => new
+                    {
+                        PK_Produto = 0,
+                        Nome = "",
+                        Volume = "",
+                        Descricao = "",
+                        Altura = "",
+                        Largura = "",
+                        Comprimento = "",
+                        Formato = "",
+                        Categoria = "",
+                        Marca = "",
+                        Embalagem = ""
+                    })
+                    .ToList();
+                }
+                else
+                {
+                    dtgProdutos.DataSource = resultado;
+                }
             }
             AtualizarTotalRegistrado();
             AtualizarTotalPesquisado();
@@ -183,9 +206,6 @@ namespace Estoque.Telas_Produto
             cboEmbalagem.SelectedValue = 0;
             cboMarca.SelectedValue = 0;
             cboFormato.SelectedValue = 0;
-
-            if (dtgProdutos.Rows.Count > 0)
-                dtgProdutos.Rows.Clear();
         }
         private void AtualizarTotalRegistrado()
         {
@@ -195,24 +215,6 @@ namespace Estoque.Telas_Produto
         private void AtualizarTotalPesquisado()
         {
             lblTotalPesquisado.Text = "Pesquisado: " + dtgProdutos.Rows.Count;
-        }
-
-        private void AtualizarConfiguracaoDoGrid()
-        {
-            var PK_UsuarioLogado = usuarioLogado.ObterUsuarioLogado().PK_Usuario;
-            var resultado = configColunasProdutoRepositorio.ObterTabela(PK_UsuarioLogado).FirstOrDefault();
-
-            colPK_Produto.Visible = false;
-            colNome.Visible = resultado.Nome;
-            colVolume.Visible = resultado.Volume;
-            colDescricao.Visible = resultado.Descricao;
-            colAltura.Visible = resultado.Altura;
-            colLargura.Visible = resultado.Largura;
-            colComprimento.Visible = resultado.Comprimento;
-            colFK_Formato.Visible = resultado.Formato;
-            colFK_Categoria.Visible = resultado.Categoria;
-            colFK_Marca.Visible = resultado.Marca;
-            colFK_Embalagem.Visible = resultado.Embalagem;
         }
         #endregion Metodos - Updates
 
@@ -230,7 +232,7 @@ namespace Estoque.Telas_Produto
             if (this.Visible)
             {
                 btnPesquisar.PerformClick();
-                AtualizarConfiguracaoDoGrid();
+                //AtualizarConfiguracaoDoGrid();
             }
         }
         #endregion Eventos - UserControl
@@ -254,6 +256,10 @@ namespace Estoque.Telas_Produto
         private void btnConfiguracoes_Click(object sender, EventArgs e)
         {
             AbrirTela(typeof(FrmConfigurarColunas), this, true, UCProdutos_VisibleChanged);
+        }
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            LimparComponentes();
         }
         #endregion Eventos - Btn
     }
