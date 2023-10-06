@@ -2,8 +2,6 @@
 using EP.Data.sql;
 using EstoqueProdutos.Interfaces;
 using Microsoft.Data.SqlClient;
-using Microsoft.IdentityModel.Protocols;
-using Microsoft.VisualBasic;
 
 namespace EstoqueProdutos.Repositorios
 {
@@ -14,7 +12,6 @@ namespace EstoqueProdutos.Repositorios
     public partial class RepositorioGenerico<T> : IRepositorio<T>
     {
         protected readonly string conexao = Conexao.ConexaoBase;
-
         public virtual IEnumerable<T> ObterTabela()
         {
             using (SqlConnection connection = new SqlConnection(conexao))
@@ -25,11 +22,45 @@ namespace EstoqueProdutos.Repositorios
                 return resultado;
             }
         }
+        public virtual bool ValidarValorExistente(string coluna, dynamic valor)
+        {
+            if (coluna == "" || valor  == null) 
+            {
+                throw new Exception("Não foi possível validar valores existente devido a coluna ou valor estarem inválidos!");
+                return false;
+            }
+
+            using (SqlConnection connection = new SqlConnection(conexao))
+            {
+                connection.Open();
+                string sql = $"SELECT * FROM {typeof(T).Name} WHERE {coluna} = '{valor}'";
+                var resultado = connection.QueryFirstOrDefault<bool>(sql);
+                return resultado;
+            }
+        }
         public virtual int ObterContagemTotal(string nomeEntidade)
         {
             if(nomeEntidade != "")
             {
                 string sql = "SELECT COUNT(*) AS Total FROM " + nomeEntidade;
+
+                using (var connection = new SqlConnection(Conexao.ConexaoBase))
+                {
+                    connection.Open();
+                    return connection.QueryFirstOrDefault<int>(sql);
+                }
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public virtual int ObterContagemTotal()
+        {
+            if (typeof(T).Name != "")
+            {
+                string sql = "SELECT COUNT(*) AS Total FROM " + typeof(T).Name;
 
                 using (var connection = new SqlConnection(Conexao.ConexaoBase))
                 {

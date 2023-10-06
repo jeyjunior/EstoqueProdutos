@@ -72,12 +72,10 @@
             colFK_Embalagem = new DataGridViewTextBoxColumn();
             tlpBotoes = new TableLayoutPanel();
             btnPesquisar = new Button();
-            btnCancelar = new Button();
-            btnSalvar = new Button();
-            btnCadastrar = new Button();
-            btnAlterar = new Button();
             btnLimpar = new Button();
-            btnExcluir = new Button();
+            btnAlterar = new Button();
+            btnCadastrar = new Button();
+            btnOutrosCadastro = new Button();
             tlpTextBox = new TableLayoutPanel();
             txtNomeProduto = new TextBox();
             lblNomeProduto = new Label();
@@ -184,7 +182,7 @@
             lblTotalPesquisado.Margin = new Padding(0);
             lblTotalPesquisado.Name = "lblTotalPesquisado";
             lblTotalPesquisado.Padding = new Padding(15, 0, 0, 0);
-            lblTotalPesquisado.Size = new Size(271, 20);
+            lblTotalPesquisado.Size = new Size(248, 20);
             lblTotalPesquisado.TabIndex = 14;
             lblTotalPesquisado.Text = "Pesquisado: 100000";
             lblTotalPesquisado.TextAlign = ContentAlignment.MiddleLeft;
@@ -529,23 +527,21 @@
             // 
             // tlpBotoes
             // 
-            tlpBotoes.ColumnCount = 9;
-            tlpBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
+            tlpBotoes.ColumnCount = 6;
             tlpBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
             tlpBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
             tlpBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
             tlpBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
             tlpBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
             tlpBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tlpBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
-            tlpBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 35F));
+            tlpBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tlpBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tlpBotoes.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tlpBotoes.Controls.Add(btnPesquisar, 0, 0);
-            tlpBotoes.Controls.Add(btnCancelar, 1, 0);
-            tlpBotoes.Controls.Add(btnSalvar, 2, 0);
-            tlpBotoes.Controls.Add(btnCadastrar, 5, 0);
-            tlpBotoes.Controls.Add(btnAlterar, 4, 0);
-            tlpBotoes.Controls.Add(btnLimpar, 3, 0);
-            tlpBotoes.Controls.Add(btnExcluir, 8, 0);
+            tlpBotoes.Controls.Add(btnLimpar, 1, 0);
+            tlpBotoes.Controls.Add(btnAlterar, 3, 0);
+            tlpBotoes.Controls.Add(btnCadastrar, 4, 0);
+            tlpBotoes.Controls.Add(btnOutrosCadastro, 2, 0);
             tlpBotoes.Dock = DockStyle.Fill;
             tlpBotoes.Location = new Point(0, 150);
             tlpBotoes.Margin = new Padding(0);
@@ -567,51 +563,10 @@
             btnPesquisar.UseVisualStyleBackColor = true;
             btnPesquisar.Click += btnPesquisar_Click;
             // 
-            // btnCancelar
-            // 
-            btnCancelar.Image = Properties.Resources.cancel_outline_1;
-            btnCancelar.Location = new Point(490, 0);
-            btnCancelar.Margin = new Padding(0);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(35, 35);
-            btnCancelar.TabIndex = 16;
-            btnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnCancelar.UseVisualStyleBackColor = true;
-            // 
-            // btnSalvar
-            // 
-            btnSalvar.Image = Properties.Resources.save_outline_1;
-            btnSalvar.Location = new Point(455, 0);
-            btnSalvar.Margin = new Padding(0);
-            btnSalvar.Name = "btnSalvar";
-            btnSalvar.Size = new Size(35, 35);
-            btnSalvar.TabIndex = 15;
-            btnSalvar.UseVisualStyleBackColor = true;
-            // 
-            // btnCadastrar
-            // 
-            btnCadastrar.Image = Properties.Resources.new_outline_1;
-            btnCadastrar.Location = new Point(350, 0);
-            btnCadastrar.Margin = new Padding(0);
-            btnCadastrar.Name = "btnCadastrar";
-            btnCadastrar.Size = new Size(35, 35);
-            btnCadastrar.TabIndex = 3;
-            btnCadastrar.UseVisualStyleBackColor = true;
-            // 
-            // btnAlterar
-            // 
-            btnAlterar.Image = Properties.Resources.edit_outline_1;
-            btnAlterar.Location = new Point(385, 0);
-            btnAlterar.Margin = new Padding(0);
-            btnAlterar.Name = "btnAlterar";
-            btnAlterar.Size = new Size(35, 35);
-            btnAlterar.TabIndex = 4;
-            btnAlterar.UseVisualStyleBackColor = true;
-            // 
             // btnLimpar
             // 
             btnLimpar.Image = Properties.Resources.erase_outline_1;
-            btnLimpar.Location = new Point(420, 0);
+            btnLimpar.Location = new Point(490, 0);
             btnLimpar.Margin = new Padding(0);
             btnLimpar.Name = "btnLimpar";
             btnLimpar.Size = new Size(35, 35);
@@ -619,15 +574,38 @@
             btnLimpar.UseVisualStyleBackColor = true;
             btnLimpar.Click += btnLimpar_Click;
             // 
-            // btnExcluir
+            // btnAlterar
             // 
-            btnExcluir.Image = Properties.Resources.delete_outline_1;
-            btnExcluir.Location = new Point(0, 0);
-            btnExcluir.Margin = new Padding(0);
-            btnExcluir.Name = "btnExcluir";
-            btnExcluir.Size = new Size(35, 35);
-            btnExcluir.TabIndex = 5;
-            btnExcluir.UseVisualStyleBackColor = true;
+            btnAlterar.Image = Properties.Resources.edit_outline_1;
+            btnAlterar.Location = new Point(420, 0);
+            btnAlterar.Margin = new Padding(0);
+            btnAlterar.Name = "btnAlterar";
+            btnAlterar.Size = new Size(35, 35);
+            btnAlterar.TabIndex = 4;
+            btnAlterar.UseVisualStyleBackColor = true;
+            btnAlterar.Click += btnAlterar_Click;
+            // 
+            // btnCadastrar
+            // 
+            btnCadastrar.Image = Properties.Resources.new_outline_1;
+            btnCadastrar.Location = new Point(385, 0);
+            btnCadastrar.Margin = new Padding(0);
+            btnCadastrar.Name = "btnCadastrar";
+            btnCadastrar.Size = new Size(35, 35);
+            btnCadastrar.TabIndex = 3;
+            btnCadastrar.UseVisualStyleBackColor = true;
+            btnCadastrar.Click += btnCadastrar_Click;
+            // 
+            // btnOutrosCadastro
+            // 
+            btnOutrosCadastro.Image = Properties.Resources.new_outline_2;
+            btnOutrosCadastro.Location = new Point(455, 0);
+            btnOutrosCadastro.Margin = new Padding(0);
+            btnOutrosCadastro.Name = "btnOutrosCadastro";
+            btnOutrosCadastro.Size = new Size(35, 35);
+            btnOutrosCadastro.TabIndex = 15;
+            btnOutrosCadastro.UseVisualStyleBackColor = true;
+            btnOutrosCadastro.Click += btnOutrosCadastro_Click;
             // 
             // tlpTextBox
             // 
@@ -743,9 +721,6 @@
         private DataGridView dtgProdutos;
         private TableLayoutPanel tlpBotoes;
         private Button btnPesquisar;
-        private Button btnExcluir;
-        private Button btnCancelar;
-        private Button btnSalvar;
         private Button btnCadastrar;
         private Button btnAlterar;
         private Button btnLimpar;
@@ -768,5 +743,6 @@
         private DataGridViewTextBoxColumn colFK_Categoria;
         private DataGridViewTextBoxColumn colFK_Marca;
         private DataGridViewTextBoxColumn colFK_Embalagem;
+        private Button btnOutrosCadastro;
     }
 }

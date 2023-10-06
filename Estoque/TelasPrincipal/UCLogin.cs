@@ -174,5 +174,13 @@ namespace Estoque.Telas_Principal
             else
                 txtEmail.Focus();
         }
+
+        private void txtSenha_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnEntrar.PerformClick();
+            }
+        }
     }
 }

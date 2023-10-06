@@ -1,6 +1,6 @@
-﻿namespace Estoque.Telas_Usuario
+﻿namespace Estoque.Telas_Produto
 {
-    partial class FrmCadastrarSetores_Cargos
+    partial class FrmCadastrarComplementosProduto
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,7 @@
             panel2 = new Panel();
             tlpTab = new TableLayoutPanel();
             btnCargo = new Button();
-            btnSetor = new Button();
+            btnCategoria = new Button();
             panel1 = new Panel();
             pCentral = new Panel();
             tblPrincipal.SuspendLayout();
@@ -79,7 +79,7 @@
             tlpTab.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
             tlpTab.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
             tlpTab.Controls.Add(btnCargo, 0, 0);
-            tlpTab.Controls.Add(btnSetor, 0, 0);
+            tlpTab.Controls.Add(btnCategoria, 0, 0);
             tlpTab.Dock = DockStyle.Fill;
             tlpTab.Location = new Point(15, 0);
             tlpTab.Margin = new Padding(0);
@@ -107,22 +107,22 @@
             btnCargo.UseVisualStyleBackColor = true;
             btnCargo.Click += btnCargo_Click;
             // 
-            // btnSetor
+            // btnCategoria
             // 
-            btnSetor.Cursor = Cursors.Hand;
-            btnSetor.Dock = DockStyle.Fill;
-            btnSetor.FlatAppearance.BorderSize = 0;
-            btnSetor.FlatStyle = FlatStyle.Flat;
-            btnSetor.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSetor.ForeColor = Color.White;
-            btnSetor.Location = new Point(0, 0);
-            btnSetor.Margin = new Padding(0);
-            btnSetor.Name = "btnSetor";
-            btnSetor.Size = new Size(171, 40);
-            btnSetor.TabIndex = 1;
-            btnSetor.Text = "Setor";
-            btnSetor.UseVisualStyleBackColor = true;
-            btnSetor.Click += btnSetor_Click;
+            btnCategoria.Cursor = Cursors.Hand;
+            btnCategoria.Dock = DockStyle.Fill;
+            btnCategoria.FlatAppearance.BorderSize = 0;
+            btnCategoria.FlatStyle = FlatStyle.Flat;
+            btnCategoria.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCategoria.ForeColor = Color.White;
+            btnCategoria.Location = new Point(0, 0);
+            btnCategoria.Margin = new Padding(0);
+            btnCategoria.Name = "btnCategoria";
+            btnCategoria.Size = new Size(171, 40);
+            btnCategoria.TabIndex = 1;
+            btnCategoria.Text = "Categoria";
+            btnCategoria.UseVisualStyleBackColor = true;
+            btnCategoria.Click += btnCadastro_Click;
             // 
             // panel1
             // 
@@ -145,7 +145,7 @@
             pCentral.Size = new Size(514, 466);
             pCentral.TabIndex = 3;
             // 
-            // FrmCadastrarSetores_Cargos
+            // FrmCadastrarComplementosProduto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -154,9 +154,9 @@
             Controls.Add(tblPrincipal);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MinimumSize = new Size(560, 560);
-            Name = "FrmCadastrarSetores_Cargos";
+            Name = "FrmCadastrarComplementosProduto";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Cadastrar setor e cargo";
+            Text = "Cadastrar complementos dos produtos";
             FormClosed += FrmCadastrarSetores_Cargos_FormClosed;
             Load += FrmCadastrarSetores_Cargos_Load;
             tblPrincipal.ResumeLayout(false);
@@ -168,7 +168,7 @@
 
         private TableLayoutPanel tblPrincipal;
         private TableLayoutPanel tlpTab;
-        private Button btnSetor;
+        private Button btnCategoria;
         private Button btnCargo;
         private Panel panel2;
         private Panel panel1;

@@ -155,14 +155,14 @@ namespace Estoque.Telas_Usuario
 
             try
             {
-                string mensagem = "Tem certeza que deseja incluir esse cargo?\n";
+                string mensagem = "Tem certeza que deseja incluir este cargo?\n";
                 string novoCargo = "Cargo: " + txtCargo.Text.Trim();
 
                 var resultado = Mensagem.Pergunta(mensagem + novoCargo, "Cadastro");
 
                 if (resultado == RespostaCaixaDialogo.Sim)
                 {
-                    var resultadoInsert = cargoRepositorio.InserirDadosNaTabela(new Cargo() { NomeCargo = txtCargo.TextoFormatoLikeSQL().Replace("%", "").Trim(), FK_Setor = ((Setor)cboSetor.SelectedItem).PK_Setor });
+                    var resultadoInsert = cargoRepositorio.InserirDadosNaTabela(new Cargo() { NomeCargo = txtCargo.TextoFormatoLikeSQL(), FK_Setor = ((Setor)cboSetor.SelectedItem).PK_Setor });
 
                     if (resultadoInsert)
                     {

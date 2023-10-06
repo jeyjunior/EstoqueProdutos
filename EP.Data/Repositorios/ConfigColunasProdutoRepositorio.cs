@@ -25,7 +25,6 @@ namespace EstoqueProdutos.Repositorios
                 return connection.Query<ConfigColunasProduto>(sql, new { FK_Usuario = FK_Usuario });
             }
         }
-
         public bool AtualizarConfiguracao(ConfigColunasProduto configColunasProduto) 
         {
             string sql = "" +

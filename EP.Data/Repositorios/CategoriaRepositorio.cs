@@ -1,29 +1,30 @@
 ﻿using Dapper;
-using EP.Data.Entidades;
 using EP.Data.Interfaces;
 using EP.Data.sql;
 using EstoqueProdutos.Entidades;
 using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace EstoqueProdutos.Repositorios
 {
-    public class CategoriaRepositorio : ICategoriaRepositorio
+    public class CategoriaRepositorio : RepositorioGenerico<Categoria>, ICategoriaRepositorio
     {
-        public virtual IEnumerable<Categoria> ObterTabela()
+        public virtual IEnumerable<Categoria> ObterTabela(Categoria categoria)
         {
+            string sql = "";
+            string condicao = "";
+
+            condicao = "  WHERE     Categoria.Nome Like @Nome \n";
+            condicao += " AND       Categoria.Descricao Like @Descricao \n";
+
+            sql = "SELECT * FROM Categoria\n" + condicao;
+
             using (var connection = new SqlConnection(Conexao.ConexaoBase))
             {
                 connection.Open();
-                string sql = "SELECT * FROM Categoria";
-                return connection.Query<Categoria>(sql);
+                return connection.Query<Categoria>(sql, categoria);
             }
         }
-
         public virtual bool InserirDadosNaTabela(Categoria categoria)
         {
             using (SqlConnection connection = new SqlConnection(Conexao.ConexaoBase))

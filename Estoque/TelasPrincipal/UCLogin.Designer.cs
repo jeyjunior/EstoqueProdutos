@@ -219,6 +219,7 @@
             txtSenha.PasswordChar = '*';
             txtSenha.Size = new Size(263, 25);
             txtSenha.TabIndex = 6;
+            txtSenha.KeyDown += txtSenha_KeyDown;
             // 
             // tblEmail
             // 

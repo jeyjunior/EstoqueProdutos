@@ -21,7 +21,6 @@ namespace Estoque.Telas_Produto
 
         private readonly IConfigColunasProdutoRepositorio configColunasProdutoRepositorio;
         private readonly IUsuarioLogado usuarioLogado;
-
         #endregion Interfaces
 
         #region Colecoes
@@ -56,7 +55,6 @@ namespace Estoque.Telas_Produto
                 BindComboBoxFormato();
                 BindComboBoxEmbalagem();
                 AtualizarTotalRegistrado();
-                AtualizarTotalPesquisado();
                 btnPesquisar.PerformClick();
             }
             catch (SqlException ex)
@@ -153,8 +151,6 @@ namespace Estoque.Telas_Produto
             if (produtos != null)
             {
                 Cursor.Current = Cursors.WaitCursor;
-                //dtgProdutos.DataSource = null;
-
                 var resultado = produtos.Select(c => new
                 {
                     PK_Produto = c.PK_Produto,
@@ -206,6 +202,8 @@ namespace Estoque.Telas_Produto
             cboEmbalagem.SelectedValue = 0;
             cboMarca.SelectedValue = 0;
             cboFormato.SelectedValue = 0;
+
+            txtNomeProduto.Focus();
         }
         private void AtualizarTotalRegistrado()
         {
@@ -261,6 +259,26 @@ namespace Estoque.Telas_Produto
         {
             LimparComponentes();
         }
+        private void btnOutrosCadastro_Click(object sender, EventArgs e)
+        {
+            AbrirTela(typeof(FrmCadastrarComplementosProduto), this, true, FilhoFechado);
+        }
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+
+        }
         #endregion Eventos - Btn
+
+        #region Eventos - Filhos 
+        private void FilhoFechado(object? sender, FormClosedEventArgs e)
+        {
+            InicializarComponentes();
+            AtualizarTotalRegistrado();
+        }
+        #endregion Eventos - Filhos
     }
 }

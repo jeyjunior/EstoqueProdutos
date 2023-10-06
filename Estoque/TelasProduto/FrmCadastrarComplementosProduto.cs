@@ -11,36 +11,33 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Estoque.Telas_Usuario
+namespace Estoque.Telas_Produto
 {
-    public partial class FrmCadastrarSetores_Cargos : FrmTabControl
+    public partial class FrmCadastrarComplementosProduto : FrmTabControl
     {
-        public FrmCadastrarSetores_Cargos(IUCGerenciadorDeTelas gerenciadorDeTelas)
+        public FrmCadastrarComplementosProduto(IUCGerenciadorDeTelas gerenciadorDeTelas)
         {
             InitializeComponent();
             this.gerenciadorDeTelas = gerenciadorDeTelas;
         }
-
         private void btnCargo_Click(object sender, EventArgs e)
         {
             AlterarCorDoBotaoSelecionado(tlpTab, (Button)sender);
-            AbrirTela(typeof(UCCadastrarCargo), pCentral, true);
+            //AbrirTela(typeof(UCCadastrarCargo), pCentral, true);
         }
-
-        private void btnSetor_Click(object sender, EventArgs e)
+        private void btnCadastro_Click(object sender, EventArgs e)
         {
             AlterarCorDoBotaoSelecionado(tlpTab, (Button)sender);
-            AbrirTela(typeof(UCCadastrarSetor), pCentral, true);
+            AbrirTela(typeof(UCCadastrarCategoria), pCentral, true);
         }
-
         private void FrmCadastrarSetores_Cargos_Load(object sender, EventArgs e)
         {
-            btnSetor.PerformClick();
+            btnCategoria.PerformClick();
         }
-
         private void FrmCadastrarSetores_Cargos_FormClosed(object sender, FormClosedEventArgs e)
         {
             Fechar();
         }
     }
 }
+

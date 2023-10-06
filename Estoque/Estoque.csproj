@@ -29,13 +29,22 @@
     <Compile Update="TelasModelos\FrmEstruturaBaseTabs.cs" />
     <Compile Update="TelasModelos\FrmEstruturaBaseBtnsGenericos.cs" />
     <Compile Update="TelasModelos\FrmEstruturaBaseCadastro.cs" />
+    <Compile Update="TelasProduto\FrmCadastrarComplementosProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="TelasProduto\FrmCadastrarProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="TelasProduto\FrmConfigurarColunas.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="TelasProduto\UCCadastrarCategoria.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="TelasProduto\UCProdutos.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="TelasUsuario\FrmCadastrarSetores_Cargos.cs" />
+    <Compile Update="TelasUsuario\FrmCadastrarComplementosUsuario.cs" />
     <Compile Update="TelasUsuario\FrmAlterarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>

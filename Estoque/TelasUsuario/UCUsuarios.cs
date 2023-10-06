@@ -360,9 +360,9 @@ namespace Estoque.Telas_Usuario
             ObterUsuarioDaLinhaSelecionar();
             AtivarUsuarioSelecionado();
         }
-        private void btnSetorCargo_Click(object sender, EventArgs e)
+        private void btnOutrosCadastro_Click(object sender, EventArgs e)
         {
-            AbrirTela(typeof(FrmCadastrarSetores_Cargos), this, true, FilhoFechado);
+            AbrirTela(typeof(FrmCadastrarComplementosUsuario), this, true, FilhoFechado);
         }
         private void btnCadastrarUsuario_Click(object sender, EventArgs e)
         {

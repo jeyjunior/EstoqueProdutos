@@ -106,14 +106,14 @@ namespace Estoque.Telas_Usuario
 
             try
             {
-                string mensagem = "Tem certeza que deseja incluir esse setor?\n";
+                string mensagem = "Tem certeza que deseja incluir este setor?\n";
                 string novoSetor = "Setor: " + txtSetor.Text.Trim();
 
                 var resultado = Mensagem.Pergunta(mensagem + novoSetor, "Cadastro");
 
                 if (resultado == RespostaCaixaDialogo.Sim)
                 {
-                    var resultadoInsert = setorRepositorio.InserirDadosNaTabela(new Setor() { NomeSetor = txtSetor.TextoFormatoLikeSQL().Replace("%", "").Trim() });
+                    var resultadoInsert = setorRepositorio.InserirDadosNaTabela(new Setor() { NomeSetor = txtSetor.TextoFormatoLikeSQL() });
 
                     if (resultadoInsert)
                     {
@@ -296,6 +296,5 @@ namespace Estoque.Telas_Usuario
             LayoutBotoes();
         }
         #endregion Eventos
-
     }
 }

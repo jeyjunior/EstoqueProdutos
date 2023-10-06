@@ -61,7 +61,7 @@
             btnDesativar = new Button();
             btnCadastrarUsuario = new Button();
             btnAlterar = new Button();
-            btnSetorCargo = new Button();
+            btnOutrosCadastros = new Button();
             btnLimpar = new Button();
             btnAtivar = new Button();
             tblPrincipal = new TableLayoutPanel();
@@ -250,7 +250,7 @@
             lblTotalPesquisado.Margin = new Padding(0);
             lblTotalPesquisado.Name = "lblTotalPesquisado";
             lblTotalPesquisado.Padding = new Padding(15, 0, 0, 0);
-            lblTotalPesquisado.Size = new Size(271, 20);
+            lblTotalPesquisado.Size = new Size(253, 20);
             lblTotalPesquisado.TabIndex = 14;
             lblTotalPesquisado.Text = "Pesquisado: 100000";
             lblTotalPesquisado.TextAlign = ContentAlignment.MiddleLeft;
@@ -260,11 +260,11 @@
             lblTotalRegistrado.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             lblTotalRegistrado.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             lblTotalRegistrado.ForeColor = SystemColors.ControlLightLight;
-            lblTotalRegistrado.Location = new Point(321, 0);
+            lblTotalRegistrado.Location = new Point(293, 0);
             lblTotalRegistrado.Margin = new Padding(0);
             lblTotalRegistrado.Name = "lblTotalRegistrado";
             lblTotalRegistrado.Padding = new Padding(0, 0, 15, 0);
-            lblTotalRegistrado.Size = new Size(239, 20);
+            lblTotalRegistrado.Size = new Size(267, 20);
             lblTotalRegistrado.TabIndex = 13;
             lblTotalRegistrado.Text = "Registrado: 100000";
             lblTotalRegistrado.TextAlign = ContentAlignment.MiddleRight;
@@ -428,7 +428,7 @@
             tblBotoes.Controls.Add(btnDesativar, 6, 0);
             tblBotoes.Controls.Add(btnCadastrarUsuario, 4, 0);
             tblBotoes.Controls.Add(btnAlterar, 3, 0);
-            tblBotoes.Controls.Add(btnSetorCargo, 2, 0);
+            tblBotoes.Controls.Add(btnOutrosCadastros, 2, 0);
             tblBotoes.Controls.Add(btnLimpar, 1, 0);
             tblBotoes.Controls.Add(btnAtivar, 7, 0);
             tblBotoes.Dock = DockStyle.Fill;
@@ -489,17 +489,17 @@
             btnAlterar.UseVisualStyleBackColor = true;
             btnAlterar.Click += btnAlterar_Click;
             // 
-            // btnSetorCargo
+            // btnOutrosCadastros
             // 
-            btnSetorCargo.Image = Properties.Resources.new_outline_2;
-            btnSetorCargo.Location = new Point(455, 0);
-            btnSetorCargo.Margin = new Padding(0);
-            btnSetorCargo.Name = "btnSetorCargo";
-            btnSetorCargo.Size = new Size(35, 35);
-            btnSetorCargo.TabIndex = 4;
-            toolTip1.SetToolTip(btnSetorCargo, "Setor e Cargo");
-            btnSetorCargo.UseVisualStyleBackColor = true;
-            btnSetorCargo.Click += btnSetorCargo_Click;
+            btnOutrosCadastros.Image = Properties.Resources.new_outline_2;
+            btnOutrosCadastros.Location = new Point(455, 0);
+            btnOutrosCadastros.Margin = new Padding(0);
+            btnOutrosCadastros.Name = "btnOutrosCadastros";
+            btnOutrosCadastros.Size = new Size(35, 35);
+            btnOutrosCadastros.TabIndex = 4;
+            toolTip1.SetToolTip(btnOutrosCadastros, "Setor e Cargo");
+            btnOutrosCadastros.UseVisualStyleBackColor = true;
+            btnOutrosCadastros.Click += btnOutrosCadastro_Click;
             // 
             // btnLimpar
             // 
@@ -584,7 +584,7 @@
         private Button btnDesativar;
         private Button btnCadastrarUsuario;
         private Button btnAlterar;
-        private Button btnSetorCargo;
+        private Button btnOutrosCadastros;
         private Button btnLimpar;
         private DataGridView dtgUsuarios;
         private DataGridViewTextBoxColumn colPK_Usuario;

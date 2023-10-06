@@ -24,15 +24,36 @@ namespace EstoqueProdutos.Formatacao
             }
         }
 
+        /// <summary>
+        /// formato limpo sem %%
+        /// </summary>
+        /// <param name="textBox"></param>
+        /// <returns></returns>
         public static string? TextoFormatoLikeSQL(this TextBox textBox)
         {
             if (textBox.Text.Length > 0)
             {
-                return $"%{textBox.LimparTexto().Replace("'","")}%";
+                return $"{textBox.LimparTexto().Replace("'","").Trim()}";
             }
             else
             {
                 return "";
+            }
+        }
+
+        /// <summary>
+        /// Formatacao: %texto%
+        /// </summary>
+        /// <returns></returns>
+        public static string? AtribuirPorcentagemAoTextoSQL(this string texto)
+        {
+            if (texto.Length > 0)
+            {
+                return $"%{texto.Trim()}%";
+            }
+            else
+            {
+                return "%%";
             }
         }
 
