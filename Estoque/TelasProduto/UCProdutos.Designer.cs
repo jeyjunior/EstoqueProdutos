@@ -61,15 +61,15 @@
             dtgProdutos = new DataGridView();
             colPK_Produto = new DataGridViewTextBoxColumn();
             colNome = new DataGridViewTextBoxColumn();
-            colVolume = new DataGridViewTextBoxColumn();
             colDescricao = new DataGridViewTextBoxColumn();
+            colVolume = new DataGridViewTextBoxColumn();
             colAltura = new DataGridViewTextBoxColumn();
             colLargura = new DataGridViewTextBoxColumn();
             colComprimento = new DataGridViewTextBoxColumn();
-            colFK_Formato = new DataGridViewTextBoxColumn();
             colFK_Categoria = new DataGridViewTextBoxColumn();
-            colFK_Marca = new DataGridViewTextBoxColumn();
             colFK_Embalagem = new DataGridViewTextBoxColumn();
+            colFK_Marca = new DataGridViewTextBoxColumn();
+            colFK_Formato = new DataGridViewTextBoxColumn();
             tlpBotoes = new TableLayoutPanel();
             btnPesquisar = new Button();
             btnLimpar = new Button();
@@ -361,7 +361,7 @@
             dtgProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dtgProdutos.ColumnHeadersHeight = 35;
             dtgProdutos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dtgProdutos.Columns.AddRange(new DataGridViewColumn[] { colPK_Produto, colNome, colVolume, colDescricao, colAltura, colLargura, colComprimento, colFK_Formato, colFK_Categoria, colFK_Marca, colFK_Embalagem });
+            dtgProdutos.Columns.AddRange(new DataGridViewColumn[] { colPK_Produto, colNome, colDescricao, colVolume, colAltura, colLargura, colComprimento, colFK_Categoria, colFK_Embalagem, colFK_Marca, colFK_Formato });
             dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle13.BackColor = Color.FromArgb(246, 246, 246);
             dataGridViewCellStyle13.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
@@ -410,33 +410,33 @@
             dataGridViewCellStyle3.Padding = new Padding(3, 0, 0, 0);
             colNome.DefaultCellStyle = dataGridViewCellStyle3;
             colNome.HeaderText = "Nome";
-            colNome.MinimumWidth = 120;
+            colNome.MinimumWidth = 140;
             colNome.Name = "colNome";
             colNome.ReadOnly = true;
-            // 
-            // colVolume
-            // 
-            colVolume.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colVolume.DataPropertyName = "Volume";
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Padding = new Padding(0, 0, 3, 0);
-            colVolume.DefaultCellStyle = dataGridViewCellStyle4;
-            colVolume.HeaderText = "Volume";
-            colVolume.MinimumWidth = 120;
-            colVolume.Name = "colVolume";
-            colVolume.ReadOnly = true;
             // 
             // colDescricao
             // 
             colDescricao.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             colDescricao.DataPropertyName = "Descricao";
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.Padding = new Padding(3, 0, 0, 0);
-            colDescricao.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.Padding = new Padding(3, 0, 0, 0);
+            colDescricao.DefaultCellStyle = dataGridViewCellStyle4;
             colDescricao.HeaderText = "Descrição";
-            colDescricao.MinimumWidth = 120;
+            colDescricao.MinimumWidth = 240;
             colDescricao.Name = "colDescricao";
             colDescricao.ReadOnly = true;
+            // 
+            // colVolume
+            // 
+            colVolume.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            colVolume.DataPropertyName = "Volume";
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Padding = new Padding(0, 0, 3, 0);
+            colVolume.DefaultCellStyle = dataGridViewCellStyle5;
+            colVolume.HeaderText = "Volume";
+            colVolume.MinimumWidth = 120;
+            colVolume.Name = "colVolume";
+            colVolume.ReadOnly = true;
             // 
             // colAltura
             // 
@@ -447,7 +447,7 @@
             dataGridViewCellStyle6.Padding = new Padding(0, 0, 3, 0);
             colAltura.DefaultCellStyle = dataGridViewCellStyle6;
             colAltura.HeaderText = "Altura";
-            colAltura.MinimumWidth = 120;
+            colAltura.MinimumWidth = 70;
             colAltura.Name = "colAltura";
             colAltura.ReadOnly = true;
             // 
@@ -459,7 +459,7 @@
             dataGridViewCellStyle7.Padding = new Padding(0, 0, 3, 0);
             colLargura.DefaultCellStyle = dataGridViewCellStyle7;
             colLargura.HeaderText = "Largura";
-            colLargura.MinimumWidth = 120;
+            colLargura.MinimumWidth = 70;
             colLargura.Name = "colLargura";
             colLargura.ReadOnly = true;
             colLargura.Width = 120;
@@ -473,33 +473,33 @@
             dataGridViewCellStyle8.Padding = new Padding(0, 0, 3, 0);
             colComprimento.DefaultCellStyle = dataGridViewCellStyle8;
             colComprimento.HeaderText = "Comprimento";
-            colComprimento.MinimumWidth = 120;
+            colComprimento.MinimumWidth = 70;
             colComprimento.Name = "colComprimento";
             colComprimento.ReadOnly = true;
-            // 
-            // colFK_Formato
-            // 
-            colFK_Formato.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colFK_Formato.DataPropertyName = "Formato";
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.Padding = new Padding(3, 0, 0, 0);
-            colFK_Formato.DefaultCellStyle = dataGridViewCellStyle9;
-            colFK_Formato.HeaderText = "Formato";
-            colFK_Formato.MinimumWidth = 120;
-            colFK_Formato.Name = "colFK_Formato";
-            colFK_Formato.ReadOnly = true;
             // 
             // colFK_Categoria
             // 
             colFK_Categoria.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             colFK_Categoria.DataPropertyName = "Categoria";
-            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.Padding = new Padding(3, 0, 0, 0);
-            colFK_Categoria.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.Padding = new Padding(3, 0, 0, 0);
+            colFK_Categoria.DefaultCellStyle = dataGridViewCellStyle9;
             colFK_Categoria.HeaderText = "Categoria";
             colFK_Categoria.MinimumWidth = 120;
             colFK_Categoria.Name = "colFK_Categoria";
             colFK_Categoria.ReadOnly = true;
+            // 
+            // colFK_Embalagem
+            // 
+            colFK_Embalagem.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            colFK_Embalagem.DataPropertyName = "Embalagem";
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.Padding = new Padding(3, 0, 0, 0);
+            colFK_Embalagem.DefaultCellStyle = dataGridViewCellStyle10;
+            colFK_Embalagem.HeaderText = "Embalagem";
+            colFK_Embalagem.MinimumWidth = 120;
+            colFK_Embalagem.Name = "colFK_Embalagem";
+            colFK_Embalagem.ReadOnly = true;
             // 
             // colFK_Marca
             // 
@@ -513,17 +513,17 @@
             colFK_Marca.Name = "colFK_Marca";
             colFK_Marca.ReadOnly = true;
             // 
-            // colFK_Embalagem
+            // colFK_Formato
             // 
-            colFK_Embalagem.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colFK_Embalagem.DataPropertyName = "Embalagem";
+            colFK_Formato.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            colFK_Formato.DataPropertyName = "Formato";
             dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle12.Padding = new Padding(3, 0, 0, 0);
-            colFK_Embalagem.DefaultCellStyle = dataGridViewCellStyle12;
-            colFK_Embalagem.HeaderText = "Embalagem";
-            colFK_Embalagem.MinimumWidth = 120;
-            colFK_Embalagem.Name = "colFK_Embalagem";
-            colFK_Embalagem.ReadOnly = true;
+            colFK_Formato.DefaultCellStyle = dataGridViewCellStyle12;
+            colFK_Formato.HeaderText = "Formato";
+            colFK_Formato.MinimumWidth = 120;
+            colFK_Formato.Name = "colFK_Formato";
+            colFK_Formato.ReadOnly = true;
             // 
             // tlpBotoes
             // 
@@ -732,17 +732,17 @@
         private Panel pBarraStatus;
         private Label lblTotalPesquisado;
         private Label lblTotalRegistrado;
+        private Button btnOutrosCadastro;
         private DataGridViewTextBoxColumn colPK_Produto;
         private DataGridViewTextBoxColumn colNome;
-        private DataGridViewTextBoxColumn colVolume;
         private DataGridViewTextBoxColumn colDescricao;
+        private DataGridViewTextBoxColumn colVolume;
         private DataGridViewTextBoxColumn colAltura;
         private DataGridViewTextBoxColumn colLargura;
         private DataGridViewTextBoxColumn colComprimento;
-        private DataGridViewTextBoxColumn colFK_Formato;
         private DataGridViewTextBoxColumn colFK_Categoria;
-        private DataGridViewTextBoxColumn colFK_Marca;
         private DataGridViewTextBoxColumn colFK_Embalagem;
-        private Button btnOutrosCadastro;
+        private DataGridViewTextBoxColumn colFK_Marca;
+        private DataGridViewTextBoxColumn colFK_Formato;
     }
 }

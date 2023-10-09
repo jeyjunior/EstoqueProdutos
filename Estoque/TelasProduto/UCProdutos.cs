@@ -240,8 +240,8 @@ namespace Estoque.Telas_Produto
         {
             var pesquisa = new PesquisaProdutoSimples()
             {
-                Nome = txtNomeProduto.TextoFormatoLikeSQL(),
-                Descricao = txtDescricaoProduto.TextoFormatoLikeSQL(),
+                Nome = txtNomeProduto.TextoFormatoLikeSQLComPorcentagem(),
+                Descricao = txtDescricaoProduto.TextoFormatoLikeSQLComPorcentagem(),
                 FK_Categoria = cboCategoria.ObterValorInt(),
                 FK_Embalagem = cboEmbalagem.ObterValorInt(),
                 FK_Formato = cboFormato.ObterValorInt(),

@@ -42,6 +42,25 @@ namespace EstoqueProdutos.Formatacao
         }
 
         /// <summary>
+        /// formato limpo com %%
+        /// </summary>
+        /// <param name="textBox"></param>
+        /// <returns></returns>
+        public static string? TextoFormatoLikeSQLComPorcentagem(this TextBox textBox)
+        {
+            string texto = textBox.LimparTexto().Replace("'", "").Trim();
+
+            if (texto.Length > 0)
+            {
+                return $"%{texto}%";
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        /// <summary>
         /// Formatacao: %texto%
         /// </summary>
         /// <returns></returns>

@@ -53,30 +53,25 @@ namespace Estoque.Telas_Base
             {
                 var telaEncontrada = FormsInstanciados.FirstOrDefault(f => f.GetType() == tela);
 
-                if (telaEncontrada != null)
-                {
-                    telaEncontrada.Focus();
-                }
+                FecharTela(tela);
+
+                Form telaNova;
+
+                if (ucGestor != null)
+                    telaNova = (Form)Activator.CreateInstance(tela, ucGestor);
                 else
-                {
-                    Form telaNova;
+                    telaNova = (Form)Activator.CreateInstance(tela);
 
-                    if (ucGestor != null)
-                        telaNova = (Form)Activator.CreateInstance(tela, ucGestor);
-                    else
-                        telaNova = (Form)Activator.CreateInstance(tela);
+                FormsInstanciados.Add(telaNova);
 
-                    FormsInstanciados.Add(telaNova);
+                telaNova.StartPosition = FormStartPosition.CenterScreen;
+                if (eFecharFilho != null)
+                    telaNova.FormClosed += eFecharFilho;
 
-                    telaNova.StartPosition = FormStartPosition.CenterScreen;
-                    if(eFecharFilho != null)
-                        telaNova.FormClosed += eFecharFilho;
-
-                    if (travarTela)
-                        telaNova.ShowDialog();
-                    else
-                        telaNova.Show();
-                }
+                if (travarTela)
+                    telaNova.ShowDialog();
+                else
+                    telaNova.Show();
             }
             catch (Exception ex)
             {

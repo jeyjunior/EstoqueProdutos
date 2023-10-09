@@ -115,10 +115,13 @@ namespace Estoque.Telas_Produto
         {
             txtCategoria.Text = "";
             txtCategoria.Enabled = true;
+            txtDescricao.Text = "";
 
             modoCRUD = ModoCRUD.Select;
             LayoutBotoes();
             PesquisarCargos();
+
+            txtCategoria.Focus();
         }
         private void AtualizarTotalRegistrado()
         {
@@ -133,7 +136,7 @@ namespace Estoque.Telas_Produto
         {
             try
             {
-                string mensagem = "Tem certeza que deseja incluir esta categoria?\n";
+                string mensagem = "Tem certeza que deseja criar esta categoria?\n";
                 string novoCargo = "Categoria: " + txtCategoria.Text.Trim();
 
                 var resultado = Mensagem.Pergunta(mensagem + novoCargo, "Cadastro");
@@ -251,6 +254,7 @@ namespace Estoque.Telas_Produto
             {
                 btnSalvar.Enabled = true;
                 btnCancelar.Enabled = true;
+
             }
             else if (modoCRUD == ModoCRUD.Select)
             {
@@ -259,6 +263,8 @@ namespace Estoque.Telas_Produto
                 btnAlterar.Enabled = true;
                 btnExcluir.Enabled = true;
             }
+
+            txtCategoria.Focus();
         }
         #endregion Metodos
 
@@ -285,16 +291,16 @@ namespace Estoque.Telas_Produto
                 }
             }
 
-            if (txtDescricao.Text == "")
-            {
-                var resultado = Mensagem.Pergunta("Deseja salvar categoria sem descrição?");
+            //if (txtDescricao.Text == "")
+            //{
+            //    var resultado = Mensagem.Pergunta("Deseja salvar categoria sem descrição?");
 
-                if (resultado != RespostaCaixaDialogo.Sim)
-                {
-                    txtDescricao.Focus();
-                    return;
-                }
-            }
+            //    if (resultado != RespostaCaixaDialogo.Sim)
+            //    {
+            //        txtDescricao.Focus();
+            //        return;
+            //    }
+            //}
 
             switch (modoCRUD)
             {
