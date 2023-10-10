@@ -2,6 +2,7 @@
 using EP.Data.sql;
 using EstoqueProdutos.Interfaces;
 using Microsoft.Data.SqlClient;
+using static Dapper.SqlMapper;
 
 namespace EstoqueProdutos.Repositorios
 {
@@ -22,6 +23,53 @@ namespace EstoqueProdutos.Repositorios
                 return resultado;
             }
         }
+
+        public virtual IEnumerable<T> ConsultarDadosNaTabela(T filtro)
+        {
+            using (SqlConnection connection = new SqlConnection(conexao))
+            {
+                connection.Open();
+
+                string nomeTabela = typeof(T).Name;
+                var propriedades = typeof(T).GetProperties();
+                List<string> whereConditions = new List<string>();
+                DynamicParameters parameters = new DynamicParameters();
+
+                foreach (var propriedade in propriedades)
+                {
+                    var valorPropriedade = propriedade.GetValue(filtro);
+
+                    if (propriedade.Name != $"PK_{nomeTabela}" && valorPropriedade != null)
+                    {
+                        if (propriedade.PropertyType == typeof(string))
+                        {
+                            // Se for uma string, usamos LIKE
+                            whereConditions.Add($"{propriedade.Name} LIKE @{propriedade.Name}");
+                            parameters.Add($"@{propriedade.Name}", "%" + valorPropriedade + "%");
+                        }
+                        else
+                        {
+                            // Para outros tipos, usamos igualdade (=)
+                            whereConditions.Add($"{propriedade.Name} = @{propriedade.Name}");
+                            parameters.Add($"@{propriedade.Name}", valorPropriedade);
+                        }
+                    }
+                }
+
+                if (whereConditions.Any())
+                {
+                    string whereClause = string.Join(" AND ", whereConditions);
+                    string sql = $"SELECT * FROM {nomeTabela} WHERE {whereClause}";
+                    return connection.Query<T>(sql, parameters);
+                }
+                else
+                {
+                    string sql = $"SELECT * FROM {nomeTabela}";
+                    return connection.Query<T>(sql);
+                }
+            }
+        }
+
         public virtual bool ValidarValorExistente(string coluna, dynamic valor)
         {
             if (coluna == "" || valor  == null) 

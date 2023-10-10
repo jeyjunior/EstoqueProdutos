@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace EstoqueProdutos.Repositorios
 {
-    public class EmbalagemRepositorio : IEmbalagemRepositorio
+    public class EmbalagemRepositorio : RepositorioGenerico<Embalagem>, IEmbalagemRepositorio
     {
         public virtual IEnumerable<Embalagem> ObterTabela()
         {

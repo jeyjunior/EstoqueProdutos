@@ -9,6 +9,7 @@ namespace EstoqueProdutos.Interfaces
     public interface IRepositorio<T>
     {
         IEnumerable<T> ObterTabela();
+        IEnumerable<T> ConsultarDadosNaTabela(T filtro);
         bool InserirDadosNaTabela(T entity);
         int ObterContagemTotal(string nomeEntidade);
         int ObterContagemTotal();

@@ -31,7 +31,7 @@
             tblPrincipal = new TableLayoutPanel();
             panel2 = new Panel();
             tlpTab = new TableLayoutPanel();
-            btnCargo = new Button();
+            btnEmbalagem = new Button();
             btnCategoria = new Button();
             panel1 = new Panel();
             pCentral = new Panel();
@@ -78,7 +78,7 @@
             tlpTab.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
             tlpTab.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
             tlpTab.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tlpTab.Controls.Add(btnCargo, 0, 0);
+            tlpTab.Controls.Add(btnEmbalagem, 0, 0);
             tlpTab.Controls.Add(btnCategoria, 0, 0);
             tlpTab.Dock = DockStyle.Fill;
             tlpTab.Location = new Point(15, 0);
@@ -90,22 +90,22 @@
             tlpTab.Size = new Size(514, 40);
             tlpTab.TabIndex = 0;
             // 
-            // btnCargo
+            // btnEmbalagem
             // 
-            btnCargo.Cursor = Cursors.Hand;
-            btnCargo.Dock = DockStyle.Fill;
-            btnCargo.FlatAppearance.BorderSize = 0;
-            btnCargo.FlatStyle = FlatStyle.Flat;
-            btnCargo.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnCargo.ForeColor = Color.White;
-            btnCargo.Location = new Point(171, 0);
-            btnCargo.Margin = new Padding(0);
-            btnCargo.Name = "btnCargo";
-            btnCargo.Size = new Size(171, 40);
-            btnCargo.TabIndex = 2;
-            btnCargo.Text = "Cargo";
-            btnCargo.UseVisualStyleBackColor = true;
-            btnCargo.Click += btnCargo_Click;
+            btnEmbalagem.Cursor = Cursors.Hand;
+            btnEmbalagem.Dock = DockStyle.Fill;
+            btnEmbalagem.FlatAppearance.BorderSize = 0;
+            btnEmbalagem.FlatStyle = FlatStyle.Flat;
+            btnEmbalagem.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnEmbalagem.ForeColor = Color.White;
+            btnEmbalagem.Location = new Point(171, 0);
+            btnEmbalagem.Margin = new Padding(0);
+            btnEmbalagem.Name = "btnEmbalagem";
+            btnEmbalagem.Size = new Size(171, 40);
+            btnEmbalagem.TabIndex = 2;
+            btnEmbalagem.Text = "Embalagem";
+            btnEmbalagem.UseVisualStyleBackColor = true;
+            btnEmbalagem.Click += btnEmbalagem_Click;
             // 
             // btnCategoria
             // 
@@ -169,7 +169,7 @@
         private TableLayoutPanel tblPrincipal;
         private TableLayoutPanel tlpTab;
         private Button btnCategoria;
-        private Button btnCargo;
+        private Button btnEmbalagem;
         private Panel panel2;
         private Panel panel1;
         private Panel pCentral;

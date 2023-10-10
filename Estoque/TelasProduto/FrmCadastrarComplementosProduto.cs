@@ -20,16 +20,17 @@ namespace Estoque.Telas_Produto
             InitializeComponent();
             this.gerenciadorDeTelas = gerenciadorDeTelas;
         }
-        private void btnCargo_Click(object sender, EventArgs e)
-        {
-            AlterarCorDoBotaoSelecionado(tlpTab, (Button)sender);
-            //AbrirTela(typeof(UCCadastrarCargo), pCentral, true);
-        }
         private void btnCadastro_Click(object sender, EventArgs e)
         {
             AlterarCorDoBotaoSelecionado(tlpTab, (Button)sender);
             AbrirTela(typeof(UCCadastrarCategoria), pCentral, true);
         }
+        private void btnEmbalagem_Click(object sender, EventArgs e)
+        {
+            AlterarCorDoBotaoSelecionado(tlpTab, (Button)sender);
+            AbrirTela(typeof(UCCadastrarEmbalagem), pCentral, true);
+        }
+
         private void FrmCadastrarSetores_Cargos_Load(object sender, EventArgs e)
         {
             btnCategoria.PerformClick();
@@ -38,6 +39,8 @@ namespace Estoque.Telas_Produto
         {
             Fechar();
         }
+
+
     }
 }
 
