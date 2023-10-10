@@ -13,5 +13,8 @@ namespace EstoqueProdutos.Interfaces
         int ObterContagemTotal(string nomeEntidade);
         int ObterContagemTotal();
         bool ValidarValorExistente(string coluna, dynamic valor);
+        bool AtualizarDadosComValores(T entity);
+        bool AtualizarTodosOsDados(T entity);
+        bool ExcluirDadosDaTabela(object id);
     }
 }

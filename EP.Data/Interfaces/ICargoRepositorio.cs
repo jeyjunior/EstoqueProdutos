@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace EP.Data.Interfaces
 {
-    public interface ICargoRepositorio
+    public interface ICargoRepositorio : IRepositorio<Cargo>
     {
         IEnumerable<Cargo> ObterTabela();
         IEnumerable<Cargo> ObterTabela(Cargo setor);
         bool InserirDadosNaTabela(Cargo cargo);
         int ObterTotalCargosRegistrados();
-        bool AtualizarCargo(Cargo cargo);
+        //bool AtualizarCargo(Cargo cargo);
         bool ExcluirCargo(Cargo cargo);
     }
 }

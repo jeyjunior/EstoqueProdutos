@@ -14,7 +14,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace EstoqueProdutos.Repositorios
 {
-    public class CargoRepositorio : ICargoRepositorio
+    public class CargoRepositorio : RepositorioGenerico<Cargo>, ICargoRepositorio
     {
         public virtual IEnumerable<Cargo> ObterTabela()
         {
@@ -92,22 +92,6 @@ namespace EstoqueProdutos.Repositorios
             {
                 connection.Open();
                 return connection.QueryFirstOrDefault<int>(sql);
-            }
-        }
-
-        public bool AtualizarCargo(Cargo cargo)
-        {
-            using (SqlConnection connection = new SqlConnection(Conexao.ConexaoBase))
-            {
-                connection.Open();
-
-                string sql = "" +
-                    "UPDATE Cargo\n" +
-                    "SET NomeCargo = @NomeCargo, FK_Setor = @FK_Setor\n" +
-                    "WHERE PK_Cargo = @PK_Cargo\n";
-
-                var resultado = connection.Execute(sql, cargo);
-                return Convert.ToBoolean(resultado);
             }
         }
 

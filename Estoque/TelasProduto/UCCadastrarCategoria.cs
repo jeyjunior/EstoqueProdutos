@@ -19,7 +19,7 @@ namespace Estoque.Telas_Produto
         #endregion Interfaces
 
         #region Propriedades
-        private Cargo cargoSelecionado;
+        private Categoria categoriaSelecionada;
         private ModoCRUD modoCRUD = ModoCRUD.Select;
         private IEnumerable<Categoria> categoriaCollection;
         #endregion Propriedades
@@ -88,27 +88,27 @@ namespace Estoque.Telas_Produto
             }
         }
         /* Updates */
-        private void SelecionarCargo()
+        private void SelecionarCategoria()
         {
             if (dtgCategoria.Rows.Count <= 0)
             {
-                Alerta.Aviso("Para realizar essa operação, é necessário selecionar um cargo");
+                Alerta.Aviso("Para realizar essa operação, é necessário selecionar uma categoria");
                 return;
             }
 
             DataGridViewRow linha = dtgCategoria.SelectedRows[0];
 
-            cargoSelecionado = new Cargo()
+            categoriaSelecionada = new Categoria()
             {
-                PK_Cargo = Convert.ToInt32(linha.Cells["colPK_Cargo"].Value),
-                NomeCargo = linha.Cells["colNomeCargo"].Value.ToString(),
-                FK_Setor = Convert.ToInt32(linha.Cells["colFK_Setor"].Value)
+                PK_Categoria = Convert.ToInt32(linha.Cells["colPK_Categoria"].Value),
+                Nome = linha.Cells["colNome"].Value.ToString(),
+                Descricao = linha.Cells["colDescricao"].Value.ToString()
             };
 
-            if (cargoSelecionado != null)
+            if (categoriaSelecionada != null)
             {
-                txtCategoria.Text = cargoSelecionado.NomeCargo;
-                //cboSetor.SelectedValue = cargoSelecionado.FK_Setor;
+                txtCategoria.Text = categoriaSelecionada.Nome;
+                txtDescricao.Text = categoriaSelecionada.Descricao;
             }
         }
         private void Reiniciar()
@@ -119,7 +119,7 @@ namespace Estoque.Telas_Produto
 
             modoCRUD = ModoCRUD.Select;
             LayoutBotoes();
-            PesquisarCargos();
+            PesquisarCategoria();
 
             txtCategoria.Focus();
         }
@@ -136,10 +136,12 @@ namespace Estoque.Telas_Produto
         {
             try
             {
-                string mensagem = "Tem certeza que deseja criar esta categoria?\n";
-                string novoCargo = "Categoria: " + txtCategoria.Text.Trim();
+                string mensagem = "Tem certeza que deseja criar esta categoria?\n" +
+                                  "Categoria: " + txtCategoria.Text.Trim() + "\n";
 
-                var resultado = Mensagem.Pergunta(mensagem + novoCargo, "Cadastro");
+                mensagem += (txtDescricao.Text != "") ? "Descrição: " + txtDescricao.Text.Trim() : "";
+
+                var resultado = Mensagem.Pergunta(mensagem, "Cadastro");
 
                 if (resultado != RespostaCaixaDialogo.Sim)
                 {
@@ -161,80 +163,79 @@ namespace Estoque.Telas_Produto
                 Mensagem.Erro("Erro: " + ex.Message, "Falha ao executar essa operação");
             }
         }
-        private void AlterarCargoSelecionado()
+        private void AlterarCategoriaSelecionado()
         {
             try
             {
-                //string mensagem = "Tem certeza que deseja alterar esse cargo?\n";
-                //string antigoCargo = "\nAntigo: " + cargoSelecionado.NomeCargo;
-                //string novoCargo = "\nNovo: " + txtCategoria.Text.Trim();
+                string mensagem = "Tem certeza que deseja alterar esta categoria?\n\n";
 
-                //var resultado = Mensagem.Pergunta(mensagem + antigoCargo + novoCargo, "Alterar");
+                var resultado = Mensagem.Pergunta(mensagem, "Alterar");
 
-                //if (resultado == RespostaCaixaDialogo.Sim)
-                //{
-                //    var resultadoInsert = cargoRepositorio
-                //        .AtualizarCargo(new Cargo()
-                //        {
-                //            PK_Cargo = cargoSelecionado.PK_Cargo,
-                //            NomeCargo = txtCategoria.TextoFormatoLikeSQL().Replace("%", "").Trim(),
-                //            FK_Setor = (int)cboSetor.SelectedValue
-                //        });
+                if (resultado == RespostaCaixaDialogo.Sim)
+                {
+                    var resultadoInsert = categoriaRepositorio
+                        .AtualizarTodosOsDados(new Categoria()
+                        {
+                            PK_Categoria = categoriaSelecionada.PK_Categoria,
+                            Nome = txtCategoria.TextoFormatoLikeSQL(),
+                            Descricao = txtDescricao.TextoFormatoLikeSQL()
+                        });
 
-                //    if (resultadoInsert)
-                //    {
-                //        Alerta.Confirmacao("Cargo atualizado com sucesso!");
-                //        Reiniciar();
-                //        AtualizarTotalRegistrado();
-                //    }
-                //}
-                //else
-                //{
-                //    txtCategoria.Focus();
-                //}
+                    if (resultadoInsert)
+                    {
+                        Alerta.Confirmacao("Categoria atualizada com sucesso!");
+                        Reiniciar();
+                        AtualizarTotalRegistrado();
+                    }
+                }
+                else
+                {
+                    txtCategoria.Focus();
+                }
             }
             catch (Exception ex)
             {
                 Mensagem.Erro("Erro: " + ex.Message, "Falha ao executar essa operação");
             }
         }
-        private void ExcluirCargoSelecionado()
+        private void ExcluirCategoriaSelecionado()
         {
             try
             {
-                //string mensagem = "Tem certeza que excluir esse cargo?\n";
-                //string excluirCargo = "\nDeletar: " + txtCategoria.Text.Trim();
+                string mensagem = "Tem certeza que deseja excluir esta categoria?\n";
+                string excluirCategoria = "\nDeletar: " + txtCategoria.Text.Trim();
 
-                //var resultado = Mensagem.Pergunta(mensagem + excluirCargo, "Deletar");
+                var resultado = Mensagem.Pergunta(mensagem + excluirCategoria, "Deletar");
 
-                //if (resultado == RespostaCaixaDialogo.Sim)
-                //{
-                //    var resultadoInsert = cargoRepositorio.ExcluirCargo(new Cargo()
-                //    { PK_Cargo = cargoSelecionado.PK_Cargo });
+                if (resultado == RespostaCaixaDialogo.Sim)
+                {
+                    var resultadoInsert = categoriaRepositorio.ExcluirDadosDaTabela(categoriaSelecionada.PK_Categoria);
 
-                //    if (resultadoInsert)
-                //    {
-                //        Alerta.Confirmacao("Cargo excluído com sucesso!");
-                //        Reiniciar();
-                //        AtualizarTotalRegistrado();
-                //    }
-                //}
-                //else
-                //{
-                //    txtCategoria.Focus();
-                //}
+                    if (resultadoInsert)
+                    {
+                        Alerta.Confirmacao("Categoria excluída com sucesso!");
+                        Reiniciar();
+                        AtualizarTotalRegistrado();
+                    }
+                }
+                else
+                {
+                    txtCategoria.Focus();
+                }
             }
             catch (Exception ex)
             {
                 Mensagem.Erro("Erro: " + ex.Message);
             }
         }
-        private void PesquisarCargos()
+        private void PesquisarCategoria()
         {
             try
             {
                 CarregarPesquisa();
                 AtualizarTotalPesquisado();
+
+                txtCategoria.Focus();
             }
             catch (Exception ex)
             {
@@ -248,13 +249,12 @@ namespace Estoque.Telas_Produto
                 btn.Enabled = false;
             }
 
-            btnLimpar.Enabled = true;
+            btnLimpar.Enabled = (modoCRUD != ModoCRUD.Update);
 
             if (modoCRUD == ModoCRUD.Insert || modoCRUD == ModoCRUD.Update)
             {
                 btnSalvar.Enabled = true;
                 btnCancelar.Enabled = true;
-
             }
             else if (modoCRUD == ModoCRUD.Select)
             {
@@ -277,48 +277,34 @@ namespace Estoque.Telas_Produto
                 txtCategoria.Focus();
                 return;
             }
-            else
-            {
-                var categoria = new Categoria();
-                var coluna = nameof(categoria.Nome).ToString();
-                var resultado = categoriaRepositorio.ValidarValorExistente(coluna, txtCategoria.Text.ToString());
-
-                if (resultado)
-                {
-                    Alerta.Aviso("Esta categoria já existe!");
-                    txtCategoria.Focus();
-                    return;
-                }
-            }
-
-            //if (txtDescricao.Text == "")
-            //{
-            //    var resultado = Mensagem.Pergunta("Deseja salvar categoria sem descrição?");
-
-            //    if (resultado != RespostaCaixaDialogo.Sim)
-            //    {
-            //        txtDescricao.Focus();
-            //        return;
-            //    }
-            //}
 
             switch (modoCRUD)
             {
                 case ModoCRUD.Insert:
+                    var categoria = new Categoria();
+                    var coluna = nameof(categoria.Nome).ToString();
+                    var resultado = categoriaRepositorio.ValidarValorExistente(coluna, txtCategoria.Text.ToString());
+
+                    if (resultado)
+                    {
+                        Alerta.Aviso("Esta categoria já existe!");
+                        txtCategoria.Focus();
+                        return;
+                    }
                     CadastrarNovaCategoria();
                     break;
                 case ModoCRUD.Update:
-                    AlterarCargoSelecionado();
+                    AlterarCategoriaSelecionado();
                     break;
                 case ModoCRUD.Delete:
-                    ExcluirCargoSelecionado();
+                    ExcluirCategoriaSelecionado();
                     break;
             }
         }
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            SelecionarCargo();
-            ExcluirCargoSelecionado();
+            SelecionarCategoria();
+            ExcluirCategoriaSelecionado();
         }
         private void btnLimpar_Click(object sender, EventArgs e)
         {
@@ -332,7 +318,7 @@ namespace Estoque.Telas_Produto
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
             modoCRUD = ModoCRUD.Select;
-            PesquisarCargos();
+            PesquisarCategoria();
         }
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
@@ -343,14 +329,15 @@ namespace Estoque.Telas_Produto
         {
             modoCRUD = ModoCRUD.Update;
             LayoutBotoes();
-            SelecionarCargo();
+            SelecionarCategoria();
         }
-        private void UCCadastrarSetor_Load(object sender, EventArgs e)
+        private void UCCadastrarCategoria_Load(object sender, EventArgs e)
         {
             InicializarComponentes();
             AtualizarTotalRegistrado();
             AtualizarTotalPesquisado();
             LayoutBotoes();
+
         }
         #endregion Eventos
     }

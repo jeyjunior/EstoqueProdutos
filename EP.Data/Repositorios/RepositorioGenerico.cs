@@ -98,5 +98,113 @@ namespace EstoqueProdutos.Repositorios
                 return Convert.ToBoolean(resultado);
             }
         }
+
+        public virtual bool ExcluirDadosDaTabela(object id)
+        {
+            using (SqlConnection connection = new SqlConnection(conexao))
+            {
+                connection.Open();
+
+                string nomeTabela = typeof(T).Name;
+                string primaryKeyName = $"PK_{nomeTabela}";
+                string sql = $"DELETE FROM {nomeTabela} WHERE {primaryKeyName} = @Id";
+
+                var parameters = new { Id = id };
+
+                var resultado = connection.Execute(sql, parameters);
+                return Convert.ToBoolean(resultado);
+            }
+        }
+
+        public virtual bool AtualizarDadosComValores(T entity)
+        {
+            using (SqlConnection connection = new SqlConnection(conexao))
+            {
+                connection.Open();
+
+                string nomeTabela = typeof(T).Name;
+                var propriedades = typeof(T).GetProperties();
+
+                List<string> setStatements = new List<string>();
+                DynamicParameters parameters = new DynamicParameters();
+
+                foreach (var propriedade in propriedades)
+                {
+                    if (propriedade.Name != $"PK_{nomeTabela}")
+                    {
+                        var valorPropriedade = propriedade.GetValue(entity);
+                        if (valorPropriedade != null && !string.IsNullOrEmpty(valorPropriedade.ToString()))
+                        {
+                            setStatements.Add($"{propriedade.Name} = @{propriedade.Name}");
+                            parameters.Add($"@{propriedade.Name}", valorPropriedade);
+                        }
+                    }
+                }
+
+                if (setStatements.Count > 0)
+                {
+                    string setClause = string.Join(", ", setStatements);
+                    string primaryKeyName = $"PK_{nomeTabela}";
+                    var primaryKeyValue = typeof(T).GetProperty(primaryKeyName).GetValue(entity);
+                    string sql = $"UPDATE {nomeTabela} \n" +
+                                 $"SET {setClause}     \n" +
+                                 $"WHERE {primaryKeyName} = @{primaryKeyName}";
+
+                    parameters.Add($"@{primaryKeyName}", primaryKeyValue);
+
+                    var resultado = connection.Execute(sql, parameters);
+                    return Convert.ToBoolean(resultado);
+                }
+                else
+                {
+                    // Não há nada para atualizar
+                    return false;
+                }
+            }
+        }
+
+        public virtual bool AtualizarTodosOsDados(T entity)
+        {
+            using (SqlConnection connection = new SqlConnection(conexao))
+            {
+                connection.Open();
+
+                string nomeTabela = typeof(T).Name;
+                var propriedades = typeof(T).GetProperties();
+
+                List<string> setStatements = new List<string>();
+                DynamicParameters parameters = new DynamicParameters();
+
+                foreach (var propriedade in propriedades)
+                {
+                    if (propriedade.Name != $"PK_{nomeTabela}")
+                    {
+                        var valorPropriedade = propriedade.GetValue(entity);
+                        setStatements.Add($"{propriedade.Name} = @{propriedade.Name}");
+                        parameters.Add($"@{propriedade.Name}", valorPropriedade);
+                    }
+                }
+
+                if (setStatements.Count > 0)
+                {
+                    string setClause = string.Join(", ", setStatements);
+                    string primaryKeyName = $"PK_{nomeTabela}";
+                    var primaryKeyValue = typeof(T).GetProperty(primaryKeyName).GetValue(entity);
+                    string sql = $"UPDATE {nomeTabela} \n" +
+                                 $"SET {setClause}     \n" +
+                                 $"WHERE {primaryKeyName} = @{primaryKeyName}";
+
+                    parameters.Add($"@{primaryKeyName}", primaryKeyValue);
+
+                    var resultado = connection.Execute(sql, parameters);
+                    return Convert.ToBoolean(resultado);
+                }
+                else
+                {
+                    // Não há nada para atualizar
+                    return false;
+                }
+            }
+        }
     }
 }

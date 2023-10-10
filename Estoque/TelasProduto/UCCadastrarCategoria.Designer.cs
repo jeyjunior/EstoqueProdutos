@@ -141,7 +141,7 @@
             dtgCategoria.RowTemplate.Height = 25;
             dtgCategoria.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtgCategoria.Size = new Size(560, 305);
-            dtgCategoria.TabIndex = 17;
+            dtgCategoria.TabIndex = 9;
             // 
             // colPK_Categoria
             // 
@@ -215,7 +215,7 @@
             txtCategoria.MaxLength = 120;
             txtCategoria.Name = "txtCategoria";
             txtCategoria.Size = new Size(524, 27);
-            txtCategoria.TabIndex = 16;
+            txtCategoria.TabIndex = 0;
             // 
             // tlpBotoes
             // 
@@ -253,7 +253,7 @@
             btnPesquisar.Margin = new Padding(0);
             btnPesquisar.Name = "btnPesquisar";
             btnPesquisar.Size = new Size(35, 35);
-            btnPesquisar.TabIndex = 1;
+            btnPesquisar.TabIndex = 2;
             btnPesquisar.UseVisualStyleBackColor = true;
             btnPesquisar.Click += btnPesquisar_Click;
             // 
@@ -264,7 +264,7 @@
             btnExcluir.Margin = new Padding(0);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(35, 35);
-            btnExcluir.TabIndex = 5;
+            btnExcluir.TabIndex = 8;
             btnExcluir.UseVisualStyleBackColor = true;
             btnExcluir.Click += btnExcluir_Click;
             // 
@@ -275,7 +275,7 @@
             btnCancelar.Margin = new Padding(0);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(35, 35);
-            btnCancelar.TabIndex = 16;
+            btnCancelar.TabIndex = 3;
             btnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
@@ -287,7 +287,7 @@
             btnSalvar.Margin = new Padding(0);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(35, 35);
-            btnSalvar.TabIndex = 15;
+            btnSalvar.TabIndex = 4;
             btnSalvar.UseVisualStyleBackColor = true;
             btnSalvar.Click += btnSalvar_Click;
             // 
@@ -298,7 +298,7 @@
             btnCadastrar.Margin = new Padding(0);
             btnCadastrar.Name = "btnCadastrar";
             btnCadastrar.Size = new Size(35, 35);
-            btnCadastrar.TabIndex = 3;
+            btnCadastrar.TabIndex = 7;
             btnCadastrar.UseVisualStyleBackColor = true;
             btnCadastrar.Click += btnCadastrar_Click;
             // 
@@ -309,7 +309,7 @@
             btnAlterar.Margin = new Padding(0);
             btnAlterar.Name = "btnAlterar";
             btnAlterar.Size = new Size(35, 35);
-            btnAlterar.TabIndex = 4;
+            btnAlterar.TabIndex = 6;
             btnAlterar.UseVisualStyleBackColor = true;
             btnAlterar.Click += btnAlterar_Click;
             // 
@@ -320,7 +320,7 @@
             btnLimpar.Margin = new Padding(0);
             btnLimpar.Name = "btnLimpar";
             btnLimpar.Size = new Size(35, 35);
-            btnLimpar.TabIndex = 14;
+            btnLimpar.TabIndex = 5;
             btnLimpar.UseVisualStyleBackColor = true;
             btnLimpar.Click += btnLimpar_Click;
             // 
@@ -352,7 +352,7 @@
             txtDescricao.MaxLength = 120;
             txtDescricao.Name = "txtDescricao";
             txtDescricao.Size = new Size(524, 27);
-            txtDescricao.TabIndex = 18;
+            txtDescricao.TabIndex = 1;
             // 
             // lblDescricao
             // 
@@ -435,7 +435,7 @@
             Controls.Add(tblPrincipal);
             Name = "UCCadastrarCategoria";
             Size = new Size(560, 560);
-            Load += UCCadastrarSetor_Load;
+            Load += UCCadastrarCategoria_Load;
             tlpCentral.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dtgCategoria).EndInit();
             tlpCargo.ResumeLayout(false);

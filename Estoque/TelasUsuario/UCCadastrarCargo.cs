@@ -194,7 +194,7 @@ namespace Estoque.Telas_Usuario
                 if (resultado == RespostaCaixaDialogo.Sim)
                 {
                     var resultadoInsert = cargoRepositorio
-                        .AtualizarCargo(new Cargo()
+                        .AtualizarTodosOsDados(new Cargo()
                         {
                             PK_Cargo = cargoSelecionado.PK_Cargo,
                             NomeCargo = txtCargo.TextoFormatoLikeSQL().Replace("%", "").Trim(),
