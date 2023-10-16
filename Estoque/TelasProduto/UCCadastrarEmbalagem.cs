@@ -71,24 +71,10 @@ namespace Estoque.Telas_Produto
             })
             .ToList();
 
-            if (resultado.Count == 0)
-            {
-                var empty = embalagemCollection.Select(c => new
-                {
-                    PK_Embalagem = 0,
-                    Nome = "",
-                    Descricao = ""
-                });
-
-                dtgEmbalagem.DataSource = empty;
-            }
-            else
-            {
-                dtgEmbalagem.DataSource = resultado;
-            }
+            dtgEmbalagem.DataSource = resultado;
         }
         /* Updates */
-        private void SelecionarEmbalagem()
+        private void SelecionarItem()
         {
             if (dtgEmbalagem.Rows.Count <= 0)
             {
@@ -119,7 +105,7 @@ namespace Estoque.Telas_Produto
 
             modoCRUD = ModoCRUD.Select;
             LayoutBotoes();
-            PesquisarEmbalagem();
+            PesquisarItem();
 
             txtEmbalagem.Focus();
         }
@@ -132,7 +118,7 @@ namespace Estoque.Telas_Produto
         {
             lblTotalPesquisado.Text = "Pesquisado: " + dtgEmbalagem.Rows.Count;
         }
-        private void CadastrarNovaEmbalagem()
+        private void CadastrarNovoItem()
         {
             try
             {
@@ -163,7 +149,7 @@ namespace Estoque.Telas_Produto
                 Mensagem.Erro("Erro: " + ex.Message, "Falha ao executar essa operação");
             }
         }
-        private void AlterarEmbalagemSelecionado()
+        private void AlterarItemSelecionado()
         {
             try
             {
@@ -198,7 +184,7 @@ namespace Estoque.Telas_Produto
                 Mensagem.Erro("Erro: " + ex.Message, "Falha ao executar essa operação");
             }
         }
-        private void ExcluirEmbalagemSelecionado()
+        private void ExcluirItemSelecionado()
         {
             try
             {
@@ -228,7 +214,7 @@ namespace Estoque.Telas_Produto
                 Mensagem.Erro("Erro: " + ex.Message);
             }
         }
-        private void PesquisarEmbalagem()
+        private void PesquisarItem()
         {
             try
             {
@@ -291,20 +277,20 @@ namespace Estoque.Telas_Produto
                         txtEmbalagem.Focus();
                         return;
                     }
-                    CadastrarNovaEmbalagem();
+                    CadastrarNovoItem();
                     break;
                 case ModoCRUD.Update:
-                    AlterarEmbalagemSelecionado();
+                    AlterarItemSelecionado();
                     break;
                 case ModoCRUD.Delete:
-                    ExcluirEmbalagemSelecionado();
+                    ExcluirItemSelecionado();
                     break;
             }
         }
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            SelecionarEmbalagem();
-            ExcluirEmbalagemSelecionado();
+            SelecionarItem();
+            ExcluirItemSelecionado();
         }
         private void btnLimpar_Click(object sender, EventArgs e)
         {
@@ -318,7 +304,7 @@ namespace Estoque.Telas_Produto
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
             modoCRUD = ModoCRUD.Select;
-            PesquisarEmbalagem();
+            PesquisarItem();
         }
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
@@ -329,9 +315,9 @@ namespace Estoque.Telas_Produto
         {
             modoCRUD = ModoCRUD.Update;
             LayoutBotoes();
-            SelecionarEmbalagem();
+            SelecionarItem();
         }
-        private void UCCadastrarEmbalagem_Load(object sender, EventArgs e)
+        private void UCCadastrar_Load(object sender, EventArgs e)
         {
             InicializarComponentes();
             AtualizarTotalRegistrado();

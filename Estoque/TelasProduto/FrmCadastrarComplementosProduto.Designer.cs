@@ -31,10 +31,12 @@
             tblPrincipal = new TableLayoutPanel();
             panel2 = new Panel();
             tlpTab = new TableLayoutPanel();
+            btnMarca = new Button();
             btnEmbalagem = new Button();
             btnCategoria = new Button();
             panel1 = new Panel();
             pCentral = new Panel();
+            btnFormato = new Button();
             tblPrincipal.SuspendLayout();
             tlpTab.SuspendLayout();
             SuspendLayout();
@@ -74,21 +76,40 @@
             // tlpTab
             // 
             tlpTab.BackColor = Color.FromArgb(32, 46, 56);
-            tlpTab.ColumnCount = 3;
-            tlpTab.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tlpTab.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tlpTab.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tlpTab.ColumnCount = 4;
+            tlpTab.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25.0006237F));
+            tlpTab.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25.0006275F));
+            tlpTab.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25.0006275F));
+            tlpTab.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 24.9981289F));
+            tlpTab.Controls.Add(btnMarca, 0, 0);
             tlpTab.Controls.Add(btnEmbalagem, 0, 0);
             tlpTab.Controls.Add(btnCategoria, 0, 0);
+            tlpTab.Controls.Add(btnFormato, 3, 0);
             tlpTab.Dock = DockStyle.Fill;
             tlpTab.Location = new Point(15, 0);
             tlpTab.Margin = new Padding(0);
             tlpTab.Name = "tlpTab";
             tlpTab.RowCount = 1;
             tlpTab.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tlpTab.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tlpTab.Size = new Size(514, 40);
             tlpTab.TabIndex = 0;
+            // 
+            // btnMarca
+            // 
+            btnMarca.Cursor = Cursors.Hand;
+            btnMarca.Dock = DockStyle.Fill;
+            btnMarca.FlatAppearance.BorderSize = 0;
+            btnMarca.FlatStyle = FlatStyle.Flat;
+            btnMarca.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnMarca.ForeColor = Color.White;
+            btnMarca.Location = new Point(256, 0);
+            btnMarca.Margin = new Padding(0);
+            btnMarca.Name = "btnMarca";
+            btnMarca.Size = new Size(128, 40);
+            btnMarca.TabIndex = 3;
+            btnMarca.Text = "Marca";
+            btnMarca.UseVisualStyleBackColor = true;
+            btnMarca.Click += btnMarca_Click;
             // 
             // btnEmbalagem
             // 
@@ -98,10 +119,10 @@
             btnEmbalagem.FlatStyle = FlatStyle.Flat;
             btnEmbalagem.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnEmbalagem.ForeColor = Color.White;
-            btnEmbalagem.Location = new Point(171, 0);
+            btnEmbalagem.Location = new Point(128, 0);
             btnEmbalagem.Margin = new Padding(0);
             btnEmbalagem.Name = "btnEmbalagem";
-            btnEmbalagem.Size = new Size(171, 40);
+            btnEmbalagem.Size = new Size(128, 40);
             btnEmbalagem.TabIndex = 2;
             btnEmbalagem.Text = "Embalagem";
             btnEmbalagem.UseVisualStyleBackColor = true;
@@ -118,7 +139,7 @@
             btnCategoria.Location = new Point(0, 0);
             btnCategoria.Margin = new Padding(0);
             btnCategoria.Name = "btnCategoria";
-            btnCategoria.Size = new Size(171, 40);
+            btnCategoria.Size = new Size(128, 40);
             btnCategoria.TabIndex = 1;
             btnCategoria.Text = "Categoria";
             btnCategoria.UseVisualStyleBackColor = true;
@@ -144,6 +165,23 @@
             pCentral.Name = "pCentral";
             pCentral.Size = new Size(514, 466);
             pCentral.TabIndex = 3;
+            // 
+            // btnFormato
+            // 
+            btnFormato.Cursor = Cursors.Hand;
+            btnFormato.Dock = DockStyle.Fill;
+            btnFormato.FlatAppearance.BorderSize = 0;
+            btnFormato.FlatStyle = FlatStyle.Flat;
+            btnFormato.Font = new Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnFormato.ForeColor = Color.White;
+            btnFormato.Location = new Point(384, 0);
+            btnFormato.Margin = new Padding(0);
+            btnFormato.Name = "btnFormato";
+            btnFormato.Size = new Size(130, 40);
+            btnFormato.TabIndex = 4;
+            btnFormato.Text = "Formato";
+            btnFormato.UseVisualStyleBackColor = true;
+            btnFormato.Click += btnFormato_Click;
             // 
             // FrmCadastrarComplementosProduto
             // 
@@ -173,5 +211,7 @@
         private Panel panel2;
         private Panel panel1;
         private Panel pCentral;
+        private Button btnMarca;
+        private Button btnFormato;
     }
 }

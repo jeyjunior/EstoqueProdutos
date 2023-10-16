@@ -436,7 +436,7 @@
             Controls.Add(tblPrincipal);
             Name = "UCCadastrarEmbalagem";
             Size = new Size(560, 560);
-            Load += UCCadastrarEmbalagem_Load;
+            Load += UCCadastrar_Load;
             tlpCentral.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dtgEmbalagem).EndInit();
             tlpCargo.ResumeLayout(false);

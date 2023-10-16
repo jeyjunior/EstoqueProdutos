@@ -30,7 +30,16 @@ namespace Estoque.Telas_Produto
             AlterarCorDoBotaoSelecionado(tlpTab, (Button)sender);
             AbrirTela(typeof(UCCadastrarEmbalagem), pCentral, true);
         }
-
+        private void btnMarca_Click(object sender, EventArgs e)
+        {
+            AlterarCorDoBotaoSelecionado(tlpTab, (Button)sender);
+            AbrirTela(typeof(UCCadastrarMarca), pCentral, true);
+        }
+        private void btnFormato_Click(object sender, EventArgs e)
+        {
+            AlterarCorDoBotaoSelecionado(tlpTab, (Button)sender);
+            AbrirTela(typeof(UCCadastrarFormato), pCentral, true);
+        }
         private void FrmCadastrarSetores_Cargos_Load(object sender, EventArgs e)
         {
             btnCategoria.PerformClick();

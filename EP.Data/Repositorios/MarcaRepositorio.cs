@@ -13,7 +13,7 @@ using Microsoft.Data.SqlClient;
 
 namespace EstoqueProdutos.Repositorios
 {
-    public class MarcaRepositorio : IMarcaRepositorio
+    public class MarcaRepositorio : RepositorioGenerico<Marca>, IMarcaRepositorio
     {
         public virtual IEnumerable<Marca> ObterTabela()
         {

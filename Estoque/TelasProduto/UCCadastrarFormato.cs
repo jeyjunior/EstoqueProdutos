@@ -12,24 +12,24 @@ using System.Reflection;
 
 namespace Estoque.Telas_Produto
 {
-    public partial class UCCadastrarCategoria : Telas_Base.UCBase
+    public partial class UCCadastrarFormato : Telas_Base.UCBase
     {
         #region Interfaces 
-        private readonly ICategoriaRepositorio categoriaRepositorio;
+        private readonly IFormatoRepositorio formatoRepositorio;
         #endregion Interfaces
 
         #region Propriedades
-        private Categoria categoriaSelecionada;
+        private Formato formatoSelecionado;
         private ModoCRUD modoCRUD = ModoCRUD.Select;
-        private IEnumerable<Categoria> categoriaCollection;
+        private IEnumerable<Formato> formatoCollection;
         #endregion Propriedades
 
-        public UCCadastrarCategoria()
+        public UCCadastrarFormato()
         {
             InitializeComponent();
             AtualizarPropriedades();
 
-            categoriaRepositorio = DIRepositorios.Container.GetInstance<ICategoriaRepositorio>();
+            formatoRepositorio = DIRepositorios.Container.GetInstance<IFormatoRepositorio>();
         }
         #region Metodos
         /* Start */
@@ -52,9 +52,9 @@ namespace Estoque.Telas_Produto
 
         private void CarregarPesquisa()
         {
-            categoriaCollection = categoriaRepositorio.ObterTabela(new Categoria
+            formatoCollection = formatoRepositorio.ConsultarDadosNaTabela(new Formato
             {
-                Nome = txtCategoria.TextoFormatoLikeSQL().AtribuirPorcentagemAoTextoSQL(),
+                Nome = txtNome.TextoFormatoLikeSQL().AtribuirPorcentagemAoTextoSQL(),
                 Descricao = txtDescricao.TextoFormatoLikeSQL().AtribuirPorcentagemAoTextoSQL()
             });
 
@@ -63,67 +63,67 @@ namespace Estoque.Telas_Produto
 
         private void BindDataGridView()
         {
-            var resultado = categoriaCollection.Select(s => new
+            var resultado = formatoCollection.Select(s => new
             {
-                PK_Categoria = s.PK_Categoria,
+                PK_Formato = s.PK_Formato,
                 Nome = s.Nome,
                 Descricao = s.Descricao
             })
             .ToList();
 
-            dtgCategoria.DataSource = resultado;
+            dtgMarca.DataSource = resultado;
         }
         /* Updates */
         private void SelecionarItem()
         {
-            if (dtgCategoria.Rows.Count <= 0)
+            if (dtgMarca.Rows.Count <= 0)
             {
-                Alerta.Aviso("Para realizar essa operação, é necessário selecionar uma categoria");
+                Alerta.Aviso("Para realizar essa operação, é necessário selecionar uma marca");
                 return;
             }
 
-            DataGridViewRow linha = dtgCategoria.SelectedRows[0];
+            DataGridViewRow linha = dtgMarca.SelectedRows[0];
 
-            categoriaSelecionada = new Categoria()
+            formatoSelecionado = new Formato()
             {
-                PK_Categoria = Convert.ToInt32(linha.Cells["colPK_Categoria"].Value),
+                PK_Formato = Convert.ToInt32(linha.Cells["colPK_Formato"].Value),
                 Nome = linha.Cells["colNome"].Value.ToString(),
                 Descricao = linha.Cells["colDescricao"].Value.ToString()
             };
 
-            if (categoriaSelecionada != null)
+            if (formatoSelecionado != null)
             {
-                txtCategoria.Text = categoriaSelecionada.Nome;
-                txtDescricao.Text = categoriaSelecionada.Descricao;
+                txtNome.Text = formatoSelecionado.Nome;
+                txtDescricao.Text = formatoSelecionado.Descricao;
             }
         }
         private void Reiniciar()
         {
-            txtCategoria.Text = "";
-            txtCategoria.Enabled = true;
+            txtNome.Text = "";
+            txtNome.Enabled = true;
             txtDescricao.Text = "";
 
             modoCRUD = ModoCRUD.Select;
             LayoutBotoes();
             PesquisarItem();
 
-            txtCategoria.Focus();
+            txtNome.Focus();
         }
         private void AtualizarTotalRegistrado()
         {
-            int total = categoriaRepositorio.ObterContagemTotal();
+            int total = formatoRepositorio.ObterContagemTotal();
             lblTotalRegistrado.Text = "Registrados: " + total;
         }
         private void AtualizarTotalPesquisado()
         {
-            lblTotalPesquisado.Text = "Pesquisado: " + dtgCategoria.Rows.Count;
+            lblTotalPesquisado.Text = "Pesquisado: " + dtgMarca.Rows.Count;
         }
         private void CadastrarNovoItem()
         {
             try
             {
-                string mensagem = "Tem certeza que deseja criar esta categoria?\n" +
-                                  "Categoria: " + txtCategoria.Text.Trim() + "\n";
+                string mensagem = "Tem certeza que deseja criar este formato?\n" +
+                                  "Formato: " + txtNome.Text.Trim() + "\n";
 
                 mensagem += (txtDescricao.Text != "") ? "Descrição: " + txtDescricao.Text.Trim() : "";
 
@@ -131,15 +131,15 @@ namespace Estoque.Telas_Produto
 
                 if (resultado != RespostaCaixaDialogo.Sim)
                 {
-                    txtCategoria.Focus();
+                    txtNome.Focus();
                     return;
                 }
 
-                var resultadoInsert = categoriaRepositorio.InserirDadosNaTabela(new Categoria() { Nome = txtCategoria.TextoFormatoLikeSQL(), Descricao = txtDescricao.TextoFormatoLikeSQL() });
+                var resultadoInsert = formatoRepositorio.InserirDadosNaTabela(new Formato() { Nome = txtNome.TextoFormatoLikeSQL(), Descricao = txtDescricao.TextoFormatoLikeSQL() });
 
                 if (resultadoInsert)
                 {
-                    Alerta.Confirmacao("Categoria registrada com sucesso!");
+                    Alerta.Confirmacao("Formato registrada com sucesso!");
                     Reiniciar();
                     AtualizarTotalRegistrado();
                 }
@@ -153,30 +153,30 @@ namespace Estoque.Telas_Produto
         {
             try
             {
-                string mensagem = "Tem certeza que deseja alterar esta categoria?\n\n";
+                string mensagem = "Tem certeza que deseja alterar este formato?\n\n";
 
                 var resultado = Mensagem.Pergunta(mensagem, "Alterar");
 
                 if (resultado == RespostaCaixaDialogo.Sim)
                 {
-                    var resultadoInsert = categoriaRepositorio
-                        .AtualizarTodosOsDados(new Categoria()
+                    var resultadoInsert = formatoRepositorio
+                        .AtualizarTodosOsDados(new Formato()
                         {
-                            PK_Categoria = categoriaSelecionada.PK_Categoria,
-                            Nome = txtCategoria.TextoFormatoLikeSQL(),
+                            PK_Formato = formatoSelecionado.PK_Formato,
+                            Nome = txtNome.TextoFormatoLikeSQL(),
                             Descricao = txtDescricao.TextoFormatoLikeSQL()
                         });
 
                     if (resultadoInsert)
                     {
-                        Alerta.Confirmacao("Categoria atualizada com sucesso!");
+                        Alerta.Confirmacao("Formato atualizado com sucesso!");
                         Reiniciar();
                         AtualizarTotalRegistrado();
                     }
                 }
                 else
                 {
-                    txtCategoria.Focus();
+                    txtNome.Focus();
                 }
             }
             catch (Exception ex)
@@ -188,25 +188,25 @@ namespace Estoque.Telas_Produto
         {
             try
             {
-                string mensagem = "Tem certeza que deseja excluir esta categoria?\n";
-                string excluirCategoria = "\nDeletar: " + txtCategoria.Text.Trim();
+                string mensagem = "Tem certeza que deseja excluir este formato?\n";
+                string excluir = "\nDeletar: " + txtNome.Text.Trim();
 
-                var resultado = Mensagem.Pergunta(mensagem + excluirCategoria, "Deletar");
+                var resultado = Mensagem.Pergunta(mensagem + excluir, "Deletar");
 
                 if (resultado == RespostaCaixaDialogo.Sim)
                 {
-                    var resultadoInsert = categoriaRepositorio.ExcluirDadosDaTabela(categoriaSelecionada.PK_Categoria);
+                    var resultadoInsert = formatoRepositorio.ExcluirDadosDaTabela(formatoSelecionado.PK_Formato);
 
                     if (resultadoInsert)
                     {
-                        Alerta.Confirmacao("Categoria excluída com sucesso!");
+                        Alerta.Confirmacao("Formato excluído com sucesso!");
                         Reiniciar();
                         AtualizarTotalRegistrado();
                     }
                 }
                 else
                 {
-                    txtCategoria.Focus();
+                    txtNome.Focus();
                 }
             }
             catch (Exception ex)
@@ -221,7 +221,7 @@ namespace Estoque.Telas_Produto
                 CarregarPesquisa();
                 AtualizarTotalPesquisado();
 
-                txtCategoria.Focus();
+                txtNome.Focus();
             }
             catch (Exception ex)
             {
@@ -250,31 +250,31 @@ namespace Estoque.Telas_Produto
                 btnExcluir.Enabled = true;
             }
 
-            txtCategoria.Focus();
+            txtNome.Focus();
         }
         #endregion Metodos
 
         #region Eventos
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (txtCategoria.Text == "")
+            if (txtNome.Text == "")
             {
-                Alerta.Aviso("É necessário inserir uma categoria!");
-                txtCategoria.Focus();
+                Alerta.Aviso("É necessário inserir um formato!");
+                txtNome.Focus();
                 return;
             }
 
             switch (modoCRUD)
             {
                 case ModoCRUD.Insert:
-                    var categoria = new Categoria();
-                    var coluna = nameof(categoria.Nome).ToString();
-                    var resultado = categoriaRepositorio.ValidarValorExistente(coluna, txtCategoria.Text.ToString());
+                    var marca = new Marca();
+                    var coluna = nameof(marca.Nome).ToString();
+                    var resultado = formatoRepositorio.ValidarValorExistente(coluna, txtNome.Text.ToString());
 
                     if (resultado)
                     {
-                        Alerta.Aviso("Esta categoria já existe!");
-                        txtCategoria.Focus();
+                        Alerta.Aviso("Este formato já existe!");
+                        txtNome.Focus();
                         return;
                     }
                     CadastrarNovoItem();
@@ -294,8 +294,8 @@ namespace Estoque.Telas_Produto
         }
         private void btnLimpar_Click(object sender, EventArgs e)
         {
-            txtCategoria.Text = "";
-            txtCategoria.Focus();
+            txtNome.Text = "";
+            txtNome.Focus();
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {

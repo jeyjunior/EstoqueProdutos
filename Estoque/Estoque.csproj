@@ -38,6 +38,12 @@
     <Compile Update="TelasProduto\FrmConfigurarColunas.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="TelasProduto\UCCadastrarFormato.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="TelasProduto\UCCadastrarMarca.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="TelasProduto\UCCadastrarEmbalagem.cs">
       <SubType>UserControl</SubType>
     </Compile>

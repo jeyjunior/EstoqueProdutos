@@ -1,6 +1,6 @@
 ﻿namespace Estoque.Telas_Produto
 {
-    partial class UCCadastrarCategoria
+    partial class UCCadastrarFormato
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,20 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             tlpCentral = new TableLayoutPanel();
-            dtgCategoria = new DataGridView();
-            colPK_Categoria = new DataGridViewTextBoxColumn();
-            colNome = new DataGridViewTextBoxColumn();
-            colDescricao = new DataGridViewTextBoxColumn();
-            tlpCargo = new TableLayoutPanel();
-            lblCategoria = new Label();
-            txtCategoria = new TextBox();
+            dtgMarca = new DataGridView();
+            tlpNome = new TableLayoutPanel();
+            lblFormato = new Label();
+            txtNome = new TextBox();
             tlpBotoes = new TableLayoutPanel();
             btnPesquisar = new Button();
             btnExcluir = new Button();
@@ -50,18 +47,21 @@
             btnCadastrar = new Button();
             btnAlterar = new Button();
             btnLimpar = new Button();
-            tblSetor = new TableLayoutPanel();
+            tblDescricao = new TableLayoutPanel();
             txtDescricao = new TextBox();
             lblDescricao = new Label();
             tblPrincipal = new TableLayoutPanel();
             pBarraStatus = new Panel();
             lblTotalPesquisado = new Label();
             lblTotalRegistrado = new Label();
+            colPK_Formato = new DataGridViewTextBoxColumn();
+            colNome = new DataGridViewTextBoxColumn();
+            colDescricao = new DataGridViewTextBoxColumn();
             tlpCentral.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dtgCategoria).BeginInit();
-            tlpCargo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dtgMarca).BeginInit();
+            tlpNome.SuspendLayout();
             tlpBotoes.SuspendLayout();
-            tblSetor.SuspendLayout();
+            tblDescricao.SuspendLayout();
             tblPrincipal.SuspendLayout();
             pBarraStatus.SuspendLayout();
             SuspendLayout();
@@ -71,10 +71,10 @@
             tlpCentral.BackColor = Color.Transparent;
             tlpCentral.ColumnCount = 1;
             tlpCentral.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tlpCentral.Controls.Add(dtgCategoria, 0, 5);
-            tlpCentral.Controls.Add(tlpCargo, 0, 0);
+            tlpCentral.Controls.Add(dtgMarca, 0, 5);
+            tlpCentral.Controls.Add(tlpNome, 0, 0);
             tlpCentral.Controls.Add(tlpBotoes, 0, 3);
-            tlpCentral.Controls.Add(tblSetor, 0, 1);
+            tlpCentral.Controls.Add(tblDescricao, 0, 1);
             tlpCentral.Dock = DockStyle.Fill;
             tlpCentral.Location = new Point(0, 15);
             tlpCentral.Margin = new Padding(0);
@@ -90,133 +90,100 @@
             tlpCentral.Size = new Size(560, 530);
             tlpCentral.TabIndex = 0;
             // 
-            // dtgCategoria
+            // dtgMarca
             // 
-            dtgCategoria.AllowUserToDeleteRows = false;
-            dtgCategoria.AllowUserToOrderColumns = true;
-            dtgCategoria.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = Color.FromArgb(235, 235, 235);
-            dtgCategoria.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
-            dtgCategoria.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dtgCategoria.BackgroundColor = Color.FromArgb(235, 235, 235);
-            dtgCategoria.BorderStyle = BorderStyle.None;
-            dtgCategoria.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
-            dtgCategoria.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = Color.FromArgb(60, 74, 84);
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(47, 59, 67);
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            dtgCategoria.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
-            dtgCategoria.ColumnHeadersHeight = 35;
-            dtgCategoria.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dtgCategoria.Columns.AddRange(new DataGridViewColumn[] { colPK_Categoria, colNome, colDescricao });
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = Color.FromArgb(246, 246, 246);
-            dataGridViewCellStyle11.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle11.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = Color.FromArgb(140, 200, 120);
-            dataGridViewCellStyle11.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
-            dtgCategoria.DefaultCellStyle = dataGridViewCellStyle11;
-            dtgCategoria.EnableHeadersVisualStyles = false;
-            dtgCategoria.GridColor = Color.White;
-            dtgCategoria.Location = new Point(0, 225);
-            dtgCategoria.Margin = new Padding(0);
-            dtgCategoria.MultiSelect = false;
-            dtgCategoria.Name = "dtgCategoria";
-            dtgCategoria.ReadOnly = true;
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = Color.FromArgb(217, 217, 217);
-            dataGridViewCellStyle12.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle12.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.True;
-            dtgCategoria.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
-            dtgCategoria.RowHeadersVisible = false;
-            dtgCategoria.RowHeadersWidth = 55;
-            dtgCategoria.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dtgCategoria.RowTemplate.Height = 25;
-            dtgCategoria.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgCategoria.Size = new Size(560, 305);
-            dtgCategoria.TabIndex = 9;
+            dtgMarca.AllowUserToDeleteRows = false;
+            dtgMarca.AllowUserToOrderColumns = true;
+            dtgMarca.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(235, 235, 235);
+            dtgMarca.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dtgMarca.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dtgMarca.BackgroundColor = Color.FromArgb(235, 235, 235);
+            dtgMarca.BorderStyle = BorderStyle.None;
+            dtgMarca.CellBorderStyle = DataGridViewCellBorderStyle.SingleVertical;
+            dtgMarca.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(60, 74, 84);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(47, 59, 67);
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dtgMarca.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dtgMarca.ColumnHeadersHeight = 35;
+            dtgMarca.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dtgMarca.Columns.AddRange(new DataGridViewColumn[] { colPK_Formato, colNome, colDescricao });
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(246, 246, 246);
+            dataGridViewCellStyle5.Font = new Font("Verdana", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(140, 200, 120);
+            dataGridViewCellStyle5.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            dtgMarca.DefaultCellStyle = dataGridViewCellStyle5;
+            dtgMarca.EnableHeadersVisualStyles = false;
+            dtgMarca.GridColor = Color.White;
+            dtgMarca.Location = new Point(0, 225);
+            dtgMarca.Margin = new Padding(0);
+            dtgMarca.MultiSelect = false;
+            dtgMarca.Name = "dtgMarca";
+            dtgMarca.ReadOnly = true;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(217, 217, 217);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dtgMarca.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dtgMarca.RowHeadersVisible = false;
+            dtgMarca.RowHeadersWidth = 55;
+            dtgMarca.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dtgMarca.RowTemplate.Height = 25;
+            dtgMarca.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dtgMarca.Size = new Size(560, 305);
+            dtgMarca.TabIndex = 9;
             // 
-            // colPK_Categoria
+            // tlpNome
             // 
-            colPK_Categoria.DataPropertyName = "PK_Categoria";
-            colPK_Categoria.HeaderText = "PK_Categoria";
-            colPK_Categoria.MinimumWidth = 100;
-            colPK_Categoria.Name = "colPK_Categoria";
-            colPK_Categoria.ReadOnly = true;
-            colPK_Categoria.Visible = false;
+            tlpNome.BackColor = Color.FromArgb(60, 75, 85);
+            tlpNome.ColumnCount = 1;
+            tlpNome.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tlpNome.Controls.Add(lblFormato, 0, 0);
+            tlpNome.Controls.Add(txtNome, 0, 1);
+            tlpNome.Dock = DockStyle.Fill;
+            tlpNome.Location = new Point(0, 0);
+            tlpNome.Margin = new Padding(0);
+            tlpNome.Name = "tlpNome";
+            tlpNome.Padding = new Padding(15, 0, 15, 0);
+            tlpNome.RowCount = 2;
+            tlpNome.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
+            tlpNome.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
+            tlpNome.Size = new Size(560, 80);
+            tlpNome.TabIndex = 16;
             // 
-            // colNome
+            // lblFormato
             // 
-            colNome.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colNome.DataPropertyName = "Nome";
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.Padding = new Padding(10, 0, 0, 0);
-            colNome.DefaultCellStyle = dataGridViewCellStyle9;
-            colNome.HeaderText = "Categoria";
-            colNome.MinimumWidth = 200;
-            colNome.Name = "colNome";
-            colNome.ReadOnly = true;
+            lblFormato.Dock = DockStyle.Fill;
+            lblFormato.Font = new Font("Verdana", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            lblFormato.ForeColor = SystemColors.ControlLightLight;
+            lblFormato.Location = new Point(15, 0);
+            lblFormato.Margin = new Padding(0);
+            lblFormato.Name = "lblFormato";
+            lblFormato.Size = new Size(530, 32);
+            lblFormato.TabIndex = 17;
+            lblFormato.Text = "Formato:";
+            lblFormato.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // colDescricao
+            // txtNome
             // 
-            colDescricao.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colDescricao.DataPropertyName = "Descricao";
-            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.Padding = new Padding(10, 0, 0, 0);
-            colDescricao.DefaultCellStyle = dataGridViewCellStyle10;
-            colDescricao.HeaderText = "Descricao";
-            colDescricao.MinimumWidth = 200;
-            colDescricao.Name = "colDescricao";
-            colDescricao.ReadOnly = true;
-            // 
-            // tlpCargo
-            // 
-            tlpCargo.BackColor = Color.FromArgb(60, 75, 85);
-            tlpCargo.ColumnCount = 1;
-            tlpCargo.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tlpCargo.Controls.Add(lblCategoria, 0, 0);
-            tlpCargo.Controls.Add(txtCategoria, 0, 1);
-            tlpCargo.Dock = DockStyle.Fill;
-            tlpCargo.Location = new Point(0, 0);
-            tlpCargo.Margin = new Padding(0);
-            tlpCargo.Name = "tlpCargo";
-            tlpCargo.Padding = new Padding(15, 0, 15, 0);
-            tlpCargo.RowCount = 2;
-            tlpCargo.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
-            tlpCargo.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
-            tlpCargo.Size = new Size(560, 80);
-            tlpCargo.TabIndex = 16;
-            // 
-            // lblCategoria
-            // 
-            lblCategoria.Dock = DockStyle.Fill;
-            lblCategoria.Font = new Font("Verdana", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            lblCategoria.ForeColor = SystemColors.ControlLightLight;
-            lblCategoria.Location = new Point(15, 0);
-            lblCategoria.Margin = new Padding(0);
-            lblCategoria.Name = "lblCategoria";
-            lblCategoria.Size = new Size(530, 32);
-            lblCategoria.TabIndex = 17;
-            lblCategoria.Text = "Categoria:";
-            lblCategoria.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // txtCategoria
-            // 
-            txtCategoria.BorderStyle = BorderStyle.FixedSingle;
-            txtCategoria.Dock = DockStyle.Fill;
-            txtCategoria.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtCategoria.Location = new Point(18, 35);
-            txtCategoria.MaxLength = 120;
-            txtCategoria.Name = "txtCategoria";
-            txtCategoria.Size = new Size(524, 27);
-            txtCategoria.TabIndex = 0;
+            txtNome.BorderStyle = BorderStyle.FixedSingle;
+            txtNome.Dock = DockStyle.Fill;
+            txtNome.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtNome.Location = new Point(18, 35);
+            txtNome.MaxLength = 120;
+            txtNome.Name = "txtNome";
+            txtNome.Size = new Size(524, 27);
+            txtNome.TabIndex = 0;
             // 
             // tlpBotoes
             // 
@@ -325,24 +292,24 @@
             btnLimpar.UseVisualStyleBackColor = true;
             btnLimpar.Click += btnLimpar_Click;
             // 
-            // tblSetor
+            // tblDescricao
             // 
-            tblSetor.BackColor = Color.FromArgb(60, 75, 85);
-            tblSetor.ColumnCount = 1;
-            tblSetor.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tblSetor.Controls.Add(txtDescricao, 0, 1);
-            tblSetor.Controls.Add(lblDescricao, 0, 0);
-            tblSetor.Dock = DockStyle.Fill;
-            tblSetor.Location = new Point(0, 80);
-            tblSetor.Margin = new Padding(0);
-            tblSetor.Name = "tblSetor";
-            tblSetor.Padding = new Padding(15, 0, 15, 0);
-            tblSetor.RowCount = 2;
-            tblSetor.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
-            tblSetor.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
-            tblSetor.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tblSetor.Size = new Size(560, 80);
-            tblSetor.TabIndex = 14;
+            tblDescricao.BackColor = Color.FromArgb(60, 75, 85);
+            tblDescricao.ColumnCount = 1;
+            tblDescricao.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tblDescricao.Controls.Add(txtDescricao, 0, 1);
+            tblDescricao.Controls.Add(lblDescricao, 0, 0);
+            tblDescricao.Dock = DockStyle.Fill;
+            tblDescricao.Location = new Point(0, 80);
+            tblDescricao.Margin = new Padding(0);
+            tblDescricao.Name = "tblDescricao";
+            tblDescricao.Padding = new Padding(15, 0, 15, 0);
+            tblDescricao.RowCount = 2;
+            tblDescricao.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
+            tblDescricao.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
+            tblDescricao.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tblDescricao.Size = new Size(560, 80);
+            tblDescricao.TabIndex = 14;
             // 
             // txtDescricao
             // 
@@ -428,22 +395,55 @@
             lblTotalRegistrado.Text = "Registrado: 100000";
             lblTotalRegistrado.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // UCCadastrarCategoria
+            // colPK_Formato
+            // 
+            colPK_Formato.DataPropertyName = "PK_Formato";
+            colPK_Formato.HeaderText = "PK_Formato";
+            colPK_Formato.MinimumWidth = 100;
+            colPK_Formato.Name = "colPK_Formato";
+            colPK_Formato.ReadOnly = true;
+            colPK_Formato.Visible = false;
+            // 
+            // colNome
+            // 
+            colNome.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            colNome.DataPropertyName = "Nome";
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Padding = new Padding(10, 0, 0, 0);
+            colNome.DefaultCellStyle = dataGridViewCellStyle3;
+            colNome.HeaderText = "Formato";
+            colNome.MinimumWidth = 200;
+            colNome.Name = "colNome";
+            colNome.ReadOnly = true;
+            // 
+            // colDescricao
+            // 
+            colDescricao.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            colDescricao.DataPropertyName = "Descricao";
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.Padding = new Padding(10, 0, 0, 0);
+            colDescricao.DefaultCellStyle = dataGridViewCellStyle4;
+            colDescricao.HeaderText = "Descricao";
+            colDescricao.MinimumWidth = 200;
+            colDescricao.Name = "colDescricao";
+            colDescricao.ReadOnly = true;
+            // 
+            // UCCadastrarFormato
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(80, 90, 100);
             Controls.Add(tblPrincipal);
-            Name = "UCCadastrarCategoria";
+            Name = "UCCadastrarFormato";
             Size = new Size(560, 560);
             Load += UCCadastrar_Load;
             tlpCentral.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dtgCategoria).EndInit();
-            tlpCargo.ResumeLayout(false);
-            tlpCargo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dtgMarca).EndInit();
+            tlpNome.ResumeLayout(false);
+            tlpNome.PerformLayout();
             tlpBotoes.ResumeLayout(false);
-            tblSetor.ResumeLayout(false);
-            tblSetor.PerformLayout();
+            tblDescricao.ResumeLayout(false);
+            tblDescricao.PerformLayout();
             tblPrincipal.ResumeLayout(false);
             pBarraStatus.ResumeLayout(false);
             ResumeLayout(false);
@@ -464,17 +464,17 @@
         private Button btnCadastrar;
         private Button btnSalvar;
         private Button btnCancelar;
-        private TableLayoutPanel tblSetor;
+        private TableLayoutPanel tblDescricao;
         private Label lblDescricao;
         private Panel pBarraStatus;
         private Label lblTotalRegistrado;
         private Label lblTotalPesquisado;
-        private TableLayoutPanel tlpCargo;
-        private Label lblCategoria;
-        private TextBox txtCategoria;
-        private DataGridView dtgCategoria;
+        private TableLayoutPanel tlpNome;
+        private Label lblFormato;
+        private TextBox txtNome;
+        private DataGridView dtgMarca;
         private TextBox txtDescricao;
-        private DataGridViewTextBoxColumn colPK_Categoria;
+        private DataGridViewTextBoxColumn colPK_Formato;
         private DataGridViewTextBoxColumn colNome;
         private DataGridViewTextBoxColumn colDescricao;
     }
