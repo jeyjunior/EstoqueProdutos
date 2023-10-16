@@ -42,7 +42,7 @@ namespace Estoque.Telas_Produto
             usuarioRepositorio = DIRepositorios.Container.GetInstance<IUsuarioRepositorio>();
             validacao = DITelas.Container.GetInstance<IValidacao>();
 
-            pcbImagemUsuario.Image = imagemRepositorio.ObterImagemPadrao();
+            pcbImagem.Image = imagemRepositorio.ObterImagemPadrao();
         }
 
         #region Metodos 
@@ -71,10 +71,10 @@ namespace Estoque.Telas_Produto
 
             if (result != null)
             {
-                cboSetor.DataSource = result;
-                cboSetor.DisplayMember = "NomeSetor";
-                cboSetor.ValueMember = "PK_Setor";
-                cboSetor.SelectedValue = 3;
+                cboCategoria.DataSource = result;
+                cboCategoria.DisplayMember = "NomeSetor";
+                cboCategoria.ValueMember = "PK_Setor";
+                cboCategoria.SelectedValue = 3;
             }
         }
         private void BindComboBoxCargo()
@@ -84,20 +84,20 @@ namespace Estoque.Telas_Produto
             if (result != null)
             {
                 bsCargo.DataSource = result;
-                cboCargo.DataSource = FiltrarCargos();
-                cboCargo.DisplayMember = "NomeCargo";
-                cboCargo.ValueMember = "PK_Cargo";
+                cboEmbalagem.DataSource = FiltrarCargos();
+                cboEmbalagem.DisplayMember = "NomeCargo";
+                cboEmbalagem.ValueMember = "PK_Cargo";
             }
         }
         /* Updates */
         private void LimparComponetes()
         {
-            pcbImagemUsuario.Image = imagemRepositorio.ObterImagemPadrao();
+            pcbImagem.Image = imagemRepositorio.ObterImagemPadrao();
 
             txtNomeCompleto.Text = "";
             txtUsuario.Text = "";
 
-            cboSetor.SelectedValue = 1;
+            cboCategoria.SelectedValue = 1;
 
             txtEmail.Text = "";
             txtConfirmarEmail.Text = "";
@@ -109,7 +109,7 @@ namespace Estoque.Telas_Produto
         }
         private IEnumerable<Cargo> FiltrarCargos()
         {
-            if (cboSetor != null && cboSetor.SelectedItem is Setor setor)
+            if (cboCategoria != null && cboCategoria.SelectedItem is Setor setor)
             {
                 return bsCargo.OfType<Cargo>().Where(c => c.Setor.PK_Setor == setor.PK_Setor).ToList();
             }
@@ -177,7 +177,7 @@ namespace Estoque.Telas_Produto
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            var img = pcbImagemUsuario.Image;
+            var img = pcbImagem.Image;
             int PK_Imagem = imagemRepositorio.SalvarImagemNaBase(img);
 
             try
@@ -189,8 +189,8 @@ namespace Estoque.Telas_Produto
                 {
                     NomeCompleto = txtNomeCompleto.Text.Trim(),
                     NomeAbreviado = txtUsuario.Text.Trim(),
-                    FK_Setor = (int)cboSetor.SelectedValue,
-                    FK_Cargo = (int)cboCargo.SelectedValue,
+                    FK_Setor = (int)cboCategoria.SelectedValue,
+                    FK_Cargo = (int)cboEmbalagem.SelectedValue,
                     Ativo = true,
                     DataCadastro = DateTime.Today,
                     FK_Imagem = PK_Imagem,
@@ -222,15 +222,15 @@ namespace Estoque.Telas_Produto
 
             if (img != null)
             {
-                pcbImagemUsuario.Image = img;
+                pcbImagem.Image = img;
             }
         }
 
         private void cboSetor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboSetor != null)
+            if (cboCategoria != null)
             {
-                cboCargo.DataSource = FiltrarCargos();
+                cboEmbalagem.DataSource = FiltrarCargos();
             }
         }
         private void cboCargo_SelectedIndexChanged(object sender, EventArgs e)

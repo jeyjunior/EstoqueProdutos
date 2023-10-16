@@ -36,6 +36,9 @@
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             tlpCentral = new TableLayoutPanel();
             dtgMarca = new DataGridView();
+            colPK_Formato = new DataGridViewTextBoxColumn();
+            colNome = new DataGridViewTextBoxColumn();
+            colDescricao = new DataGridViewTextBoxColumn();
             tlpNome = new TableLayoutPanel();
             lblFormato = new Label();
             txtNome = new TextBox();
@@ -54,9 +57,6 @@
             pBarraStatus = new Panel();
             lblTotalPesquisado = new Label();
             lblTotalRegistrado = new Label();
-            colPK_Formato = new DataGridViewTextBoxColumn();
-            colNome = new DataGridViewTextBoxColumn();
-            colDescricao = new DataGridViewTextBoxColumn();
             tlpCentral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgMarca).BeginInit();
             tlpNome.SuspendLayout();
@@ -142,6 +142,39 @@
             dtgMarca.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtgMarca.Size = new Size(560, 305);
             dtgMarca.TabIndex = 9;
+            // 
+            // colPK_Formato
+            // 
+            colPK_Formato.DataPropertyName = "PK_Formato";
+            colPK_Formato.HeaderText = "PK_Formato";
+            colPK_Formato.MinimumWidth = 100;
+            colPK_Formato.Name = "colPK_Formato";
+            colPK_Formato.ReadOnly = true;
+            colPK_Formato.Visible = false;
+            // 
+            // colNome
+            // 
+            colNome.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            colNome.DataPropertyName = "Nome";
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Padding = new Padding(10, 0, 0, 0);
+            colNome.DefaultCellStyle = dataGridViewCellStyle3;
+            colNome.HeaderText = "Formato";
+            colNome.MinimumWidth = 200;
+            colNome.Name = "colNome";
+            colNome.ReadOnly = true;
+            // 
+            // colDescricao
+            // 
+            colDescricao.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            colDescricao.DataPropertyName = "Descricao";
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.Padding = new Padding(10, 0, 0, 0);
+            colDescricao.DefaultCellStyle = dataGridViewCellStyle4;
+            colDescricao.HeaderText = "Descricao";
+            colDescricao.MinimumWidth = 200;
+            colDescricao.Name = "colDescricao";
+            colDescricao.ReadOnly = true;
             // 
             // tlpNome
             // 
@@ -394,39 +427,6 @@
             lblTotalRegistrado.TabIndex = 13;
             lblTotalRegistrado.Text = "Registrado: 100000";
             lblTotalRegistrado.TextAlign = ContentAlignment.MiddleRight;
-            // 
-            // colPK_Formato
-            // 
-            colPK_Formato.DataPropertyName = "PK_Formato";
-            colPK_Formato.HeaderText = "PK_Formato";
-            colPK_Formato.MinimumWidth = 100;
-            colPK_Formato.Name = "colPK_Formato";
-            colPK_Formato.ReadOnly = true;
-            colPK_Formato.Visible = false;
-            // 
-            // colNome
-            // 
-            colNome.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colNome.DataPropertyName = "Nome";
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.Padding = new Padding(10, 0, 0, 0);
-            colNome.DefaultCellStyle = dataGridViewCellStyle3;
-            colNome.HeaderText = "Formato";
-            colNome.MinimumWidth = 200;
-            colNome.Name = "colNome";
-            colNome.ReadOnly = true;
-            // 
-            // colDescricao
-            // 
-            colDescricao.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            colDescricao.DataPropertyName = "Descricao";
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.Padding = new Padding(10, 0, 0, 0);
-            colDescricao.DefaultCellStyle = dataGridViewCellStyle4;
-            colDescricao.HeaderText = "Descricao";
-            colDescricao.MinimumWidth = 200;
-            colDescricao.Name = "colDescricao";
-            colDescricao.ReadOnly = true;
             // 
             // UCCadastrarFormato
             // 
