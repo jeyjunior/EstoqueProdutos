@@ -323,7 +323,7 @@ namespace Estoque.Telas_Produto
         private void txtSenha_TextChanged(object sender, EventArgs e)
         {
             int max = txtSenha.Text.Length > 8 ? txtSenha.Text.Length : 8;
-            lblSenha.Text = $"Senha [{txtSenha.Text.Length} / {max}]:";
+            lblVolume.Text = $"Senha [{txtSenha.Text.Length} / {max}]:";
 
             senhaValidada = validacao.ValidarTextDoTextBox(ref txtSenha, ref pValidarSenha, 8);
 
