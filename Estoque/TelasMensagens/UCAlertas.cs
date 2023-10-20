@@ -15,10 +15,11 @@ namespace Estoque.Telas_Mensagens
     {
         private int duracao = 4000; /* milliseconds */
 
-        public UCAlertas(string mensagem, Alertas tipoAlerta)
+        public UCAlertas(string mensagem, Alertas tipoAlerta, int duracao = 4000)
         {
             InitializeComponent();
             lblMensagem.Text = mensagem;
+            this.duracao = duracao;
 
             ConfigurarTipoAlerta(tipoAlerta);
         }

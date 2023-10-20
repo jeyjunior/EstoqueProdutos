@@ -269,7 +269,7 @@ namespace Estoque.Telas_Produto
         }
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-
+            AbrirTela(typeof(FrmCadastrarProduto), this, true, FilhoFechado);
         }
         #endregion Eventos - Btn
 

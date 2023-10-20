@@ -1,4 +1,5 @@
 ﻿using Dapper;
+//using Estoque.Controladores;
 using EP.Data.Interfaces;
 using EstoqueProdutos.Entidades;
 using EstoqueProdutos.Formatacao;
@@ -9,7 +10,6 @@ using System.Windows.Forms;
 using JJ.Helpers.Formatacao;
 using EP.Data.sql;
 using EP.Data.Entidades;
-using static System.ComponentModel.Design.ObjectSelectorEditor;
 using System.Collections.Generic;
 
 namespace EstoqueProdutos.Repositorios
@@ -56,19 +56,42 @@ namespace EstoqueProdutos.Repositorios
 
         public Image? ProcurarImagemLocal()
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Imagens|*.jpg;*.png";
-            openFileDialog.Multiselect = false;
-
-            Image? image = null;
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            try
             {
-                string caminhoImagemSelecionada = openFileDialog.FileName;
-                image = Image.FromFile(caminhoImagemSelecionada);
-                image.Tag = caminhoImagemSelecionada;
-            }
+                Image? image = null;
 
-            return image;
+                OpenFileDialog openFileDialog = new OpenFileDialog()
+                {
+                    CheckFileExists = true,
+                    CheckPathExists = true,
+                    Filter = "Imagens|*.jpg;*.png",
+                    Multiselect = false
+                };
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string caminhoImagemSelecionada = openFileDialog.FileName;
+
+                    FileInfo fileinfo = new FileInfo(caminhoImagemSelecionada);
+
+                    if ((fileinfo.Length / 1024) <= 250)
+                    {
+                        image = Image.FromFile(caminhoImagemSelecionada);
+                        image.Tag = caminhoImagemSelecionada;
+                    }
+                    else
+                    {
+                        throw new Exception();
+                    }
+                }
+
+                return image;
+            }
+            catch (Exception)
+            {
+                throw new Exception("Selecione apenas imagens com tamanho igual ou menor que 250kb");
+            }
+            
         }
 
         
