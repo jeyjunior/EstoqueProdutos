@@ -166,12 +166,13 @@ namespace Estoque.Telas_Produto
             txtVolume.KeyPress += Eventos.TextBoxNumerosDecimais_KeyPress;
         }
 
+
+        /* Updates */
         private void FormatarComponentesDateTime()
         {
             dtpValidade.MinDate = dtpFabricacao.Value;
         }
-
-        /* Updates */
+        
         private void LimparComponetes()
         {
             pcbImagem.Image = imagemRepositorio.ObterImagemPadrao();
@@ -209,6 +210,34 @@ namespace Estoque.Telas_Produto
         #endregion Metodos
 
         #region Eventos
+        private void FrmCadastrarUsuario_Load(object sender, EventArgs e)
+        {
+            InicializarComponentes();
+            LimparComponetes();
+        }
+        
+        private void FrmCadastrarUsuario_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Fechar();
+        }
+
+        private void pcbImagemUsuario_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var img = imagemRepositorio.ProcurarImagemLocal();
+
+                if (img != null)
+                {
+                    pcbImagem.Image = img;
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensagem.Erro("Erro: " + ex.Message);
+            }
+        }
+
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             var img = pcbImagem.Image;
@@ -250,12 +279,16 @@ namespace Estoque.Telas_Produto
                     FK_Usuario = usuarioLogado.ObterUsuarioLogado().PK_Usuario
                 };
 
-                var resultado = produtoRepositorio.InserirDadosNaTabela(produto);
+                var resultado = produtoRepositorio.InserirDados(produto);
 
                 if (resultado)
                 {
                     Alerta.Confirmacao("Produto cadastrado com sucesso!");
                     LimparComponetes();
+                }
+                else
+                {
+                    Mensagem.Erro("Não foi possívl cadastrar o produto. \nCertifique-se de que todos os dados estejam corretos e que o produto não exista no sistema.");
                 }
             }
             catch (Exception ex)
@@ -264,41 +297,8 @@ namespace Estoque.Telas_Produto
             }
         }
 
-
-
         private void btnLimpar_Click(object sender, EventArgs e)
         {
-            LimparComponetes();
-        }
-
-        private void pcbImagemUsuario_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var img = imagemRepositorio.ProcurarImagemLocal();
-
-                if (img != null)
-                {
-                    pcbImagem.Image = img;
-                }
-            }
-            catch (Exception ex)
-            {
-
-                Mensagem.Erro("Erro: " + ex.Message);
-            }
-        }
-
-        #endregion Eventos
-
-        private void FrmCadastrarUsuario_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Fechar();
-        }
-
-        private void FrmCadastrarUsuario_Load(object sender, EventArgs e)
-        {
-            InicializarComponentes();
             LimparComponetes();
         }
 
@@ -307,19 +307,10 @@ namespace Estoque.Telas_Produto
             produtoValidado = validacao.ValidarTextDoTextBox(ref txtProduto, ref pValidarProduto, 2);
         }
 
-        private void txtAltura_Enter(object sender, EventArgs e)
-        {
-            ((TextBox)sender).SelectAll();
-        }
-
-        private void txtAltura_MouseClick(object sender, MouseEventArgs e)
-        {
-
-        }
-
         private void dtpFabricacao_ValueChanged(object sender, EventArgs e)
         {
             FormatarComponentesDateTime();
         }
+        #endregion Eventos
     }
 }

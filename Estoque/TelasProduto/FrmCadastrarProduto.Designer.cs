@@ -593,7 +593,6 @@
             txtAltura.Size = new Size(208, 18);
             txtAltura.TabIndex = 8;
             txtAltura.TextAlign = HorizontalAlignment.Right;
-            txtAltura.Enter += txtAltura_Enter;
             // 
             // lblEmail
             // 

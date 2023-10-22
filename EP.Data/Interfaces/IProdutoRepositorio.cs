@@ -11,5 +11,6 @@ namespace EP.Data.Interfaces
     public interface IProdutoRepositorio : IRepositorio<Produto>
     {
         IEnumerable<Produto> ObterProduto(PesquisaProdutoSimples pesquisarProduto);
+        bool InserirDados(Produto produto);
     }
 }

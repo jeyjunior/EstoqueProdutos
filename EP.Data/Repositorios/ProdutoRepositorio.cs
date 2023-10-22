@@ -10,6 +10,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
 using System.Windows.Forms;
+using System.Data;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
+using System.Drawing;
 
 namespace EstoqueProdutos.Repositorios
 {
@@ -84,6 +87,33 @@ namespace EstoqueProdutos.Repositorios
                     }, 
                     pesquisarProduto,
                     splitOn: "PK_Categoria, PK_Formato, PK_Marca, PK_Embalagem, PK_UnidadeMedida"); //,FK_Formato,FK_Marca,FK_Embalagem
+            }
+        }
+
+        public bool InserirDados(Produto produto)
+        {
+            string sql =    "IF NOT EXISTS( \n" +
+                            "    SELECT 1 \n" +
+                            "    FROM Produto \n" +
+                            "    WHERE Nome = @Nome  \n" +
+                            "    AND FK_Categoria = @FK_Categoria \n" +
+                            "    AND FK_Embalagem = @FK_Embalagem \n" +
+                            "    AND FK_Formato = @FK_Formato \n" +
+                            "    AND FK_Marca = @FK_Marca \n" +
+                            ") \n" +
+                            "BEGIN \n" +
+                            "    INSERT INTO[dbo].[Produto] \n" +
+                            "            ([Nome], [Volume], [Descricao], [DataFabricacao], [DataValidade], [Altura], [Largura], [Comprimento], [FK_Formato], [FK_Imagem], [FK_Categoria], [FK_Marca], [FK_Embalagem], [FK_UnidadeMedida], [FK_Usuario]) \n" +
+                            "    VALUES \n" +
+                            "    (@Nome, @Volume, @Descricao, @DataFabricacao, @DataValidade, @Altura, @Largura, @Comprimento, @FK_Formato, @FK_Imagem, @FK_Categoria, @FK_Marca, @FK_Embalagem, @FK_UnidadeMedida, @FK_Usuario); \n" +
+                            "END";
+
+            using (SqlConnection connection = new SqlConnection(conexao))
+            {
+                connection.Open();
+                int rowsAffected = connection.Execute(sql, produto);
+
+                return rowsAffected > 0;
             }
         }
     }
