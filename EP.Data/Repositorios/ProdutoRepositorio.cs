@@ -24,12 +24,17 @@ namespace EstoqueProdutos.Repositorios
             string where = "WHERE "; 
             string condicao = "";
 
-            if (pesquisarProduto.Nome != "") 
+            if (pesquisarProduto.PK_Produto > 0 )
+            {
+                condicao += (condicao != "" ? " AND" : "") + " Produto.PK_Produto = @PK_Produto\n";
+            }
+
+            if (pesquisarProduto.Nome.Length > 0) 
             { 
                 condicao += (condicao != "" ? " AND" : "") + " Produto.Nome Like @Nome\n";
             }
 
-            if (pesquisarProduto.Descricao != "")
+            if (pesquisarProduto.Descricao.Length > 0)
             {
                 condicao += (condicao != "" ? " AND" : "") + " Produto.Descricao Like @Descricao\n";
             }

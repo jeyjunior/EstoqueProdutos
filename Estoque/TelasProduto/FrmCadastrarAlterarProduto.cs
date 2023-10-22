@@ -15,7 +15,7 @@ using System.Data;
 
 namespace Estoque.Telas_Produto
 {
-    public partial class FrmCadastrarProduto : FrmBase
+    public partial class FrmCadastrarAlterarProduto : FrmBase
     {
         private readonly IUsuarioLogado usuarioLogado;
         private readonly IValidacao validacao;
@@ -29,7 +29,10 @@ namespace Estoque.Telas_Produto
         private readonly IProdutoRepositorio produtoRepositorio;
 
         private bool produtoValidado = false;
-        public FrmCadastrarProduto(IUCGerenciadorDeTelas gerenciadorDeTelas)
+        private Produto ProdutoSelecionado { get; set; }
+        private bool AlterarProduto { get; set; }
+
+        public FrmCadastrarAlterarProduto(IUCGerenciadorDeTelas gerenciadorDeTelas)
         {
             InitializeComponent();
 
@@ -172,7 +175,7 @@ namespace Estoque.Telas_Produto
         {
             dtpValidade.MinDate = dtpFabricacao.Value;
         }
-        
+
         private void LimparComponetes()
         {
             pcbImagem.Image = imagemRepositorio.ObterImagemPadrao();
@@ -194,6 +197,9 @@ namespace Estoque.Telas_Produto
             txtVolume.Text = "0";
 
             txtProduto.Focus();
+
+            if (AlterarProduto)
+                AtribuirInformacoesDoProduto();
         }
 
         private bool ValidarComponentes()
@@ -213,9 +219,32 @@ namespace Estoque.Telas_Produto
         private void FrmCadastrarUsuario_Load(object sender, EventArgs e)
         {
             InicializarComponentes();
+
+            ProdutoSelecionado = gerenciadorDeTelas.ObterObjetoGenerico() as Produto;
+            AlterarProduto = gerenciadorDeTelas.ObterStatusGenerico();
+
             LimparComponetes();
         }
-        
+
+        private void AtribuirInformacoesDoProduto()
+        {
+            var img = imagemRepositorio.ObterApenasImagem(ProdutoSelecionado.FK_Imagem);
+
+            pcbImagem.Image = img != null ? img : imagemRepositorio.ObterImagemPadrao();
+            txtProduto.Text = ProdutoSelecionado.Nome;
+            txtDescricao.Text = ProdutoSelecionado.Descricao;
+            dtpFabricacao.Value = Convert.ToDateTime(ProdutoSelecionado.DataFabricacao);
+            dtpValidade.Value = Convert.ToDateTime(ProdutoSelecionado.DataValidade);
+            cboCategoria.SelectedValue = ProdutoSelecionado.FK_Categoria;
+            cboEmbalagem.SelectedValue = ProdutoSelecionado.FK_Embalagem;
+            cboFormato.SelectedValue = ProdutoSelecionado.FK_Formato;
+            cboMarca.SelectedValue = ProdutoSelecionado.FK_Marca;
+            cboUnidadeMedida.SelectedValue = ProdutoSelecionado.FK_UnidadeMedida;
+            txtAltura.Text = ProdutoSelecionado.Altura.ToString();
+            txtLargura.Text = ProdutoSelecionado.Largura.ToString();
+            txtComprimento.Text = ProdutoSelecionado.Comprimento.ToString();
+        }
+
         private void FrmCadastrarUsuario_FormClosed(object sender, FormClosedEventArgs e)
         {
             Fechar();
@@ -279,16 +308,36 @@ namespace Estoque.Telas_Produto
                     FK_Usuario = usuarioLogado.ObterUsuarioLogado().PK_Usuario
                 };
 
-                var resultado = produtoRepositorio.InserirDados(produto);
+                bool resultado = false;
 
-                if (resultado)
+                if (!AlterarProduto)
                 {
-                    Alerta.Confirmacao("Produto cadastrado com sucesso!");
-                    LimparComponetes();
+                    resultado = produtoRepositorio.InserirDados(produto);
+
+                    if (resultado)
+                    {
+                        Alerta.Confirmacao("Produto cadastrado com sucesso!");
+                        LimparComponetes();
+                    }
+                    else
+                    {
+                        Mensagem.Erro("Não foi possívl cadastrar o produto. \nCertifique-se de que todos os dados estejam corretos e que o produto não exista no sistema.");
+                    }
                 }
                 else
                 {
-                    Mensagem.Erro("Não foi possívl cadastrar o produto. \nCertifique-se de que todos os dados estejam corretos e que o produto não exista no sistema.");
+                    produto.PK_Produto = ProdutoSelecionado.PK_Produto;
+                    resultado = produtoRepositorio.AtualizarDadosComValores(produto);
+
+                    if (resultado)
+                    {
+                        Alerta.Confirmacao("Produto alterado com sucesso!");
+                        this.Close();
+                    }
+                    else
+                    {
+                        Mensagem.Erro("Não foi possívl alterar o produto. \nCertifique-se de que todos os dados estejam corretos.");
+                    }
                 }
             }
             catch (Exception ex)

@@ -230,9 +230,14 @@ namespace EstoqueProdutos.Repositorios
             }
         }
 
-        public Image ObterApenasImagem(int FK_Imagem)
+        public Image ObterApenasImagem(int? FK_Imagem)
         {
-            var imagem = ObterObjetoImagem(new Imagem { PK_Imagem = FK_Imagem });
+            int fK_Imagem = 1;
+
+            if (FK_Imagem != null)
+                fK_Imagem = Convert.ToInt32(FK_Imagem);
+
+            var imagem = ObterObjetoImagem(new Imagem { PK_Imagem = fK_Imagem });
             Image image = null;
 
             if(imagem != null && imagem.Count() > 0)

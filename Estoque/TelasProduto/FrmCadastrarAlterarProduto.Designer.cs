@@ -1,6 +1,6 @@
 ﻿namespace Estoque.Telas_Produto
 {
-    partial class FrmCadastrarProduto
+    partial class FrmCadastrarAlterarProduto
     {
         /// <summary>
         /// Required designer variable.

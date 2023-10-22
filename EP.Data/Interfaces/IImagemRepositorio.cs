@@ -23,7 +23,7 @@ namespace EP.Data.Interfaces
         public Image ObterImagemPadrao();
         IEnumerable<Imagem> ObterTabela();
         IEnumerable<Imagem> ObterObjetoImagem(Imagem imagem);
-        Image ObterApenasImagem(int FK_Imagem);
+        Image ObterApenasImagem(int? FK_Imagem);
         bool InserirDadosNaTabela(Imagem imagem);
     }
 }

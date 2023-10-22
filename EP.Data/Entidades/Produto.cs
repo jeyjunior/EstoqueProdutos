@@ -38,6 +38,7 @@ namespace EstoqueProdutos.Entidades
 
     public class PesquisaProdutoSimples 
     {
+        public int PK_Produto { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
 

@@ -32,7 +32,7 @@
     <Compile Update="TelasProduto\FrmCadastrarComplementosProduto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="TelasProduto\FrmCadastrarProduto.cs">
+    <Compile Update="TelasProduto\FrmCadastrarAlterarProduto.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="TelasProduto\FrmConfigurarColunas.cs">

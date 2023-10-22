@@ -1,6 +1,9 @@
-﻿using EP.Data.Interfaces;
+﻿using EP.Data.Entidades;
+using EP.Data.Interfaces;
 using Estoque.Controladores;
+using Estoque.GerenciamentoTelas;
 using Estoque.Interfaces;
+using Estoque.Telas_Usuario;
 using EstoqueProdutos.Entidades;
 using EstoqueProdutos.Formatacao;
 using EstoqueProdutos.Gerenciamento;
@@ -22,6 +25,12 @@ namespace Estoque.Telas_Produto
         private readonly IConfigColunasProdutoRepositorio configColunasProdutoRepositorio;
         private readonly IUsuarioLogado usuarioLogado;
         #endregion Interfaces
+
+        #region Propriedades
+        private int PK_ProdutoSelecionado;
+        private Produto produtoSelecionado;
+        private int indiceLinhaSelecionada;
+        #endregion 
 
         #region Colecoes
         private IEnumerable<Produto> produtos;
@@ -214,6 +223,27 @@ namespace Estoque.Telas_Produto
         {
             lblTotalPesquisado.Text = "Pesquisado: " + dtgProdutos.Rows.Count;
         }
+        private void ObterProdutoDaLinhaSelecionar()
+        {
+            try
+            {
+                PK_ProdutoSelecionado = -1;
+                if (dtgProdutos.Rows.Count <= 0)
+                {
+                    Alerta.Aviso("Selecione um produto");
+                    return;
+                }
+
+                DataGridViewRow linhaSelecionada = dtgProdutos.SelectedRows[0];
+                indiceLinhaSelecionada = linhaSelecionada.Index;
+
+                PK_ProdutoSelecionado = Convert.ToInt32(linhaSelecionada.Cells["colPK_Produto"].Value);
+            }
+            catch (Exception ex)
+            {
+                Mensagem.Erro("Erro: " + ex.Message);
+            }
+        }
         #endregion Metodos - Updates
 
         #region Eventos - UserControl
@@ -265,11 +295,31 @@ namespace Estoque.Telas_Produto
         }
         private void btnAlterar_Click(object sender, EventArgs e)
         {
+            ObterProdutoDaLinhaSelecionar();
 
+            if (PK_ProdutoSelecionado > 0)
+            {
+                ObjetoGenerico = produtoRepositorio.ObterProduto(new PesquisaProdutoSimples 
+                { 
+                    PK_Produto = PK_ProdutoSelecionado,
+                    Nome = "",
+                    Descricao = ""
+                }).FirstOrDefault();
+
+                if(ObjetoGenerico != null)
+                {
+                    StatusGenerico = true;
+                    AbrirTela(typeof(FrmCadastrarAlterarProduto), this, true, FilhoFechado);
+                }
+                else
+                {
+                    Mensagem.Erro("Falha ao carregar produto selecionado!");
+                }
+            }
         }
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            AbrirTela(typeof(FrmCadastrarProduto), this, true, FilhoFechado);
+            AbrirTela(typeof(FrmCadastrarAlterarProduto), this, true, FilhoFechado);
         }
         #endregion Eventos - Btn
 

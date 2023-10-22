@@ -22,6 +22,7 @@ namespace Estoque.Telas_Base
         /// Ex.: Passar usuario selecionado de um form pai para form filho
         /// </summary>
         public object ObjetoGenerico;
+        public bool StatusGenerico;
         public UCGerenciadorDeTelas()
         {
             InitializeComponent();
@@ -92,6 +93,11 @@ namespace Estoque.Telas_Base
         public object ObterObjetoGenerico()
         {
             return ObjetoGenerico;
+        }
+
+        public bool ObterStatusGenerico()
+        {
+            return StatusGenerico;
         }
     }
 }
