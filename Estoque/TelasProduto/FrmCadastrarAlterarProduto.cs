@@ -228,21 +228,33 @@ namespace Estoque.Telas_Produto
 
         private void AtribuirInformacoesDoProduto()
         {
-            var img = imagemRepositorio.ObterApenasImagem(ProdutoSelecionado.FK_Imagem);
+            try
+            {
+                var img = imagemRepositorio.ObterApenasImagem(ProdutoSelecionado.FK_Imagem);
 
-            pcbImagem.Image = img != null ? img : imagemRepositorio.ObterImagemPadrao();
-            txtProduto.Text = ProdutoSelecionado.Nome;
-            txtDescricao.Text = ProdutoSelecionado.Descricao;
-            dtpFabricacao.Value = Convert.ToDateTime(ProdutoSelecionado.DataFabricacao);
-            dtpValidade.Value = Convert.ToDateTime(ProdutoSelecionado.DataValidade);
-            cboCategoria.SelectedValue = ProdutoSelecionado.FK_Categoria;
-            cboEmbalagem.SelectedValue = ProdutoSelecionado.FK_Embalagem;
-            cboFormato.SelectedValue = ProdutoSelecionado.FK_Formato;
-            cboMarca.SelectedValue = ProdutoSelecionado.FK_Marca;
-            cboUnidadeMedida.SelectedValue = ProdutoSelecionado.FK_UnidadeMedida;
-            txtAltura.Text = ProdutoSelecionado.Altura.ToString();
-            txtLargura.Text = ProdutoSelecionado.Largura.ToString();
-            txtComprimento.Text = ProdutoSelecionado.Comprimento.ToString();
+                pcbImagem.Image = img != null ? img : imagemRepositorio.ObterImagemPadrao();
+                txtProduto.Text = ProdutoSelecionado.Nome;
+                txtDescricao.Text = ProdutoSelecionado.Descricao;
+
+                dtpFabricacao.Value = ProdutoSelecionado.DataFabricacao != null ? Convert.ToDateTime(ProdutoSelecionado.DataFabricacao) : DateTime.Today;
+                dtpValidade.Value = ProdutoSelecionado.DataValidade != null ? Convert.ToDateTime(ProdutoSelecionado.DataValidade) : DateTime.Today.AddDays(5);
+
+                cboCategoria.SelectedValue = ProdutoSelecionado.FK_Categoria;
+                cboEmbalagem.SelectedValue = ProdutoSelecionado.FK_Embalagem;
+                cboFormato.SelectedValue = ProdutoSelecionado.FK_Formato;
+                cboMarca.SelectedValue = ProdutoSelecionado.FK_Marca;
+                cboUnidadeMedida.SelectedValue = ProdutoSelecionado.FK_UnidadeMedida;
+
+                txtVolume.Text = ProdutoSelecionado.Volume != null ? ProdutoSelecionado.Volume.ToString() : "0";
+                txtAltura.Text = ProdutoSelecionado.Altura != null ? ProdutoSelecionado.Altura.ToString() : "0";
+                txtLargura.Text = ProdutoSelecionado.Largura != null ? ProdutoSelecionado.Largura.ToString() : "0";
+                txtComprimento.Text = ProdutoSelecionado.Comprimento != null ? ProdutoSelecionado.Comprimento.ToString() : "0";
+            }
+            catch (Exception ex)
+            {
+                Mensagem.Erro("Falha ao carregar informações do produto!\nErro: " + ex.Message);
+                this.Close();
+            }
         }
 
         private void FrmCadastrarUsuario_FormClosed(object sender, FormClosedEventArgs e)
