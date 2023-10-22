@@ -9,30 +9,64 @@ namespace EstoqueProdutos.Formatacao
 {
     public static class Eventos
     {
-        public static void TextBoxNumerosDecimais_KeyPress(TextBox textBox,KeyPressEventArgs e)
+        private static bool textBoxEnter = false;
+        public static void TextBoxNumerosDecimais_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(char.IsDigit(e.KeyChar) && textBox.Text.Contains(',')) 
+            if(sender is TextBox textBox)
             {
-                int count = textBox.Text.IndexOf(',');
-                if (textBox.Text.Length - count > 2) 
-                { 
+                if (char.IsDigit(e.KeyChar) && textBox.Text.Contains(','))
+                {
+                    int count = textBox.Text.IndexOf(',');
+                    if (textBox.Text.Length - count > 2)
+                    {
+                        e.Handled = true;
+                    }
+                }
+
+                if (e.KeyChar == ';' || e.KeyChar == '.')
+                {
+                    e.KeyChar = ',';
+                }
+
+                if (textBox.Text.Contains(',') && e.KeyChar == ',')
+                {
+                    e.Handled = true;
+                }
+
+                if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ',')
+                {
                     e.Handled = true;
                 }
             }
+        }
 
-            if (e.KeyChar == ';' || e.KeyChar == '.') 
-            { 
-                e.KeyChar = ',';
-            }
-
-            if (textBox.Text.Contains(',') && e.KeyChar == ',') 
-            { 
-                e.Handled = true;
-            }
-
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ',')
+        public static void TextBoxSelecionarTudo_Enter(object sender, EventArgs e)
+        {
+            if(sender is TextBox textbox)
             {
-                e.Handled = true;
+                textbox.SelectAll();
+            }
+        }
+
+        public static void TextBoxSelecionarTudo_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (sender is TextBox textbox && !textBoxEnter)
+            {
+                textbox.SelectAll();
+                textBoxEnter = true;
+            }
+        }
+
+        public static void TextBoxAtribuirZero_Leave(object sender, EventArgs e)
+        {
+            if (sender is TextBox textbox)
+            {
+                if(textbox.Text.Length <= 0 )
+                {
+                    textbox.Text = "0";
+                }
+
+                textBoxEnter = false;
             }
         }
 

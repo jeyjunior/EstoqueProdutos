@@ -47,8 +47,8 @@
             lblFabricacao = new Label();
             tlpInformacoesBaseNomeCompleto = new TableLayoutPanel();
             dtpValidade = new DateTimePicker();
-            txtNomeCompleto = new TextBox();
-            pValidarNomeCompleto = new Panel();
+            txtProduto = new TextBox();
+            pValidarProduto = new Panel();
             pDivisoria1 = new Panel();
             pDivisoria2 = new Panel();
             dtpFabricacao = new DateTimePicker();
@@ -408,8 +408,8 @@
             tlpInformacoesBaseNomeCompleto.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tlpInformacoesBaseNomeCompleto.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120F));
             tlpInformacoesBaseNomeCompleto.Controls.Add(dtpValidade, 5, 0);
-            tlpInformacoesBaseNomeCompleto.Controls.Add(txtNomeCompleto, 0, 0);
-            tlpInformacoesBaseNomeCompleto.Controls.Add(pValidarNomeCompleto, 1, 0);
+            tlpInformacoesBaseNomeCompleto.Controls.Add(txtProduto, 0, 0);
+            tlpInformacoesBaseNomeCompleto.Controls.Add(pValidarProduto, 1, 0);
             tlpInformacoesBaseNomeCompleto.Controls.Add(pDivisoria1, 2, 0);
             tlpInformacoesBaseNomeCompleto.Controls.Add(pDivisoria2, 4, 0);
             tlpInformacoesBaseNomeCompleto.Controls.Add(dtpFabricacao, 3, 0);
@@ -435,27 +435,28 @@
             dtpValidade.Size = new Size(120, 25);
             dtpValidade.TabIndex = 2;
             // 
-            // txtNomeCompleto
+            // txtProduto
             // 
-            txtNomeCompleto.BorderStyle = BorderStyle.None;
-            txtNomeCompleto.Dock = DockStyle.Fill;
-            txtNomeCompleto.Font = new Font("Verdana", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            txtNomeCompleto.Location = new Point(10, 4);
-            txtNomeCompleto.Margin = new Padding(10, 4, 0, 0);
-            txtNomeCompleto.MaxLength = 120;
-            txtNomeCompleto.Name = "txtNomeCompleto";
-            txtNomeCompleto.PlaceholderText = "Digite o nome do produto";
-            txtNomeCompleto.Size = new Size(274, 18);
-            txtNomeCompleto.TabIndex = 0;
+            txtProduto.BorderStyle = BorderStyle.None;
+            txtProduto.Dock = DockStyle.Fill;
+            txtProduto.Font = new Font("Verdana", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            txtProduto.Location = new Point(10, 4);
+            txtProduto.Margin = new Padding(10, 4, 0, 0);
+            txtProduto.MaxLength = 120;
+            txtProduto.Name = "txtProduto";
+            txtProduto.PlaceholderText = "Digite o nome do produto";
+            txtProduto.Size = new Size(274, 18);
+            txtProduto.TabIndex = 0;
+            txtProduto.TextChanged += txtProduto_TextChanged;
             // 
-            // pValidarNomeCompleto
+            // pValidarProduto
             // 
-            pValidarNomeCompleto.BackColor = Color.FromArgb(16, 23, 28);
-            pValidarNomeCompleto.Location = new Point(284, 0);
-            pValidarNomeCompleto.Margin = new Padding(0);
-            pValidarNomeCompleto.Name = "pValidarNomeCompleto";
-            pValidarNomeCompleto.Size = new Size(10, 26);
-            pValidarNomeCompleto.TabIndex = 29;
+            pValidarProduto.BackColor = Color.FromArgb(16, 23, 28);
+            pValidarProduto.Location = new Point(284, 0);
+            pValidarProduto.Margin = new Padding(0);
+            pValidarProduto.Name = "pValidarProduto";
+            pValidarProduto.Size = new Size(10, 26);
+            pValidarProduto.TabIndex = 29;
             // 
             // pDivisoria1
             // 
@@ -489,6 +490,7 @@
             dtpFabricacao.Name = "dtpFabricacao";
             dtpFabricacao.Size = new Size(120, 25);
             dtpFabricacao.TabIndex = 1;
+            dtpFabricacao.ValueChanged += dtpFabricacao_ValueChanged;
             // 
             // tlpInformacoesBaseUsuario
             // 
@@ -551,7 +553,6 @@
             tlpEmail.Controls.Add(tlpLargura, 3, 1);
             tlpEmail.Controls.Add(lblComprimento, 5, 0);
             tlpEmail.Controls.Add(tlpComprimento, 5, 1);
-            tlpEmail.Dock = DockStyle.Fill;
             tlpEmail.Location = new Point(0, 405);
             tlpEmail.Margin = new Padding(0);
             tlpEmail.Name = "tlpEmail";
@@ -592,6 +593,7 @@
             txtAltura.Size = new Size(208, 18);
             txtAltura.TabIndex = 8;
             txtAltura.TextAlign = HorizontalAlignment.Right;
+            txtAltura.Enter += txtAltura_Enter;
             // 
             // lblEmail
             // 
@@ -774,12 +776,14 @@
             // tlpSenha
             // 
             tlpSenha.BackColor = Color.FromArgb(60, 75, 85);
-            tlpSenha.ColumnCount = 5;
-            tlpSenha.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20.5882359F));
-            tlpSenha.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 29.4117641F));
+            tlpSenha.ColumnCount = 7;
+            tlpSenha.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 15F));
+            tlpSenha.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
             tlpSenha.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tlpSenha.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 29.4117641F));
-            tlpSenha.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20.5882359F));
+            tlpSenha.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tlpSenha.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tlpSenha.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tlpSenha.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 15F));
             tlpSenha.Controls.Add(lblVolume, 1, 0);
             tlpSenha.Controls.Add(tlpVolume, 1, 1);
             tlpSenha.Controls.Add(cboUnidadeMedida, 3, 1);
@@ -798,7 +802,7 @@
             // 
             lblVolume.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblVolume.ForeColor = SystemColors.ControlLightLight;
-            lblVolume.Location = new Point(151, 0);
+            lblVolume.Location = new Point(15, 0);
             lblVolume.Margin = new Padding(0);
             lblVolume.Name = "lblVolume";
             lblVolume.Padding = new Padding(0, 0, 0, 5);
@@ -816,12 +820,12 @@
             tlpVolume.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
             tlpVolume.Controls.Add(txtVolume, 0, 0);
             tlpVolume.Dock = DockStyle.Fill;
-            tlpVolume.Location = new Point(151, 34);
+            tlpVolume.Location = new Point(15, 34);
             tlpVolume.Margin = new Padding(0);
             tlpVolume.Name = "tlpVolume";
             tlpVolume.RowCount = 1;
             tlpVolume.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tlpVolume.Size = new Size(215, 26);
+            tlpVolume.Size = new Size(228, 26);
             tlpVolume.TabIndex = 16;
             // 
             // txtVolume
@@ -834,7 +838,7 @@
             txtVolume.MaxLength = 2000;
             txtVolume.Name = "txtVolume";
             txtVolume.PlaceholderText = "00.00";
-            txtVolume.Size = new Size(195, 18);
+            txtVolume.Size = new Size(208, 18);
             txtVolume.TabIndex = 11;
             txtVolume.TextAlign = HorizontalAlignment.Right;
             // 
@@ -843,7 +847,7 @@
             cboUnidadeMedida.DropDownStyle = ComboBoxStyle.DropDownList;
             cboUnidadeMedida.Font = new Font("Verdana", 11F, FontStyle.Regular, GraphicsUnit.Point);
             cboUnidadeMedida.FormattingEnabled = true;
-            cboUnidadeMedida.Location = new Point(386, 34);
+            cboUnidadeMedida.Location = new Point(263, 34);
             cboUnidadeMedida.Margin = new Padding(0);
             cboUnidadeMedida.Name = "cboUnidadeMedida";
             cboUnidadeMedida.Size = new Size(215, 26);
@@ -853,7 +857,7 @@
             // 
             lblUnidadeMedida.Font = new Font("Verdana", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblUnidadeMedida.ForeColor = SystemColors.ControlLightLight;
-            lblUnidadeMedida.Location = new Point(386, 0);
+            lblUnidadeMedida.Location = new Point(263, 0);
             lblUnidadeMedida.Margin = new Padding(0);
             lblUnidadeMedida.Name = "lblUnidadeMedida";
             lblUnidadeMedida.Padding = new Padding(0, 0, 0, 5);
@@ -926,7 +930,7 @@
         private TableLayoutPanel tlpLargura;
         private TextBox txtLargura;
         private TableLayoutPanel tlpInformacoesBaseNomeCompleto;
-        private Panel pValidarNomeCompleto;
+        private Panel pValidarProduto;
         private TableLayoutPanel tlpInformacoesBaseUsuario;
         private TextBox txtDescricao;
         private TableLayoutPanel tlpComboBoxs2;
@@ -934,7 +938,7 @@
         private Label lblMarca;
         private ComboBox cboMarca;
         private Label lblFormato;
-        private TextBox txtNomeCompleto;
+        private TextBox txtProduto;
         private Panel pDivisoria1;
         private Panel pDivisoria2;
         private DateTimePicker dtpValidade;
@@ -948,9 +952,9 @@
         private TextBox txtComprimento;
         private TableLayoutPanel tlpSenha;
         private Label lblVolume;
-        private TableLayoutPanel tlpVolume;
-        private TextBox txtVolume;
         private ComboBox cboUnidadeMedida;
         private Label lblUnidadeMedida;
+        private TableLayoutPanel tlpVolume;
+        private TextBox txtVolume;
     }
 }
