@@ -170,9 +170,11 @@
             // cboFormato
             // 
             cboFormato.Dock = DockStyle.Fill;
+            cboFormato.DropDownHeight = 250;
             cboFormato.DropDownStyle = ComboBoxStyle.DropDownList;
             cboFormato.Font = new Font("Verdana", 11F, FontStyle.Regular, GraphicsUnit.Point);
             cboFormato.FormattingEnabled = true;
+            cboFormato.IntegralHeight = false;
             cboFormato.Location = new Point(387, 34);
             cboFormato.Margin = new Padding(0);
             cboFormato.Name = "cboFormato";
@@ -196,9 +198,11 @@
             // cboMarca
             // 
             cboMarca.Dock = DockStyle.Fill;
+            cboMarca.DropDownHeight = 250;
             cboMarca.DropDownStyle = ComboBoxStyle.DropDownList;
             cboMarca.Font = new Font("Verdana", 11F, FontStyle.Regular, GraphicsUnit.Point);
             cboMarca.FormattingEnabled = true;
+            cboMarca.IntegralHeight = false;
             cboMarca.Location = new Point(15, 34);
             cboMarca.Margin = new Padding(0);
             cboMarca.Name = "cboMarca";
@@ -723,9 +727,11 @@
             // cboEmbalagem
             // 
             cboEmbalagem.Dock = DockStyle.Fill;
+            cboEmbalagem.DropDownHeight = 250;
             cboEmbalagem.DropDownStyle = ComboBoxStyle.DropDownList;
             cboEmbalagem.Font = new Font("Verdana", 11F, FontStyle.Regular, GraphicsUnit.Point);
             cboEmbalagem.FormattingEnabled = true;
+            cboEmbalagem.IntegralHeight = false;
             cboEmbalagem.Location = new Point(387, 34);
             cboEmbalagem.Margin = new Padding(0);
             cboEmbalagem.Name = "cboEmbalagem";
@@ -749,9 +755,11 @@
             // cboCategoria
             // 
             cboCategoria.Dock = DockStyle.Fill;
+            cboCategoria.DropDownHeight = 250;
             cboCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCategoria.Font = new Font("Verdana", 11F, FontStyle.Regular, GraphicsUnit.Point);
             cboCategoria.FormattingEnabled = true;
+            cboCategoria.IntegralHeight = false;
             cboCategoria.Location = new Point(15, 34);
             cboCategoria.Margin = new Padding(0);
             cboCategoria.Name = "cboCategoria";
@@ -843,9 +851,11 @@
             // 
             // cboUnidadeMedida
             // 
+            cboUnidadeMedida.DropDownHeight = 250;
             cboUnidadeMedida.DropDownStyle = ComboBoxStyle.DropDownList;
             cboUnidadeMedida.Font = new Font("Verdana", 11F, FontStyle.Regular, GraphicsUnit.Point);
             cboUnidadeMedida.FormattingEnabled = true;
+            cboUnidadeMedida.IntegralHeight = false;
             cboUnidadeMedida.Location = new Point(263, 34);
             cboUnidadeMedida.Margin = new Padding(0);
             cboUnidadeMedida.Name = "cboUnidadeMedida";
@@ -865,7 +875,7 @@
             lblUnidadeMedida.Text = "Unidade de medida:";
             lblUnidadeMedida.TextAlign = ContentAlignment.BottomCenter;
             // 
-            // FrmCadastrarProduto
+            // FrmCadastrarAlterarProduto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -875,7 +885,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             MinimumSize = new Size(800, 600);
-            Name = "FrmCadastrarProduto";
+            Name = "FrmCadastrarAlterarProduto";
             Text = "Cadastrar Produto";
             FormClosed += FrmCadastrarUsuario_FormClosed;
             Load += FrmCadastrarUsuario_Load;
