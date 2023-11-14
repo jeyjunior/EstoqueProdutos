@@ -5,10 +5,6 @@ VisualStudioVersion = 17.6.33801.468
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Estoque", "Estoque.csproj", "{BBA9E0CE-47D7-4469-85FE-175B0DBAF2A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EP.Data", "..\EP.Data\EP.Data.csproj", "{322E9F99-8268-45C6-B35C-A083A6EEEB04}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JJ.Helpers", "..\JJ.Helpers\JJ.Helpers.csproj", "{FE402B76-C6F5-4A30-9C31-BBB8851516AD}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,14 +15,6 @@ Global
 		{BBA9E0CE-47D7-4469-85FE-175B0DBAF2A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBA9E0CE-47D7-4469-85FE-175B0DBAF2A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBA9E0CE-47D7-4469-85FE-175B0DBAF2A7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{322E9F99-8268-45C6-B35C-A083A6EEEB04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{322E9F99-8268-45C6-B35C-A083A6EEEB04}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{322E9F99-8268-45C6-B35C-A083A6EEEB04}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{322E9F99-8268-45C6-B35C-A083A6EEEB04}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FE402B76-C6F5-4A30-9C31-BBB8851516AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FE402B76-C6F5-4A30-9C31-BBB8851516AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FE402B76-C6F5-4A30-9C31-BBB8851516AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FE402B76-C6F5-4A30-9C31-BBB8851516AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

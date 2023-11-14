@@ -6,7 +6,7 @@ using Estoque.Interfaces;
 using Estoque.Telas_Base;
 using EstoqueProdutos.Gerenciamento;
 using JJ.Helpers.Interfaces;
-using Microsoft.Data.SqlClient;
+using System.Data.SqlClient;
 using System.Data;
 
 

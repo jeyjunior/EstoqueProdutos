@@ -7,7 +7,7 @@ using EstoqueProdutos.Entidades;
 using EstoqueProdutos.Formatacao;
 using EstoqueProdutos.Gerenciamento;
 using EstoqueProdutos.Repositorios;
-using Microsoft.Data.SqlClient;
+using System.Data.SqlClient;
 using System.Reflection;
 
 namespace Estoque.Telas_Produto

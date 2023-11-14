@@ -8,7 +8,7 @@ using EstoqueProdutos.Formatacao;
 using EstoqueProdutos.Gerenciamento;
 using EstoqueProdutos.Interfaces;
 using EstoqueProdutos.Repositorios;
-using Microsoft.Data.SqlClient;
+using System.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

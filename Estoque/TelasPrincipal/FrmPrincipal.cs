@@ -1,4 +1,5 @@
 ﻿using EP.Data.Interfaces;
+using Estoque.Controladores;
 using Estoque.Interfaces;
 using Estoque.Telas_Base;
 using Estoque.Telas_Principal;
@@ -48,8 +49,20 @@ namespace EstoqueProdutos.Telas_Principal
 
         private void InicializarConfiguracoes()
         {
-            CarregarImagemPadrao();
-            InicilizarModulosDaInterface();
+            try
+            {
+                CarregarImagemPadrao();
+                InicilizarModulosDaInterface();
+            }
+            catch (Exception ex)
+            {
+                var resposta = Mensagem.Erro("Falha ao iniciar programa.\nErro: " + ex.Message);
+
+                if(resposta == Estoque.Enums.RespostaCaixaDialogo.Sim)
+                {
+                    this.Close();
+                }
+            }
         }
 
         private void InicilizarModulosDaInterface()

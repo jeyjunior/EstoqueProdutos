@@ -1,17 +1,7 @@
 ﻿using Dapper;
 using EP.Data.Interfaces;
-using EstoqueProdutos.Formatacao;
 using EstoqueProdutos.Entidades;
 using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
-using System.Windows.Forms;
-using System.Data;
-using static System.ComponentModel.Design.ObjectSelectorEditor;
 using System.Drawing;
 
 namespace EstoqueProdutos.Repositorios

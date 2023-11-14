@@ -1,16 +1,12 @@
 ﻿using Dapper;
-//using Estoque.Controladores;
 using EP.Data.Interfaces;
 using EstoqueProdutos.Entidades;
-using EstoqueProdutos.Formatacao;
 using Microsoft.Data.SqlClient;
 using System.Text.Json;
-using System.Drawing;
-using System.Windows.Forms;
-using JJ.Helpers.Formatacao;
 using EP.Data.sql;
 using EP.Data.Entidades;
 using System.Collections.Generic;
+
 
 namespace EstoqueProdutos.Repositorios
 {

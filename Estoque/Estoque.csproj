@@ -15,8 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EP.Data\EP.Data.csproj" />
-    <ProjectReference Include="..\JJ.Helpers\JJ.Helpers.csproj" />
+    <PackageReference Include="Dapper" Version="2.1.21" />
+    <PackageReference Include="SimpleInjector" Version="5.4.1" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
   </ItemGroup>
 
   <ItemGroup>

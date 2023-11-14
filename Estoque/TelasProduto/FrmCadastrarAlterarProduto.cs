@@ -9,9 +9,8 @@ using EstoqueProdutos.Formatacao;
 using EstoqueProdutos.Gerenciamento;
 using EstoqueProdutos.Repositorios;
 using JJ.Helpers.Interfaces;
-using Microsoft.Data.SqlClient;
 using System.Data;
-
+using System.Data.SqlClient;
 
 namespace Estoque.Telas_Produto
 {
