@@ -1,5 +1,5 @@
-INSERT INTO Usuario (NomeCompleto, NomeAbreviado, FK_Setor, FK_Cargo, Email, Senha, DataCadastro, FK_Imagem, Ativo)
-VALUES ('Jose Antonio Elias da Silva Junior', 'Jose Antonio', 4, 11, 'joseantonio@email.com', 'senha123', '2023-09-24', 1, 1);
+INSERT INTO Usuario (NomeCompleto, NomeAbreviado, FK_Setor, Email, Senha, DataCadastro, FK_Cargo, FK_Imagem, Ativo)
+VALUES ('Admin', 'Adm', 1, 'adm@teste.com', '123456', '01/01/2020', 1, 1, 1);
 
 INSERT INTO Usuario (NomeCompleto, NomeAbreviado, FK_Setor, FK_Cargo, Email, Senha, DataCadastro, FK_Imagem, Ativo)
 VALUES ('Maria da Silva', 'Maria Silva', 4, 11, 'mariadasilva@email.com', 'senha123', '2023-09-24', 1, 1);
