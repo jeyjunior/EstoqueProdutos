@@ -1,5 +1,6 @@
 ﻿using EP.Data.Entidades;
 using EP.Data.Interfaces;
+using EP.Data.sql;
 using Estoque.Controladores;
 using Estoque.GerenciamentoTelas;
 using Estoque.Interfaces;
@@ -8,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -20,6 +22,7 @@ namespace Estoque.Telas_Principal
     {
         private readonly IUsuarioRepositorio usuarioRepositorio;
         private readonly IUsuarioLogado usuarioLogado;
+        private bool salvarEmail;
         public UCLogin()
         {
             InitializeComponent();
@@ -28,7 +31,6 @@ namespace Estoque.Telas_Principal
             usuarioLogado = DITelas.Container.GetInstance<IUsuarioLogado>();
         }
 
-        private bool salvarEmail;
 
         private void UCLogin_SizeChanged(object sender, EventArgs e)
         {
@@ -81,18 +83,18 @@ namespace Estoque.Telas_Principal
             {
                 Cursor.Current = Cursors.WaitCursor;
 
-                var validarUsuarioAtivo = usuarioRepositorio.UsuarioLogin(new UsuarioLoginAcess
+                var usuarioAtivo = usuarioRepositorio.UsuarioLogin(new UsuarioLoginAcess
                 {
                     Email = txtEmail.Text.Trim(),
                     Ativo = true
                 })
                 .FirstOrDefault();
 
-                if (validarUsuarioAtivo != null && validarUsuarioAtivo.Ativo)
+                if (usuarioAtivo != null && usuarioAtivo.Ativo)
                 {
                     var usuario = usuarioRepositorio.ObterUsuario(new Usuario
                     {
-                        Email = validarUsuarioAtivo.Email
+                        Email = usuarioAtivo.Email
                     })
                     .FirstOrDefault();
 
@@ -149,8 +151,8 @@ namespace Estoque.Telas_Principal
 
         private void UCLogin_Load(object sender, EventArgs e)
         {
-            txtEmail.Text = "";
-            txtSenha.Text = "";
+            txtEmail.Text = "adm@teste.com";
+            txtSenha.Text = "1234567890";
 
             try
             {

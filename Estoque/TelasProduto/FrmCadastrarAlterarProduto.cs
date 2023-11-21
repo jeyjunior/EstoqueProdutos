@@ -315,8 +315,7 @@ namespace Estoque.Telas_Produto
                     FK_Imagem = PK_Imagem,
                     Altura = altura,
                     Largura = largura,
-                    Comprimento = comprimento,
-                    FK_Usuario = usuarioLogado.ObterUsuarioLogado().PK_Usuario
+                    Comprimento = comprimento
                 };
 
                 bool resultado = false;

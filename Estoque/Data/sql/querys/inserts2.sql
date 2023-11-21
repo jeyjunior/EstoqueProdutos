@@ -15,7 +15,7 @@ VALUES
 
 INSERT INTO Imagem (Nome, Formato, ImgBinary) 
 SELECT 'STANDARD', 'PNG', BulkColumn
-FROM OPENROWSET(BULK 'C:\Users\jeyjr\OneDrive\Imagens\internet\standard.jpg', SINGLE_BLOB) AS Imagem;
+FROM OPENROWSET(BULK 'C:\Users\jeyjr\Pictures\Screenshots\standard.png', SINGLE_BLOB) AS Imagem;
 
 
 INSERT INTO Categoria (Nome, Descricao)
@@ -330,11 +330,15 @@ INSERT INTO StatusProduto (Definicao, Descricao)
 VALUES ('Devolução', 'Produto devolvido ao estoque.');
 
 -- Insert para status de produto "Doação"
-INSERT INTO StatusProduto (Definicao, Descricao)
-VALUES ('Doação', 'Produto recebido como doação.');
+
+
 
 -- Outros inserts para status de produto podem ser adicionados conforme necessário.
 
+
+-- Usuario
+INSERT INTO Usuario (NomeCompleto, NomeAbreviado, FK_Setor, Email, Senha, DataCadastro, FK_Cargo, FK_Imagem, Ativo)
+VALUES ('Admin', 'Adm', 1, 'adm@teste.com', '123456', '01/01/2020', 1, 1, 1);
 
 
 

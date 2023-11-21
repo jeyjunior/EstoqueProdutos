@@ -98,9 +98,9 @@ namespace EstoqueProdutos.Repositorios
                             ") \n" +
                             "BEGIN \n" +
                             "    INSERT INTO[dbo].[Produto] \n" +
-                            "            ([Nome], [Volume], [Descricao], [DataFabricacao], [DataValidade], [Altura], [Largura], [Comprimento], [FK_Formato], [FK_Imagem], [FK_Categoria], [FK_Marca], [FK_Embalagem], [FK_UnidadeMedida], [FK_Usuario]) \n" +
+                            "            ([Nome], [Volume], [Descricao], [DataFabricacao], [DataValidade], [Altura], [Largura], [Comprimento], [FK_Formato], [FK_Imagem], [FK_Categoria], [FK_Marca], [FK_Embalagem], [FK_UnidadeMedida]) \n" +
                             "    VALUES \n" +
-                            "    (@Nome, @Volume, @Descricao, @DataFabricacao, @DataValidade, @Altura, @Largura, @Comprimento, @FK_Formato, @FK_Imagem, @FK_Categoria, @FK_Marca, @FK_Embalagem, @FK_UnidadeMedida, @FK_Usuario); \n" +
+                            "    (@Nome, @Volume, @Descricao, @DataFabricacao, @DataValidade, @Altura, @Largura, @Comprimento, @FK_Formato, @FK_Imagem, @FK_Categoria, @FK_Marca, @FK_Embalagem, @FK_UnidadeMedida); \n" +
                             "END";
 
             using (SqlConnection connection = new SqlConnection(conexao))

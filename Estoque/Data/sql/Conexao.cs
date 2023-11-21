@@ -2,7 +2,7 @@
 {
     internal class Conexao
     {
-        private readonly static string connectionString = "Data Source=JEYJUNIOR\\SQLEXPRESS;Initial Catalog=Estoque;Integrated Security=True;TrustServerCertificate=True;";
+        private readonly static string connectionString = "Data Source=JEYJR;Initial Catalog=EstoqueProduto;Integrated Security=True;TrustServerCertificate=True;";
 
         public static string ConexaoBase => connectionString;
     }

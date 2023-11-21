@@ -58,7 +58,7 @@ namespace EstoqueProdutos.Telas_Principal
             {
                 var resposta = Mensagem.Erro("Falha ao iniciar programa.\nErro: " + ex.Message);
 
-                if(resposta == Estoque.Enums.RespostaCaixaDialogo.Sim)
+                if (resposta == Estoque.Enums.RespostaCaixaDialogo.Sim)
                 {
                     this.Close();
                 }
@@ -89,13 +89,6 @@ namespace EstoqueProdutos.Telas_Principal
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            //var telaSenha = new UCLogin();
-            //this.Controls.Add(telaSenha);   
-
-            //telaSenha.Show();
-            //telaSenha.BringToFront();
-            //telaSenha.Dock = DockStyle.Fill;
-
             InicializarConfiguracoes();
         }
 
