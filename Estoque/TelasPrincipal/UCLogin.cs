@@ -152,7 +152,7 @@ namespace Estoque.Telas_Principal
         private void UCLogin_Load(object sender, EventArgs e)
         {
             txtEmail.Text = "adm@teste.com";
-            txtSenha.Text = "1234567890";
+            txtSenha.Text = "123456";
 
             try
             {
